@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ProjectGuid>D1E5B509-0934-4E15-B78D-D3A88AC8CB16</ProjectGuid>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Guilherme Branco Stracini</Authors>
+    <Company>Guilherme Branco Stracini</Company>
+    <Product>VTEX SDK client</Product>
+    <Description>The VTEX platform (PaaS) (e-commerce) SDK. A .NET client to consume VTEX APIs</Description>
+    <Copyright>© 2019 Guilherme Branco Stracini. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/guibranco/VTEX-dotnet-SDK/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/guibranco/VTEX-dotnet-SDK</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/guibranco/VTEX-dotnet-SDK</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>vtex paas client sdk ecommerce e-commerce platform apis</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/guibranco/VTEX-dotnet-SDK/master/logo.png</PackageIconUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CrispyWaffle" Version="1.0.22" />
+  </ItemGroup>
+</Project>
