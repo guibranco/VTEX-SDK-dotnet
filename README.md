@@ -1,2 +1,2 @@
 # VTEX-dotnet-sdk
-SDK dotnet da plataforma VTEX
+SDK .NET da plataforma VTEX
