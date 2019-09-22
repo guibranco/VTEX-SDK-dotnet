@@ -14,7 +14,7 @@ SDK .NET of VTEX platform
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=security_rating)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
 
-![VTEX logo](https://raw.githubusercontent.com/guibranco/VTEX-dotnet-SDK/master/logo.png)
+<img src="https://raw.githubusercontent.com/guibranco/VTEX-dotnet-SDK/master/logo.png" width="330" alt="VTEX logo"/>
 
 ---
 
