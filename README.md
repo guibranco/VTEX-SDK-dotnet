@@ -1,5 +1,5 @@
-# VTEX-dotnet-sdk
-SDK .NET da plataforma VTEX
+# VTEX-dotnet-SDK
+SDK .NET of VTEX platform
 
 [![Build status](https://ci.appveyor.com/api/projects/status/w9g1i60og8jyxo4d?svg=true)](https://ci.appveyor.com/project/guibranco/vtex-dotnet-sdk)
 [![VTEX-dotnet-SDK NuGet Version](https://img.shields.io/nuget/v/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
@@ -25,3 +25,7 @@ Install-Package VTEX
 ```
 
 ---
+
+## Funcionalidades
+
+Implementa as funcionalidades disponíveis em [Developer Docs](https://help.vtex.com/developer-docs)
