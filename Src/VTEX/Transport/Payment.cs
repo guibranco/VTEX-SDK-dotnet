@@ -1,31 +1,13 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 20/12/2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 20/12/2016
-// ***********************************************************************
-// <copyright file="Payment.cs" company="Guilherme Branco Stracini ME">
-//     © 2016 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
-    using System;
-    using System.ComponentModel;
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
+    using System;
+    using System.ComponentModel;
 
     /// <summary>
     /// A payment.
     /// </summary>
-    /// <remarks>Versão: 1.51.2931.607
-    /// Autor: Guilherme Branco Stracini
-    /// Data: 31/03/2014.</remarks>
-
     public sealed class Payment
     {
         /// <summary>

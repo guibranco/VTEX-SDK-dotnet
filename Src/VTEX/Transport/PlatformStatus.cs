@@ -1,24 +1,11 @@
 ﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 04/05/2017
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 04/05/2017
-// ***********************************************************************
-// <copyright file="PlatformStatus.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
 namespace VTEX.Transport
 {
-    using System;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
     using Enums;
     using Newtonsoft.Json;
+    using System;
 
     /// <summary>
     /// Class PlatformStatus. This class cannot be inherited.

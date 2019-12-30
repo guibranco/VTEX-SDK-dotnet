@@ -1,22 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 17/04/2017
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 30/01/2018
-// ***********************************************************************
-// <copyright file="ResponseReceipt.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
-    using System;
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
+    using System;
 
     /// <summary>
     /// Class ResponseReceipt. This class cannot be inherited.

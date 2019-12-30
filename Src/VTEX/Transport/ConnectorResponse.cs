@@ -1,17 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 2016-12-20
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 2018-11-21
-// ***********************************************************************
-// <copyright file="ConnectorResponse.cs" company="Guilherme Branco Stracini ME">
-//     © 2016 - 2018 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     /// <summary>
     /// Class ConnectorResponse. This class cannot be inherited.

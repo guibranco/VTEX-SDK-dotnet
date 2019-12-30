@@ -1,23 +1,9 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 11-04-2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 18/04/2017
-// ***********************************************************************
-// <copyright file="UnexpectedApiResponseException.cs" company="Guilherme Branco Stracini ME">
-//     © 2016 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.GoodPractices
+﻿namespace VTEX.GoodPractices
 {
+    using CrispyWaffle.GoodPractices;
     using System;
     using System.Runtime.Serialization;
     using System.Security.Permissions;
-    using CrispyWaffle.GoodPractices;
 
     /// <summary>
     /// Class UnexpectedApiResponseException. This class cannot be inherited.
@@ -36,7 +22,7 @@ namespace VTEX.GoodPractices
         /// <param name="responseBody">The response body.</param>
         /// <param name="innerException">The inner exception.</param>
         public UnexpectedApiResponseException(string responseBody, Exception innerException)
-            : base(Resources.UnexpectedApiResponseException_Simple, innerException)
+            : base("Unable to complete the request", innerException)
         {
             Response = responseBody;
         }
@@ -51,7 +37,7 @@ namespace VTEX.GoodPractices
         /// <param name="statusCode">The HTTP status code of response.</param>
         /// <param name="innerException">The inner exception.</param>
         public UnexpectedApiResponseException(Uri uri, string method, string requestBody, string responseBody, int statusCode, Exception innerException)
-            : base(string.Format(Resources.UnexpectedApiResponseException, method, uri), innerException)
+            : base($"Unable to complete {method} request to VTEX REST API at Endpoint: {uri}", innerException)
         {
             Request = requestBody;
             Response = responseBody;

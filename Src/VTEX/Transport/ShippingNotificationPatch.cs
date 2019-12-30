@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 02-10-2017
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 02-10-2017
-// ***********************************************************************
-// <copyright file="ShippingNotificationPatch.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;

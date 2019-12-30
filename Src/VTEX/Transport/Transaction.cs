@@ -1,8 +1,4 @@
-﻿// file:	DTOSC\Transaction.cs
-//
-// summary:	Implements the transaction class
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 

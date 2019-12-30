@@ -1,21 +1,10 @@
-﻿// file:	DTOSC\StatsItem.cs
-//
-// summary:	Implements the stats item class
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
     /// <summary>
     /// 	The stats item.
     /// </summary>
-    ///
-    /// <remarks>
-    /// 	Versão: 1.61.3637.731
-    /// 	Autor: Guilherme Branco Stracini
-    /// 	Data: 02/06/2014.
-    /// </remarks>
-
     public sealed class StatsItem
     {
         /// <summary>

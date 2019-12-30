@@ -1,31 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.Commons
-// Author           : Guilherme Branco Stracini
-// Created          : 12-26-2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 12-26-2016
-// ***********************************************************************
-// <copyright file="CancelOrderException.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-// ***********************************************************************
-// Assembly         : IntegracaoService.Commons
-// Author           : Guilherme Branco Stracini
-// Created          : 12-04-2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 12-04-2016
-// ***********************************************************************
-// <copyright file="CancelOrderException.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.GoodPractices
+﻿namespace VTEX.GoodPractices
 {
     using System;
     using System.Runtime.Serialization;

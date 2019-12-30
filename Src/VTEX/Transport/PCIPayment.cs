@@ -1,25 +1,11 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 11-04-2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 11-04-2016
-// ***********************************************************************
-// <copyright file="PCIPayment.cs" company="Guilherme Branco Stracini ME">
-//     © 2016 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
+    using CrispyWaffle.Extensions;
+    using CrispyWaffle.Serialization;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
-    using CrispyWaffle.Extensions;
-    using CrispyWaffle.Serialization;
 
     /// <summary>
     /// Class PCIPayment. This class cannot be inherited.

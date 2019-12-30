@@ -1,17 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 18/12/2017
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 18/12/2017
-// ***********************************************************************
-// <copyright file="Dimension.cs" company="Guilherme Branco Stracini ME">
-//     © 2016 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     /// <summary>
     /// The dimension class.

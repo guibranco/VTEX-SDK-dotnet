@@ -1,8 +1,4 @@
-﻿// file:	DTOSC\ClientProfileData.cs
-//
-// summary:	Implements the client profile data class
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
@@ -12,13 +8,6 @@ namespace VTEX.Transport
     /// <summary>
     ///     A client profile data.
     /// </summary>
-    ///
-    /// <remarks>
-    ///     Versão: 1.51.2931.607
-    ///     Autor: Guilherme Branco Stracini
-    ///     Data: 31/03/2014.
-    /// </remarks>
-
     public sealed class ClientProfileData
     {
         /// <summary>

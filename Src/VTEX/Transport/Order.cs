@@ -1,32 +1,14 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 12-26-2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 03-06-2017
-// ***********************************************************************
-// <copyright file="Order.cs" company="Guilherme Branco Stracini ME">
-//     © 2016 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
-    using System;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
     using Enums;
     using Newtonsoft.Json;
+    using System;
 
     /// <summary>
-    /// A pedido dto.
+    /// An order.
     /// </summary>
-    /// <remarks>Versão: 1.61.3637.731
-    /// Autor: Guilherme Branco Stracini
-    /// Data: 02/06/2014.</remarks>
-
     [Serializer(SerializerFormat.JSON)]
     public sealed class Order
     {

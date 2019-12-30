@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 11-04-2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 11-04-2016
-// ***********************************************************************
-// <copyright file="Address.cs" company="Guilherme Branco Stracini ME">
-//     © 2016 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 

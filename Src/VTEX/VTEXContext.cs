@@ -1,26 +1,5 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 2016-10-10
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 2018-12-07
-// ***********************************************************************
-// <copyright file="VTEXContext.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX
+﻿namespace VTEX
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Diagnostics.Contracts;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
     using CrispyWaffle.Serialization;
@@ -29,14 +8,19 @@ namespace VTEX
     using Extensions;
     using GoodPractices;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Diagnostics.Contracts;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Transport;
 
     /// <summary>
     /// A VTEX Context, that consumes the VTEX Wrapper
     /// </summary>
     /// <seealso cref="IDisposable" />
-    [ConnectionName("VTEX", Order = 0)]
-    [ConnectionName("VTEXID", Order = 1)]
     public sealed class VTEXContext : IDisposable
     {
         #region Private fields
@@ -60,7 +44,7 @@ namespace VTEX
             var host = connection?.Host ?? connectionCookie?.Host;
             _wrapper = new VTEXWrapper(host);
             if (connection?.Credentials == null)
-                throw new ArgumentNullException(nameof(connection), Resources.VTEXContext_NullConnection);
+                throw new ArgumentNullException(nameof(connection));
             _wrapper.SetRestCredentials(connection.Credentials.UserName, connection.Credentials.Password);
             if (connectionCookie?.Credentials != null)
                 _wrapper.SetVtexIdClientAuthCookie(connectionCookie.Credentials.Password);
@@ -101,7 +85,7 @@ namespace VTEX
             queryString.Add(@"orderBy", @"creationDate,asc");
             while (GetOrderListsValueInternal(queryString, currentPage, ref result))
                 currentPage++;
-            LogConsumer.Info(Resources.VTEXContext_GetOrdersListInternal_TotalOrders, result.List.Length);
+            LogConsumer.Info("{0} orders found", result.List.Length);
             return result;
         }
 
@@ -121,7 +105,7 @@ namespace VTEX
             var json = string.Empty;
             try
             {
-                LogConsumer.Trace(Resources.VTEXContext_GetOrdersListInternal_GettingPage, currentPage);
+                LogConsumer.Trace("Getting page {0} of orders list", currentPage);
                 queryString[@"page"] = currentPage.ToString(StringExtensions.Culture);
 
                 json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, PlatformConstants.OmsOrders, CancellationToken.None, queryString).Result;
@@ -133,7 +117,7 @@ namespace VTEX
                 if (temp.Paging.Pages == 1 || temp.Paging.CurrentPage >= temp.Paging.Pages)
                     return false;
                 if (currentPage == 1)
-                    LogConsumer.Trace(Resources.VTEXContext_GetOrdersListInternal_TotalPages, temp.Paging.Pages);
+                    LogConsumer.Trace("{0} pages of orders list", temp.Paging.Pages);
                 return true;
             }
             catch (JsonSerializationException e)
@@ -163,7 +147,7 @@ namespace VTEX
         /// <exception cref="InvalidPaymentDataException"></exception>
         private Order GetOrderInternal(string orderId)
         {
-            LogConsumer.Trace(Resources.VTEXContext_GetOrderInternal, orderId);
+            LogConsumer.Trace("Getting order {0}", orderId);
             var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, $"{PlatformConstants.OmsOrders}/{orderId}", CancellationToken.None).Result;
             if (json == null)
                 return null;
@@ -182,7 +166,7 @@ namespace VTEX
                 else if (transaction.TransactionId != null && !transaction.TransactionId.Equals(@"NO-PAYMENT", StringExtensions.Comparison))
                     LogConsumer.Info(@"Bank bill {0}", order.Sequence);
                 else if (order.Totals.Sum(t => t.Value) == 0)
-                    LogConsumer.Warning(Resources.VTEXContext_GetOrderInternal_OrderSubsidized);
+                    LogConsumer.Warning("Promotion / discount coupon - order subsidized");
                 else
                     throw new InvalidPaymentDataException(orderId);
 
@@ -205,11 +189,8 @@ namespace VTEX
                 LogConsumer.Debug(order, $"vtex-order-{orderId}.js");
                 var affiliated = string.IsNullOrWhiteSpace(order.AffiliateId)
                                      ? string.Empty
-                                     : string.Format(
-                                                     Resources.VTEXContext_GetOrderInternal_Affiliated,
-                                                     order.AffiliateId);
-                LogConsumer.Info(
-                                 Resources.VTEXContext_GetOrderInternal_OrderInfo,
+                                     : $" - Affiliated: {order.AffiliateId}";
+                LogConsumer.Info("Order: {0} - Sequence: {1} - Status: {2} - Sales channel: {3}{4}",
                                  order.OrderId,
                                  order.Sequence,
                                  order.Status.GetHumanReadableValue(),
@@ -282,7 +263,7 @@ namespace VTEX
         /// <returns>IEnumerable&lt;List&gt;.</returns>
         public IEnumerable<List> GetOrdersList(OrderStatus status)
         {
-            LogConsumer.Warning(Resources.VTEXContext_GetOrdersList_GettingOrdersStatus, status.GetHumanReadableValue());
+            LogConsumer.Warning("Getting orders with status {0}", status.GetHumanReadableValue());
             var orders = GetOrdersListInternal(status.GetInternalValue());
             return orders.List;
         }
@@ -297,7 +278,7 @@ namespace VTEX
             var ordersIds = GetOrdersList(status).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
                 return GetOrdersInternal(ordersIds);
-            LogConsumer.Warning(Resources.VTEXContext_GetOrders_NoOrdersWithStatus, status.GetHumanReadableValue());
+            LogConsumer.Warning("No orders with status {0} found", status.GetHumanReadableValue());
             return new Order[0];
         }
 
@@ -309,7 +290,7 @@ namespace VTEX
         /// <returns>IEnumerable&lt;String&gt;.</returns>
         public IEnumerable<List> GetOrdersList(DateTime startDate, DateTime endDate)
         {
-            LogConsumer.Warning(Resources.VTEXContext_GetOrdersList_GettingOrdersByDateRange, startDate, endDate);
+            LogConsumer.Warning("Getting orders between {0:G} and {1:G}", startDate, endDate);
             var orders = GetOrdersListInternal(startDate: startDate, endDate: endDate);
             return orders.List;
         }
@@ -325,7 +306,7 @@ namespace VTEX
             var ordersIds = GetOrdersList(startDate, endDate).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
                 return GetOrdersInternal(ordersIds);
-            LogConsumer.Warning(Resources.VTEXContext_GetOrders_NoOrdersByDateRange, startDate, endDate);
+            LogConsumer.Warning("No orders between {0:G} and {1:G} found", startDate, endDate);
             return new Order[0];
         }
 
@@ -338,7 +319,7 @@ namespace VTEX
         /// <returns>IEnumerable&lt;String&gt;.</returns>
         public IEnumerable<List> GetOrdersList(OrderStatus status, DateTime startDate, DateTime endDate)
         {
-            LogConsumer.Warning(Resources.VTEXContext_GetOrdersList_GettingOrdersByStatusAndDateRange, status.GetHumanReadableValue(), startDate, endDate);
+            LogConsumer.Warning("Getting orders with status {0} between {1:G} and {2:G}", status.GetHumanReadableValue(), startDate, endDate);
             var orders = GetOrdersListInternal(status.GetInternalValue(), startDate, endDate);
             return orders.List;
         }
@@ -355,7 +336,7 @@ namespace VTEX
             var ordersIds = GetOrdersList(status, startDate, endDate).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
                 return GetOrdersInternal(ordersIds);
-            LogConsumer.Warning(Resources.VTEXContext_GetOrders_NoOrdersByStatusAndDateRange, status.GetHumanReadableValue(), startDate, endDate);
+            LogConsumer.Warning("No order with status {0} between {1:G} and {2:G} found", status.GetHumanReadableValue(), startDate, endDate);
             return new Order[0];
         }
 

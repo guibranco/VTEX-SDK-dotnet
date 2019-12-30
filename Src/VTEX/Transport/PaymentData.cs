@@ -1,8 +1,4 @@
-﻿// file:	DTOSC\PaymentData.cs
-//
-// summary:	Implements the payment data class
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
@@ -10,13 +6,6 @@ namespace VTEX.Transport
     /// <summary>
     /// 	A payment data.
     /// </summary>
-    ///
-    /// <remarks>
-    /// 	Versão: 1.61.3637.731
-    /// 	Autor: Guilherme Branco Stracini
-    /// 	Data: 02/06/2014.
-    /// </remarks>
-
     public sealed class PaymentData
     {
         /// <summary>

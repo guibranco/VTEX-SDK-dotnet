@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 04-05-2017
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 04-05-2017
-// ***********************************************************************
-// <copyright file="OpenTextField.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
@@ -36,7 +22,6 @@ namespace VTEX.Transport
             get => _value;
             set => _value = value;
         }
-
 
         /// <summary>
         /// Gets the dynamic.

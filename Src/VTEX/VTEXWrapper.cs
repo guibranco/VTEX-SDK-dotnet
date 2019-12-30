@@ -1,37 +1,22 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 2016-10-04
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 2018-12-06
-// ***********************************************************************
-// <copyright file="Wrapper.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using CrispyWaffle.Extensions;
-using CrispyWaffle.Log;
-using CrispyWaffle.Telemetry;
-using CrispyWaffle.Utilities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using VTEX.Library.Enums;
-using VTEX.Library.GoodPractices;
-using VTEX.Library.Properties;
-
-namespace VTEX.Library
+﻿namespace VTEX
 {
+    using CrispyWaffle.Extensions;
+    using CrispyWaffle.Log;
+    using CrispyWaffle.Telemetry;
+    using Enums;
+    using GoodPractices;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using CrispyWaffle.Utilities;
+
     /// <summary>
     /// Class Wrapper. This class cannot be inherited.
     /// </summary>
@@ -143,7 +128,7 @@ namespace VTEX.Library
             try
             {
                 _requestMediator.WaitOne();
-                LogConsumer.Trace(Resources.VTEXWrapper_ServiceInvokerAsync, method.GetHumanReadableValue(), endpoint);
+                LogConsumer.Trace("ServiceInvokerAsync -&gt; Method: {0} | Endpoint: {1}", method.GetHumanReadableValue(), endpoint);
                 LogConsumer.Debug(uriBuilder.ToString());
                 var cookieContainer = new CookieContainer();
                 using (var handler = new HttpClientHandler { CookieContainer = cookieContainer })
@@ -202,7 +187,7 @@ namespace VTEX.Library
                 statusCode == 503)
             {
                 _requestMediator.Reset();
-                LogConsumer.Warning(Resources.VTEXWrapper_HandleException_Handled, method.ToString(), uri, statusCode);
+                LogConsumer.Warning("HTTP {2} status code on method {0} - uri {1}", method.ToString(), uri, statusCode);
                 Thread.Sleep(60 * 1000);
                 _requestMediator.Set();
                 return ex;
@@ -212,7 +197,7 @@ namespace VTEX.Library
                 statusCode != 500 &&
                 statusCode != 502)
                 throw ex;
-            LogConsumer.Warning(Resources.VTEXWrapper_HandleException, method.ToString());
+            LogConsumer.Warning("Retrying the {0} request", method.ToString());
             TelemetryAnalytics.TrackHit($"VTEX_handle_exception_retrying_{method.ToString()}_request");
             return ex;
         }

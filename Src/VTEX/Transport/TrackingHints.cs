@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : GuiStracini.Mandae
-// Author           : Guilherme Branco Stracini
-// Created          : 2017-10-02
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 2018-11-24
-// ***********************************************************************
-// <copyright file="TrackingHints.cs" company="Editora Inovação LTDA">
-//     Copyright © 2017 - 2018 Guilherme Branco Stracini
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 

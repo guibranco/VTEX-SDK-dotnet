@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 30/01/2018
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 30/01/2018
-// ***********************************************************************
-// <copyright file="TrackingNotificationOrderException.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.GoodPractices
+﻿namespace VTEX.GoodPractices
 {
     using System;
     using System.Runtime.Serialization;
@@ -30,7 +16,7 @@ namespace VTEX.GoodPractices
         /// <param name="sequence">The sequence.</param>
         /// <param name="innerException">The inner exception.</param>
         public TrackingNotificationOrderException(int sequence, Exception innerException)
-            : base(string.Format(Resources.TrackingNotificationOrderException, sequence), innerException)
+            : base($"Unable to send tracking info for the order {sequence}", innerException)
         { }
 
         /// <summary>
@@ -39,7 +25,7 @@ namespace VTEX.GoodPractices
         /// <param name="orderId">The order identifier.</param>
         /// <param name="innerException">The inner exception.</param>
         public TrackingNotificationOrderException(string orderId, Exception innerException)
-            : base(string.Format(Resources.TrackingNotificationOrderException, orderId), innerException)
+            : base($"Unable to send tracking info for the order {orderId}", innerException)
         { }
 
         /// <summary>

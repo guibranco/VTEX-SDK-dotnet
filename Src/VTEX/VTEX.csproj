@@ -19,6 +19,6 @@
 	<AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="1.0.22" />
+    <PackageReference Include="CrispyWaffle" Version="1.1.36" />
   </ItemGroup>
 </Project>

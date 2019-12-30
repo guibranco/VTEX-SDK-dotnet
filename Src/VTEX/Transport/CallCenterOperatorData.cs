@@ -1,21 +1,10 @@
-﻿// file:	DTOSC\CallCenterOperatorData.cs
-//
-// summary:	Implements the call center operator data class
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
     /// <summary>
     ///     A call center operator data.
     /// </summary>
-    ///
-    /// <remarks>
-    ///     Versão: 1.51.2928.607
-    ///     Autor: Guilherme Branco Stracini
-    ///     Data: 31/03/2014.
-    /// </remarks>
-
     public sealed class CallCenterOperatorData
     {
         /// <summary>

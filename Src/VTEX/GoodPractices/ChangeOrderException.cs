@@ -17,7 +17,7 @@
         /// <param name="orderId">The order identifier.</param>
         /// <param name="innerException">The inner exception.</param>
         public ChangeOrderException(string orderId, Exception innerException)
-            : base(string.Format(Resources.ChangeOrderException, orderId), innerException)
+            : base($"Unable to change the order {orderId}", innerException)
         { }
 
         /// <summary>

@@ -1,31 +1,14 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 12-20-2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 12-20-2016
-// ***********************************************************************
-// <copyright file="ShippingNotification.cs" company="Guilherme Branco Stracini ME">
-//     © 2016 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
-    using System.ComponentModel;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
     using Enums;
     using Newtonsoft.Json;
+    using System.ComponentModel;
 
     /// <summary>
-    /// A notificacao de envio dto.
+    /// A shipping notification.
     /// </summary>
-    /// <remarks>Versão: 1.51.2928.607
-    /// Autor: Guilherme Branco Stracini
-    /// Data: 31/03/2014.</remarks>
 
     [Serializer(SerializerFormat.JSON)]
     public sealed class ShippingNotification

@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Statistics item total
+    /// Statistics item total.
     /// </summary>
     public sealed class StatsItemTotal
     {

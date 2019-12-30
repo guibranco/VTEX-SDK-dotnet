@@ -1,21 +1,10 @@
-﻿// file:	DTOSC\Paging.cs
-//
-// summary:	Implements the paging class
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
     /// <summary>
     /// 	A paging.
     /// </summary>
-    ///
-    /// <remarks>
-    /// 	Versão: 1.61.3637.731
-    /// 	Autor: Guilherme Branco Stracini
-    /// 	Data: 02/06/2014.
-    /// </remarks>
-
     public sealed class Paging
     {
         /// <summary>

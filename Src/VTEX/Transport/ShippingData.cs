@@ -1,31 +1,10 @@
-﻿// ***********************************************************************
-// Assembly         : GuiStracini.Mandae
-// Author           : Guilherme Branco Stracini
-// Created          : 19/12/2013
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 02/10/2017
-// ***********************************************************************
-// <copyright file="" company="Editora Inovação LTDA">
-//     Copyright © 2017 Guilherme Branco Stracini
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
     /// <summary>
     /// 	A shipping data.
     /// </summary>
-    ///
-    /// <remarks>
-    /// 	Versão: 1.61.3637.731
-    /// 	Autor: Guilherme Branco Stracini
-    /// 	Data: 02/06/2014.
-    /// </remarks>
-
     public sealed class ShippingData
     {
         /// <summary>

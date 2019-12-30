@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 04/10/2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 04/05/2017
-// ***********************************************************************
-// <copyright file="PlatformConstants.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX
+﻿namespace VTEX
 {
     /// <summary>
     /// Class PlatformConstants.

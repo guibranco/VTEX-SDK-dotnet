@@ -1,22 +1,11 @@
-﻿// file:	DTOSC\OrderCancellation.cs
-//
-// summary:	Implements the order cancellation class
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
-    using System;
     using CrispyWaffle.Serialization;
+    using System;
 
     /// <summary>
     ///     An order cancellation.
     /// </summary>
-    ///
-    /// <remarks>
-    ///     Versão: 1.64.4143.849
-    ///     Autor: Guilherme Branco Stracini
-    ///     Data: 16/08/2014.
-    /// </remarks>
-
     [Serializer(SerializerFormat.JSON)]
     public sealed class OrderCancellation
     {

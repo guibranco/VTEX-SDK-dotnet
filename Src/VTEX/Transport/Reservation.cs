@@ -1,22 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 12-20-2016
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 12-20-2016
-// ***********************************************************************
-// <copyright file="Reservation.cs" company="Guilherme Branco Stracini ME">
-//     © 2016 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
-    using System;
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
+    using System;
 
     /// <summary>
     /// Class Reservation. This class cannot be inherited.

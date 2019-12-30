@@ -1,23 +1,12 @@
-﻿// file:	DTOSC\Seller.cs
-//
-// summary:	Implements the seller class
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
     /// <summary>
     ///     A seller.
     /// </summary>
-    ///
-    /// <remarks>
-    ///     Versão: 1.51.2931.607
-    ///     Autor: Guilherme Branco Stracini
-    ///     Data: 31/03/2014.
-    /// </remarks>
-
     public sealed class Seller
-	{
+    {
         /// <summary>
         ///     Gets or sets the identifier.
         /// </summary>
@@ -26,8 +15,8 @@ namespace VTEX.Transport
         ///     The identifier.
         /// </value>
 
-		[JsonProperty("id")]
-		public int Id { get; set; }
+        [JsonProperty("id")]
+        public int Id { get; set; }
 
         /// <summary>
         ///     Gets or sets the name.
@@ -37,8 +26,8 @@ namespace VTEX.Transport
         ///     The name.
         /// </value>
 
-		[JsonProperty("name")]
-		public string Name { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the logo.
@@ -48,7 +37,7 @@ namespace VTEX.Transport
         ///     The logo.
         /// </value>
 
-		[JsonProperty("logo")]
-		public string Logo { get; set; }
-	}
+        [JsonProperty("logo")]
+        public string Logo { get; set; }
+    }
 }

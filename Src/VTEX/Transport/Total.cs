@@ -3,7 +3,6 @@
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
 
-
     /// <summary>
     /// Total
     /// </summary>

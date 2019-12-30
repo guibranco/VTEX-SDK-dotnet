@@ -1,25 +1,11 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 12/04/2017
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 12/04/2017
-// ***********************************************************************
-// <copyright file="BridgeItem.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
 
     /// <summary>
     /// Class BridgeItem. This class cannot be inherited.

@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : IntegracaoService.VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 13/04/2017
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 13/04/2017
-// ***********************************************************************
-// <copyright file="UpdatePriceInfoSKUException.cs" company="Guilherme Branco Stracini ME">
-//     © 2011-2019 Guilherme Branco Stracini, All Rights Reserved
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-namespace VTEX.GoodPractices
+﻿namespace VTEX.GoodPractices
 {
     using System;
     using System.Runtime.Serialization;
@@ -31,7 +17,7 @@ namespace VTEX.GoodPractices
         /// <param name="skuId">The sku identifier.</param>
         /// <param name="innerException">The inner exception.</param>
         public UpdatePriceInfoSKUException(int skuId, Exception innerException)
-            : base(string.Format(Resources.UpdatePriceInfoSKUException, skuId), innerException)
+            : base($"Unable to update the price of SKU {skuId} in VTEX platform", innerException)
         { }
 
         /// <summary>
