@@ -406,10 +406,12 @@
         }
 
         /// <summary>
-        /// Cancels the order.
+        /// Cancels the order asynchronous.
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
-        public string CancelOrder(string orderId)
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException">Order {orderId} cannot be canceled because isn't in pending payment status on VTEX</exception>
+        public async Task<string> CancelOrderAsync(string orderId)
         {
             try
             {
@@ -417,10 +419,11 @@
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var order = GetOrder(orderId);
                 if (order.Status == OrderStatus.CANCELED)
-                    return;
+                    return string.Empty;
                 if (order.Status != OrderStatus.PAYMENT_PENDING && order.Status != OrderStatus.AWAITING_AUTHORIZATION_TO_DISPATCH)
-                    throw new InvalidOperationException(string.Format("Order {0} cannot be canceled because isn't in pending payment status on VTEX", orderId));
-                var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/cancel", source.Token).Result;
+                    throw new InvalidOperationException(
+                        $"Order {orderId} cannot be canceled because isn't in pending payment status on VTEX");
+                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/cancel", source.Token);
                 var receipt = SerializerFactory.GetSerializer<OrderCancellation>().Deserialize(json);
                 LogConsumer.Info("Order {0} successfully canceled. Receipt: {1}", order.Sequence, receipt.Receipt);
                 return receipt.Receipt;
@@ -428,22 +431,24 @@
             catch (Exception e)
             {
                 LogConsumer.Handle(new CancelOrderException(orderId, e));
+                return string.Empty;
             }
         }
 
         /// <summary>
-        /// Changes the order status.
+        /// Changes the order status asynchronous.
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
         /// <param name="newStatus">The new status.</param>
-        /// <exception cref="ChangeStatusOrderException"></exception>
-        public void ChangeOrderStatus(string orderId, OrderStatus newStatus)
+        /// <exception cref="ChangeStatusOrderException">
+        /// </exception>
+        public async Task ChangeOrderStatusAsync(string orderId, OrderStatus newStatus)
         {
             try
             {
                 LogConsumer.Info("Changing order {0} status to {1}", orderId, newStatus.GetHumanReadableValue());
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
-                var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/changestate/{newStatus.GetInternalValue()}", source.Token).Result;
+                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/changestate/{newStatus.GetInternalValue()}", source.Token);
                 LogConsumer.Info(json);
             }
             catch (AggregateException e)
@@ -458,10 +463,10 @@
         }
 
         /// <summary>
-        /// Notifies the order paid.
+        /// Notifies the order paid asynchronous.
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
-        public void NotifyOrderPaid(string orderId)
+        public async Task NotifyOrderPaidAsync(string orderId)
         {
             try
             {
@@ -473,7 +478,7 @@
                     return;
                 if (order.Status == OrderStatus.AWAITING_AUTHORIZATION_TO_DISPATCH)
                 {
-                    ChangeOrderStatus(order.OrderId, OrderStatus.AUTHORIZE_FULFILLMENT);
+                    await ChangeOrderStatusAsync(order.OrderId, OrderStatus.AUTHORIZE_FULFILLMENT);
                     return;
                 }
                 var paymentId = order.PaymentData.Transactions.First().Payments.First().Id;
@@ -811,7 +816,7 @@
         /// <returns>Task</returns>
         public async Task DeletePriceAsync(int skuId, CancellationToken token)
         {
-            LogConsumer.Info(Resources.VTEXContext_DeletePriceAsync, skuId);
+            LogConsumer.Info("Deleting the price of sku {0}", skuId);
             await _wrapper.ServiceInvokerAsync(
                                                HttpRequestMethod.DELETE,
                                                $@"{PlatformConstants.Pricing}/{skuId}",
@@ -836,7 +841,7 @@
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_GettingBridgeFacets, query);
+                LogConsumer.Info("Getting facets in bridge module that satisfy the condition '{0}'", query);
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var queryString = new Dictionary<string, string>
                 {
@@ -879,10 +884,10 @@
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_GettingBridgeItems, limit, offSet, query);
+                LogConsumer.Info("Getting {0} items from {1} in bridge module that satisfy the condition '{2}'", limit, offSet, query);
                 if (offSet >= 10000)
                 {
-                    LogConsumer.Warning(Resources.VTEXContext_GetBridgeItems_Warning);
+                    LogConsumer.Warning("Cannot get more than 10000 items from Bridge / Master Data (VTEX Elastic Search limitation)");
                     return new List<BridgeItem>();
                 }
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
@@ -961,7 +966,7 @@
         [Pure]
         public async Task<IEnumerable<PlatformStatus>> GetPlatformStatusAsync(CancellationToken token)
         {
-            LogConsumer.Info(Resources.VTEXContext_GetPlatformStatusAsync);
+            LogConsumer.Info("Getting platform status");
             var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, string.Empty, token, restEndpoint: RequestEndpoint.HEALTH)
                                      .ConfigureAwait(false);
             var status = SerializerFactory.GetSerializer<List<PlatformStatus>>().Deserialize(json);
@@ -1007,7 +1012,7 @@
         [Pure]
         public async Task<SpecificationField> GetSpecificationFieldAsync(int fieldId, CancellationToken token)
         {
-            LogConsumer.Info(Resources.VTEXContext_GetSpecificationFieldAsync, fieldId);
+            LogConsumer.Info("Getting field for the field id {0}", fieldId);
             var json = await _wrapper.ServiceInvokerAsync(
                                                           HttpRequestMethod.GET,
                                                           $@"{PlatformConstants.CatalogPub}/specification/fieldGet/{fieldId}",
@@ -1029,7 +1034,7 @@
             int fieldId,
             CancellationToken token)
         {
-            LogConsumer.Info(Resources.VTEXContext_GetSpecificationFieldValuesAsync, fieldId);
+            LogConsumer.Info("Getting field values for the field id {0}", fieldId);
             var json = await _wrapper.ServiceInvokerAsync(
                                                           HttpRequestMethod.GET,
                                                           $@"{PlatformConstants.CatalogPub}/specification/fieldvalue/{fieldId}",
@@ -1068,8 +1073,7 @@
             int productId,
             CancellationToken token)
         {
-            LogConsumer.Info(
-                             Resources.VTEXContext_UpdateProductSpecificationsAsync,
+            LogConsumer.Info("Updating the specifications {1} of product {0}",
                              productId,
                              string.Join(@",", specifications.Select(s => s.Id)));
 
@@ -1091,7 +1095,7 @@
         /// <returns></returns>
         public async Task InsertSpecificationFieldValueAsync(SpecificationFieldValue fieldValue, CancellationToken token)
         {
-            LogConsumer.Info(Resources.VTEXContext_InsertSpecificationFieldValueAsync, fieldValue.FieldId);
+            LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
             var data = (string)fieldValue.GetSerializer();
             await _wrapper.ServiceInvokerAsync(
                                                HttpRequestMethod.POST,
