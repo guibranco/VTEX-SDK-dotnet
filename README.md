@@ -13,6 +13,10 @@ SDK .NET of VTEX platform
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=sqale_index)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=security_rating)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=bugs)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=code_smells)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=coverage)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
 
 <img src="https://raw.githubusercontent.com/guibranco/VTEX-dotnet-SDK/master/logo.png" width="330" alt="VTEX logo"/>
 
