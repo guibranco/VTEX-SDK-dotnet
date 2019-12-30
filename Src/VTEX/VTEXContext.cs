@@ -1,5 +1,6 @@
 ﻿namespace VTEX
 {
+    using Configuration;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
     using CrispyWaffle.Serialization;
@@ -220,7 +221,7 @@
             //VTEX limitation
             if (maxLot > 20)
                 maxLot = 20;
-            LogConsumer.Trace(Resources.VTEXContext_GetFeed, maxLot);
+            LogConsumer.Trace("Getting up to {0} events in order feed", maxLot);
             var json = _wrapper.ServiceInvokerAsync(
                     HttpRequestMethod.GET,
                     $"{PlatformConstants.OmsFeed}",
@@ -236,7 +237,7 @@
         /// <param name="feed">The feed.</param>
         public void CommitFeed(OrderFeed feed)
         {
-            LogConsumer.Trace(Resources.VTEXContext_CommitFeed, feed.OrderId);
+            LogConsumer.Trace("Commiting feed of order {0}", feed.OrderId);
             var data = (string)new OrderFeedCommit { CommitToken = feed.CommitToken }.GetSerializer();
             _wrapper.ServiceInvokerAsync(
                 HttpRequestMethod.POST,
@@ -348,7 +349,7 @@
         /// <returns>IEnumerable&lt;String&gt;.</returns>
         public IEnumerable<List> GetOrdersList(OrderStatus status, string affiliatedId)
         {
-            LogConsumer.Warning(Resources.VTEXContext_GetOrdersList_GettingOrdersByStatusAndAffiliated, status.GetHumanReadableValue(), affiliatedId);
+            LogConsumer.Warning("Getting orders with status {0} and affiliated {1}", status.GetHumanReadableValue(), affiliatedId);
             var orders = GetOrdersListInternal(status.GetInternalValue(), affiliatedId: affiliatedId);
             return orders.List;
         }
@@ -364,7 +365,7 @@
             var ordersIds = GetOrdersList(status, affiliatedId).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
                 return GetOrdersInternal(ordersIds);
-            LogConsumer.Warning(Resources.VTEXContext_GetOrders_NoOrdersByStatusAndAffiliated, status.GetHumanReadableValue(), affiliatedId);
+            LogConsumer.Warning("No order with status {0} and affiliated {1} found", status.GetHumanReadableValue(), affiliatedId);
             return new Order[0];
         }
 
@@ -375,7 +376,7 @@
         /// <returns>IEnumerable&lt;String&gt;.</returns>
         public IEnumerable<List> GetOrdersList(string query)
         {
-            LogConsumer.Warning(Resources.VTEXContext_GetOrdersList_GettingOrdersByTerm, query);
+            LogConsumer.Warning("Getting orders with term '{0}'", query);
             var orders = GetOrdersListInternal(genericQuery: query);
             return orders.List;
         }
@@ -390,7 +391,7 @@
             var ordersIds = GetOrdersList(query).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
                 return GetOrdersInternal(ordersIds);
-            LogConsumer.Warning(Resources.VTEXContext_GetOrders_NoOrdersByTerm, query);
+            LogConsumer.Warning("No orders with term '{0}' found", query);
             return new Order[0];
         }
 
@@ -408,21 +409,21 @@
         /// Cancels the order.
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
-        public void CancelOrder(string orderId)
+        public string CancelOrder(string orderId)
         {
             try
             {
-                LogConsumer.Warning(Resources.VTEXContext_CancelOrder, orderId);
+                LogConsumer.Warning("Cancelling order {0}", orderId);
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var order = GetOrder(orderId);
                 if (order.Status == OrderStatus.CANCELED)
                     return;
                 if (order.Status != OrderStatus.PAYMENT_PENDING && order.Status != OrderStatus.AWAITING_AUTHORIZATION_TO_DISPATCH)
-                    throw new InvalidOperationException(string.Format(Resources.VTEXContext_CancelOrder_CannotCancel, orderId));
+                    throw new InvalidOperationException(string.Format("Order {0} cannot be canceled because isn't in pending payment status on VTEX", orderId));
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/cancel", source.Token).Result;
                 var receipt = SerializerFactory.GetSerializer<OrderCancellation>().Deserialize(json);
-                LogConsumer.Info(Resources.VTEXContext_CancelOrder_Canceled, order.Sequence, receipt.Receipt);
-
+                LogConsumer.Info("Order {0} successfully canceled. Receipt: {1}", order.Sequence, receipt.Receipt);
+                return receipt.Receipt;
             }
             catch (Exception e)
             {
@@ -440,7 +441,7 @@
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_ChangeOrderStatus, orderId, newStatus.GetHumanReadableValue());
+                LogConsumer.Info("Changing order {0} status to {1}", orderId, newStatus.GetHumanReadableValue());
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/changestate/{newStatus.GetInternalValue()}", source.Token).Result;
                 LogConsumer.Info(json);
@@ -464,7 +465,7 @@
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_NotifyOrderPaid, orderId);
+                LogConsumer.Info("Sending payment notification of order {0}", orderId);
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var order = GetOrder(orderId);
                 if (order.Status != OrderStatus.PAYMENT_PENDING &&
@@ -507,14 +508,14 @@
         /// <returns></returns>
         /// <exception cref="ShippingNotificationOrderException">
         /// </exception>
-        public async Task NotifyOrderShippedAsync(
+        public async Task<string> NotifyOrderShippedAsync(
             string orderId,
             ShippingNotification notification,
             CancellationToken token)
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_NotifyOrderShipped, orderId);
+                LogConsumer.Info("Sending shipping notification of order {0}", orderId);
                 LogConsumer.Debug(
                                   notification,
                                   $"vtex-shipping-notification-{orderId}-{notification.InvoiceNumber}.js");
@@ -526,6 +527,7 @@
                                          .ConfigureAwait(false);
                 var receipt = SerializerFactory.GetSerializer<ResponseReceipt>().Deserialize(json);
                 LogConsumer.Trace(receipt.Receipt);
+                return receipt.Receipt;
             }
             catch (AggregateException e)
             {
@@ -542,21 +544,22 @@
         /// Notifies the order delivered
         /// </summary>
         /// <param name="tracking"></param>
-        public void NotifyOrderDelivered(Tracking tracking)
+        public async ValueTask<string> NotifyOrderDelivered(Tracking tracking)
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_NotifyOrderDelivered, tracking.OrderId);
+                LogConsumer.Info("Sending tracking info of order {0}", tracking.OrderId);
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 LogConsumer.Debug(tracking, $"vtex-tracking-info-{tracking.OrderId}-{tracking.InvoiceNumber}.js");
-                var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.PUT,
+                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.PUT,
                                                         string.Format(PlatformConstants.OmsTracking,
                                                                       tracking.OrderId,
                                                                       tracking.InvoiceNumber),
                                                         source.Token,
-                                                        data: (string)tracking.GetSerializer()).Result;
+                                                        data: (string)tracking.GetSerializer());
                 var receipt = SerializerFactory.GetSerializer<ResponseReceipt>().Deserialize(json);
                 LogConsumer.Trace(receipt.Receipt);
+                return receipt.Receipt;
             }
             catch (Exception e)
             {
@@ -575,7 +578,7 @@
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_UpdateOrderInvoice, orderId, invoiceId);
+                LogConsumer.Info("Patching fiscal invoice {1} of order {0}", orderId, invoiceId);
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 LogConsumer.Debug(notification, $"vtex-shipping-notification-{orderId}-{invoiceId}.js");
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.PATCH,
@@ -600,7 +603,7 @@
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_ChangeOrder, orderId);
+                LogConsumer.Info("Changing order {0}", orderId);
                 LogConsumer.Debug(change, $"vtex-change-order-{orderId}.js");
                 var json = _wrapper.ServiceInvokerAsync(
                                                         HttpRequestMethod.POST,
@@ -631,7 +634,7 @@
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_GetTransactionInteractions, transactionId);
+                LogConsumer.Info("Getting interactions of transaction {0}", transactionId);
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
                                                         $"{PlatformConstants.PciTransactions}/{transactionId}/interactions",
                                                         CancellationToken.None,
@@ -658,7 +661,7 @@
         {
             try
             {
-                LogConsumer.Info(Resources.VTEXContext_GetSKUReservationsAsync, skuId, stock.GetHumanReadableValue());
+                LogConsumer.Info("Getting reservations of SKU {0} in the warehouse {1}", skuId, stock.GetHumanReadableValue());
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var json = await _wrapper.ServiceInvokerAsync(
                                                               HttpRequestMethod.GET,
@@ -667,7 +670,7 @@
                 var reservations = SerializerFactory.GetSerializer<Reservations>().Deserialize(json);
                 LogConsumer.Debug(reservations, $"vtex-sku-reservations-{skuId}.js");
                 var total = !reservations.Items.Any() ? 0 : reservations.Items.Sum(r => r.Quantity);
-                LogConsumer.Info(Resources.VTEXContext_GetSKUReservationsAsync_Result, skuId, total, stock.GetHumanReadableValue());
+                LogConsumer.Info("The SKU {0} has {1} units reserved in warehouse {2}", skuId, total, stock.GetHumanReadableValue());
                 return total;
             }
             catch (Exception e)
@@ -684,7 +687,7 @@
         /// <returns>Inventory.</returns>
         public async Task<Inventory> GetSKUInventoryAsync(int skuId)
         {
-            LogConsumer.Info(Resources.VTEXContext_GetSKUInventoryAsync, skuId);
+            LogConsumer.Info("Getting inventory of SKU {0}", skuId);
             var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
             var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
                                              $"{PlatformConstants.LogInventory}/{skuId}",
@@ -709,7 +712,7 @@
                 stockInfo.DateUtcOnBalanceSystem = null;
                 if (!stockInfo.UnlimitedQuantity)
                     stockInfo.Quantity += await GetSKUReservationsAsync(stockInfo.ItemId, stockInfo.WareHouseEnum).ConfigureAwait(false);
-                LogConsumer.Info(Resources.VTEXContext_UpdateSKUStockAsync,
+                LogConsumer.Info("Updating inventory of SKU {0} on warehouse {1} with {2} units",
                                     stockInfo.ItemId,
                                     stockInfo.WareHouseEnum.GetHumanReadableValue(),
                                     stockInfo.Quantity);
@@ -739,7 +742,7 @@
         /// <returns>A task of price</returns>
         public async Task<Price> GetPriceAsync(int skuId)
         {
-            LogConsumer.Info(Resources.VTEXContext_GetPriceAsync, skuId);
+            LogConsumer.Info("Getting the price of sku {0}", skuId);
             var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
             try
             {
@@ -779,12 +782,12 @@
                 if (oldPrice?.FixedPrices != null &&
                     oldPrice.FixedPrices.Any())
                     await DeletePriceAsync(skuId, token).ConfigureAwait(false);
-                LogConsumer.Info(Resources.VTEXContext_UpdatePriceAsync,
+                LogConsumer.Info("Updating the price of sku {0} to {1} (list price: {2})",
                                  skuId,
                                  price.CostPrice.ToMonetary(),
                                  price.ListPrice.HasValue
                                      ? price.ListPrice.Value.ToMonetary()
-                                     : Resources.No);
+                                     : "no");
                 await _wrapper.ServiceInvokerAsync(
                                                    HttpRequestMethod.PUT,
                                                    $@"{PlatformConstants.Pricing}/{skuId}",
