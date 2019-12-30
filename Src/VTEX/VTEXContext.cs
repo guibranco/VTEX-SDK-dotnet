@@ -39,15 +39,15 @@
         /// </summary>
         /// <param name="connection">The connection.</param>
         /// <param name="connectionCookie">The connection cookie.</param>
-        public VTEXContext(IConnection connection, IConnection connectionCookie)
+        public VTEXContext(IVTEXConfiguration connection, IVTEXConfiguration connectionCookie = null)
         {
             var host = connection?.Host ?? connectionCookie?.Host;
             _wrapper = new VTEXWrapper(host);
-            if (connection?.Credentials == null)
+            if (connection == null)
                 throw new ArgumentNullException(nameof(connection));
-            _wrapper.SetRestCredentials(connection.Credentials.UserName, connection.Credentials.Password);
-            if (connectionCookie?.Credentials != null)
-                _wrapper.SetVtexIdClientAuthCookie(connectionCookie.Credentials.Password);
+            _wrapper.SetRestCredentials(connection.UserName, connection.Password);
+            if (connectionCookie != null)
+                _wrapper.SetVtexIdClientAuthCookie(connectionCookie.Password);
         }
 
         #endregion
