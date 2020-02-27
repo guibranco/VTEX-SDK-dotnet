@@ -32,4 +32,4 @@ Install-Package VTEX
 
 ## Funcionalidades
 
-Implementa as funcionalidades disponíveis em [Developer Docs](https://help.vtex.com/developer-docs)
+Implementa as funcionalidades disponíveis em [Developer Docs](https://developers.vtex.com/)
