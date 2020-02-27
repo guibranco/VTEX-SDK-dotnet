@@ -1,6 +1,8 @@
 # VTEX-dotnet-SDK
 SDK .NET of VTEX platform
 
+<img src="https://raw.githubusercontent.com/guibranco/VTEX-dotnet-SDK/master/logo.png" width="330" alt="VTEX logo"/>
+
 ## CI/CD
 
 [![Build status](https://ci.appveyor.com/api/projects/status/w9g1i60og8jyxo4d?svg=true)](https://ci.appveyor.com/project/guibranco/vtex-dotnet-sdk)
@@ -24,8 +26,6 @@ SDK .NET of VTEX platform
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=code_smells)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=bugs)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
-
-<img src="https://raw.githubusercontent.com/guibranco/VTEX-dotnet-SDK/master/logo.png" width="330" alt="VTEX logo"/>
 
 ---
 
