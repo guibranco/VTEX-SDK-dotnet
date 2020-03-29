@@ -6,7 +6,7 @@ The VTEX platform SDK for .NET projects (both Core & Framework).
 
 ## CI/CD
 
-[![Build status](https://ci.appveyor.com/api/projects/status/w9g1i60og8jyxo4d?svg=true)](https://ci.appveyor.com/project/guibranco/w9g1i60og8jyxo4d)
+[![Build status](https://ci.appveyor.com/api/projects/status/kuso66xs0ljrcxfn?svg=true)](https://ci.appveyor.com/project/guibranco/kuso66xs0ljrcxfn)
 [![VTEX NuGet Version](https://img.shields.io/nuget/v/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
 [![VTEX NuGet Downloads](https://img.shields.io/nuget/dt/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
 [![Github All Releases](https://img.shields.io/github/downloads/guibranco/VTEX-SDK-dotnet/total.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
