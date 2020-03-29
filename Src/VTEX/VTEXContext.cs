@@ -48,7 +48,7 @@ namespace VTEX
         /// or
         /// appToken
         /// </exception>
-        public VTEXContext(string accountName, string appKey, string appToken, string cookie)
+        public VTEXContext(string accountName, string appKey, string appToken, string cookie = null)
         {
             _wrapper = new VTEXWrapper(accountName);
             if (string.IsNullOrWhiteSpace(appKey))
