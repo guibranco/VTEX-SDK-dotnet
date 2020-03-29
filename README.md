@@ -49,3 +49,15 @@ Install-Package VTEX
 ## Features
 
 Implements all features of VTEX API available at [VTEX Developer Docs](https://developers.vtex.com/)
+
+---
+
+## Usage
+
+Use your VTEX platform API keys.
+Follow this tutorial on how to: [Creating appKeys and appTokens to authenticate integrations](https://help.vtex.com/tutorial/creating-appkeys-and-apptokens-to-authenticate-integrations--43tQeyQJgAKGEuCqQKAOI2)
+
+```cs
+var vtexClient = new 
+
+```
