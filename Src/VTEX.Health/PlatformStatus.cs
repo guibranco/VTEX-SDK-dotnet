@@ -1,12 +1,12 @@
 ﻿// ***********************************************************************
-namespace VTEX.Transport
-{
-    using CrispyWaffle.Extensions;
-    using CrispyWaffle.Serialization;
-    using Enums;
-    using Newtonsoft.Json;
-    using System;
 
+using System;
+using CrispyWaffle.Extensions;
+using CrispyWaffle.Serialization;
+using Newtonsoft.Json;
+
+namespace VTEX.Health
+{
     /// <summary>
     /// Class PlatformStatus. This class cannot be inherited.
     /// </summary>

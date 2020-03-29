@@ -1,6 +1,7 @@
-﻿namespace VTEX
+﻿using VTEX.Health;
+
+namespace VTEX
 {
-    using Configuration;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
     using CrispyWaffle.Serialization;
@@ -38,17 +39,26 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="VTEXContext"/> class.
         /// </summary>
-        /// <param name="connection">The connection.</param>
-        /// <param name="connectionCookie">The connection cookie.</param>
-        public VTEXContext(IVTEXConfiguration connection, IVTEXConfiguration connectionCookie = null)
+        /// <param name="accountName">Name of the account.</param>
+        /// <param name="appKey">The application key.</param>
+        /// <param name="appToken">The application token.</param>
+        /// <param name="cookie">The cookie.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// appKey
+        /// or
+        /// appToken
+        /// </exception>
+        public VTEXContext(string accountName, string appKey, string appToken, string cookie = null)
         {
-            var host = connection?.Host ?? connectionCookie?.Host;
-            _wrapper = new VTEXWrapper(host);
-            if (connection == null)
-                throw new ArgumentNullException(nameof(connection));
-            _wrapper.SetRestCredentials(connection.UserName, connection.Password);
-            if (connectionCookie != null)
-                _wrapper.SetVtexIdClientAuthCookie(connectionCookie.Password);
+            _wrapper = new VTEXWrapper(accountName);
+            if (string.IsNullOrWhiteSpace(appKey))
+                throw new ArgumentNullException(nameof(appKey));
+            if (string.IsNullOrWhiteSpace(appToken))
+                throw new ArgumentNullException(nameof(appToken));
+            _wrapper.SetRestCredentials(appKey, appToken);
+            if (string.IsNullOrWhiteSpace(cookie))
+                return;
+            _wrapper.SetVtexIdClientAuthCookie(cookie);
         }
 
         #endregion
@@ -109,7 +119,7 @@
                 LogConsumer.Trace("Getting page {0} of orders list", currentPage);
                 queryString[@"page"] = currentPage.ToString(StringExtensions.Culture);
 
-                json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, PlatformConstants.OmsOrders, CancellationToken.None, queryString).Result;
+                json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, PlatformConstants.OMS_ORDERS, CancellationToken.None, queryString).Result;
                 var temp = SerializerFactory.GetSerializer<OrdersList>().Deserialize(json);
                 if (result == null)
                     result = temp;
@@ -149,7 +159,7 @@
         private Order GetOrderInternal(string orderId)
         {
             LogConsumer.Trace("Getting order {0}", orderId);
-            var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, $"{PlatformConstants.OmsOrders}/{orderId}", CancellationToken.None).Result;
+            var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, $"{PlatformConstants.OMS_ORDERS}/{orderId}", CancellationToken.None).Result;
             if (json == null)
                 return null;
             try
@@ -224,7 +234,7 @@
             LogConsumer.Trace("Getting up to {0} events in order feed", maxLot);
             var json = _wrapper.ServiceInvokerAsync(
                     HttpRequestMethod.GET,
-                    $"{PlatformConstants.OmsFeed}",
+                    $"{PlatformConstants.OMS_FEED}",
                     CancellationToken.None,
                     new Dictionary<string, string> { { @"maxLot", maxLot.ToString() } })
                 .Result;
@@ -241,7 +251,7 @@
             var data = (string)new OrderFeedCommit { CommitToken = feed.CommitToken }.GetSerializer();
             _wrapper.ServiceInvokerAsync(
                 HttpRequestMethod.POST,
-                $"{PlatformConstants.OmsFeed}confirm",
+                $"{PlatformConstants.OMS_FEED}confirm",
                 CancellationToken.None,
                 data: data).Wait();
         }
@@ -423,7 +433,7 @@
                 if (order.Status != OrderStatus.PAYMENT_PENDING && order.Status != OrderStatus.AWAITING_AUTHORIZATION_TO_DISPATCH)
                     throw new InvalidOperationException(
                         $"Order {orderId} cannot be canceled because isn't in pending payment status on VTEX");
-                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/cancel", source.Token);
+                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OMS_ORDERS}/{orderId}/cancel", source.Token);
                 var receipt = SerializerFactory.GetSerializer<OrderCancellation>().Deserialize(json);
                 LogConsumer.Info("Order {0} successfully canceled. Receipt: {1}", order.Sequence, receipt.Receipt);
                 return receipt.Receipt;
@@ -448,7 +458,7 @@
             {
                 LogConsumer.Info("Changing order {0} status to {1}", orderId, newStatus.GetHumanReadableValue());
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
-                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/changestate/{newStatus.GetInternalValue()}", source.Token);
+                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OMS_ORDERS}/{orderId}/changestate/{newStatus.GetInternalValue()}", source.Token);
                 LogConsumer.Info(json);
             }
             catch (AggregateException e)
@@ -483,7 +493,7 @@
                 }
                 var paymentId = order.PaymentData.Transactions.First().Payments.First().Id;
                 _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST,
-                                             $"{PlatformConstants.OmsOrders}/{order.OrderId}/payments/{paymentId}/payment-notification",
+                                             $"{PlatformConstants.OMS_ORDERS}/{order.OrderId}/payments/{paymentId}/payment-notification",
                                              source.Token).Wait(source.Token);
 
             }
@@ -526,7 +536,7 @@
                                   $"vtex-shipping-notification-{orderId}-{notification.InvoiceNumber}.js");
                 var json = await _wrapper.ServiceInvokerAsync(
                                                               HttpRequestMethod.POST,
-                                                              $"{PlatformConstants.OmsInvoices}/{orderId}/invoice",
+                                                              $"{PlatformConstants.OMS_INVOICES}/{orderId}/invoice",
                                                               token,
                                                               data: (string)notification.GetSerializer())
                                          .ConfigureAwait(false);
@@ -557,7 +567,7 @@
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 LogConsumer.Debug(tracking, $"vtex-tracking-info-{tracking.OrderId}-{tracking.InvoiceNumber}.js");
                 var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.PUT,
-                                                        string.Format(PlatformConstants.OmsTracking,
+                                                        string.Format(PlatformConstants.OMS_TRACKING,
                                                                       tracking.OrderId,
                                                                       tracking.InvoiceNumber),
                                                         source.Token,
@@ -587,7 +597,7 @@
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 LogConsumer.Debug(notification, $"vtex-shipping-notification-{orderId}-{invoiceId}.js");
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.PATCH,
-                                                        $"{PlatformConstants.OmsOrders}/{orderId}/invoice/{invoiceId}",
+                                                        $"{PlatformConstants.OMS_ORDERS}/{orderId}/invoice/{invoiceId}",
                                                         source.Token, data: (string)notification.GetSerializer()).Result;
                 var receipt = SerializerFactory.GetSerializer<ResponseReceipt>().Deserialize(json);
                 LogConsumer.Trace(receipt.Receipt);
@@ -612,7 +622,7 @@
                 LogConsumer.Debug(change, $"vtex-change-order-{orderId}.js");
                 var json = _wrapper.ServiceInvokerAsync(
                                                         HttpRequestMethod.POST,
-                                                        $"{PlatformConstants.OmsOrders}/{orderId}/changes",
+                                                        $"{PlatformConstants.OMS_ORDERS}/{orderId}/changes",
                                                         CancellationToken.None,
                                                         data: (string)change.GetSerializer()).Result;
                 var receipt = SerializerFactory.GetSerializer<ResponseReceipt>().Deserialize(json);
@@ -641,7 +651,7 @@
             {
                 LogConsumer.Info("Getting interactions of transaction {0}", transactionId);
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
-                                                        $"{PlatformConstants.PciTransactions}/{transactionId}/interactions",
+                                                        $"{PlatformConstants.PCI_TRANSACTIONS}/{transactionId}/interactions",
                                                         CancellationToken.None,
                                                         restEndpoint: RequestEndpoint.PAYMENTS).Result;
                 return SerializerFactory.GetSerializer<List<TransactionInteraction>>().Deserialize(json);
@@ -670,7 +680,7 @@
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var json = await _wrapper.ServiceInvokerAsync(
                                                               HttpRequestMethod.GET,
-                                                              $"{PlatformConstants.LogReservations}/{stock.GetInternalValue()}/{skuId}",
+                                                              $"{PlatformConstants.LOG_RESERVATIONS}/{stock.GetInternalValue()}/{skuId}",
                                                               source.Token).ConfigureAwait(false);
                 var reservations = SerializerFactory.GetSerializer<Reservations>().Deserialize(json);
                 LogConsumer.Debug(reservations, $"vtex-sku-reservations-{skuId}.js");
@@ -695,7 +705,7 @@
             LogConsumer.Info("Getting inventory of SKU {0}", skuId);
             var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
             var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
-                                             $"{PlatformConstants.LogInventory}/{skuId}",
+                                             $"{PlatformConstants.LOG_INVENTORY}/{skuId}",
                                              source.Token, restEndpoint: RequestEndpoint.LOGISTICS).ConfigureAwait(false);
             var inventory = SerializerFactory.GetSerializer<Inventory>().Deserialize(json);
             LogConsumer.Debug(inventory, $"vtex-sku-inventory-{skuId}.js");
@@ -725,7 +735,7 @@
                 var data = @"[" + (string)stockInfo.GetSerializer() + @"]";
                 LogConsumer.Debug(stockInfo, $"vtex-sku-stock-{stockInfo.ItemId}.js");
                 await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST,
-                                                        PlatformConstants.LogWarehouses,
+                                                        PlatformConstants.LOG_WAREHOUSES,
                                                         source.Token,
                                                         data: data).ConfigureAwait(false);
             }
@@ -753,7 +763,7 @@
             {
                 var json = await _wrapper.ServiceInvokerAsync(
                                                               HttpRequestMethod.GET,
-                                                              $@"{PlatformConstants.Pricing}/{skuId}",
+                                                              $@"{PlatformConstants.PRICING}/{skuId}",
                                                               source.Token,
                                                               restEndpoint: RequestEndpoint.API)
                                          .ConfigureAwait(false);
@@ -795,7 +805,7 @@
                                      : "no");
                 await _wrapper.ServiceInvokerAsync(
                                                    HttpRequestMethod.PUT,
-                                                   $@"{PlatformConstants.Pricing}/{skuId}",
+                                                   $@"{PlatformConstants.PRICING}/{skuId}",
                                                    token,
                                                    data: (string)price.GetSerializer(),
                                                    restEndpoint: RequestEndpoint.API)
@@ -819,7 +829,7 @@
             LogConsumer.Info("Deleting the price of sku {0}", skuId);
             await _wrapper.ServiceInvokerAsync(
                                                HttpRequestMethod.DELETE,
-                                               $@"{PlatformConstants.Pricing}/{skuId}",
+                                               $@"{PlatformConstants.PRICING}/{skuId}",
                                                token,
                                                restEndpoint: RequestEndpoint.API)
                           .ConfigureAwait(false);
@@ -852,7 +862,7 @@
                     queryString.Add(@"_keywords", $@"*{keywords}*");
                 var json = _wrapper.ServiceInvokerAsync(
                                                         HttpRequestMethod.GET,
-                                                        $"{PlatformConstants.BridgeSearch}/facets",
+                                                        $"{PlatformConstants.BRIDGE_SEARCH}/facets",
                                                         source.Token,
                                                         queryString,
                                                         restEndpoint: RequestEndpoint.BRIDGE).Result;
@@ -901,7 +911,7 @@
                 if (!string.IsNullOrWhiteSpace(keywords))
                     queryString.Add(@"_keywords", $@"*{keywords}*");
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
-                                                        PlatformConstants.BridgeSearch,
+                                                        PlatformConstants.BRIDGE_SEARCH,
                                                         source.Token,
                                                         queryString,
                                                         restEndpoint: RequestEndpoint.BRIDGE).Result;
@@ -987,7 +997,7 @@
         public List<PCIPayment> GetOrderPayments(string transactionId)
         {
             var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
-                $"{PlatformConstants.PciTransactions}/{transactionId}/payments",
+                $"{PlatformConstants.PCI_TRANSACTIONS}/{transactionId}/payments",
                 CancellationToken.None,
                 restEndpoint: RequestEndpoint.PAYMENTS).Result;
             if (json == null)
@@ -1015,7 +1025,7 @@
             LogConsumer.Info("Getting field for the field id {0}", fieldId);
             var json = await _wrapper.ServiceInvokerAsync(
                                                           HttpRequestMethod.GET,
-                                                          $@"{PlatformConstants.CatalogPub}/specification/fieldGet/{fieldId}",
+                                                          $@"{PlatformConstants.CATALOG_PUB}/specification/fieldGet/{fieldId}",
                                                           token)
                                      .ConfigureAwait(false);
             var field = SerializerFactory.GetSerializer<SpecificationField>().Deserialize(json);
@@ -1037,7 +1047,7 @@
             LogConsumer.Info("Getting field values for the field id {0}", fieldId);
             var json = await _wrapper.ServiceInvokerAsync(
                                                           HttpRequestMethod.GET,
-                                                          $@"{PlatformConstants.CatalogPub}/specification/fieldvalue/{fieldId}",
+                                                          $@"{PlatformConstants.CATALOG_PUB}/specification/fieldvalue/{fieldId}",
                                                           token)
                                      .ConfigureAwait(false);
             var fieldValues = SerializerFactory.GetSerializer<List<SpecificationFieldValue>>().Deserialize(json);
@@ -1080,7 +1090,7 @@
             var data = (string)specifications.GetSerializer();
             await _wrapper.ServiceInvokerAsync(
                                                HttpRequestMethod.POST,
-                                               $@"{PlatformConstants.Catalog}/products/{productId}/specification",
+                                               $@"{PlatformConstants.CATALOG}/products/{productId}/specification",
                                                token,
                                                data: data)
                           .ConfigureAwait(false);
@@ -1099,7 +1109,7 @@
             var data = (string)fieldValue.GetSerializer();
             await _wrapper.ServiceInvokerAsync(
                                                HttpRequestMethod.POST,
-                                               $@"{PlatformConstants.Catalog}/specification/fieldValue",
+                                               $@"{PlatformConstants.CATALOG}/specification/fieldValue",
                                                token,
                                                data: data)
                           .ConfigureAwait(false);
