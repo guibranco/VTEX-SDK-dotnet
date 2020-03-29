@@ -1,7 +1,7 @@
-﻿namespace VTEX.Enums
-{
-    using CrispyWaffle.Attributes;
+﻿using CrispyWaffle.Attributes;
 
+namespace VTEX.Health
+{
     /// <summary>
     /// Enum ResultStatus
     /// </summary>

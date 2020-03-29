@@ -3,6 +3,7 @@
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
     using CrispyWaffle.Telemetry;
+    using CrispyWaffle.Utilities;
     using Enums;
     using GoodPractices;
     using System;
@@ -15,7 +16,6 @@
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-    using CrispyWaffle.Utilities;
 
     /// <summary>
     /// Class Wrapper. This class cannot be inherited.
@@ -131,19 +131,17 @@
                 LogConsumer.Trace("ServiceInvokerAsync -&gt; Method: {0} | Endpoint: {1}", method.GetHumanReadableValue(), endpoint);
                 LogConsumer.Debug(uriBuilder.ToString());
                 var cookieContainer = new CookieContainer();
-                using (var handler = new HttpClientHandler { CookieContainer = cookieContainer })
-                using (var client = new HttpClient(handler))
-                {
-                    ConfigureClient(client, requiresAuthentication);
-                    if (cookie != null)
-                        cookieContainer.Add(uriBuilder.Uri, cookie);
-                    response = await RequestInternalAsync(method, token, data, client, uriBuilder)
-                                   .ConfigureAwait(false);
-                    token.ThrowIfCancellationRequested();
-                    result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    response.EnsureSuccessStatusCode();
-                    return result;
-                }
+                using var handler = new HttpClientHandler { CookieContainer = cookieContainer };
+                using var client = new HttpClient(handler);
+                ConfigureClient(client, requiresAuthentication);
+                if (cookie != null)
+                    cookieContainer.Add(uriBuilder.Uri, cookie);
+                response = await RequestInternalAsync(method, token, data, client, uriBuilder)
+                    .ConfigureAwait(false);
+                token.ThrowIfCancellationRequested();
+                result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                response.EnsureSuccessStatusCode();
+                return result;
             }
             catch (AggregateException e)
             {
@@ -212,7 +210,7 @@
             client.DefaultRequestHeaders.ExpectContinue = false;
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(@"application/json"));
-            client.DefaultRequestHeaders.TryAddWithoutValidation(@"User-Agent", $@"guiBranco-VTEX-dotnet-SDK {InternalUserAgent} +https://github.com/guibranco/VTEX-dotnet-SDK");
+            client.DefaultRequestHeaders.TryAddWithoutValidation(@"User-Agent", $@"guiBranco-VTEX-SDK-dotnet {InternalUserAgent} +https://github.com/guibranco/VTEX-SDK-dotnet");
             if (!requiresAuthentication)
                 return;
             client.DefaultRequestHeaders.Add(@"X-VTEX-API-AppKey", _appKey);
