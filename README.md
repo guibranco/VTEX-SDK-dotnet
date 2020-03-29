@@ -1,28 +1,44 @@
-# VTEX-dotnet-SDK
-SDK .NET of VTEX platform
+# VTEX SDK dotNet
 
-[![Build status](https://ci.appveyor.com/api/projects/status/w9g1i60og8jyxo4d?svg=true)](https://ci.appveyor.com/project/guibranco/vtex-dotnet-sdk)
-[![VTEX-dotnet-SDK NuGet Version](https://img.shields.io/nuget/v/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
+The VTEX platform SDK for .NET projects (both Core & Framework).
+
+![VTEX logo](https://raw.githubusercontent.com/guibranco/VTEX-SDK-dotnet/master/logo.png)
+
+## CI/CD
+
+[![Build status](https://ci.appveyor.com/api/projects/status/w9g1i60og8jyxo4d?svg=true)](https://ci.appveyor.com/project/guibranco/w9g1i60og8jyxo4d)
+[![VTEX NuGet Version](https://img.shields.io/nuget/v/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
 [![VTEX NuGet Downloads](https://img.shields.io/nuget/dt/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
-[![Github All Releases](https://img.shields.io/github/downloads/guibranco/VTEX-dotnet-SDK/total.svg?style=flat)](https://github.com/guibranco/VTEX-dotnet-SDK)
-[![Last release](https://img.shields.io/github/release-date/guibranco/VTEX-dotnet-SDK.svg?style=flat)](https://github.com/guibranco/VTEX-dotnet-SDK)
+[![Github All Releases](https://img.shields.io/github/downloads/guibranco/VTEX-SDK-dotnet/total.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
+[![Last release](https://img.shields.io/github/release-date/guibranco/VTEX-SDK-dotnet.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
 
+## Code Quality
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f9b8ac8df17d48dc803f633febc2706d)](https://www.codacy.com/manual/guilherme_9/VTEX-SDK-dotnet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/VTEX-SDK-dotnet&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/guibranco/VTEX-dotnet-SDK/branch/master/graph/badge.svg)](https://codecov.io/gh/guibranco/VTEX-dotnet-SDK)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=alert_status)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=ncloc)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=sqale_index)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=security_rating)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=bugs)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=code_smells)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=coverage)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-dotnet-SDK&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-dotnet-SDK)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=alert_status)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=coverage)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
 
-<img src="https://raw.githubusercontent.com/guibranco/VTEX-dotnet-SDK/master/logo.png" width="330" alt="VTEX logo"/>
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=ncloc)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=sqale_index)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
+
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=security_rating)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=code_smells)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=bugs)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
 
 ---
 
-NuGet package: https://www.nuget.org/packages/VTEX
+## Installation
+
+Download the latest zip file from the [Release pages](https://github.com/guibranco/VTEX/releases) or simple install from [NuGet](https://www.nuget.org/packages/VTEX) package manager
+
+NuGet URL: https://www.nuget.org/packages/VTEX
+
+NuGet installation via *Package Manager Console*:
 
 ```ps
 Install-Package VTEX
@@ -30,6 +46,6 @@ Install-Package VTEX
 
 ---
 
-## Funcionalidades
+## Features
 
-Implementa as funcionalidades disponíveis em [Developer Docs](https://help.vtex.com/developer-docs)
+Implements all features of VTEX API available at [VTEX Developer Docs](https://developers.vtex.com/)
