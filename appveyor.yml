@@ -24,7 +24,6 @@ dotnet_csproj:
   informational_version: '{version}' 
 
 before_build:
-before_build:
 - ps: $env:SONAR_PROJECT = "$env:APPVEYOR_REPO_NAME" -replace "/","_"
 - ps: $env:SONAR_ORGANIZATION = "$env:APPVEYOR_REPO_NAME" -replace "/.*$","-github"
 - cmd: nuget restore
