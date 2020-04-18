@@ -1,12 +1,12 @@
-# VTEX SDK dotNet
+# VTEX SDK
 
-The VTEX platform SDK for .NET projects (both Core & Framework).
+The [VTEX platform](https://www.nuget.org/packages/VTEX) SDK for .NET projects (both Core & Framework).
 
 ![VTEX logo](https://raw.githubusercontent.com/guibranco/VTEX-SDK-dotnet/master/logo.png)
 
 ## CI/CD
 
-[![Build status](https://ci.appveyor.com/api/projects/status/kuso66xs0ljrcxfn?svg=true)](https://ci.appveyor.com/project/guibranco/kuso66xs0ljrcxfn)
+[![Build status](https://ci.appveyor.com/api/projects/status/kuso66xs0ljrcxfn?svg=true)](https://ci.appveyor.com/project/guibranco/vtex-sdk-dotnet)
 [![VTEX NuGet Version](https://img.shields.io/nuget/v/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
 [![VTEX NuGet Downloads](https://img.shields.io/nuget/dt/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
 [![Github All Releases](https://img.shields.io/github/downloads/guibranco/VTEX-SDK-dotnet/total.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
@@ -36,12 +36,14 @@ The VTEX platform SDK for .NET projects (both Core & Framework).
 
 Download the latest zip file from the [Release pages](https://github.com/guibranco/VTEX/releases) or simple install from [NuGet](https://www.nuget.org/packages/VTEX) package manager
 
-NuGet URL: https://www.nuget.org/packages/VTEX
+NuGet URL: [https://www.nuget.org/packages/VTEX](https://www.nuget.org/packages/VTEX)
 
 NuGet installation via *Package Manager Console*:
 
 ```ps
+
 Install-Package VTEX
+
 ```
 
 ---
