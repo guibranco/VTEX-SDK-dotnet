@@ -1,4 +1,4 @@
-# VTEX SDK dotNet
+# VTEX SDK
 
 The [VTEX platform](https://www.nuget.org/packages/VTEX) SDK for .NET projects (both Core & Framework).
 
