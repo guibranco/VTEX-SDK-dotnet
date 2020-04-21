@@ -11,6 +11,7 @@ The [VTEX platform](https://www.nuget.org/packages/VTEX) SDK for .NET projects (
 [![VTEX NuGet Downloads](https://img.shields.io/nuget/dt/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
 [![Github All Releases](https://img.shields.io/github/downloads/guibranco/VTEX-SDK-dotnet/total.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
 [![Last release](https://img.shields.io/github/release-date/guibranco/VTEX-SDK-dotnet.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
+[![time tracker](https://wakatime.com/badge/github/guibranco/VTEX-SDK-dotnet.svg)](https://wakatime.com/badge/github/guibranco/VTEX-SDK-dotnet)
 
 ## Code Quality
 
