@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="1.2.5" />
+    <PackageReference Include="CrispyWaffle" Version="1.2.57" />
   </ItemGroup>
 
 </Project>
