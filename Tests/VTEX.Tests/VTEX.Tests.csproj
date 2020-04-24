@@ -4,14 +4,15 @@
     <ProjectGuid>2FD2F4CE-DCAB-4F78-8A20-A22CD7F74CFB</ProjectGuid>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.msbuild" Version="2.8.0">
+    <PackageReference Include="coverlet.msbuild" Version="2.8.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.0" />
     <PackageReference Include="Moq" Version="4.13.1" />
     <PackageReference Include="RichardSzalay.MockHttp" Version="6.0.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
