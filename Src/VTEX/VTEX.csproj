@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <ProjectGuid>D1E5B509-0934-4E15-B78D-D3A88AC8CB16</ProjectGuid>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Guilherme Branco Stracini</Authors>
     <Copyright>© 2020 Guilherme Branco Stracini. All rights reserved.</Copyright>
