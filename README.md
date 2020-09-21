@@ -2,16 +2,17 @@
 
 The [VTEX platform](https://www.nuget.org/packages/VTEX) SDK for .NET projects (both Core & Framework).
 
+[![GitHub license](https://img.shields.io/github/license/guibranco/VTEX-SDK-dotnet)](https://github.com/guibranco/VTEX-SDK-dotnet)
+[![Time tracker](https://wakatime.com/badge/github/guibranco/VTEX-SDK-dotnet.svg)](https://wakatime.com/badge/github/guibranco/VTEX-SDK-dotnet)
+
 ![VTEX logo](https://raw.githubusercontent.com/guibranco/VTEX-SDK-dotnet/master/logo.png)
 
 ## CI/CD
 
-[![Build status](https://ci.appveyor.com/api/projects/status/kuso66xs0ljrcxfn?svg=true)](https://ci.appveyor.com/project/guibranco/vtex-sdk-dotnet)
-[![VTEX NuGet Version](https://img.shields.io/nuget/v/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
-[![VTEX NuGet Downloads](https://img.shields.io/nuget/dt/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/)
-[![Github All Releases](https://img.shields.io/github/downloads/guibranco/VTEX-SDK-dotnet/total.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
-[![Last release](https://img.shields.io/github/release-date/guibranco/VTEX-SDK-dotnet.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
-[![time tracker](https://wakatime.com/badge/github/guibranco/VTEX-SDK-dotnet.svg)](https://wakatime.com/badge/github/guibranco/VTEX-SDK-dotnet)
+| Branch | Build status | Last commit | Tests |
+|--------|--------------|-------------|-------|
+| Master | [![Build status](https://ci.appveyor.com/api/projects/status/kuso66xs0ljrcxfn/branch/master?svg=true)](https://ci.appveyor.com/project/guibranco/vtex-sdk-dotnet/branch/master) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/VTEX-SDK-dotnet/master)](https://github.com/guibranco/VTEX-SDK-dotnet) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/vtex-sdk-dotnet/master?compact_message) |
+| Develop | [![Build status](https://ci.appveyor.com/api/projects/status/kuso66xs0ljrcxfn/branch/develop?svg=true)](https://ci.appveyor.com/project/guibranco/vtex-sdk-dotnet/branch/develop) | [![GitHub last commit](https://img.shields.io/github/last-commit/guibranco/vtex-sdk-dotnet/develop)](https://github.com/guibranco/VTEX-SDK-dotnet) | ![AppVeyor tests (branch)](https://img.shields.io/appveyor/tests/guibranco/vtex-sdk-dotnet/develop?compact_message) |
 
 ## Code Quality
 
@@ -35,17 +36,18 @@ The [VTEX platform](https://www.nuget.org/packages/VTEX) SDK for .NET projects (
 
 ## Installation
 
-Download the latest zip file from the [Release pages](https://github.com/guibranco/VTEX/releases) or simple install from [NuGet](https://www.nuget.org/packages/VTEX) package manager
+### Github Releases
 
-NuGet URL: [https://www.nuget.org/packages/VTEX](https://www.nuget.org/packages/VTEX)
+[![GitHub last release](https://img.shields.io/github/release-date/guibranco/VTEX-SDK-dotnet.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet) [![Github All Releases](https://img.shields.io/github/downloads/guibranco/VTEX-SDK-dotnet/total.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
 
-NuGet installation via *Package Manager Console*:
+Download the latest zip file from the [Release](https://github.com/GuiBranco/VTEX-SDK-dotnet/releases) page.
 
-```ps
+### Nuget package manager
 
-Install-Package VTEX
-
-```
+| Package | Version | Downloads |
+|------------------|:-------:|:-------:|
+| **VTEX** | [![VTEX NuGet Version](https://img.shields.io/nuget/v/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/) | [![VTEX NuGet Downloads](https://img.shields.io/nuget/dt/VTEX.svg?style=flat)](https://www.nuget.org/packages/VTEX/) |
+| **VTEX.Health** | [![VTEX Health NuGet Version](https://img.shields.io/nuget/v/VTEX.Health.svg?style=flat)](https://www.nuget.org/packages/VTEX.Health/) | [![VTEX Health NuGet Downloads](https://img.shields.io/nuget/dt/VTEX.Health.svg?style=flat)](https://www.nuget.org/packages/VTEX.Health/) |
 
 ---
 

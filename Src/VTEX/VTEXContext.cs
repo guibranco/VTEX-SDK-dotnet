@@ -515,7 +515,7 @@ namespace VTEX
                         $"Order {orderId} cannot be canceled because isn't in pending payment status on VTEX");
                 }
 
-                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/cancel", source.Token);
+                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/cancel", source.Token).ConfigureAwait(false);
                 var receipt = SerializerFactory.GetSerializer<OrderCancellation>().Deserialize(json);
                 LogConsumer.Info("Order {0} successfully canceled. Receipt: {1}", order.Sequence, receipt.Receipt);
                 return receipt.Receipt;
@@ -540,7 +540,7 @@ namespace VTEX
             {
                 LogConsumer.Info("Changing order {0} status to {1}", orderId, newStatus.GetHumanReadableValue());
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
-                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/changestate/{newStatus.GetInternalValue()}", source.Token);
+                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/changestate/{newStatus.GetInternalValue()}", source.Token).ConfigureAwait(false);
                 LogConsumer.Info(json);
             }
             catch (AggregateException e)
@@ -573,7 +573,7 @@ namespace VTEX
 
                 if (order.Status == OrderStatus.AWAITING_AUTHORIZATION_TO_DISPATCH)
                 {
-                    await ChangeOrderStatusAsync(order.OrderId, OrderStatus.AUTHORIZE_FULFILLMENT);
+                    await ChangeOrderStatusAsync(order.OrderId, OrderStatus.AUTHORIZE_FULFILLMENT).ConfigureAwait(false);
                     return;
                 }
                 var paymentId = order.PaymentData.Transactions.First().Payments.First().Id;
@@ -656,7 +656,7 @@ namespace VTEX
                                                                       tracking.OrderId,
                                                                       tracking.InvoiceNumber),
                                                         source.Token,
-                                                        data: (string)tracking.GetSerializer());
+                                                        data: (string)tracking.GetSerializer()).ConfigureAwait(false);
                 var receipt = SerializerFactory.GetSerializer<ResponseReceipt>().Deserialize(json);
                 LogConsumer.Trace(receipt.Receipt);
                 return receipt.Receipt;
