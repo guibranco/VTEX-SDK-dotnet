@@ -36,7 +36,7 @@ namespace VTEX.Tests.Health
             clientMock.Setup(c => c.GetPlatformStatuesAsync(It.IsAny<CancellationToken>()))
                       .ReturnsAsync(fixtures);
 
-            var result = await clientMock.Object.GetPlatformStatuesAsync(CancellationToken.None);
+            var result = await clientMock.Object.GetPlatformStatuesAsync(CancellationToken.None).ConfigureAwait(false);
 
             Assert.NotNull(result);
 

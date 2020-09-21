@@ -166,7 +166,7 @@
                     throw exr;
                 }
             }
-            return await ServiceInvokerInternal(method, endpoint, token, data, uriBuilder, cookie, requiresAuthentication, true);
+            return await ServiceInvokerInternal(method, endpoint, token, data, uriBuilder, cookie, requiresAuthentication, true).ConfigureAwait(false);
         }
 
         /// <summary>
