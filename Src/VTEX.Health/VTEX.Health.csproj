@@ -3,6 +3,17 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>Guilherme Branco Stracini</Company>
+    <Authors>Guilherme Branco Stracini</Authors>
+    <Description>The VTEX platform (PaaS) (e-commerce) SDK. A .NET client to consume VTEX APIs for both Core and Framework projects</Description>
+    <Copyright>© 2020 Guilherme Branco Stracini. All rights reserved.</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://guibranco.github.io/VTEX-SDK-dotnet/</PackageProjectUrl>
+    <PackageIcon>packageLogo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/guibranco/VTEX-SDK-dotnet</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>vtex paas client sdk ecommerce e-commerce platform apis</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +21,17 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.8" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\packageLogo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
