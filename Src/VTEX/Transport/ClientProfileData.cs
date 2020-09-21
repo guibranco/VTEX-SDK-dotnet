@@ -67,7 +67,10 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
+                {
                     return;
+                }
+
                 DocumentType = EnumExtensions.GetEnumByInternalValueAttribute<DocumentType>(value);
             }
         }

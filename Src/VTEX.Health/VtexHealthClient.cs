@@ -25,7 +25,10 @@ namespace VTEX.Health
         public VtexHealthClient(ILoggerFactory loggerFactory, HttpClient httpClient)
         {
             if (loggerFactory == null)
+            {
                 throw new ArgumentNullException(nameof(loggerFactory));
+            }
+
             _logger = loggerFactory.CreateLogger<VtexHealthClient>();
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }

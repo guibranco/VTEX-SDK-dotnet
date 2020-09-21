@@ -70,7 +70,10 @@
             set
             {
                 if (!string.IsNullOrWhiteSpace(value))
+                {
                     _date = DateTime.Parse(value);
+                }
+
                 _dateSet = true;
             }
         }

@@ -29,13 +29,13 @@
         public int DiscountValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the incremente value.
+        /// Gets or sets the increment value.
         /// </summary>
         /// <value>
-        /// The incremente value.
+        /// The increment value.
         /// </value>
         [JsonProperty("incrementValue")]
-        public int IncrementeValue { get; set; }
+        public int IncrementValue { get; set; }
 
         /// <summary>
         /// Gets or sets the items added.

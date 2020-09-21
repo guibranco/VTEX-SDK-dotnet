@@ -52,7 +52,9 @@ namespace VTEX.Health
             set
             {
                 if (!string.IsNullOrWhiteSpace(value))
+                {
                     Status = EnumExtensions.GetEnumByInternalValueAttribute<ResultStatus>(value);
+                }
             }
         }
 

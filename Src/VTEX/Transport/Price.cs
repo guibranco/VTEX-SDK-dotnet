@@ -87,7 +87,10 @@
             set
             {
                 if (!value.HasValue)
+                {
                     return;
+                }
+
                 _listPrice = value.Value;
                 _listPriceSet = true;
             }

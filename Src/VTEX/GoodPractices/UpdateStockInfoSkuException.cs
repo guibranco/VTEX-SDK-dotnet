@@ -4,28 +4,28 @@
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Class UpdatePriceInfoSKUException. This class cannot be inherited.
+    /// Class UpdateStockInfoSKUException. This class cannot be inherited.
     /// </summary>
     /// <seealso cref="Exception" />
 
     [Serializable]
-    public class UpdatePriceInfoSkuException : Exception
+    public class UpdateStockInfoSkuException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdatePriceInfoSkuException"/> class.
+        /// Initializes a new instance of the <see cref="UpdateStockInfoSkuException"/> class.
         /// </summary>
         /// <param name="skuId">The sku identifier.</param>
         /// <param name="innerException">The inner exception.</param>
-        public UpdatePriceInfoSkuException(int skuId, Exception innerException)
-            : base($"Unable to update the price of SKU {skuId} in VTEX platform", innerException)
+        public UpdateStockInfoSkuException(int skuId, Exception innerException)
+            : base($"Unable to update the stock of SKU {skuId} in VTEX platform", innerException)
         { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdatePriceInfoSkuException"/> class.
+        /// Initializes a new instance of the <see cref="UpdateStockInfoSkuException"/> class.
         /// </summary>
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-        protected UpdatePriceInfoSkuException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected UpdateStockInfoSkuException(SerializationInfo info, StreamingContext context) : base(info, context)
         { }
     }
 }

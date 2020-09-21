@@ -121,13 +121,13 @@
         public PickupStoreInfo PickupStoreInfo { get; set; }
 
         /// <summary>
-        /// Gets or sets the addres identifier.
+        /// Gets or sets the address identifier.
         /// </summary>
         /// <value>
-        /// The addres identifier.
+        /// The address identifier.
         /// </value>
         [JsonProperty("addressId")]
-        public string AddresId { get; set; }
+        public string AddressId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the polygon.
