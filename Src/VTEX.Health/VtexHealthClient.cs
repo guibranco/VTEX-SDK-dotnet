@@ -25,7 +25,10 @@ namespace VTEX.Health
         public VtexHealthClient(ILoggerFactory loggerFactory, HttpClient httpClient)
         {
             if (loggerFactory == null)
+            {
                 throw new ArgumentNullException(nameof(loggerFactory));
+            }
+
             _logger = loggerFactory.CreateLogger<VtexHealthClient>();
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
@@ -38,8 +41,8 @@ namespace VTEX.Health
         public async Task<IEnumerable<PlatformStatus>> GetPlatformStatuesAsync(CancellationToken cancellationToken)
         {
             _logger.LogDebug("Getting platform status");
-            var response = await _httpClient.GetAsync("/", cancellationToken);
-            var responseContent = await response.Content.ReadAsStringAsync();
+            var response = await _httpClient.GetAsync("/", cancellationToken).ConfigureAwait(false);
+            var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             _logger.LogDebug($"Platform status response: {response.StatusCode}");
             return response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<PlatformStatus[]>(responseContent) : default;
         }

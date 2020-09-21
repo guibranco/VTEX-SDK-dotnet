@@ -14,7 +14,7 @@
         /// </summary>
         /// <value>The sku identifier.</value>
         [JsonProperty("skuid")]
-        public int SKUId { get; set; }
+        public int SkuId { get; set; }
 
         /// <summary>
         /// Gets or sets the balances.

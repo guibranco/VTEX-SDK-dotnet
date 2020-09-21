@@ -27,13 +27,13 @@
         public decimal Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the listprice.
+        /// Gets or sets the list price.
         /// </summary>
         /// <value>
-        /// The listprice.
+        /// The list price.
         /// </value>
         [JsonProperty("listPrice")]
-        public decimal? Listprice { get; set; }
+        public decimal? ListPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum quantity.

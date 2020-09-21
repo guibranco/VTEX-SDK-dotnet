@@ -1,4 +1,5 @@
-﻿using VTEX.Health;
+﻿using System.Globalization;
+using VTEX.Health;
 
 namespace VTEX
 {
@@ -52,12 +53,21 @@ namespace VTEX
         {
             _wrapper = new VTEXWrapper(accountName);
             if (string.IsNullOrWhiteSpace(appKey))
+            {
                 throw new ArgumentNullException(nameof(appKey));
+            }
+
             if (string.IsNullOrWhiteSpace(appToken))
+            {
                 throw new ArgumentNullException(nameof(appToken));
+            }
+
             _wrapper.SetRestCredentials(appKey, appToken);
             if (string.IsNullOrWhiteSpace(cookie))
+            {
                 return;
+            }
+
             _wrapper.SetVtexIdClientAuthCookie(cookie);
         }
 
@@ -82,20 +92,41 @@ namespace VTEX
             var currentPage = 1;
             var queryString = new Dictionary<string, string> { { @"page", @"0" }, { @"per_page", @"50" } };
             if (!string.IsNullOrWhiteSpace(status))
+            {
                 queryString.Add(@"f_status", status);
+            }
+
             if (!string.IsNullOrWhiteSpace(salesChannel))
+            {
                 queryString.Add(@"f_salesChannel", salesChannel);
+            }
+
             if (!string.IsNullOrWhiteSpace(affiliatedId))
+            {
                 queryString.Add(@"f_affiliateId", affiliatedId);
+            }
+
             if (!string.IsNullOrWhiteSpace(paymentSystemName))
+            {
                 queryString.Add(@"f_paymentNames", paymentSystemName);
+            }
+
             if (startDate.HasValue && endDate.HasValue)
+            {
                 queryString.Add(@"f_creationDate", $@"creationDate:[{startDate.Value.ToUniversalTime():s}Z TO {endDate.Value.ToUniversalTime():s}Z]");
+            }
+
             if (!string.IsNullOrWhiteSpace(genericQuery))
+            {
                 queryString.Add(@"q", genericQuery);
+            }
+
             queryString.Add(@"orderBy", @"creationDate,asc");
             while (GetOrderListsValueInternal(queryString, currentPage, ref result))
+            {
                 currentPage++;
+            }
+
             LogConsumer.Info("{0} orders found", result.List.Length);
             return result;
         }
@@ -117,18 +148,29 @@ namespace VTEX
             try
             {
                 LogConsumer.Trace("Getting page {0} of orders list", currentPage);
-                queryString[@"page"] = currentPage.ToString(StringExtensions.Culture);
+                queryString[@"page"] = currentPage.ToString(CultureInfo.InvariantCulture);
 
-                json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, PlatformConstants.OMS_ORDERS, CancellationToken.None, queryString).Result;
+                json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, PlatformConstants.OmsOrders, CancellationToken.None, queryString).Result;
                 var temp = SerializerFactory.GetSerializer<OrdersList>().Deserialize(json);
                 if (result == null)
+                {
                     result = temp;
+                }
                 else
+                {
                     result.List = result.List.Concat(temp.List).ToArray();
+                }
+
                 if (temp.Paging.Pages == 1 || temp.Paging.CurrentPage >= temp.Paging.Pages)
+                {
                     return false;
+                }
+
                 if (currentPage == 1)
+                {
                     LogConsumer.Trace("{0} pages of orders list", temp.Paging.Pages);
+                }
+
                 return true;
             }
             catch (JsonSerializationException e)
@@ -159,9 +201,12 @@ namespace VTEX
         private Order GetOrderInternal(string orderId)
         {
             LogConsumer.Trace("Getting order {0}", orderId);
-            var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, $"{PlatformConstants.OMS_ORDERS}/{orderId}", CancellationToken.None).Result;
+            var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET, $"{PlatformConstants.OmsOrders}/{orderId}", CancellationToken.None).Result;
             if (json == null)
+            {
                 return null;
+            }
+
             try
             {
                 var order = SerializerFactory.GetSerializer<Order>().Deserialize(json);
@@ -173,13 +218,21 @@ namespace VTEX
                 if (payment != null &&
                     payment.PaymentSystem == 0 &&
                     !string.IsNullOrWhiteSpace(order.AffiliateId))
+                {
                     LogConsumer.Info(@"Marketplace {0}", order.AffiliateId);
-                else if (transaction.TransactionId != null && !transaction.TransactionId.Equals(@"NO-PAYMENT", StringExtensions.Comparison))
+                }
+                else if (transaction.TransactionId != null && !transaction.TransactionId.Equals(@"NO-PAYMENT", StringComparison.InvariantCultureIgnoreCase))
+                {
                     LogConsumer.Info(@"Bank bill {0}", order.Sequence);
+                }
                 else if (order.Totals.Sum(t => t.Value) == 0)
+                {
                     LogConsumer.Warning("Promotion / discount coupon - order subsidized");
+                }
                 else
+                {
                     throw new InvalidPaymentDataException(orderId);
+                }
 
                 #endregion
 
@@ -190,9 +243,14 @@ namespace VTEX
                     var client = SearchAsync<Client>(@"userId", order.ClientProfileData.UserProfileId, CancellationToken.None).Result;
                     if (client != null &&
                         !string.IsNullOrWhiteSpace(client.Email))
+                    {
                         order.ClientProfileData.Email = client.Email;
-                    if (order.ClientProfileData.Email.IndexOf(@"ct.vtex", StringExtensions.Comparison) != -1)
+                    }
+
+                    if (order.ClientProfileData.Email.IndexOf(@"ct.vtex", StringComparison.InvariantCultureIgnoreCase) != -1)
+                    {
                         order.ClientProfileData.Email = @"pedido@editorainovacao.com.br";
+                    }
                 }
 
                 #endregion
@@ -230,11 +288,14 @@ namespace VTEX
         {
             //VTEX limitation
             if (maxLot > 20)
+            {
                 maxLot = 20;
+            }
+
             LogConsumer.Trace("Getting up to {0} events in order feed", maxLot);
             var json = _wrapper.ServiceInvokerAsync(
                     HttpRequestMethod.GET,
-                    $"{PlatformConstants.OMS_FEED}",
+                    $"{PlatformConstants.OmsFeed}",
                     CancellationToken.None,
                     new Dictionary<string, string> { { @"maxLot", maxLot.ToString() } })
                 .Result;
@@ -251,7 +312,7 @@ namespace VTEX
             var data = (string)new OrderFeedCommit { CommitToken = feed.CommitToken }.GetSerializer();
             _wrapper.ServiceInvokerAsync(
                 HttpRequestMethod.POST,
-                $"{PlatformConstants.OMS_FEED}confirm",
+                $"{PlatformConstants.OmsFeed}confirm",
                 CancellationToken.None,
                 data: data).Wait();
         }
@@ -288,7 +349,10 @@ namespace VTEX
         {
             var ordersIds = GetOrdersList(status).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
+            {
                 return GetOrdersInternal(ordersIds);
+            }
+
             LogConsumer.Warning("No orders with status {0} found", status.GetHumanReadableValue());
             return new Order[0];
         }
@@ -316,7 +380,10 @@ namespace VTEX
         {
             var ordersIds = GetOrdersList(startDate, endDate).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
+            {
                 return GetOrdersInternal(ordersIds);
+            }
+
             LogConsumer.Warning("No orders between {0:G} and {1:G} found", startDate, endDate);
             return new Order[0];
         }
@@ -346,7 +413,10 @@ namespace VTEX
         {
             var ordersIds = GetOrdersList(status, startDate, endDate).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
+            {
                 return GetOrdersInternal(ordersIds);
+            }
+
             LogConsumer.Warning("No order with status {0} between {1:G} and {2:G} found", status.GetHumanReadableValue(), startDate, endDate);
             return new Order[0];
         }
@@ -374,7 +444,10 @@ namespace VTEX
         {
             var ordersIds = GetOrdersList(status, affiliatedId).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
+            {
                 return GetOrdersInternal(ordersIds);
+            }
+
             LogConsumer.Warning("No order with status {0} and affiliated {1} found", status.GetHumanReadableValue(), affiliatedId);
             return new Order[0];
         }
@@ -400,7 +473,10 @@ namespace VTEX
         {
             var ordersIds = GetOrdersList(query).Select(order => order.OrderId).ToList();
             if (ordersIds.Any())
+            {
                 return GetOrdersInternal(ordersIds);
+            }
+
             LogConsumer.Warning("No orders with term '{0}' found", query);
             return new Order[0];
         }
@@ -429,11 +505,17 @@ namespace VTEX
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var order = GetOrder(orderId);
                 if (order.Status == OrderStatus.CANCELED)
+                {
                     return string.Empty;
+                }
+
                 if (order.Status != OrderStatus.PAYMENT_PENDING && order.Status != OrderStatus.AWAITING_AUTHORIZATION_TO_DISPATCH)
+                {
                     throw new InvalidOperationException(
                         $"Order {orderId} cannot be canceled because isn't in pending payment status on VTEX");
-                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OMS_ORDERS}/{orderId}/cancel", source.Token);
+                }
+
+                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/cancel", source.Token).ConfigureAwait(false);
                 var receipt = SerializerFactory.GetSerializer<OrderCancellation>().Deserialize(json);
                 LogConsumer.Info("Order {0} successfully canceled. Receipt: {1}", order.Sequence, receipt.Receipt);
                 return receipt.Receipt;
@@ -458,7 +540,7 @@ namespace VTEX
             {
                 LogConsumer.Info("Changing order {0} status to {1}", orderId, newStatus.GetHumanReadableValue());
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
-                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OMS_ORDERS}/{orderId}/changestate/{newStatus.GetInternalValue()}", source.Token);
+                var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST, $"{PlatformConstants.OmsOrders}/{orderId}/changestate/{newStatus.GetInternalValue()}", source.Token).ConfigureAwait(false);
                 LogConsumer.Info(json);
             }
             catch (AggregateException e)
@@ -485,15 +567,18 @@ namespace VTEX
                 var order = GetOrder(orderId);
                 if (order.Status != OrderStatus.PAYMENT_PENDING &&
                     order.Status != OrderStatus.AWAITING_AUTHORIZATION_TO_DISPATCH)
+                {
                     return;
+                }
+
                 if (order.Status == OrderStatus.AWAITING_AUTHORIZATION_TO_DISPATCH)
                 {
-                    await ChangeOrderStatusAsync(order.OrderId, OrderStatus.AUTHORIZE_FULFILLMENT);
+                    await ChangeOrderStatusAsync(order.OrderId, OrderStatus.AUTHORIZE_FULFILLMENT).ConfigureAwait(false);
                     return;
                 }
                 var paymentId = order.PaymentData.Transactions.First().Payments.First().Id;
                 _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST,
-                                             $"{PlatformConstants.OMS_ORDERS}/{order.OrderId}/payments/{paymentId}/payment-notification",
+                                             $"{PlatformConstants.OmsOrders}/{order.OrderId}/payments/{paymentId}/payment-notification",
                                              source.Token).Wait(source.Token);
 
             }
@@ -536,7 +621,7 @@ namespace VTEX
                                   $"vtex-shipping-notification-{orderId}-{notification.InvoiceNumber}.js");
                 var json = await _wrapper.ServiceInvokerAsync(
                                                               HttpRequestMethod.POST,
-                                                              $"{PlatformConstants.OMS_INVOICES}/{orderId}/invoice",
+                                                              $"{PlatformConstants.OmsInvoices}/{orderId}/invoice",
                                                               token,
                                                               data: (string)notification.GetSerializer())
                                          .ConfigureAwait(false);
@@ -567,11 +652,11 @@ namespace VTEX
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 LogConsumer.Debug(tracking, $"vtex-tracking-info-{tracking.OrderId}-{tracking.InvoiceNumber}.js");
                 var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.PUT,
-                                                        string.Format(PlatformConstants.OMS_TRACKING,
+                                                        string.Format(PlatformConstants.OmsTracking,
                                                                       tracking.OrderId,
                                                                       tracking.InvoiceNumber),
                                                         source.Token,
-                                                        data: (string)tracking.GetSerializer());
+                                                        data: (string)tracking.GetSerializer()).ConfigureAwait(false);
                 var receipt = SerializerFactory.GetSerializer<ResponseReceipt>().Deserialize(json);
                 LogConsumer.Trace(receipt.Receipt);
                 return receipt.Receipt;
@@ -597,7 +682,7 @@ namespace VTEX
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 LogConsumer.Debug(notification, $"vtex-shipping-notification-{orderId}-{invoiceId}.js");
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.PATCH,
-                                                        $"{PlatformConstants.OMS_ORDERS}/{orderId}/invoice/{invoiceId}",
+                                                        $"{PlatformConstants.OmsOrders}/{orderId}/invoice/{invoiceId}",
                                                         source.Token, data: (string)notification.GetSerializer()).Result;
                 var receipt = SerializerFactory.GetSerializer<ResponseReceipt>().Deserialize(json);
                 LogConsumer.Trace(receipt.Receipt);
@@ -622,7 +707,7 @@ namespace VTEX
                 LogConsumer.Debug(change, $"vtex-change-order-{orderId}.js");
                 var json = _wrapper.ServiceInvokerAsync(
                                                         HttpRequestMethod.POST,
-                                                        $"{PlatformConstants.OMS_ORDERS}/{orderId}/changes",
+                                                        $"{PlatformConstants.OmsOrders}/{orderId}/changes",
                                                         CancellationToken.None,
                                                         data: (string)change.GetSerializer()).Result;
                 var receipt = SerializerFactory.GetSerializer<ResponseReceipt>().Deserialize(json);
@@ -651,7 +736,7 @@ namespace VTEX
             {
                 LogConsumer.Info("Getting interactions of transaction {0}", transactionId);
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
-                                                        $"{PlatformConstants.PCI_TRANSACTIONS}/{transactionId}/interactions",
+                                                        $"{PlatformConstants.PciTransactions}/{transactionId}/interactions",
                                                         CancellationToken.None,
                                                         restEndpoint: RequestEndpoint.PAYMENTS).Result;
                 return SerializerFactory.GetSerializer<List<TransactionInteraction>>().Deserialize(json);
@@ -672,7 +757,7 @@ namespace VTEX
         /// <param name="skuId">The sku identifier.</param>
         /// <param name="stock">The stock.</param>
         /// <returns>Int32.</returns>
-        public async Task<int> GetSKUReservationsAsync(int skuId, Warehouse stock)
+        public async Task<int> GetSkuReservationsAsync(int skuId, Warehouse stock)
         {
             try
             {
@@ -680,7 +765,7 @@ namespace VTEX
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var json = await _wrapper.ServiceInvokerAsync(
                                                               HttpRequestMethod.GET,
-                                                              $"{PlatformConstants.LOG_RESERVATIONS}/{stock.GetInternalValue()}/{skuId}",
+                                                              $"{PlatformConstants.LogReservations}/{stock.GetInternalValue()}/{skuId}",
                                                               source.Token).ConfigureAwait(false);
                 var reservations = SerializerFactory.GetSerializer<Reservations>().Deserialize(json);
                 LogConsumer.Debug(reservations, $"vtex-sku-reservations-{skuId}.js");
@@ -700,12 +785,12 @@ namespace VTEX
         /// </summary>
         /// <param name="skuId">The sku identifier.</param>
         /// <returns>Inventory.</returns>
-        public async Task<Inventory> GetSKUInventoryAsync(int skuId)
+        public async Task<Inventory> GetSkuInventoryAsync(int skuId)
         {
             LogConsumer.Info("Getting inventory of SKU {0}", skuId);
             var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
             var json = await _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
-                                             $"{PlatformConstants.LOG_INVENTORY}/{skuId}",
+                                             $"{PlatformConstants.LogInventory}/{skuId}",
                                              source.Token, restEndpoint: RequestEndpoint.LOGISTICS).ConfigureAwait(false);
             var inventory = SerializerFactory.GetSerializer<Inventory>().Deserialize(json);
             LogConsumer.Debug(inventory, $"vtex-sku-inventory-{skuId}.js");
@@ -716,17 +801,23 @@ namespace VTEX
         /// Updates the sku stock.
         /// </summary>
         /// <param name="stockInfo">The stock information.</param>
-        /// <exception cref="UpdateStockInfoSKUException"></exception>
+        /// <exception cref="UpdateStockInfoSkuException"></exception>
 
-        public async Task UpdateSKUStockAsync(StockInfo stockInfo)
+        public async Task UpdateSkuStockAsync(StockInfo stockInfo)
         {
             try
             {
                 if (stockInfo.Quantity < 0)
+                {
                     stockInfo.Quantity = 0;
+                }
+
                 stockInfo.DateUtcOnBalanceSystem = null;
                 if (!stockInfo.UnlimitedQuantity)
-                    stockInfo.Quantity += await GetSKUReservationsAsync(stockInfo.ItemId, stockInfo.WareHouseEnum).ConfigureAwait(false);
+                {
+                    stockInfo.Quantity += await GetSkuReservationsAsync(stockInfo.ItemId, stockInfo.WareHouseEnum).ConfigureAwait(false);
+                }
+
                 LogConsumer.Info("Updating inventory of SKU {0} on warehouse {1} with {2} units",
                                     stockInfo.ItemId,
                                     stockInfo.WareHouseEnum.GetHumanReadableValue(),
@@ -735,13 +826,13 @@ namespace VTEX
                 var data = @"[" + (string)stockInfo.GetSerializer() + @"]";
                 LogConsumer.Debug(stockInfo, $"vtex-sku-stock-{stockInfo.ItemId}.js");
                 await _wrapper.ServiceInvokerAsync(HttpRequestMethod.POST,
-                                                        PlatformConstants.LOG_WAREHOUSES,
+                                                        PlatformConstants.LogWarehouses,
                                                         source.Token,
                                                         data: data).ConfigureAwait(false);
             }
             catch (Exception e)
             {
-                throw new UpdateStockInfoSKUException(stockInfo.ItemId, e);
+                throw new UpdateStockInfoSkuException(stockInfo.ItemId, e);
             }
         }
 
@@ -763,7 +854,7 @@ namespace VTEX
             {
                 var json = await _wrapper.ServiceInvokerAsync(
                                                               HttpRequestMethod.GET,
-                                                              $@"{PlatformConstants.PRICING}/{skuId}",
+                                                              $@"{PlatformConstants.Pricing}/{skuId}",
                                                               source.Token,
                                                               restEndpoint: RequestEndpoint.API)
                                          .ConfigureAwait(false);
@@ -772,7 +863,10 @@ namespace VTEX
             catch (UnexpectedApiResponseException e)
             {
                 if (e.StatusCode == 404)
+                {
                     return new Price();
+                }
+
                 throw;
             }
         }
@@ -796,7 +890,10 @@ namespace VTEX
                 var oldPrice = await GetPriceAsync(skuId).ConfigureAwait(false);
                 if (oldPrice?.FixedPrices != null &&
                     oldPrice.FixedPrices.Any())
+                {
                     await DeletePriceAsync(skuId, token).ConfigureAwait(false);
+                }
+
                 LogConsumer.Info("Updating the price of sku {0} to {1} (list price: {2})",
                                  skuId,
                                  price.CostPrice.ToMonetary(),
@@ -805,7 +902,7 @@ namespace VTEX
                                      : "no");
                 await _wrapper.ServiceInvokerAsync(
                                                    HttpRequestMethod.PUT,
-                                                   $@"{PlatformConstants.PRICING}/{skuId}",
+                                                   $@"{PlatformConstants.Pricing}/{skuId}",
                                                    token,
                                                    data: (string)price.GetSerializer(),
                                                    restEndpoint: RequestEndpoint.API)
@@ -813,7 +910,7 @@ namespace VTEX
             }
             catch (Exception e)
             {
-                throw new UpdatePriceInfoSKUException(skuId, e);
+                throw new UpdatePriceInfoSkuException(skuId, e);
             }
         }
 
@@ -829,7 +926,7 @@ namespace VTEX
             LogConsumer.Info("Deleting the price of sku {0}", skuId);
             await _wrapper.ServiceInvokerAsync(
                                                HttpRequestMethod.DELETE,
-                                               $@"{PlatformConstants.PRICING}/{skuId}",
+                                               $@"{PlatformConstants.Pricing}/{skuId}",
                                                token,
                                                restEndpoint: RequestEndpoint.API)
                           .ConfigureAwait(false);
@@ -859,10 +956,13 @@ namespace VTEX
                     {@"_where", query}
                 };
                 if (!string.IsNullOrWhiteSpace(keywords))
+                {
                     queryString.Add(@"_keywords", $@"*{keywords}*");
+                }
+
                 var json = _wrapper.ServiceInvokerAsync(
                                                         HttpRequestMethod.GET,
-                                                        $"{PlatformConstants.BRIDGE_SEARCH}/facets",
+                                                        $"{PlatformConstants.BridgeSearch}/facets",
                                                         source.Token,
                                                         queryString,
                                                         restEndpoint: RequestEndpoint.BRIDGE).Result;
@@ -909,9 +1009,12 @@ namespace VTEX
                     {@"limit", limit.ToString()}
                 };
                 if (!string.IsNullOrWhiteSpace(keywords))
+                {
                     queryString.Add(@"_keywords", $@"*{keywords}*");
+                }
+
                 var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
-                                                        PlatformConstants.BRIDGE_SEARCH,
+                                                        PlatformConstants.BridgeSearch,
                                                         source.Token,
                                                         queryString,
                                                         restEndpoint: RequestEndpoint.BRIDGE).Result;
@@ -951,7 +1054,10 @@ namespace VTEX
             var result = new List<BridgeItem>(total);
             var pages = total / perPage + 1;
             for (var x = 0; x < pages; x++)
+            {
                 result.AddRange(GetBridgeItems(query, sort, keywords, x * perPage, perPage));
+            }
+
             return result;
         }
 
@@ -994,15 +1100,18 @@ namespace VTEX
         /// <param name="transactionId">The transaction identifier.</param>
         /// <returns></returns>
         [Pure]
-        public List<PCIPayment> GetOrderPayments(string transactionId)
+        public List<PciPayment> GetOrderPayments(string transactionId)
         {
             var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
-                $"{PlatformConstants.PCI_TRANSACTIONS}/{transactionId}/payments",
+                $"{PlatformConstants.PciTransactions}/{transactionId}/payments",
                 CancellationToken.None,
                 restEndpoint: RequestEndpoint.PAYMENTS).Result;
             if (json == null)
-                return new List<PCIPayment>();
-            var data = SerializerFactory.GetCustomSerializer<List<PCIPayment>>(SerializerFormat.JSON).Deserialize(json);
+            {
+                return new List<PciPayment>();
+            }
+
+            var data = SerializerFactory.GetCustomSerializer<List<PciPayment>>(SerializerFormat.JSON).Deserialize(json);
             LogConsumer.Debug(data, $"vtex-order-payemnts-{transactionId}.js");
             return data;
         }
@@ -1025,7 +1134,7 @@ namespace VTEX
             LogConsumer.Info("Getting field for the field id {0}", fieldId);
             var json = await _wrapper.ServiceInvokerAsync(
                                                           HttpRequestMethod.GET,
-                                                          $@"{PlatformConstants.CATALOG_PUB}/specification/fieldGet/{fieldId}",
+                                                          $@"{PlatformConstants.CatalogPub}/specification/fieldGet/{fieldId}",
                                                           token)
                                      .ConfigureAwait(false);
             var field = SerializerFactory.GetSerializer<SpecificationField>().Deserialize(json);
@@ -1047,7 +1156,7 @@ namespace VTEX
             LogConsumer.Info("Getting field values for the field id {0}", fieldId);
             var json = await _wrapper.ServiceInvokerAsync(
                                                           HttpRequestMethod.GET,
-                                                          $@"{PlatformConstants.CATALOG_PUB}/specification/fieldvalue/{fieldId}",
+                                                          $@"{PlatformConstants.CatalogPub}/specification/fieldvalue/{fieldId}",
                                                           token)
                                      .ConfigureAwait(false);
             var fieldValues = SerializerFactory.GetSerializer<List<SpecificationFieldValue>>().Deserialize(json);
@@ -1090,7 +1199,7 @@ namespace VTEX
             var data = (string)specifications.GetSerializer();
             await _wrapper.ServiceInvokerAsync(
                                                HttpRequestMethod.POST,
-                                               $@"{PlatformConstants.CATALOG}/products/{productId}/specification",
+                                               $@"{PlatformConstants.Catalog}/products/{productId}/specification",
                                                token,
                                                data: data)
                           .ConfigureAwait(false);
@@ -1109,7 +1218,7 @@ namespace VTEX
             var data = (string)fieldValue.GetSerializer();
             await _wrapper.ServiceInvokerAsync(
                                                HttpRequestMethod.POST,
-                                               $@"{PlatformConstants.CATALOG}/specification/fieldValue",
+                                               $@"{PlatformConstants.Catalog}/specification/fieldValue",
                                                token,
                                                data: data)
                           .ConfigureAwait(false);
@@ -1140,7 +1249,9 @@ namespace VTEX
              where TDataEntity : class, IDataEntity, new()
         {
             if (string.IsNullOrWhiteSpace(searchedValue))
+            {
                 throw new ArgumentNullException(nameof(searchedValue));
+            }
 
             var queryString = new Dictionary<string, string>
             {
@@ -1160,7 +1271,10 @@ namespace VTEX
                                      .ConfigureAwait(false);
                 var entity = SerializerFactory.GetSerializer<List<TDataEntity>>().Deserialize(json).FirstOrDefault();
                 if (entity == null)
+                {
                     return null;
+                }
+
                 LogConsumer.Debug(entity, $@"vtex-masterdata-entity-{entityName}-{searchedField}-{searchedValue}.js");
                 return entity;
             }

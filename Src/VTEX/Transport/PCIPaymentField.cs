@@ -4,7 +4,7 @@ namespace VTEX.Transport
     /// <summary>
     /// Class PCIPaymentField. This class cannot be inherited.
     /// </summary>
-    public sealed class PCIPaymentField
+    public sealed class PciPaymentField
     {
         /// <summary>
         /// Gets or sets the name.

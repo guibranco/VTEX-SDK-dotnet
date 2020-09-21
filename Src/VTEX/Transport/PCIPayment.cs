@@ -1,6 +1,5 @@
 ﻿namespace VTEX.Transport
 {
-    using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
     using System;
     using System.Collections.Generic;
@@ -8,10 +7,10 @@
     using System.Linq;
 
     /// <summary>
-    /// Class PCIPayment. This class cannot be inherited.
+    /// Class PCI payment. This class cannot be inherited.
     /// </summary>
     [Serializer(SerializerFormat.JSON)]
-    public sealed class PCIPayment
+    public sealed class PciPayment
     {
         #region Public methods
 
@@ -20,9 +19,9 @@
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
         /// <returns></returns>
-        public PCIPaymentField GetFieldByName([Localizable(false)] string fieldName)
+        public PciPaymentField GetFieldByName([Localizable(false)] string fieldName)
         {
-            return Fields.SingleOrDefault(f => f.Name.Equals(fieldName, StringExtensions.Comparison));
+            return Fields.SingleOrDefault(f => f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase));
         }
 
         #endregion
@@ -199,7 +198,7 @@
         /// Gets or sets the fields.
         /// </summary>
         /// <value>The fields.</value>
-        public IReadOnlyCollection<PCIPaymentField> Fields { get; set; }
+        public IReadOnlyCollection<PciPaymentField> Fields { get; set; }
 
         /// <summary>
         /// Gets or sets the sheets.

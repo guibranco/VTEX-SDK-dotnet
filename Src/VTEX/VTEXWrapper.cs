@@ -59,7 +59,10 @@
             get
             {
                 if (!string.IsNullOrWhiteSpace(_internalUserAgent))
+                {
                     return _internalUserAgent;
+                }
+
                 var assembly = System.Reflection.Assembly.GetAssembly(typeof(VTEXWrapper)).GetName();
                 _internalUserAgent = $@"{assembly.Name}/{assembly.Version}";
                 return _internalUserAgent;
@@ -135,7 +138,10 @@
                 using var client = new HttpClient(handler);
                 ConfigureClient(client, requiresAuthentication);
                 if (cookie != null)
+                {
                     cookieContainer.Add(uriBuilder.Uri, cookie);
+                }
+
                 response = await RequestInternalAsync(method, token, data, client, uriBuilder)
                     .ConfigureAwait(false);
                 token.ThrowIfCancellationRequested();
@@ -148,15 +154,19 @@
                 var ex = e.InnerExceptions.FirstOrDefault() ?? e.InnerException ?? e;
                 exr = HandleException(ex, response, uriBuilder.Uri, method, data, result);
                 if (isRetry)
+                {
                     throw exr;
+                }
             }
             catch (Exception e)
             {
                 exr = HandleException(e, response, uriBuilder.Uri, method, data, result);
                 if (isRetry)
+                {
                     throw exr;
+                }
             }
-            return await ServiceInvokerInternal(method, endpoint, token, data, uriBuilder, cookie, requiresAuthentication, true);
+            return await ServiceInvokerInternal(method, endpoint, token, data, uriBuilder, cookie, requiresAuthentication, true).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -179,7 +189,10 @@
         {
             var statusCode = 0;
             if (response != null)
+            {
                 statusCode = (int)response.StatusCode;
+            }
+
             var ex = new UnexpectedApiResponseException(uri, method.ToString(), data, result, statusCode, exception);
             if (statusCode == 429 ||
                 statusCode == 503)
@@ -194,7 +207,10 @@
                 statusCode != 408 &&
                 statusCode != 500 &&
                 statusCode != 502)
+            {
                 throw ex;
+            }
+
             LogConsumer.Warning("Retrying the {0} request", method.ToString());
             TelemetryAnalytics.TrackHit($"VTEX_handle_exception_retrying_{method.ToString()}_request");
             return ex;
@@ -212,7 +228,10 @@
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(@"application/json"));
             client.DefaultRequestHeaders.TryAddWithoutValidation(@"User-Agent", $@"guiBranco-VTEX-SDK-dotnet {InternalUserAgent} +https://github.com/guibranco/VTEX-SDK-dotnet");
             if (!requiresAuthentication)
+            {
                 return;
+            }
+
             client.DefaultRequestHeaders.Add(@"X-VTEX-API-AppKey", _appKey);
             client.DefaultRequestHeaders.Add(@"X-VTEX-API-AppToken", _appToken);
         }
@@ -237,7 +256,10 @@
             HttpResponseMessage response;
             StringContent content = null;
             if (!string.IsNullOrWhiteSpace(data))
+            {
                 content = new StringContent(data, Encoding.UTF8, @"application/json");
+            }
+
             switch (method)
             {
                 case HttpRequestMethod.DELETE:
@@ -328,7 +350,10 @@
                     host = @"logistics.vtexcommercestable.com.br";
                     endpoint = $@"api/{endpoint}";
                     if (queryString == null)
+                    {
                         queryString = new Dictionary<string, string>();
+                    }
+
                     queryString.Add(@"an", _accountName);
                     break;
                 case RequestEndpoint.API:
@@ -340,7 +365,10 @@
                     host = $@"{_accountName}.myvtex.com";
                     endpoint = $@"api/{endpoint}";
                     if (!string.IsNullOrWhiteSpace(_authCookie))
+                    {
                         cookie = new Cookie("VtexIdclientAutCookie", _authCookie);
+                    }
+
                     break;
                 case RequestEndpoint.HEALTH:
                     protocol = @"http";
@@ -355,7 +383,10 @@
             var query = string.Empty;
             if (queryString != null &&
                 queryString.Count > 0)
+            {
                 query = new QueryStringBuilder().AddRange(queryString).ToString();
+            }
+
             var builder = new UriBuilder(protocol, host, port, endpoint)
             {
                 Query = query.Replace(@"?", string.Empty)

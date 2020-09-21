@@ -31,7 +31,9 @@
             set
             {
                 if (DateTime.TryParse(value, out var from))
-                    From = from;
+                {
+                    From = @from;
+                }
             }
         }
 
@@ -57,7 +59,9 @@
             set
             {
                 if (DateTime.TryParse(value, out var to))
+                {
                     To = to;
+                }
             }
         }
     }
