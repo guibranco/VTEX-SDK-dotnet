@@ -43,7 +43,7 @@
         ///   <c>true</c> if this instance is certified; otherwise, <c>false</c>.
         /// </value>
         [JsonProperty("isCertified")]
-        public bool IsCertified { get; set; }
+        public bool? IsCertified { get; set; }
 
     }
 }
