@@ -25,23 +25,8 @@
         /// <value>The identifier of the ware house.</value>
 
         [JsonProperty("wareHouseId")]
-        public string WareHouseId
-        {
-            get => _warehouse.GetInternalValue();
-            set => _warehouse = EnumExtensions.GetEnumByInternalValueAttribute<Warehouse>(value);
-        }
+        public string WareHouseId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the ware house enum.
-        /// </summary>
-        /// <value>The ware house enum.</value>
-
-        [JsonIgnore]
-        public Warehouse WareHouseEnum
-        {
-            get => _warehouse;
-            set => _warehouse = value;
-        }
 
         /// <summary>
         /// Gets or sets a value indicating whether the unlimited quantity.
