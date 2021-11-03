@@ -13,11 +13,6 @@
     [Serializer(SerializerFormat.JSON)]
     public sealed class StockInfo
     {
-        /// <summary>
-        /// The estoque.
-        /// </summary>
-
-        private Warehouse _warehouse;
 
         /// <summary>
         /// Gets or sets the identifier of the ware house.
@@ -25,23 +20,7 @@
         /// <value>The identifier of the ware house.</value>
 
         [JsonProperty("wareHouseId")]
-        public string WareHouseId
-        {
-            get => _warehouse.GetInternalValue();
-            set => _warehouse = EnumExtensions.GetEnumByInternalValueAttribute<Warehouse>(value);
-        }
-
-        /// <summary>
-        /// Gets or sets the ware house enum.
-        /// </summary>
-        /// <value>The ware house enum.</value>
-
-        [JsonIgnore]
-        public Warehouse WareHouseEnum
-        {
-            get => _warehouse;
-            set => _warehouse = value;
-        }
+        public string WareHouseId { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the unlimited quantity.
