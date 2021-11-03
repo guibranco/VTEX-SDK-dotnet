@@ -755,22 +755,22 @@ namespace VTEX
         /// Gets the sku reservations.
         /// </summary>
         /// <param name="skuId">The sku identifier.</param>
-        /// <param name="stock">The stock.</param>
+        /// <param name="WareHouseId">The stock.</param>
         /// <returns>Int32.</returns>
-        public async Task<int> GetSkuReservationsAsync(int skuId, Warehouse stock)
+        public async Task<int> GetSkuReservationsAsync(int skuId, string WareHouseId)
         {
             try
             {
-                LogConsumer.Info("Getting reservations of SKU {0} in the warehouse {1}", skuId, stock.GetHumanReadableValue());
+                LogConsumer.Info("Getting reservations of SKU {0} in the warehouse {1}", skuId, WareHouseId);
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var json = await _wrapper.ServiceInvokerAsync(
                                                               HttpRequestMethod.GET,
-                                                              $"{PlatformConstants.LogReservations}/{stock.GetInternalValue()}/{skuId}",
+                                                              $"{PlatformConstants.LogReservations}/{WareHouseId}/{skuId}",
                                                               source.Token).ConfigureAwait(false);
                 var reservations = SerializerFactory.GetSerializer<Reservations>().Deserialize(json);
                 LogConsumer.Debug(reservations, $"vtex-sku-reservations-{skuId}.js");
                 var total = !reservations.Items.Any() ? 0 : reservations.Items.Sum(r => r.Quantity);
-                LogConsumer.Info("The SKU {0} has {1} units reserved in warehouse {2}", skuId, total, stock.GetHumanReadableValue());
+                LogConsumer.Info("The SKU {0} has {1} units reserved in warehouse {2}", skuId, total, WareHouseId);
                 return total;
             }
             catch (Exception e)
@@ -815,12 +815,12 @@ namespace VTEX
                 stockInfo.DateUtcOnBalanceSystem = null;
                 if (!stockInfo.UnlimitedQuantity)
                 {
-                    stockInfo.Quantity += await GetSkuReservationsAsync(stockInfo.ItemId, stockInfo.WareHouseEnum).ConfigureAwait(false);
+                    stockInfo.Quantity += await GetSkuReservationsAsync(stockInfo.ItemId, stockInfo.WareHouseId).ConfigureAwait(false);
                 }
 
                 LogConsumer.Info("Updating inventory of SKU {0} on warehouse {1} with {2} units",
                                     stockInfo.ItemId,
-                                    stockInfo.WareHouseEnum.GetHumanReadableValue(),
+                                    stockInfo.WareHouseId,
                                     stockInfo.Quantity);
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var data = @"[" + (string)stockInfo.GetSerializer() + @"]";
