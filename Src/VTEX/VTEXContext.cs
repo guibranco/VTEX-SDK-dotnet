@@ -752,25 +752,25 @@ namespace VTEX
         #region Stock
 
         /// <summary>
-        /// Gets the sku reservations.
+        /// get sku reservations as an asynchronous operation.
         /// </summary>
         /// <param name="skuId">The sku identifier.</param>
-        /// <param name="stock">The stock.</param>
-        /// <returns>Int32.</returns>
-        public async Task<int> GetSkuReservationsAsync(int skuId, Warehouse stock)
+        /// <param name="warehouseId">The warehouse identifier.</param>
+        /// <returns>A Task&lt;System.Int32&gt; representing the asynchronous operation.</returns>
+        public async Task<int> GetSkuReservationsAsync(int skuId, string warehouseId)
         {
             try
             {
-                LogConsumer.Info("Getting reservations of SKU {0} in the warehouse {1}", skuId, stock.GetHumanReadableValue());
+                LogConsumer.Info("Getting reservations of SKU {0} in the warehouse {1}", skuId, warehouseId);
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var json = await _wrapper.ServiceInvokerAsync(
                                                               HttpRequestMethod.GET,
-                                                              $"{PlatformConstants.LogReservations}/{stock.GetInternalValue()}/{skuId}",
+                                                              $"{PlatformConstants.LogReservations}/{warehouseId}/{skuId}",
                                                               source.Token).ConfigureAwait(false);
                 var reservations = SerializerFactory.GetSerializer<Reservations>().Deserialize(json);
                 LogConsumer.Debug(reservations, $"vtex-sku-reservations-{skuId}.js");
                 var total = !reservations.Items.Any() ? 0 : reservations.Items.Sum(r => r.Quantity);
-                LogConsumer.Info("The SKU {0} has {1} units reserved in warehouse {2}", skuId, total, stock.GetHumanReadableValue());
+                LogConsumer.Info("The SKU {0} has {1} units reserved in warehouse {2}", skuId, total, warehouseId);
                 return total;
             }
             catch (Exception e)
@@ -815,13 +815,11 @@ namespace VTEX
                 stockInfo.DateUtcOnBalanceSystem = null;
                 if (!stockInfo.UnlimitedQuantity)
                 {
-                    stockInfo.Quantity += await GetSkuReservationsAsync(stockInfo.ItemId, stockInfo.WareHouseEnum).ConfigureAwait(false);
+                    stockInfo.Quantity += await GetSkuReservationsAsync(stockInfo.ItemId, stockInfo.WareHouseId).ConfigureAwait(false);
                 }
 
                 LogConsumer.Info("Updating inventory of SKU {0} on warehouse {1} with {2} units",
-                                    stockInfo.ItemId,
-                                    stockInfo.WareHouseEnum.GetHumanReadableValue(),
-                                    stockInfo.Quantity);
+                                    stockInfo.ItemId, stockInfo.WareHouseId, stockInfo.Quantity);
                 var source = new CancellationTokenSource(new TimeSpan(0, 5, 0));
                 var data = @"[" + (string)stockInfo.GetSerializer() + @"]";
                 LogConsumer.Debug(stockInfo, $"vtex-sku-stock-{stockInfo.ItemId}.js");
@@ -944,7 +942,7 @@ namespace VTEX
         /// <returns>IEnumerable&lt;BridgeFacet&gt;.</returns>
         /// <exception cref="BridgeException"></exception>
         [Pure]
-        public IEnumerable<BridgeFacet> GetBridgeFacets([Localizable(false)]string query, [Localizable(false)]string keywords = null)
+        public IEnumerable<BridgeFacet> GetBridgeFacets([Localizable(false)] string query, [Localizable(false)] string keywords = null)
         {
             try
             {
