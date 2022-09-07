@@ -830,7 +830,7 @@ namespace VTEX
             }
             catch (Exception e)
             {
-                throw new UpdateStockInfoSkuException(stockInfo.ItemId, e);
+                throw new UpdateStockInfoSKUException(stockInfo.ItemId, e);
             }
         }
 
