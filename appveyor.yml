@@ -12,7 +12,7 @@ environment:
   GITHUB_TOKEN:
     secure: IEDiCuYBM8BnfdT90PGnvnKGEfHHHgzziGqfoZUUqTi1FgSkBXoMrAGbdLP6jNok
   CODACY_PROJECT_TOKEN:
-    secure: rtXANeauD2EOZnhLiCbVbLJLMn1jyp3o83zXmdI+CwqeyOHv+U4ihmZhEO0zMy5h
+    secure: 8fnQaRryh/pMRB9NtqyX0M0FSfPYW8Rtl1zeYcMXLVaK0o1UC3EAynZSB6rze5wM
 
 dotnet_csproj: 
   patch: true 
