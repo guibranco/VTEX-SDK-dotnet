@@ -4,7 +4,7 @@
     <ProjectGuid>2FD2F4CE-DCAB-4F78-8A20-A22CD7F74CFB</ProjectGuid>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

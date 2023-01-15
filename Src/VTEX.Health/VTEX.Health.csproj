@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>{931C39A1-583E-4264-AC7C-508C7B1FC15E}</ProjectGuid>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>Guilherme Branco Stracini</Company>
     <Authors>Guilherme Branco Stracini</Authors>
