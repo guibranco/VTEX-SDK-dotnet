@@ -31,6 +31,7 @@ namespace VTEX
     using System.Threading;
     using System.Threading.Tasks;
     using VTEX.Transport;
+    using VTEX.Transport.Bridge;
 
     /// <summary>
     /// A VTEX Context, that consumes the VTEX Wrapper

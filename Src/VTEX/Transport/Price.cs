@@ -192,10 +192,8 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeListPrice()
-        {
-            return _listPriceSet;
-        }
+
+        public bool ShouldSerializeListPrice() => _listPriceSet;
 
         /// <summary>
         /// The should serialize cost price serialization helper method
@@ -203,10 +201,8 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCostPrice()
-        {
-            return _costPriceSet;
-        }
+
+        public bool ShouldSerializeCostPrice() => _costPriceSet;
 
         /// <summary>
         /// The should serialize base price serialization helper method
@@ -214,10 +210,8 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePrice()
-        {
-            return _basePriceSet;
-        }
+
+        public bool ShouldSerializeBasePrice() => _basePriceSet;
 
         /// <summary>
         /// The should serialize markup serialization helper method
@@ -225,10 +219,8 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMarkup()
-        {
-            return _markupSet;
-        }
+
+        public bool ShouldSerializeMarkup() => _markupSet;
 
         /// <summary>
         /// The should serialize fixed prices serialization helper method
@@ -236,10 +228,8 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFixedPrices()
-        {
-            return _fixedPricesSet;
-        }
+
+        public bool ShouldSerializeFixedPrices() => _fixedPricesSet;
 
         /// <summary>
         /// The should serialize item identifier serialization helper method
@@ -247,10 +237,8 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeItemId()
-        {
-            return _itemIdSet;
-        }
+
+        public bool ShouldSerializeItemId() => _itemIdSet;
 
         #endregion
     }
