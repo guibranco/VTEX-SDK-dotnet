@@ -1,22 +1,9 @@
-﻿// ***********************************************************************
-// Assembly         : VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 01-15-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
-// ***********************************************************************
-// <copyright file="Item.cs" company="Guilherme Branco Stracini">
-//     © 2020 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
-    using CrispyWaffle.Serialization;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using CrispyWaffle.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Class Item. This class cannot be inherited.
@@ -118,6 +105,7 @@ namespace VTEX.Transport
         /// Gets or sets the components.
         /// </summary>
         /// <value>The components.</value>
+
         [JsonProperty("components")]
         public Item[] Components { get; set; }
 
@@ -330,5 +318,26 @@ namespace VTEX.Transport
         /// <value>The call center operator.</value>
         [JsonProperty("callCenterOperator")]
         public string CallCenterOperator { get; set; }
+
+        /// <summary>
+        /// Gets or sets the serial numbers.
+        /// </summary>
+        /// <value>The serial numbers.</value>
+        [JsonProperty("serialNumbers")]
+        public NotNullObserver SerialNumbers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the assemblies.
+        /// </summary>
+        /// <value>The assemblies.</value>
+        [JsonProperty("assemblies")]
+        public NotNullObserver[] Assemblies { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cost price.
+        /// </summary>
+        /// <value>The cost price.</value>
+        [JsonProperty("costPrice")]
+        public decimal CostPrice { get; set; }
     }
 }

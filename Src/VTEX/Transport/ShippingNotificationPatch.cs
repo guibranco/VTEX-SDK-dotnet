@@ -4,7 +4,7 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
+// Last Modified On : 01-16-2023
 // ***********************************************************************
 // <copyright file="ShippingNotificationPatch.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
@@ -13,6 +13,7 @@
 // ***********************************************************************
 namespace VTEX.Transport
 {
+    using System;
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
 
@@ -22,30 +23,6 @@ namespace VTEX.Transport
     [Serializer(SerializerFormat.Json)]
     public sealed class ShippingNotificationPatch
     {
-        /// <summary>
-        /// Gets or sets the Key of the invoice.
-        /// </summary>
-        /// <value>The invoice key.</value>
-
-        [JsonProperty("invoiceKey")]
-        public string InvoiceKey { get; set; }
-
-        /// <summary>
-        /// Gets or sets URL of the invoice.
-        /// </summary>
-        /// <value>The invoice URL.</value>
-
-        [JsonProperty("invoiceUrl")]
-        public string InvoiceUrl { get; set; }
-
-        /// <summary>
-        /// Gets or sets the courier.
-        /// </summary>
-        /// <value>The courier.</value>
-
-        [JsonProperty("courier")]
-        public string Courier { get; set; }
-
         /// <summary>
         /// Gets or sets the tracking number.
         /// </summary>
@@ -61,5 +38,20 @@ namespace VTEX.Transport
 
         [JsonProperty("trackingUrl")]
         public string TrackingUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the courier.
+        /// </summary>
+        /// <value>The courier.</value>
+
+        [JsonProperty("courier")]
+        public string Courier { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dispatched date.
+        /// </summary>
+        /// <value>The dispatched date.</value>
+        [JsonProperty("dispatchedDate")]
+        public DateTime? DispatchedDate { get; set; }
     }
 }

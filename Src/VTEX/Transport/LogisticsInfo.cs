@@ -1,21 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 01-15-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
-// ***********************************************************************
-// <copyright file="LogisticsInfo.cs" company="Guilherme Branco Stracini">
-//     © 2020 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-namespace VTEX.Transport
+﻿namespace VTEX.Transport
 {
+    using System;
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
-    using System;
 
     /// <summary>
     /// Class LogisticsInfo. This class cannot be inherited.
@@ -86,11 +73,11 @@ namespace VTEX.Transport
         public DateTime? ShippingEstimateDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the slas.
+        /// Gets or sets the sla.
         /// </summary>
-        /// <value>The slas.</value>
+        /// <value>The sla.</value>
         [JsonProperty("slas")]
-        public Sla[] Slas { get; set; }
+        public Sla[] Sla { get; set; }
 
         /// <summary>
         /// Gets or sets the ships to.
@@ -140,5 +127,19 @@ namespace VTEX.Transport
         /// <value>The name of the polygon.</value>
         [JsonProperty("polygonName")]
         public NotNullObserver PolygonName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pickup point identifier.
+        /// </summary>
+        /// <value>The pickup point identifier.</value>
+        [JsonProperty("pickupPointId")]
+        public NotNullObserver PickupPointId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the transit time.
+        /// </summary>
+        /// <value>The transit time.</value>
+        [JsonProperty("transitTime")]
+        public string TransitTime { get; set; }
     }
 }

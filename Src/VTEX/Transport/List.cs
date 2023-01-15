@@ -4,7 +4,7 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
+// Last Modified On : 01-16-2023
 // ***********************************************************************
 // <copyright file="List.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
@@ -228,6 +228,20 @@ namespace VTEX.Transport
         /// <value>The hostname.</value>
         [JsonProperty("hostname")]
         public string Hostname { get; set; }
+
+        /// <summary>
+        /// Gets or sets the invoice output.
+        /// </summary>
+        /// <value>The invoice output.</value>
+        [JsonProperty("invoiceOutput")]
+        public string[] InvoiceOutput { get; set; }
+
+        /// <summary>
+        /// Gets or sets the invoice input.
+        /// </summary>
+        /// <value>The invoice input.</value>
+        [JsonProperty("invoiceInput")]
+        public string[] InvoiceInput { get; set; }
 
     }
 }

@@ -57,8 +57,8 @@ namespace VTEX.Transport.Bridge
             {
                 var json = JToken.Parse(value).ToString();
                 _actions = SerializerFactory.GetSerializer<List<BridgeAction>>()
-                                            .Deserialize(json)
-                                            .ToArray();
+                    .Deserialize(json)
+                    .ToArray();
             }
         }
 
@@ -111,3 +111,4 @@ namespace VTEX.Transport.Bridge
         [JsonProperty("id")]
         public string Id { get; set; }
     }
+}
