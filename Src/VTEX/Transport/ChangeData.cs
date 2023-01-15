@@ -24,21 +24,27 @@ namespace VTEX.Transport
         /// <summary>
         /// Gets or sets the reason.
         /// </summary>
-        /// <value>The reason.</value>
+        /// <value>
+        /// The reason.
+        /// </value>
         [JsonProperty("reason")]
         public string Reason { get; set; }
 
         /// <summary>
         /// Gets or sets the discount value.
         /// </summary>
-        /// <value>The discount value.</value>
+        /// <value>
+        /// The discount value.
+        /// </value>
         [JsonProperty("discountValue")]
         public int DiscountValue { get; set; }
 
         /// <summary>
         /// Gets or sets the incremented value.
         /// </summary>
-        /// <value>The incremented value.</value>
+        /// <value>
+        /// The incremented value.
+        /// </value>
         [JsonProperty("incrementValue")]
         public int IncrementedValue { get; set; }
 
@@ -46,21 +52,27 @@ namespace VTEX.Transport
         /// <summary>
         /// Gets or sets the items added.
         /// </summary>
-        /// <value>The items added.</value>
+        /// <value>
+        /// The items added.
+        /// </value>
         [JsonProperty("itemsAdded")]
         public ItemChanged[] ItemsAdded { get; set; }
 
         /// <summary>
         /// Gets or sets the items removed.
         /// </summary>
-        /// <value>The items removed.</value>
+        /// <value>
+        /// The items removed.
+        /// </value>
         [JsonProperty("itemsRemoved")]
         public ItemChanged[] ItemsRemoved { get; set; }
 
         /// <summary>
         /// Gets or sets the receipt.
         /// </summary>
-        /// <value>The receipt.</value>
+        /// <value>
+        /// The receipt.
+        /// </value>
         [JsonProperty("receipt")]
         public ResponseReceipt Receipt { get; set; }
     }
