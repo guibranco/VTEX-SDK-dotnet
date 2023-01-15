@@ -10,7 +10,7 @@
     /// </summary>
     /// <seealso cref="IDataEntity" />
     [DataEntityName("CL")]
-    [Serializer(SerializerFormat.JSON, false)]
+    [Serializer(SerializerFormat.Json, false)]
     public class Client : IDataEntity
     {
         /// <summary>

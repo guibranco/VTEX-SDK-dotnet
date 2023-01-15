@@ -10,7 +10,7 @@
     /// An estoque dto.
     /// </summary>
 
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class StockInfo
     {
 

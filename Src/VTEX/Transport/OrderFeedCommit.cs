@@ -5,7 +5,7 @@
     /// <summary>
     /// The order feed commit class.
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public class OrderFeedCommit
     {
         /// <summary>

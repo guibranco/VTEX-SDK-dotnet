@@ -5,7 +5,7 @@
     /// <summary>
     /// The specification field class.
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class SpecificationField
     {
         /// <summary>

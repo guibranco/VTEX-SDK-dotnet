@@ -6,7 +6,7 @@
     /// <summary>
     /// The transaction interaction class.
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class TransactionInteraction
     {
         /// <summary>

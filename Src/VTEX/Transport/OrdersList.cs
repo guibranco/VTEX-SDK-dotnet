@@ -6,7 +6,7 @@
     /// <summary>
     /// Class OrdersList. This class cannot be inherited.
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class OrdersList
     {
         /// <summary>

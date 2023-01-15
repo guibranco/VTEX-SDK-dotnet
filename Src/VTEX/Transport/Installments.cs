@@ -5,7 +5,7 @@
     /// <summary>
     /// Class Installments. This class cannot be inherited.
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class Installments
     {
         /// <summary>
