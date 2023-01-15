@@ -18,9 +18,8 @@ namespace VTEX.Transport
     using System;
 
     /// <summary>
-    /// An estoque dto.
+    /// Class StockInfo. This class cannot be inherited.
     /// </summary>
-
     [Serializer(SerializerFormat.Json)]
     public sealed class StockInfo
     {
