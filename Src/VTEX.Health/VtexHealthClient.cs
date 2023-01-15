@@ -1,4 +1,17 @@
-﻿namespace VTEX.Health
+﻿// ***********************************************************************
+// Assembly         : VTEX.Health
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="VtexHealthClient.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Health
 {
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
@@ -28,7 +41,7 @@
         #region ~ctors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VtexHealthClient"/> class.
+        /// Initializes a new instance of the <see cref="VtexHealthClient" /> class.
         /// </summary>
         /// <param name="loggerFactory">The logger factory.</param>
         /// <param name="httpClient">The HTTP client.</param>
