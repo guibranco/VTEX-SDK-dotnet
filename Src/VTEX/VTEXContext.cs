@@ -815,7 +815,6 @@ namespace VTEX
         /// <param name="stockInfo">The stock information.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
         /// <exception cref="VTEX.GoodPractices.UpdateStockInfoSKUException"></exception>
-        /// <exception cref="UpdateStockInfoSkuException"></exception>
 
         public async Task UpdateSkuStockAsync(StockInfo stockInfo)
         {
