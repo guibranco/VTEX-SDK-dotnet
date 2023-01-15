@@ -16,7 +16,7 @@ namespace VTEX
     /// <summary>
     /// Class PlatformConstants.
     /// </summary>
-    //TODO replace public to internal after remove the old code from Integracao Service.
+    //TODO replace public to internal after remove the old code from Integração Service.
     public static class PlatformConstants
     {
 
