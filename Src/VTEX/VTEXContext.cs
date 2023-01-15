@@ -4,7 +4,7 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
+// Last Modified On : 01-16-2023
 // ***********************************************************************
 // <copyright file="VTEXContext.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
@@ -1112,7 +1112,7 @@ namespace VTEX
         /// <param name="transactionId">The transaction identifier.</param>
         /// <returns>List&lt;PciPayment&gt;.</returns>
         [Pure]
-        public List<PciPayment> GetOrderPayments(string transactionId)
+        public List<PCIPayment> GetOrderPayments(string transactionId)
         {
             var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
                 $"{PlatformConstants.PciTransactions}/{transactionId}/payments",
@@ -1120,10 +1120,10 @@ namespace VTEX
                 restEndpoint: RequestEndpoint.PAYMENTS).Result;
             if (json == null)
             {
-                return new List<PciPayment>();
+                return new List<PCIPayment>();
             }
 
-            var data = SerializerFactory.GetCustomSerializer<List<PciPayment>>(SerializerFormat.Json).Deserialize(json);
+            var data = SerializerFactory.GetCustomSerializer<List<PCIPayment>>(SerializerFormat.Json).Deserialize(json);
             LogConsumer.Debug(data, $"vtex-order-payemnts-{transactionId}.js");
             return data;
         }

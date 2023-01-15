@@ -1,7 +1,7 @@
 ﻿// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
-// Created          : 01-15-2023
+// Created          : 01-16-2023
 //
 // Last Modified By : Guilherme Branco Stracini
 // Last Modified On : 01-16-2023
@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace VTEX.Transport
+namespace VTEX.Transport.Bridge
 {
     using CrispyWaffle.Serialization;
-    using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -57,8 +57,8 @@ namespace VTEX.Transport
             {
                 var json = JToken.Parse(value).ToString();
                 _actions = SerializerFactory.GetSerializer<List<BridgeAction>>()
-                                            .Deserialize(json)
-                                            .ToArray();
+                    .Deserialize(json)
+                    .ToArray();
             }
         }
 

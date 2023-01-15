@@ -4,7 +4,7 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
+// Last Modified On : 01-16-2023
 // ***********************************************************************
 // <copyright file="CourierData.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
@@ -20,6 +20,12 @@ namespace VTEX.Transport
     /// </summary>
     public sealed class CourierData
     {
+        /// <summary>
+        /// Gets or sets the create date.
+        /// </summary>
+        /// <value>The create date.</value>
+        public DateTime CreateDate { get; set; }
+
         /// <summary>
         /// The last change
         /// </summary>

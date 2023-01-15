@@ -4,7 +4,7 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
+// Last Modified On : 01-16-2023
 // ***********************************************************************
 // <copyright file="PriceTag.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
@@ -13,6 +13,7 @@
 // ***********************************************************************
 namespace VTEX.Transport
 {
+    using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -40,7 +41,7 @@ namespace VTEX.Transport
         /// </summary>
         /// <value><c>true</c> if this instance is percentual; otherwise, <c>false</c>.</value>
         [JsonProperty("isPercentual")]
-        public bool IsPercentual { get; set; }
+        public bool IsPercentage { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier.
@@ -55,6 +56,34 @@ namespace VTEX.Transport
         /// <value>The raw value.</value>
         [JsonProperty("rawValue")]
         public decimal RawValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rate.
+        /// </summary>
+        /// <value>The rate.</value>
+        [JsonProperty("rate")]
+        public NotNullObserver Rate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the jurisdiction code.
+        /// </summary>
+        /// <value>The jurisdiction code.</value>
+        [JsonProperty("jurisCode")]
+        public NotNullObserver JurisdictionCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the jurisdiction.
+        /// </summary>
+        /// <value>The type of the jurisdiction.</value>
+        [JsonProperty("jurisType")]
+        public NotNullObserver JurisdictionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the jurisdiction.
+        /// </summary>
+        /// <value>The name of the jurisdiction.</value>
+        [JsonProperty("jurisName")]
+        public string JurisdictionName { get; set; }
 
     }
 }

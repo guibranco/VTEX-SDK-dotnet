@@ -4,7 +4,7 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
+// Last Modified On : 01-16-2023
 // ***********************************************************************
 // <copyright file="Order.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
@@ -13,14 +13,15 @@
 // ***********************************************************************
 namespace VTEX.Transport
 {
+    using System;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
-    using Enums;
     using Newtonsoft.Json;
-    using System;
+    using VTEX.Enums;
+    using VTEX.Transport.OrderAggregate;
 
     /// <summary>
-    /// An order.
+    /// Class Order. This class cannot be inherited.
     /// </summary>
     [Serializer(SerializerFormat.Json)]
     public sealed class Order
@@ -332,11 +333,11 @@ namespace VTEX.Transport
         public string OrderFormId { get; set; }
 
         /// <summary>
-        /// Gets or sets the comercial condition data.
+        /// Gets or sets the commercial condition data.
         /// </summary>
-        /// <value>The comercial condition data.</value>
-        [JsonProperty("comercialConditionData")]
-        public NotNullObserver ComercialConditionData { get; set; }
+        /// <value>The commercial condition data.</value>
+        [JsonProperty("commercialConditionData")]
+        public NotNullObserver CommercialConditionData { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is completed.
@@ -350,7 +351,7 @@ namespace VTEX.Transport
         /// </summary>
         /// <value>The custom data.</value>
         [JsonProperty("customData")]
-        public NotNullObserver CustomData { get; set; }
+        public CustomData CustomData { get; set; }
 
         /// <summary>
         /// Gets or sets the store preferences data.
@@ -388,18 +389,11 @@ namespace VTEX.Transport
         public Marketplace Marketplace { get; set; }
 
         /// <summary>
-        /// Gets or sets the commercial condition data.
-        /// </summary>
-        /// <value>The commercial condition data.</value>
-        [JsonProperty("commercialConditionData")]
-        public NotNullObserver CommercialConditionData { get; set; }
-
-        /// <summary>
         /// Gets or sets the invoice data.
         /// </summary>
         /// <value>The invoice data.</value>
         [JsonProperty("invoiceData")]
-        public NotNullObserver InvoiceData { get; set; }
+        public InvoiceData InvoiceData { get; set; }
 
         /// <summary>
         /// Gets or sets the invoiced date.
@@ -422,5 +416,39 @@ namespace VTEX.Transport
         [JsonProperty("authorizedDate")]
         public DateTime AuthorizedDate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the item metadata.
+        /// </summary>
+        /// <value>The item metadata.</value>
+        [JsonProperty("itemMetadata")]
+        public ItemMetadata ItemMetadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets the subscription data.
+        /// </summary>
+        /// <value>The subscription data.</value>
+        [JsonProperty("subscriptionData")]
+        public NotNullObserver SubscriptionData { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tax data.
+        /// </summary>
+        /// <value>The tax data.</value>
+        [JsonProperty("taxData")]
+        public NotNullObserver TaxData { get; set; }
+
+        /// <summary>
+        /// Gets or sets the checked in pickup point identifier.
+        /// </summary>
+        /// <value>The checked in pickup point identifier.</value>
+        [JsonProperty("checkedInPickupPointId")]
+        public NotNullObserver CheckedInPickupPointId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cancellation data.
+        /// </summary>
+        /// <value>The cancellation data.</value>
+        [JsonProperty("cancellationData")]
+        public CancellationData CancellationData { get; set; }
     }
 }

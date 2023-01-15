@@ -4,7 +4,7 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
+// Last Modified On : 01-16-2023
 // ***********************************************************************
 // <copyright file="OrdersList.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
@@ -49,6 +49,12 @@ namespace VTEX.Transport
         /// <value>The stats.</value>
         [JsonProperty("stats")]
         public StatsList Stats { get; set; }
-    }
 
+        /// <summary>
+        /// Gets or sets the report records limit.
+        /// </summary>
+        /// <value>The report records limit.</value>
+        [JsonProperty("reportRecordsLimit")]
+        public int ReportRecordsLimit { get; set; }
+    }
 }

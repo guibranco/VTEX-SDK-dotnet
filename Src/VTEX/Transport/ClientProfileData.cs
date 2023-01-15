@@ -4,7 +4,7 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
+// Last Modified On : 01-16-2023
 // ***********************************************************************
 // <copyright file="ClientProfileData.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
@@ -15,8 +15,8 @@ namespace VTEX.Transport
 {
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
-    using Enums;
     using Newtonsoft.Json;
+    using VTEX.Enums;
 
     /// <summary>
     /// A client profile data.
