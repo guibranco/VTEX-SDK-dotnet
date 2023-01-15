@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="ListItem.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
@@ -31,54 +44,42 @@
         /// <summary>
         /// Gets or sets the ean.
         /// </summary>
-        /// <value>
-        /// The ean.
-        /// </value>
+        /// <value>The ean.</value>
         [JsonProperty("ean")]
         public string EAN { get; set; }
 
         /// <summary>
         /// Gets or sets the reference identifier.
         /// </summary>
-        /// <value>
-        /// The reference identifier.
-        /// </value>
+        /// <value>The reference identifier.</value>
         [JsonProperty("refId")]
         public string RefId { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier.
         /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
+        /// <value>The identifier.</value>
         [JsonProperty("id")]
         public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the product identifier.
         /// </summary>
-        /// <value>
-        /// The product identifier.
-        /// </value>
+        /// <value>The product identifier.</value>
         [JsonProperty("productId")]
         public int ProductId { get; set; }
 
         /// <summary>
         /// Gets or sets the selling price.
         /// </summary>
-        /// <value>
-        /// The selling price.
-        /// </value>
+        /// <value>The selling price.</value>
         [JsonProperty("sellingPrice")]
         public int SellingPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the price.
         /// </summary>
-        /// <value>
-        /// The price.
-        /// </value>
+        /// <value>The price.</value>
         [JsonProperty("price")]
         public int Price { get; set; }
     }

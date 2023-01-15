@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="PCIPayment.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
     using System;
@@ -18,7 +31,7 @@
         /// Gets the field by the name.
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
-        /// <returns></returns>
+        /// <returns>PciPaymentField.</returns>
         public PciPaymentField GetFieldByName([Localizable(false)] string fieldName)
         {
             return Fields.SingleOrDefault(f => f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase));
@@ -46,9 +59,7 @@
         /// <summary>
         /// Gets or sets the name of the merchant.
         /// </summary>
-        /// <value>
-        /// The name of the merchant.
-        /// </value>
+        /// <value>The name of the merchant.</value>
         public string MerchantName { get; set; }
         /// <summary>
         /// Gets or sets the group.
@@ -68,23 +79,17 @@
         /// <summary>
         /// Gets or sets a value indicating whether [requires authentication].
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if [requires authentication]; otherwise, <c>false</c>.
-        /// </value>
+        /// <value><c>true</c> if [requires authentication]; otherwise, <c>false</c>.</value>
         public bool RequiresAuthentication { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether [allow issuer].
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if [allow issuer]; otherwise, <c>false</c>.
-        /// </value>
+        /// <value><c>true</c> if [allow issuer]; otherwise, <c>false</c>.</value>
         public bool AllowIssuer { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether [allow notification].
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if [allow notification]; otherwise, <c>false</c>.
-        /// </value>
+        /// <value><c>true</c> if [allow notification]; otherwise, <c>false</c>.</value>
         public bool AllowNotification { get; set; }
         /// <summary>
         /// Gets or sets the is available.
@@ -99,9 +104,7 @@
         /// <summary>
         /// Gets or sets the authorization date.
         /// </summary>
-        /// <value>
-        /// The authorization date.
-        /// </value>
+        /// <value>The authorization date.</value>
         public DateTime? AuthorizationDate { get; set; }
         /// <summary>
         /// Gets or sets the self.
@@ -116,9 +119,7 @@
         /// <summary>
         /// Gets or sets the nsu.
         /// </summary>
-        /// <value>
-        /// The nsu.
-        /// </value>
+        /// <value>The nsu.</value>
         public string Nsu { get; set; }
         /// <summary>
         /// Gets or sets the return code.
@@ -183,16 +184,12 @@
         /// <summary>
         /// Gets or sets the currency code.
         /// </summary>
-        /// <value>
-        /// The currency code.
-        /// </value>
+        /// <value>The currency code.</value>
         public string CurrencyCode { get; set; }
         /// <summary>
         /// Gets or sets the provider.
         /// </summary>
-        /// <value>
-        /// The provider.
-        /// </value>
+        /// <value>The provider.</value>
         public NotNullObserver Provider { get; set; }
         /// <summary>
         /// Gets or sets the fields.
@@ -209,9 +206,7 @@
         /// <summary>
         /// Gets or sets the original payment identifier.
         /// </summary>
-        /// <value>
-        /// The original payment identifier.
-        /// </value>
+        /// <value>The original payment identifier.</value>
         public NotNullObserver OriginalPaymentId { get; set; }
 
         #endregion

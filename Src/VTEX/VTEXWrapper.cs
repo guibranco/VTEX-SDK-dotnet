@@ -1,4 +1,17 @@
-﻿namespace VTEX
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="VTEXWrapper.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX
 {
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
@@ -117,7 +130,7 @@
         /// <param name="cookie">The cookie.</param>
         /// <param name="requiresAuthentication">if set to <c>true</c> [requires authentication].</param>
         /// <param name="isRetry">if set to <c>true</c> [is retry].</param>
-        /// <returns></returns>
+        /// <returns>System.String.</returns>
         private async Task<string> ServiceInvokerInternal(
             HttpRequestMethod method,
             string endpoint,
@@ -181,6 +194,7 @@
         /// <param name="method">The method.</param>
         /// <param name="data">The data.</param>
         /// <param name="result">The result.</param>
+        /// <returns>Exception.</returns>
         /// <exception cref="UnexpectedApiResponseException"></exception>
         private Exception HandleException(
             Exception exception,
@@ -247,8 +261,8 @@
         /// <param name="data">The data.</param>
         /// <param name="client">The client.</param>
         /// <param name="uriBuilder">The URI builder.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentOutOfRangeException">method - null</exception>
+        /// <returns>A Task&lt;HttpResponseMessage&gt; representing the asynchronous operation.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">method - null</exception>
         private static async Task<HttpResponseMessage> RequestInternalAsync(
             HttpRequestMethod method,
             CancellationToken token,
@@ -324,8 +338,8 @@
         /// <param name="queryString">The query string.</param>
         /// <param name="data">The data.</param>
         /// <param name="restEndpoint">The rest endpoint.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentOutOfRangeException">restEndpoint - null</exception>
+        /// <returns>A Task&lt;System.String&gt; representing the asynchronous operation.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">restEndpoint - null</exception>
         public async Task<string> ServiceInvokerAsync(
             HttpRequestMethod method,
             [Localizable(false)] string endpoint,

@@ -1,41 +1,45 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="Seller.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
     /// <summary>
-    ///     A seller.
+    /// A seller.
     /// </summary>
     public sealed class Seller
     {
         /// <summary>
-        ///     Gets or sets the identifier.
+        /// Gets or sets the identifier.
         /// </summary>
-        ///
-        /// <value>
-        ///     The identifier.
-        /// </value>
+        /// <value>The identifier.</value>
 
         [JsonProperty("id")]
         public int Id { get; set; }
 
         /// <summary>
-        ///     Gets or sets the name.
+        /// Gets or sets the name.
         /// </summary>
-        ///
-        /// <value>
-        ///     The name.
-        /// </value>
+        /// <value>The name.</value>
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets the logo.
+        /// Gets or sets the logo.
         /// </summary>
-        ///
-        /// <value>
-        ///     The logo.
-        /// </value>
+        /// <value>The logo.</value>
 
         [JsonProperty("logo")]
         public string Logo { get; set; }

@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="Price.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using System.ComponentModel;
     using CrispyWaffle.Serialization;
@@ -35,7 +48,6 @@
 
         /// <summary>
         /// The base price
-        /// 
         /// </summary>
         private decimal _basePrice;
         /// <summary>
@@ -77,9 +89,7 @@
         /// <summary>
         /// Gets or sets the list price.
         /// </summary>
-        /// <value>
-        /// The list price.
-        /// </value>
+        /// <value>The list price.</value>
         [JsonProperty("listPrice")]
         public decimal? ListPrice
         {
@@ -99,9 +109,7 @@
         /// <summary>
         /// Gets or sets the cost price.
         /// </summary>
-        /// <value>
-        /// The cost price.
-        /// </value>
+        /// <value>The cost price.</value>
         [JsonProperty("costPrice")]
         public decimal CostPrice
         {
@@ -116,9 +124,7 @@
         /// <summary>
         /// Gets or sets the base price.
         /// </summary>
-        /// <value>
-        /// The base price.
-        /// </value>
+        /// <value>The base price.</value>
         [JsonProperty("basePrice")]
         public decimal BasePrice
         {
@@ -133,9 +139,7 @@
         /// <summary>
         /// Gets or sets the markup.
         /// </summary>
-        /// <value>
-        /// The markup.
-        /// </value>
+        /// <value>The markup.</value>
         [JsonProperty("markup")]
         public decimal? Markup
         {
@@ -150,9 +154,7 @@
         /// <summary>
         /// Gets or sets the fixed prices.
         /// </summary>
-        /// <value>
-        /// The fixed prices.
-        /// </value>
+        /// <value>The fixed prices.</value>
         [JsonProperty("fixedPrices")]
         public FixedPrice[] FixedPrices
         {
@@ -167,9 +169,7 @@
         /// <summary>
         /// Gets or sets the item identifier.
         /// </summary>
-        /// <value>
-        /// The item identifier.
-        /// </value>
+        /// <value>The item identifier.</value>
         [JsonProperty("itemId")]
         public int ItemId
         {
@@ -189,9 +189,7 @@
         /// <summary>
         /// The should serialize list price serialization helper method
         /// </summary>
-        /// <returns>
-        /// Returns <c>true</c> when the field should be serialized, false otherwise
-        /// </returns>
+        /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool ShouldSerializeListPrice()
@@ -202,9 +200,7 @@
         /// <summary>
         /// The should serialize cost price serialization helper method
         /// </summary>
-        /// <returns>
-        /// Returns <c>true</c> when the field should be serialized, false otherwise
-        /// </returns>
+        /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool ShouldSerializeCostPrice()
@@ -215,9 +211,7 @@
         /// <summary>
         /// The should serialize base price serialization helper method
         /// </summary>
-        /// <returns>
-        /// Returns <c>true</c> when the field should be serialized, false otherwise
-        /// </returns>
+        /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool ShouldSerializeBasePrice()
@@ -228,9 +222,7 @@
         /// <summary>
         /// The should serialize markup serialization helper method
         /// </summary>
-        /// <returns>
-        /// Returns <c>true</c> when the field should be serialized, false otherwise
-        /// </returns>
+        /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool ShouldSerializeMarkup()
@@ -241,9 +233,7 @@
         /// <summary>
         /// The should serialize fixed prices serialization helper method
         /// </summary>
-        /// <returns>
-        /// Returns <c>true</c> when the field should be serialized, false otherwise
-        /// </returns>
+        /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool ShouldSerializeFixedPrices()
@@ -254,9 +244,7 @@
         /// <summary>
         /// The should serialize item identifier serialization helper method
         /// </summary>
-        /// <returns>
-        /// Returns <c>true</c> when the field should be serialized, false otherwise
-        /// </returns>
+        /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool ShouldSerializeItemId()

@@ -1,4 +1,17 @@
-﻿namespace VTEX
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="VTEXContext.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX
 {
     using System.Globalization;
     using VTEX.Health;
@@ -133,8 +146,8 @@
         /// <param name="queryString">The query string.</param>
         /// <param name="currentPage">The current page.</param>
         /// <param name="result">The result.</param>
-        /// <returns></returns>
-        /// <exception cref="UnexpectedApiResponseException"></exception>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <exception cref="VTEX.GoodPractices.UnexpectedApiResponseException"></exception>
         private bool GetOrderListsValueInternal(
             Dictionary<string, string> queryString,
             int currentPage,
@@ -280,7 +293,7 @@
         /// Gets the feed.
         /// </summary>
         /// <param name="maxLot">The maximum lot.</param>
-        /// <returns></returns>
+        /// <returns>IEnumerable&lt;OrderFeed&gt;.</returns>
         public IEnumerable<OrderFeed> GetFeed(int maxLot = 20)
         {
             //VTEX limitation
@@ -482,7 +495,7 @@
         /// Gets the orders by the array of orders identifiers
         /// </summary>
         /// <param name="ordersIds">The orders ids.</param>
-        /// <returns></returns>
+        /// <returns>IEnumerable&lt;Order&gt;.</returns>
         public IEnumerable<Order> GetOrders(string[] ordersIds)
         {
             return GetOrdersInternal(ordersIds);
@@ -492,8 +505,8 @@
         /// Cancels the order asynchronous.
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidOperationException">Order {orderId} cannot be canceled because isn't in pending payment status on VTEX</exception>
+        /// <returns>A Task&lt;System.String&gt; representing the asynchronous operation.</returns>
+        /// <exception cref="System.InvalidOperationException">Order {orderId} cannot be canceled because isn't in pending payment status on VTEX</exception>
         public async Task<string> CancelOrderAsync(string orderId)
         {
             try
@@ -529,8 +542,8 @@
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
         /// <param name="newStatus">The new status.</param>
-        /// <exception cref="ChangeStatusOrderException">
-        /// </exception>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        /// <exception cref="VTEX.GoodPractices.ChangeStatusOrderException"></exception>
         public async Task ChangeOrderStatusAsync(string orderId, OrderStatus newStatus)
         {
             try
@@ -555,6 +568,7 @@
         /// Notifies the order paid asynchronous.
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task NotifyOrderPaidAsync(string orderId)
         {
             try
@@ -602,9 +616,8 @@
         /// <param name="orderId">The order identifier.</param>
         /// <param name="notification">The notification.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
-        /// <exception cref="ShippingNotificationOrderException">
-        /// </exception>
+        /// <returns>A Task&lt;System.String&gt; representing the asynchronous operation.</returns>
+        /// <exception cref="VTEX.GoodPractices.ShippingNotificationOrderException"></exception>
         public async Task<string> NotifyOrderShippedAsync(
             string orderId,
             ShippingNotification notification,
@@ -672,7 +685,7 @@
         /// <param name="orderId">The order identifier.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
         /// <param name="notification">The notification.</param>
-        /// <exception cref="ShippingNotificationOrderException"></exception>
+        /// <exception cref="VTEX.GoodPractices.ShippingNotificationOrderException"></exception>
         public void UpdateOrderInvoice(string orderId, string invoiceId, ShippingNotificationPatch notification)
         {
             try
@@ -697,7 +710,7 @@
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
         /// <param name="change">The change.</param>
-        /// <exception cref="ChangeOrderException"></exception>
+        /// <exception cref="VTEX.GoodPractices.ChangeOrderException"></exception>
         public void ChangeOrder(string orderId, ChangeOrder change)
         {
             try
@@ -726,8 +739,8 @@
         /// Gets the transaction interactions.
         /// </summary>
         /// <param name="transactionId">The transaction identifier.</param>
-        /// <returns></returns>
-        /// <exception cref="TransactionException"></exception>
+        /// <returns>IEnumerable&lt;TransactionInteraction&gt;.</returns>
+        /// <exception cref="VTEX.GoodPractices.TransactionException"></exception>
         [Pure]
         public IEnumerable<TransactionInteraction> GetTransactionInteractions(string transactionId)
         {
@@ -800,6 +813,8 @@
         /// Updates the sku stock.
         /// </summary>
         /// <param name="stockInfo">The stock information.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        /// <exception cref="VTEX.GoodPractices.UpdateStockInfoSKUException"></exception>
         /// <exception cref="UpdateStockInfoSkuException"></exception>
 
         public async Task UpdateSkuStockAsync(StockInfo stockInfo)
@@ -838,8 +853,8 @@
         #region Pricing
 
         /// <summary>
-        /// Get the prices for an SKU.        
-        ///It is possible that on the property "fixedPrices" exists a list of specific prices for Trade Policies and Minimum Quantities of the SKU.Fixed Prices may also be scheduled.
+        /// Get the prices for an SKU.
+        /// It is possible that on the property "fixedPrices" exists a list of specific prices for Trade Policies and Minimum Quantities of the SKU.Fixed Prices may also be scheduled.
         /// </summary>
         /// <param name="skuId">The stock keeping unit identifier</param>
         /// <returns>A task of price</returns>
@@ -913,7 +928,7 @@
         }
 
         /// <summary>
-        /// Removes an SKU price. 
+        /// Removes an SKU price.
         /// This action removes both Base Price and all available Fixed Prices for and SKU in all trade policies.
         /// </summary>
         /// <param name="skuId">The stock keeping unit identifier.</param>
@@ -940,7 +955,7 @@
         /// <param name="query">The query.</param>
         /// <param name="keywords">The keywords.</param>
         /// <returns>IEnumerable&lt;BridgeFacet&gt;.</returns>
-        /// <exception cref="BridgeException"></exception>
+        /// <exception cref="VTEX.GoodPractices.BridgeException"></exception>
         [Pure]
         public IEnumerable<BridgeFacet> GetBridgeFacets([Localizable(false)] string query, [Localizable(false)] string keywords = null)
         {
@@ -981,7 +996,7 @@
         /// <param name="offSet">The off set.</param>
         /// <param name="limit">The limit.</param>
         /// <returns>IEnumerable&lt;BridgeItem&gt;.</returns>
-        /// <exception cref="BridgeException"></exception>
+        /// <exception cref="VTEX.GoodPractices.BridgeException"></exception>
         [Pure]
         public IEnumerable<BridgeItem> GetBridgeItems(
             [Localizable(false)] string query,
@@ -1036,7 +1051,7 @@
         /// <param name="keywords">The keywords.</param>
         /// <param name="facetName">Name of the facet.</param>
         /// <param name="facetValue">The facet value.</param>
-        /// <returns></returns>
+        /// <returns>IEnumerable&lt;BridgeItem&gt;.</returns>
         [Pure]
         public IEnumerable<BridgeItem> GetAllBridgeItems(
             [Localizable(false)] string query,
@@ -1066,7 +1081,7 @@
         /// <summary>
         /// Gets the platform status.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IEnumerable&lt;PlatformStatus&gt;.</returns>
         public IEnumerable<PlatformStatus> GetPlatformStatus()
         {
             return GetPlatformStatusAsync(CancellationToken.None).Result;
@@ -1076,7 +1091,7 @@
         /// Gets the platform status asynchronous.
         /// </summary>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task&lt;IEnumerable`1&gt; representing the asynchronous operation.</returns>
         [Pure]
         public async Task<IEnumerable<PlatformStatus>> GetPlatformStatusAsync(CancellationToken token)
         {
@@ -1096,7 +1111,7 @@
         /// Gets the order payments.
         /// </summary>
         /// <param name="transactionId">The transaction identifier.</param>
-        /// <returns></returns>
+        /// <returns>List&lt;PciPayment&gt;.</returns>
         [Pure]
         public List<PciPayment> GetOrderPayments(string transactionId)
         {
@@ -1125,7 +1140,7 @@
         /// </summary>
         /// <param name="fieldId">The field identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task&lt;SpecificationField&gt; representing the asynchronous operation.</returns>
         [Pure]
         public async Task<SpecificationField> GetSpecificationFieldAsync(int fieldId, CancellationToken token)
         {
@@ -1145,7 +1160,7 @@
         /// </summary>
         /// <param name="fieldId">The field identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task&lt;ICollection`1&gt; representing the asynchronous operation.</returns>
         [Pure]
         public async Task<ICollection<SpecificationFieldValue>> GetSpecificationFieldValuesAsync(
             int fieldId,
@@ -1168,7 +1183,7 @@
         /// <param name="specification">The specification.</param>
         /// <param name="productId">The product identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task UpdateProductSpecificationAsync(
             Specification specification,
             int productId,
@@ -1184,7 +1199,7 @@
         /// <param name="specifications">The specifications list.</param>
         /// <param name="productId">The product identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task UpdateProductSpecificationsAsync(
             List<Specification> specifications,
             int productId,
@@ -1209,7 +1224,7 @@
         /// </summary>
         /// <param name="fieldValue">The field value.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task InsertSpecificationFieldValueAsync(SpecificationFieldValue fieldValue, CancellationToken token)
         {
             LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
@@ -1292,7 +1307,9 @@
 
         #region IDisposable
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             _wrapper.Dispose();

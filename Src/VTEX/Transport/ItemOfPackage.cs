@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="ItemOfPackage.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
@@ -38,9 +51,7 @@
         /// <summary>
         /// Gets or sets the unit multiplier.
         /// </summary>
-        /// <value>
-        /// The unit multiplier.
-        /// </value>
+        /// <value>The unit multiplier.</value>
         [JsonProperty("unitMultiplier")]
         public decimal UnitMultiplier { get; set; }
     }

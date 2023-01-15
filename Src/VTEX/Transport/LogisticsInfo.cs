@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="LogisticsInfo.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
@@ -40,9 +53,7 @@
         /// <summary>
         /// Gets or sets the list price.
         /// </summary>
-        /// <value>
-        /// The list price.
-        /// </value>
+        /// <value>The list price.</value>
         [JsonProperty("listPrice")]
         public int ListPrice { get; set; }
 
@@ -105,36 +116,28 @@
         /// <summary>
         /// Gets the delivery channel.
         /// </summary>
-        /// <value>
-        /// The delivery channel.
-        /// </value>
+        /// <value>The delivery channel.</value>
         [JsonProperty("deliveryChannel")]
         public string DeliveryChannel { get; set; }
 
         /// <summary>
         /// Gets or sets the pickup store information.
         /// </summary>
-        /// <value>
-        /// The pickup store information.
-        /// </value>
+        /// <value>The pickup store information.</value>
         [JsonProperty("pickupStoreInfo")]
         public PickupStoreInfo PickupStoreInfo { get; set; }
 
         /// <summary>
         /// Gets or sets the address identifier.
         /// </summary>
-        /// <value>
-        /// The address identifier.
-        /// </value>
+        /// <value>The address identifier.</value>
         [JsonProperty("addressId")]
         public string AddressId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the polygon.
         /// </summary>
-        /// <value>
-        /// The name of the polygon.
-        /// </value>
+        /// <value>The name of the polygon.</value>
         [JsonProperty("polygonName")]
         public NotNullObserver PolygonName { get; set; }
     }

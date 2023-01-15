@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="Reservation.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
@@ -76,9 +89,7 @@
         /// <summary>
         /// Gets or sets the internal status.
         /// </summary>
-        /// <value>
-        /// The internal status.
-        /// </value>
+        /// <value>The internal status.</value>
         [JsonProperty("InternalStatus")]
         public string InternalStatus { get; set; }
     }

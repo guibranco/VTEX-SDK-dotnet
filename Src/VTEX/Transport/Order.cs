@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="Order.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
@@ -15,27 +28,21 @@
         /// <summary>
         /// Gets or sets the email tracked.
         /// </summary>
-        /// <value>
-        /// The email tracked.
-        /// </value>
+        /// <value>The email tracked.</value>
         [JsonProperty("emailTracked")]
         public string EmailTracked { get; set; }
 
         /// <summary>
         /// Gets or sets the cancel reason.
         /// </summary>
-        /// <value>
-        /// The cancel reason.
-        /// </value>
+        /// <value>The cancel reason.</value>
         [JsonProperty("cancelReason")]
         public string CancelReason { get; set; }
 
         /// <summary>
         /// Gets or sets the cancelled by.
         /// </summary>
-        /// <value>
-        /// The cancelled by.
-        /// </value>
+        /// <value>The cancelled by.</value>
         [JsonProperty("cancelledBy")]
         public string CancelledBy { get; set; }
 
@@ -66,9 +73,7 @@
         /// <summary>
         /// Gets or sets the marketplace services endpoint.
         /// </summary>
-        /// <value>
-        /// The marketplace services endpoint.
-        /// </value>
+        /// <value>The marketplace services endpoint.</value>
         [JsonProperty("marketplaceServicesEndpoint")]
         public string MarketplaceServicesEndpoint { get; set; }
 
@@ -83,9 +88,7 @@
         /// <summary>
         /// Gets or sets the origin.
         /// </summary>
-        /// <value>
-        /// The origin.
-        /// </value>
+        /// <value>The origin.</value>
         [JsonProperty("origin")]
         public string Origin { get; set; }
 
@@ -108,9 +111,7 @@
         /// <summary>
         /// Gets or sets the name of the merchant.
         /// </summary>
-        /// <value>
-        /// The name of the merchant.
-        /// </value>
+        /// <value>The name of the merchant.</value>
         [JsonProperty("merchantName")]
         public string MerchantName { get; set; }
 
@@ -183,9 +184,7 @@
         /// <summary>
         /// Gets or sets the order group.
         /// </summary>
-        /// <value>
-        /// The order group.
-        /// </value>
+        /// <value>The order group.</value>
         [JsonProperty("orderGroup")]
         public string OrderGroup { get; set; }
 
@@ -208,9 +207,7 @@
         /// <summary>
         /// Gets or sets the marketplace items.
         /// </summary>
-        /// <value>
-        /// The marketplace items.
-        /// </value>
+        /// <value>The marketplace items.</value>
         [JsonProperty("marketplaceItems")]
         public NotNullObserver[] MarketplaceItems { get; set; }
 
@@ -225,9 +222,7 @@
         /// <summary>
         /// Gets or sets the gift registry data.
         /// </summary>
-        /// <value>
-        /// The gift registry data.
-        /// </value>
+        /// <value>The gift registry data.</value>
         [JsonProperty("giftRegistryData")]
         public NotNullObserver GiftRegistryData { get; set; }
 
@@ -290,36 +285,28 @@
         /// <summary>
         /// Gets or sets the follow up email.
         /// </summary>
-        /// <value>
-        /// The follow up email.
-        /// </value>
+        /// <value>The follow up email.</value>
         [JsonProperty("followUpEmail")]
         public string FollowUpEmail { get; set; }
 
         /// <summary>
         /// Gets or sets the last message.
         /// </summary>
-        /// <value>
-        /// The last message.
-        /// </value>
+        /// <value>The last message.</value>
         [JsonProperty("lastMessage")]
         public string LastMessage { get; set; }
 
         /// <summary>
         /// Gets or sets the hostname.
         /// </summary>
-        /// <value>
-        /// The hostname.
-        /// </value>
+        /// <value>The hostname.</value>
         [JsonProperty("hostname")]
         public string Hostname { get; set; }
 
         /// <summary>
         /// Gets or sets the changes attachment.
         /// </summary>
-        /// <value>
-        /// The changes attachment.
-        /// </value>
+        /// <value>The changes attachment.</value>
         [JsonProperty("changesAttachment")]
         public ChangesAttachment ChangesAttachment { get; set; }
 
@@ -333,135 +320,105 @@
         /// <summary>
         /// Gets or sets the rounding error.
         /// </summary>
-        /// <value>
-        /// The rounding error.
-        /// </value>
+        /// <value>The rounding error.</value>
         [JsonProperty("roundingError")]
         public int RoundingError { get; set; }
 
         /// <summary>
         /// Gets or sets the order form identifier.
         /// </summary>
-        /// <value>
-        /// The order form identifier.
-        /// </value>
+        /// <value>The order form identifier.</value>
         [JsonProperty("orderFormId")]
         public string OrderFormId { get; set; }
 
         /// <summary>
         /// Gets or sets the comercial condition data.
         /// </summary>
-        /// <value>
-        /// The comercial condition data.
-        /// </value>
+        /// <value>The comercial condition data.</value>
         [JsonProperty("comercialConditionData")]
         public NotNullObserver ComercialConditionData { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is completed.
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is completed; otherwise, <c>false</c>.
-        /// </value>
+        /// <value><c>true</c> if this instance is completed; otherwise, <c>false</c>.</value>
         [JsonProperty("isCompleted")]
         public bool IsCompleted { get; set; }
 
         /// <summary>
         /// Gets or sets the custom data.
         /// </summary>
-        /// <value>
-        /// The custom data.
-        /// </value>
+        /// <value>The custom data.</value>
         [JsonProperty("customData")]
         public NotNullObserver CustomData { get; set; }
 
         /// <summary>
         /// Gets or sets the store preferences data.
         /// </summary>
-        /// <value>
-        /// The store preferences data.
-        /// </value>
+        /// <value>The store preferences data.</value>
         [JsonProperty("storePreferencesData")]
         public StorePreferenceData StorePreferencesData { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [allow cancellation].
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if [allow cancellation]; otherwise, <c>false</c>.
-        /// </value>
+        /// <value><c>true</c> if [allow cancellation]; otherwise, <c>false</c>.</value>
         [JsonProperty("allowCancellation")]
         public bool AllowCancellation { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [allow edition].
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if [allow edition]; otherwise, <c>false</c>.
-        /// </value>
+        /// <value><c>true</c> if [allow edition]; otherwise, <c>false</c>.</value>
         [JsonProperty("allowEdition")]
         public bool AllowEdition { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is checked in.
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is checked in; otherwise, <c>false</c>.
-        /// </value>
+        /// <value><c>true</c> if this instance is checked in; otherwise, <c>false</c>.</value>
         [JsonProperty("isCheckedIn")]
         public bool IsCheckedIn { get; set; }
 
         /// <summary>
         /// Gets or sets the marketplace.
         /// </summary>
-        /// <value>
-        /// The marketplace.
-        /// </value>
+        /// <value>The marketplace.</value>
         [JsonProperty("marketplace")]
         public Marketplace Marketplace { get; set; }
 
         /// <summary>
         /// Gets or sets the commercial condition data.
         /// </summary>
-        /// <value>
-        /// The commercial condition data.
-        /// </value>
+        /// <value>The commercial condition data.</value>
         [JsonProperty("commercialConditionData")]
         public NotNullObserver CommercialConditionData { get; set; }
 
         /// <summary>
         /// Gets or sets the invoice data.
         /// </summary>
-        /// <value>
-        /// The invoice data.
-        /// </value>
+        /// <value>The invoice data.</value>
         [JsonProperty("invoiceData")]
         public NotNullObserver InvoiceData { get; set; }
 
         /// <summary>
         /// Gets or sets the invoiced date.
         /// </summary>
-        /// <value>
-        /// The invoiced date.
-        /// </value>
+        /// <value>The invoiced date.</value>
         [JsonProperty("invoicedDate")]
         public DateTime? InvoicedDate { get; set; }
 
         /// <summary>
         /// Gets or sets the approved by.
         /// </summary>
-        /// <value>
-        /// The approved by.
-        /// </value>
+        /// <value>The approved by.</value>
         [JsonProperty("approvedBy")]
         public NotNullObserver ApprovedBy { get; set; }
 
         /// <summary>
         /// Gets or sets the authorized date.
         /// </summary>
-        /// <value>
-        /// The authorized date.
-        /// </value>
+        /// <value>The authorized date.</value>
         [JsonProperty("authorizedDate")]
         public DateTime AuthorizedDate { get; set; }
 
