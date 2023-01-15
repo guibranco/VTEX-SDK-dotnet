@@ -8,6 +8,11 @@
     using System.Threading;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Class VtexHealthClient.
+    /// Implements the <see cref="VTEX.Health.IVtexHealthClient" />
+    /// </summary>
+    /// <seealso cref="VTEX.Health.IVtexHealthClient" />
     public class VtexHealthClient : IVtexHealthClient
     {
         /// <summary>
@@ -22,6 +27,13 @@
 
         #region ~ctors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VtexHealthClient"/> class.
+        /// </summary>
+        /// <param name="loggerFactory">The logger factory.</param>
+        /// <param name="httpClient">The HTTP client.</param>
+        /// <exception cref="System.ArgumentNullException">loggerFactory</exception>
+        /// <exception cref="System.ArgumentNullException">httpClient</exception>
         public VtexHealthClient(ILoggerFactory loggerFactory, HttpClient httpClient)
         {
             if (loggerFactory == null)

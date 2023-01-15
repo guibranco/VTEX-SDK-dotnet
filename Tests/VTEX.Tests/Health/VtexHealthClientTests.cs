@@ -9,8 +9,14 @@
     using VTEX.Health;
     using Xunit;
 
+    /// <summary>
+    /// Class VtexHealthClientTests.
+    /// </summary>
     public class VtexHealthClientTests
     {
+        /// <summary>
+        /// Defines the test method ValidateHealthClient.
+        /// </summary>
         [Fact]
         public async Task ValidateHealthClient()
         {

@@ -37,17 +37,14 @@
         #region ~Ctor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VTEXContext"/> class.
+        /// Initializes a new instance of the <see cref="VTEXContext" /> class.
         /// </summary>
         /// <param name="accountName">Name of the account.</param>
         /// <param name="appKey">The application key.</param>
         /// <param name="appToken">The application token.</param>
         /// <param name="cookie">The cookie.</param>
-        /// <exception cref="System.ArgumentNullException">
-        /// appKey
-        /// or
-        /// appToken
-        /// </exception>
+        /// <exception cref="System.ArgumentNullException">appKey</exception>
+        /// <exception cref="System.ArgumentNullException">appToken</exception>
         public VTEXContext(string accountName, string appKey, string appToken, string cookie = null)
         {
             _wrapper = new VTEXWrapper(accountName);
@@ -196,7 +193,8 @@
         /// </summary>
         /// <param name="orderId">The id of the order</param>
         /// <returns>Order.</returns>
-        /// <exception cref="InvalidPaymentDataException"></exception>
+        /// <exception cref="VTEX.GoodPractices.InvalidPaymentDataException"></exception>
+        /// <exception cref="VTEX.GoodPractices.UnexpectedApiResponseException"></exception>
         private Order GetOrderInternal(string orderId)
         {
             LogConsumer.Trace("Getting order {0}", orderId);
@@ -642,7 +640,9 @@
         /// <summary>
         /// Notifies the order delivered
         /// </summary>
-        /// <param name="tracking"></param>
+        /// <param name="tracking">The tracking.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="VTEX.GoodPractices.TrackingNotificationOrderException"></exception>
         public async ValueTask<string> NotifyOrderDelivered(Tracking tracking)
         {
             try
@@ -879,7 +879,8 @@
         /// <param name="price">The price data</param>
         /// <param name="skuId">The stock keeping unit identifier</param>
         /// <param name="token">The cancellation token.</param>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        /// <exception cref="VTEX.GoodPractices.UpdatePriceInfoSkuException"></exception>
         public async Task UpdatePriceAsync(Price price, int skuId, CancellationToken token)
         {
             try
@@ -1237,7 +1238,9 @@
         /// <param name="searchedField">The searched field.</param>
         /// <param name="searchedValue">The searched value.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task&lt;TDataEntity&gt; representing the asynchronous operation.</returns>
+        /// <exception cref="System.ArgumentNullException">searchedValue</exception>
+        /// <exception cref="VTEX.GoodPractices.UnexpectedApiResponseException"></exception>
         [Pure]
         public async Task<TDataEntity> SearchAsync<TDataEntity>(
              string searchedField,

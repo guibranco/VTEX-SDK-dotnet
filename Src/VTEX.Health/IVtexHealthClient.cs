@@ -4,6 +4,9 @@
     using System.Threading;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Interface IVtexHealthClient
+    /// </summary>
     public interface IVtexHealthClient
     {
         /// <summary>
