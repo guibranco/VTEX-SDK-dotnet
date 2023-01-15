@@ -18,10 +18,10 @@ namespace VTEX.Transport
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The bank bill settlement class.
+    /// The bank slip settlement class.
     /// </summary>
     [Serializer(SerializerFormat.Json)]
-    public sealed class BankBillSettlement
+    public sealed class BankSlipSettlement
     {
         /// <summary>
         /// Gets or sets the identifier.
