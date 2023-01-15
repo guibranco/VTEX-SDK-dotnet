@@ -55,5 +55,12 @@ namespace VTEX.Transport
         /// <value>The name of the courier.</value>
         [JsonProperty("courierName")]
         public string CourierName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the account carrier.
+        /// </summary>
+        /// <value>The name of the account carrier.</value>
+        [JsonProperty("accountCarrierName")]
+        public string AccountCarrierName { get; set; }
     }
 }

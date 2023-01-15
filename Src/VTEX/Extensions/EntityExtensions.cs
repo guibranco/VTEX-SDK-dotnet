@@ -28,10 +28,15 @@ namespace VTEX.Extensions
         /// <returns>System.String.</returns>
         public static string GetDataEntityName(this Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             return type.GetCustomAttributes(typeof(DataEntityNameAttribute), true)
-                       is DataEntityNameAttribute[] attributes && attributes.Length == 1
+                is DataEntityNameAttribute[] { Length: 1 } attributes
                 ? attributes[0].EntityName
-                : type.Name.ToUpper().Substring(0, 2);
+                : type.Name.ToUpperInvariant().Substring(0, 2);
         }
     }
 }

@@ -43,6 +43,13 @@ namespace VTEX.Transport
         public string CategoriesIds { get; set; }
 
         /// <summary>
+        /// Gets or sets the categories.
+        /// </summary>
+        /// <value>The categories.</value>
+        [JsonProperty("categories")]
+        public Category[] Categories { get; set; }
+
+        /// <summary>
         /// Gets or sets the product cluster identifier.
         /// </summary>
         /// <value>The product cluster identifier.</value>

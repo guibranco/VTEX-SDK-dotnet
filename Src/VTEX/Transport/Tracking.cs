@@ -44,6 +44,13 @@ namespace VTEX.Transport
         public bool IsDelivered { get; set; }
 
         /// <summary>
+        /// Gets or sets the delivered date.
+        /// </summary>
+        /// <value>The delivered date.</value>
+        [JsonProperty("deliveredDate")]
+        public string DeliveredDate { get; set; }
+
+        /// <summary>
         /// Gets or sets the events.
         /// </summary>
         /// <value>The events.</value>
