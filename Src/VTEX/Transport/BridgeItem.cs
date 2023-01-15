@@ -11,7 +11,7 @@
     /// Class BridgeItem. This class cannot be inherited.
     /// </summary>
 
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class BridgeItem
     {
         /// <summary>

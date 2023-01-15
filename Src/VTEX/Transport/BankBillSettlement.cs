@@ -7,7 +7,7 @@
     /// <summary>
     /// The bank bill settlement class.
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class BankBillSettlement
     {
         /// <summary>

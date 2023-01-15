@@ -7,7 +7,7 @@
     /// <summary>
     /// Class BridgeFacet. This class cannot be inherited.
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class BridgeFacet
     {
         /// <summary>

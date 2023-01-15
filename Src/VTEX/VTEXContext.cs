@@ -1109,7 +1109,7 @@ namespace VTEX
                 return new List<PciPayment>();
             }
 
-            var data = SerializerFactory.GetCustomSerializer<List<PciPayment>>(SerializerFormat.JSON).Deserialize(json);
+            var data = SerializerFactory.GetCustomSerializer<List<PciPayment>>(SerializerFormat.Json).Deserialize(json);
             LogConsumer.Debug(data, $"vtex-order-payemnts-{transactionId}.js");
             return data;
         }

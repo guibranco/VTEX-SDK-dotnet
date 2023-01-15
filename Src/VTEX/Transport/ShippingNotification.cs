@@ -10,7 +10,7 @@
     /// A shipping notification.
     /// </summary>
 
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class ShippingNotification
     {
         /// <summary>

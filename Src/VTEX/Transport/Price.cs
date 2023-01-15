@@ -10,7 +10,7 @@
     /// https://documenter.getpostman.com/view/101975/vtex-pricing-api/6YsWxKT#45e96a27-2f96-f2d3-74b2-9d7b0be0c53a
     /// Use this class to update a price from 04/2018
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class Price
     {
         #region Private fields

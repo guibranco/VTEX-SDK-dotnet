@@ -6,7 +6,7 @@
     /// <summary>
     ///     An order cancellation.
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public sealed class OrderCancellation
     {
         /// <summary>

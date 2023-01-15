@@ -7,7 +7,7 @@
     /// <summary>
     /// The order feed class.
     /// </summary>
-    [Serializer(SerializerFormat.JSON)]
+    [Serializer(SerializerFormat.Json)]
     public class OrderFeed
     {
         /// <summary>
