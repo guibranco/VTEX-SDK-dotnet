@@ -11,7 +11,8 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace VTEX.Transport
+
+namespace VTEX.Transport.Bridge
 {
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
