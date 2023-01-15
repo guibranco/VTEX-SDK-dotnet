@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace VTEX.Health
+﻿namespace VTEX.Health
 {
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     public interface IVtexHealthClient
     {
         /// <summary>

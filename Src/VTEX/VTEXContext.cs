@@ -1,15 +1,14 @@
-﻿using System.Globalization;
-using VTEX.Health;
-
-namespace VTEX
+﻿namespace VTEX
 {
+    using System.Globalization;
+    using VTEX.Health;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
     using CrispyWaffle.Serialization;
-    using DataEntities;
-    using Enums;
-    using Extensions;
-    using GoodPractices;
+    using VTEX.DataEntities;
+    using VTEX.Enums;
+    using VTEX.Extensions;
+    using VTEX.GoodPractices;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
@@ -18,7 +17,7 @@ namespace VTEX
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Transport;
+    using VTEX.Transport;
 
     /// <summary>
     /// A VTEX Context, that consumes the VTEX Wrapper
@@ -545,7 +544,7 @@ namespace VTEX
             }
             catch (AggregateException e)
             {
-                var ae = e.InnerExceptions.First() ?? e.InnerException ?? e;
+                var ae = e.InnerExceptions.First();
                 throw new ChangeStatusOrderException(orderId, newStatus.GetHumanReadableValue(), ae);
             }
             catch (Exception e)
@@ -631,7 +630,7 @@ namespace VTEX
             }
             catch (AggregateException e)
             {
-                var ae = e.InnerExceptions.First() ?? e.InnerException ?? e;
+                var ae = e.InnerExceptions.First();
                 throw new ShippingNotificationOrderException(orderId, ae);
             }
             catch (Exception e)

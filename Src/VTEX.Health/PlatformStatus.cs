@@ -1,12 +1,12 @@
 ﻿// ***********************************************************************
 
-using System;
-using CrispyWaffle.Extensions;
-using CrispyWaffle.Serialization;
-using Newtonsoft.Json;
-
 namespace VTEX.Health
 {
+    using System;
+    using CrispyWaffle.Extensions;
+    using CrispyWaffle.Serialization;
+    using Newtonsoft.Json;
+
     /// <summary>
     /// Class PlatformStatus. This class cannot be inherited.
     /// </summary>

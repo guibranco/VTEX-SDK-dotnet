@@ -1,8 +1,6 @@
 ﻿namespace VTEX.Transport
 {
-    using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
-    using Enums;
     using Newtonsoft.Json;
     using System;
 

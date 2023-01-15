@@ -132,14 +132,14 @@
         /// Gets or sets the URL company image.
         /// </summary>
         /// <value>The URL company image.</value>
-        public string URLCompanyImage { get; set; }
+        public string UrlCompanyImage { get; set; }
         /// <summary>
         /// Gets or sets the URL market image.
         /// </summary>
         /// <value>
         /// The URL market image.
         /// </value>
-        public string URLMarketImage { get; set; }
+        public string UrlMarketImage { get; set; }
         /// <summary>
         /// Gets or sets the transferor code.
         /// </summary>

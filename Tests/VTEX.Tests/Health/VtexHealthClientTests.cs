@@ -1,14 +1,14 @@
-﻿using Moq;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using VTEX.Health;
-using Xunit;
-
-namespace VTEX.Tests.Health
+﻿namespace VTEX.Tests.Health
 {
+    using Moq;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using VTEX.Health;
+    using Xunit;
+
     public class VtexHealthClientTests
     {
         [Fact]
