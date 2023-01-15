@@ -34,7 +34,8 @@ namespace VTEX
     /// Class Wrapper. This class cannot be inherited.
     /// </summary>
     /// <seealso cref="IDisposable" />
-    internal sealed class VTEXWrapper : IDisposable
+    // TODO change public to internal after remove from Integracao Service
+    public sealed class VTEXWrapper : IDisposable
     {
         #region Private fields
 
@@ -147,28 +148,40 @@ namespace VTEX
             try
             {
                 _requestMediator.WaitOne();
+
                 LogConsumer.Trace("ServiceInvokerAsync -&gt; Method: {0} | Endpoint: {1}", method.GetHumanReadableValue(), endpoint);
+                
                 LogConsumer.Debug(uriBuilder.ToString());
+
                 var cookieContainer = new CookieContainer();
+
                 using var handler = new HttpClientHandler { CookieContainer = cookieContainer };
+
                 using var client = new HttpClient(handler);
+
                 ConfigureClient(client, requiresAuthentication);
+
                 if (cookie != null)
                 {
                     cookieContainer.Add(uriBuilder.Uri, cookie);
                 }
 
-                response = await RequestInternalAsync(method, token, data, client, uriBuilder)
-                    .ConfigureAwait(false);
+                response = await RequestInternalAsync(method, token, data, client, uriBuilder).ConfigureAwait(false);
+
                 token.ThrowIfCancellationRequested();
+
                 result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
                 response.EnsureSuccessStatusCode();
+
                 return result;
             }
             catch (AggregateException e)
             {
                 var ex = e.InnerExceptions.FirstOrDefault() ?? e.InnerException ?? e;
+
                 exr = HandleException(ex, response, uriBuilder.Uri, method, data, result);
+
                 if (isRetry)
                 {
                     throw exr;
@@ -177,11 +190,13 @@ namespace VTEX
             catch (Exception e)
             {
                 exr = HandleException(e, response, uriBuilder.Uri, method, data, result);
+
                 if (isRetry)
                 {
                     throw exr;
                 }
             }
+
             return await ServiceInvokerInternal(method, endpoint, token, data, uriBuilder, cookie, requiresAuthentication, true).ConfigureAwait(false);
         }
 
@@ -297,6 +312,7 @@ namespace VTEX
                         Content = content
                     };
                     response = await client.SendAsync(request, token).ConfigureAwait(false);
+                    request.Dispose();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(method), method, null);
@@ -348,58 +364,13 @@ namespace VTEX
             string data = null,
             RequestEndpoint restEndpoint = RequestEndpoint.DEFAULT)
         {
-            string host;
             Cookie cookie = null;
             var requiresAuthentication = true;
             var protocol = @"https";
             var port = 443;
-            switch (restEndpoint)
-            {
-                case RequestEndpoint.DEFAULT:
-                    host = $@"{_accountName}.vtexcommercestable.com.br";
-                    endpoint = $@"api/{endpoint}";
-                    break;
-                case RequestEndpoint.PAYMENTS:
-                    host = $@"{_accountName}.vtexpayments.com.br";
-                    endpoint = $@"api/{endpoint}";
-                    break;
-                case RequestEndpoint.LOGISTICS:
-                    host = @"logistics.vtexcommercestable.com.br";
-                    endpoint = $@"api/{endpoint}";
-                    if (queryString == null)
-                    {
-                        queryString = new Dictionary<string, string>();
-                    }
-
-                    queryString.Add(@"an", _accountName);
-                    break;
-                case RequestEndpoint.API:
-                case RequestEndpoint.MASTER_DATA:
-                    host = @"api.vtex.com";
-                    endpoint = $@"{_accountName}/{endpoint}";
-                    break;
-                case RequestEndpoint.BRIDGE:
-                    host = $@"{_accountName}.myvtex.com";
-                    endpoint = $@"api/{endpoint}";
-                    if (!string.IsNullOrWhiteSpace(_authCookie))
-                    {
-                        cookie = new Cookie("VtexIdclientAutCookie", _authCookie);
-                    }
-
-                    break;
-                case RequestEndpoint.HEALTH:
-                    protocol = @"http";
-                    port = 80;
-                    host = @"monitoring.vtex.com";
-                    endpoint = @"api/healthcheck/modules";
-                    requiresAuthentication = false;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(restEndpoint), restEndpoint, null);
-            }
+            var host = GetHostData(ref endpoint, ref queryString, restEndpoint, ref cookie, ref protocol, ref port, ref requiresAuthentication);
             var query = string.Empty;
-            if (queryString != null &&
-                queryString.Count > 0)
+            if (queryString is { Count: > 0 })
             {
                 query = new QueryStringBuilder().AddRange(queryString).ToString();
             }
@@ -410,6 +381,70 @@ namespace VTEX
             };
             return await ServiceInvokerInternal(method, endpoint, token, data, builder, cookie, requiresAuthentication)
                        .ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets the host data.
+        /// </summary>
+        /// <param name="endpoint">The endpoint.</param>
+        /// <param name="queryString">The query string.</param>
+        /// <param name="restEndpoint">The rest endpoint.</param>
+        /// <param name="cookie">The cookie.</param>
+        /// <param name="protocol">The protocol.</param>
+        /// <param name="port">The port.</param>
+        /// <param name="requiresAuthentication">if set to <c>true</c> [requires authentication].</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">restEndpoint - null</exception>
+        private string GetHostData(ref string endpoint, ref Dictionary<string, string> queryString, RequestEndpoint restEndpoint,
+            ref Cookie cookie, ref string protocol, ref int port, ref bool requiresAuthentication)
+        {
+            string host;
+            switch (restEndpoint)
+            {
+                case RequestEndpoint.DEFAULT:
+                    host = $@"{_accountName}.{VTEXConstants.PlatformStableDomain}";
+                    endpoint = $@"api/{endpoint}";
+                    break;
+                case RequestEndpoint.PAYMENTS:
+                    host = $@"{_accountName}.{VTEXConstants.PaymentsDomain}";
+                    endpoint = $@"api/{endpoint}";
+                    break;
+                case RequestEndpoint.LOGISTICS:
+                    host = VTEXConstants.LogisticsDomain;
+                    endpoint = $@"api/{endpoint}";
+                    if (queryString == null)
+                    {
+                        queryString = new();
+                    }
+
+                    queryString.Add(@"an", _accountName);
+                    break;
+                case RequestEndpoint.API:
+                case RequestEndpoint.MASTER_DATA:
+                    host = VTEXConstants.ApiDomain;
+                    endpoint = $@"{_accountName}/{endpoint}";
+                    break;
+                case RequestEndpoint.BRIDGE:
+                    host = $@"{_accountName}.{VTEXConstants.MyVtexDomain}";
+                    endpoint = $@"api/{endpoint}";
+                    if (!string.IsNullOrWhiteSpace(_authCookie))
+                    {
+                        cookie = new(VTEXConstants.VtexIdClientAuthCookieName, _authCookie);
+                    }
+
+                    break;
+                case RequestEndpoint.HEALTH:
+                    protocol = @"http";
+                    port = 80;
+                    host = VTEXConstants.MonitoringDomain;
+                    endpoint = @"api/healthcheck/modules";
+                    requiresAuthentication = false;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(restEndpoint), restEndpoint, null);
+            }
+
+            return host;
         }
 
         #endregion
