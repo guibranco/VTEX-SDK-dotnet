@@ -1,21 +1,9 @@
-﻿// ***********************************************************************
-// Assembly         : VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 01-15-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
-// ***********************************************************************
-// <copyright file="ConnectorResponse.cs" company="Guilherme Branco Stracini">
-//     © 2020 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-namespace VTEX.Transport
+﻿namespace IntegracaoService.VTEX.Transport.PaymentAggregate
 {
     /// <summary>
     /// Class ConnectorResponse. This class cannot be inherited.
     /// </summary>
+
     public sealed class ConnectorResponse
     {
 
@@ -52,29 +40,45 @@ namespace VTEX.Transport
         /// <summary>
         /// Gets or sets the number cv.
         /// </summary>
-        /// <value>The number cv.</value>
+        /// <value>
+        /// The number cv.
+        /// </value>
         public string NumCv { get; set; }
         /// <summary>
         /// Gets or sets the eci.
         /// </summary>
-        /// <value>The eci.</value>
+        /// <value>
+        /// The eci.
+        /// </value>
         public string Eci { get; set; }
 
         /// <summary>
         /// Gets or sets the lr.
         /// </summary>
-        /// <value>The lr.</value>
+        /// <value>
+        /// The lr.
+        /// </value>
         public string Lr { get; set; }
 
         /// <summary>
-        /// Gets or sets the number autent.
+        /// Gets or sets the number authentication.
         /// </summary>
-        /// <value>The number autent.</value>
+        /// <value>
+        /// The number authentication.
+        /// </value>
         public string NumAutent { get; set; }
         /// <summary>
         /// Gets or sets the nsu settle.
         /// </summary>
-        /// <value>The nsu settle.</value>
+        /// <value>
+        /// The nsu settle.
+        /// </value>
         public string NsuSettle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the network.
+        /// </summary>
+        /// <value>The network.</value>
+        public string Network { get; set; }
     }
 }

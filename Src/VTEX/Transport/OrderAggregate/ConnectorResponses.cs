@@ -1,17 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : VTEX
-// Author           : Guilherme Branco Stracini
-// Created          : 01-15-2023
-//
-// Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
-// ***********************************************************************
-// <copyright file="ConnectorResponses.cs" company="Guilherme Branco Stracini">
-//     © 2020 Guilherme Branco Stracini. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-namespace VTEX.Transport
+﻿namespace IntegracaoService.VTEX.Transport.OrderAggregate
 {
     using Newtonsoft.Json;
 
@@ -58,16 +45,20 @@ namespace VTEX.Transport
         /// <summary>
         /// Gets or sets the number cv.
         /// </summary>
-        /// <value>The number cv.</value>
+        /// <value>
+        /// The number cv.
+        /// </value>
         [JsonProperty("NumCv")]
         public string NumCv { get; set; }
 
         /// <summary>
-        /// Gets or sets the number autent.
+        /// Gets or sets the number authentication.
         /// </summary>
-        /// <value>The number autent.</value>
+        /// <value>
+        /// The number authentication.
+        /// </value>
         [JsonProperty("NumAutent")]
-        public string NumAutent { get; set; }
+        public string NumAuthentication { get; set; }
 
         /// <summary>
         /// Gets or sets the arp.
@@ -93,8 +84,31 @@ namespace VTEX.Transport
         /// <summary>
         /// Gets or sets the nsu settle.
         /// </summary>
-        /// <value>The nsu settle.</value>
+        /// <value>
+        /// The nsu settle.
+        /// </value>
         [JsonProperty("NsuSettle")]
         public string NsuSettle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the network.
+        /// </summary>
+        /// <value>The network.</value>
+        [JsonProperty("network")]
+        public string Network { get; set; }
+
+        /// <summary>
+        /// Gets or sets the first digits.
+        /// </summary>
+        /// <value>The first digits.</value>
+        [JsonProperty("firstDigits")]
+        public string FirstDigits { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last digits.
+        /// </summary>
+        /// <value>The last digits.</value>
+        [JsonProperty("lastDigits")]
+        public string LastDigits { get; set; }
     }
 }
