@@ -1,4 +1,17 @@
-﻿namespace IntegracaoService.VTEX.Transport.OrderAggregate
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-16-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-16-2023
+// ***********************************************************************
+// <copyright file="ConnectorResponses.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport.OrderAggregate
 {
     using Newtonsoft.Json;
 
@@ -45,18 +58,14 @@
         /// <summary>
         /// Gets or sets the number cv.
         /// </summary>
-        /// <value>
-        /// The number cv.
-        /// </value>
+        /// <value>The number cv.</value>
         [JsonProperty("NumCv")]
         public string NumCv { get; set; }
 
         /// <summary>
         /// Gets or sets the number authentication.
         /// </summary>
-        /// <value>
-        /// The number authentication.
-        /// </value>
+        /// <value>The number authentication.</value>
         [JsonProperty("NumAutent")]
         public string NumAuthentication { get; set; }
 
@@ -84,9 +93,7 @@
         /// <summary>
         /// Gets or sets the nsu settle.
         /// </summary>
-        /// <value>
-        /// The nsu settle.
-        /// </value>
+        /// <value>The nsu settle.</value>
         [JsonProperty("NsuSettle")]
         public string NsuSettle { get; set; }
 

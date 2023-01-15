@@ -1,7 +1,20 @@
-﻿namespace IntegracaoService.VTEX.Transport.Feed
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-16-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-16-2023
+// ***********************************************************************
+// <copyright file="Feed.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport.Feed
 {
-    using CrispyWaffle.Serialization;
     using System;
+    using CrispyWaffle.Serialization;
 
     /// <summary>
     /// Class Feed.

@@ -18,6 +18,8 @@ namespace VTEX.Transport
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
+    using VTEX.Transport.OrderAggregate;
+    using VTEX.Transport.PaymentAggregate;
 
     /// <summary>
     /// Class PCI payment. This class cannot be inherited.
