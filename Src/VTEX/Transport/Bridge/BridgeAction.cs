@@ -11,7 +11,6 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 namespace VTEX.Transport.Bridge
 {
     using CrispyWaffle.Serialization;
