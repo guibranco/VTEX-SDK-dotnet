@@ -89,5 +89,19 @@ namespace VTEX.Transport
         /// <value>The lock TTL.</value>
         [JsonProperty("lockTTL")]
         public string LockTTL { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pickup point identifier.
+        /// </summary>
+        /// <value>The pickup point identifier.</value>
+        [JsonProperty("pickupPointId")]
+        public NotNullObserver PickupPointId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the transit time.
+        /// </summary>
+        /// <value>The transit time.</value>
+        [JsonProperty("transitTime")]
+        public string TransitTime { get; set; }
     }
 }

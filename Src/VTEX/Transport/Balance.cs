@@ -15,6 +15,7 @@ namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
+    using System;
 
     /// <summary>
     /// Class Balance. This class cannot be inherited.
@@ -63,5 +64,12 @@ namespace VTEX.Transport
         /// <value>The time to refill.</value>
         [JsonProperty("timeToRefill")]
         public NotNullObserver TimeToRefill { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date of supply UTC.
+        /// </summary>
+        /// <value>The date of supply UTC.</value>
+        [JsonProperty("dateOfSupplyUtc")]
+        public DateTime DateOfSupplyUtc { get; set; }
     }
 }

@@ -43,5 +43,12 @@ namespace VTEX.Transport
 
         [JsonProperty("logo")]
         public string Logo { get; set; }
+
+        /// <summary>
+        /// Gets or sets the fulfillment endpoint.
+        /// </summary>
+        /// <value>The fulfillment endpoint.</value>
+        [JsonProperty("fulfillmentEndpoint")]
+        public string FulfillmentEndpoint { get; set; }
     }
 }
