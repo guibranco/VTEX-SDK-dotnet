@@ -4,7 +4,7 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
-// Last Modified On : 01-15-2023
+// Last Modified On : 01-16-2023
 // ***********************************************************************
 // <copyright file="PCIPayment.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
@@ -13,16 +13,16 @@
 // ***********************************************************************
 namespace VTEX.Transport
 {
-    using CrispyWaffle.Serialization;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
+    using CrispyWaffle.Serialization;
     using VTEX.Transport.OrderAggregate;
     using VTEX.Transport.PaymentAggregate;
 
     /// <summary>
-    /// Class PCI payment. This class cannot be inherited.
+    /// Class PCIPayment. This class cannot be inherited.
     /// </summary>
     [Serializer(SerializerFormat.Json)]
     public sealed class PCIPayment
@@ -34,10 +34,7 @@ namespace VTEX.Transport
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
         /// <returns>PciPaymentField.</returns>
-        public PCIPaymentField GetFieldByName([Localizable(false)] string fieldName)
-        {
-            return Fields.SingleOrDefault(f => f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase));
-        }
+        public PCIPaymentField GetFieldByName([Localizable(false)] string fieldName) => Fields.SingleOrDefault(f => f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase));
 
         #endregion
 
@@ -210,6 +207,12 @@ namespace VTEX.Transport
         /// </summary>
         /// <value>The original payment identifier.</value>
         public NotNullObserver OriginalPaymentId { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is billing address different.
+        /// </summary>
+        /// <value><c>true</c> if this instance is billing address different; otherwise, <c>false</c>.</value>
+        public bool IsBillingAddressDifferent { get; set; }
 
         #endregion
     }
