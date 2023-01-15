@@ -118,5 +118,19 @@ namespace VTEX.Transport
         /// <value>The items.</value>
         public ItemOfPackage[] Items { get; set; }
 
+        /// <summary>
+        /// Gets or sets the refunds.
+        /// </summary>
+        /// <value>The refunds.</value>
+        [JsonProperty("restitutions")]
+        public NotNullObserver Refunds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the volumes.
+        /// </summary>
+        /// <value>The volumes.</value>
+        [JsonProperty("volumes")]
+        public int Volumes { get; set; }
+
     }
 }
