@@ -19,7 +19,7 @@ namespace VTEX.Transport
     using System.ComponentModel;
 
     /// <summary>
-    /// A payment.
+    /// Class Payment. This class cannot be inherited.
     /// </summary>
     public sealed class Payment
     {
@@ -195,5 +195,76 @@ namespace VTEX.Transport
 
         [JsonProperty("connectorResponses")]
         public ConnectorResponses ConnectorResponses { get; set; }
+
+        /// <summary>
+        /// Gets or sets the gift card provider.
+        /// </summary>
+        /// <value>The gift card provider.</value>
+        [JsonProperty("giftCardProvider")]
+        public NotNullObserver GiftCardProvider { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the gift card as discount.
+        /// </summary>
+        /// <value>The gift card as discount.</value>
+        [JsonProperty("giftCardAsDiscount")]
+        public NotNullObserver GiftCardAsDiscount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the koin URL.
+        /// </summary>
+        /// <value>The koin URL.</value>
+        [JsonProperty("koinUrl")]
+        public string KoinUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the account identifier.
+        /// </summary>
+        /// <value>The account identifier.</value>
+        [JsonProperty("accountId")]
+        public string AccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the parent account identifier.
+        /// </summary>
+        /// <value>The parent account identifier.</value>
+        [JsonProperty("parentAccountId")]
+        public string ParentAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the bank issued invoice identification number.
+        /// </summary>
+        /// <value>The bank issued invoice identification number.</value>
+        [JsonProperty("bankIssuedInvoiceIdentificationNumber")]
+        public string BankIssuedInvoiceIdentificationNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the bank issued invoice identification number formatted.
+        /// </summary>
+        /// <value>The bank issued invoice identification number formatted.</value>
+        [JsonProperty("bankIssuedInvoiceIdentificationNumberFormatted")]
+        public string BankIssuedInvoiceIdentificationNumberFormatted { get; set; }
+
+        /// <summary>
+        /// Gets or sets the bank issued invoice bar code number.
+        /// </summary>
+        /// <value>The bank issued invoice bar code number.</value>
+        [JsonProperty("bankIssuedInvoiceBarCodeNumber")]
+        public string BankIssuedInvoiceBarCodeNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the bank issued invoice bar code.
+        /// </summary>
+        /// <value>The type of the bank issued invoice bar code.</value>
+        [JsonProperty("bankIssuedInvoiceBarCodeType")]
+        public string BankIssuedInvoiceBarCodeType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the billing address.
+        /// </summary>
+        /// <value>The billing address.</value>
+        [JsonProperty("billingAddress")]
+        public Address BillingAddress { get; set; }
     }
 }
