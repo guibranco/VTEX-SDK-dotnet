@@ -1,41 +1,45 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="OrderCancellation.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
     using System;
 
     /// <summary>
-    ///     An order cancellation.
+    /// An order cancellation.
     /// </summary>
     [Serializer(SerializerFormat.Json)]
     public sealed class OrderCancellation
     {
         /// <summary>
-        ///     Gets or sets the identifier of the order.
+        /// Gets or sets the identifier of the order.
         /// </summary>
-        ///
-        /// <value>
-        ///     The identifier of the order.
-        /// </value>
+        /// <value>The identifier of the order.</value>
 
         public string OrderId { get; set; }
 
         /// <summary>
-        ///     Gets or sets the receipt.
+        /// Gets or sets the receipt.
         /// </summary>
-        ///
-        /// <value>
-        ///     The receipt.
-        /// </value>
+        /// <value>The receipt.</value>
 
         public string Receipt { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Date/Time of the date.
+        /// Gets or sets the Date/Time of the date.
         /// </summary>
-        ///
-        /// <value>
-        ///     The date.
-        /// </value>
+        /// <value>The date.</value>
 
         public DateTime Date { get; set; }
     }

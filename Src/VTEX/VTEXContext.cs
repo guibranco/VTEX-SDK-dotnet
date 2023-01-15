@@ -1,15 +1,27 @@
-﻿using System.Globalization;
-using VTEX.Health;
-
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="VTEXContext.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 namespace VTEX
 {
+    using System.Globalization;
+    using VTEX.Health;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
     using CrispyWaffle.Serialization;
-    using DataEntities;
-    using Enums;
-    using Extensions;
-    using GoodPractices;
+    using VTEX.DataEntities;
+    using VTEX.Enums;
+    using VTEX.Extensions;
+    using VTEX.GoodPractices;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
@@ -18,7 +30,7 @@ namespace VTEX
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Transport;
+    using VTEX.Transport;
 
     /// <summary>
     /// A VTEX Context, that consumes the VTEX Wrapper
@@ -38,17 +50,14 @@ namespace VTEX
         #region ~Ctor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VTEXContext"/> class.
+        /// Initializes a new instance of the <see cref="VTEXContext" /> class.
         /// </summary>
         /// <param name="accountName">Name of the account.</param>
         /// <param name="appKey">The application key.</param>
         /// <param name="appToken">The application token.</param>
         /// <param name="cookie">The cookie.</param>
-        /// <exception cref="System.ArgumentNullException">
-        /// appKey
-        /// or
-        /// appToken
-        /// </exception>
+        /// <exception cref="System.ArgumentNullException">appKey</exception>
+        /// <exception cref="System.ArgumentNullException">appToken</exception>
         public VTEXContext(string accountName, string appKey, string appToken, string cookie = null)
         {
             _wrapper = new VTEXWrapper(accountName);
@@ -137,8 +146,8 @@ namespace VTEX
         /// <param name="queryString">The query string.</param>
         /// <param name="currentPage">The current page.</param>
         /// <param name="result">The result.</param>
-        /// <returns></returns>
-        /// <exception cref="UnexpectedApiResponseException"></exception>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <exception cref="VTEX.GoodPractices.UnexpectedApiResponseException"></exception>
         private bool GetOrderListsValueInternal(
             Dictionary<string, string> queryString,
             int currentPage,
@@ -197,7 +206,8 @@ namespace VTEX
         /// </summary>
         /// <param name="orderId">The id of the order</param>
         /// <returns>Order.</returns>
-        /// <exception cref="InvalidPaymentDataException"></exception>
+        /// <exception cref="VTEX.GoodPractices.InvalidPaymentDataException"></exception>
+        /// <exception cref="VTEX.GoodPractices.UnexpectedApiResponseException"></exception>
         private Order GetOrderInternal(string orderId)
         {
             LogConsumer.Trace("Getting order {0}", orderId);
@@ -283,7 +293,7 @@ namespace VTEX
         /// Gets the feed.
         /// </summary>
         /// <param name="maxLot">The maximum lot.</param>
-        /// <returns></returns>
+        /// <returns>IEnumerable&lt;OrderFeed&gt;.</returns>
         public IEnumerable<OrderFeed> GetFeed(int maxLot = 20)
         {
             //VTEX limitation
@@ -485,7 +495,7 @@ namespace VTEX
         /// Gets the orders by the array of orders identifiers
         /// </summary>
         /// <param name="ordersIds">The orders ids.</param>
-        /// <returns></returns>
+        /// <returns>IEnumerable&lt;Order&gt;.</returns>
         public IEnumerable<Order> GetOrders(string[] ordersIds)
         {
             return GetOrdersInternal(ordersIds);
@@ -495,8 +505,8 @@ namespace VTEX
         /// Cancels the order asynchronous.
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
-        /// <returns></returns>
-        /// <exception cref="InvalidOperationException">Order {orderId} cannot be canceled because isn't in pending payment status on VTEX</exception>
+        /// <returns>A Task&lt;System.String&gt; representing the asynchronous operation.</returns>
+        /// <exception cref="System.InvalidOperationException">Order {orderId} cannot be canceled because isn't in pending payment status on VTEX</exception>
         public async Task<string> CancelOrderAsync(string orderId)
         {
             try
@@ -532,8 +542,8 @@ namespace VTEX
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
         /// <param name="newStatus">The new status.</param>
-        /// <exception cref="ChangeStatusOrderException">
-        /// </exception>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        /// <exception cref="VTEX.GoodPractices.ChangeStatusOrderException"></exception>
         public async Task ChangeOrderStatusAsync(string orderId, OrderStatus newStatus)
         {
             try
@@ -545,7 +555,7 @@ namespace VTEX
             }
             catch (AggregateException e)
             {
-                var ae = e.InnerExceptions.First() ?? e.InnerException ?? e;
+                var ae = e.InnerExceptions.First();
                 throw new ChangeStatusOrderException(orderId, newStatus.GetHumanReadableValue(), ae);
             }
             catch (Exception e)
@@ -558,6 +568,7 @@ namespace VTEX
         /// Notifies the order paid asynchronous.
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task NotifyOrderPaidAsync(string orderId)
         {
             try
@@ -605,9 +616,8 @@ namespace VTEX
         /// <param name="orderId">The order identifier.</param>
         /// <param name="notification">The notification.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
-        /// <exception cref="ShippingNotificationOrderException">
-        /// </exception>
+        /// <returns>A Task&lt;System.String&gt; representing the asynchronous operation.</returns>
+        /// <exception cref="VTEX.GoodPractices.ShippingNotificationOrderException"></exception>
         public async Task<string> NotifyOrderShippedAsync(
             string orderId,
             ShippingNotification notification,
@@ -631,7 +641,7 @@ namespace VTEX
             }
             catch (AggregateException e)
             {
-                var ae = e.InnerExceptions.First() ?? e.InnerException ?? e;
+                var ae = e.InnerExceptions.First();
                 throw new ShippingNotificationOrderException(orderId, ae);
             }
             catch (Exception e)
@@ -643,7 +653,9 @@ namespace VTEX
         /// <summary>
         /// Notifies the order delivered
         /// </summary>
-        /// <param name="tracking"></param>
+        /// <param name="tracking">The tracking.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="VTEX.GoodPractices.TrackingNotificationOrderException"></exception>
         public async ValueTask<string> NotifyOrderDelivered(Tracking tracking)
         {
             try
@@ -673,7 +685,7 @@ namespace VTEX
         /// <param name="orderId">The order identifier.</param>
         /// <param name="invoiceId">The invoice identifier.</param>
         /// <param name="notification">The notification.</param>
-        /// <exception cref="ShippingNotificationOrderException"></exception>
+        /// <exception cref="VTEX.GoodPractices.ShippingNotificationOrderException"></exception>
         public void UpdateOrderInvoice(string orderId, string invoiceId, ShippingNotificationPatch notification)
         {
             try
@@ -698,7 +710,7 @@ namespace VTEX
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
         /// <param name="change">The change.</param>
-        /// <exception cref="ChangeOrderException"></exception>
+        /// <exception cref="VTEX.GoodPractices.ChangeOrderException"></exception>
         public void ChangeOrder(string orderId, ChangeOrder change)
         {
             try
@@ -727,8 +739,8 @@ namespace VTEX
         /// Gets the transaction interactions.
         /// </summary>
         /// <param name="transactionId">The transaction identifier.</param>
-        /// <returns></returns>
-        /// <exception cref="TransactionException"></exception>
+        /// <returns>IEnumerable&lt;TransactionInteraction&gt;.</returns>
+        /// <exception cref="VTEX.GoodPractices.TransactionException"></exception>
         [Pure]
         public IEnumerable<TransactionInteraction> GetTransactionInteractions(string transactionId)
         {
@@ -801,7 +813,8 @@ namespace VTEX
         /// Updates the sku stock.
         /// </summary>
         /// <param name="stockInfo">The stock information.</param>
-        /// <exception cref="UpdateStockInfoSkuException"></exception>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        /// <exception cref="VTEX.GoodPractices.UpdateStockInfoSKUException"></exception>
 
         public async Task UpdateSkuStockAsync(StockInfo stockInfo)
         {
@@ -839,8 +852,8 @@ namespace VTEX
         #region Pricing
 
         /// <summary>
-        /// Get the prices for an SKU.        
-        ///It is possible that on the property "fixedPrices" exists a list of specific prices for Trade Policies and Minimum Quantities of the SKU.Fixed Prices may also be scheduled.
+        /// Get the prices for an SKU.
+        /// It is possible that on the property "fixedPrices" exists a list of specific prices for Trade Policies and Minimum Quantities of the SKU.Fixed Prices may also be scheduled.
         /// </summary>
         /// <param name="skuId">The stock keeping unit identifier</param>
         /// <returns>A task of price</returns>
@@ -880,7 +893,8 @@ namespace VTEX
         /// <param name="price">The price data</param>
         /// <param name="skuId">The stock keeping unit identifier</param>
         /// <param name="token">The cancellation token.</param>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
+        /// <exception cref="VTEX.GoodPractices.UpdatePriceInfoSkuException"></exception>
         public async Task UpdatePriceAsync(Price price, int skuId, CancellationToken token)
         {
             try
@@ -913,7 +927,7 @@ namespace VTEX
         }
 
         /// <summary>
-        /// Removes an SKU price. 
+        /// Removes an SKU price.
         /// This action removes both Base Price and all available Fixed Prices for and SKU in all trade policies.
         /// </summary>
         /// <param name="skuId">The stock keeping unit identifier.</param>
@@ -940,7 +954,7 @@ namespace VTEX
         /// <param name="query">The query.</param>
         /// <param name="keywords">The keywords.</param>
         /// <returns>IEnumerable&lt;BridgeFacet&gt;.</returns>
-        /// <exception cref="BridgeException"></exception>
+        /// <exception cref="VTEX.GoodPractices.BridgeException"></exception>
         [Pure]
         public IEnumerable<BridgeFacet> GetBridgeFacets([Localizable(false)] string query, [Localizable(false)] string keywords = null)
         {
@@ -981,7 +995,7 @@ namespace VTEX
         /// <param name="offSet">The off set.</param>
         /// <param name="limit">The limit.</param>
         /// <returns>IEnumerable&lt;BridgeItem&gt;.</returns>
-        /// <exception cref="BridgeException"></exception>
+        /// <exception cref="VTEX.GoodPractices.BridgeException"></exception>
         [Pure]
         public IEnumerable<BridgeItem> GetBridgeItems(
             [Localizable(false)] string query,
@@ -1036,7 +1050,7 @@ namespace VTEX
         /// <param name="keywords">The keywords.</param>
         /// <param name="facetName">Name of the facet.</param>
         /// <param name="facetValue">The facet value.</param>
-        /// <returns></returns>
+        /// <returns>IEnumerable&lt;BridgeItem&gt;.</returns>
         [Pure]
         public IEnumerable<BridgeItem> GetAllBridgeItems(
             [Localizable(false)] string query,
@@ -1066,7 +1080,7 @@ namespace VTEX
         /// <summary>
         /// Gets the platform status.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IEnumerable&lt;PlatformStatus&gt;.</returns>
         public IEnumerable<PlatformStatus> GetPlatformStatus()
         {
             return GetPlatformStatusAsync(CancellationToken.None).Result;
@@ -1076,7 +1090,7 @@ namespace VTEX
         /// Gets the platform status asynchronous.
         /// </summary>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task&lt;IEnumerable`1&gt; representing the asynchronous operation.</returns>
         [Pure]
         public async Task<IEnumerable<PlatformStatus>> GetPlatformStatusAsync(CancellationToken token)
         {
@@ -1096,7 +1110,7 @@ namespace VTEX
         /// Gets the order payments.
         /// </summary>
         /// <param name="transactionId">The transaction identifier.</param>
-        /// <returns></returns>
+        /// <returns>List&lt;PciPayment&gt;.</returns>
         [Pure]
         public List<PciPayment> GetOrderPayments(string transactionId)
         {
@@ -1125,7 +1139,7 @@ namespace VTEX
         /// </summary>
         /// <param name="fieldId">The field identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task&lt;SpecificationField&gt; representing the asynchronous operation.</returns>
         [Pure]
         public async Task<SpecificationField> GetSpecificationFieldAsync(int fieldId, CancellationToken token)
         {
@@ -1145,7 +1159,7 @@ namespace VTEX
         /// </summary>
         /// <param name="fieldId">The field identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task&lt;ICollection`1&gt; representing the asynchronous operation.</returns>
         [Pure]
         public async Task<ICollection<SpecificationFieldValue>> GetSpecificationFieldValuesAsync(
             int fieldId,
@@ -1168,7 +1182,7 @@ namespace VTEX
         /// <param name="specification">The specification.</param>
         /// <param name="productId">The product identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task UpdateProductSpecificationAsync(
             Specification specification,
             int productId,
@@ -1184,7 +1198,7 @@ namespace VTEX
         /// <param name="specifications">The specifications list.</param>
         /// <param name="productId">The product identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task UpdateProductSpecificationsAsync(
             List<Specification> specifications,
             int productId,
@@ -1209,7 +1223,7 @@ namespace VTEX
         /// </summary>
         /// <param name="fieldValue">The field value.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task InsertSpecificationFieldValueAsync(SpecificationFieldValue fieldValue, CancellationToken token)
         {
             LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
@@ -1238,7 +1252,9 @@ namespace VTEX
         /// <param name="searchedField">The searched field.</param>
         /// <param name="searchedValue">The searched value.</param>
         /// <param name="token">The token.</param>
-        /// <returns></returns>
+        /// <returns>A Task&lt;TDataEntity&gt; representing the asynchronous operation.</returns>
+        /// <exception cref="System.ArgumentNullException">searchedValue</exception>
+        /// <exception cref="VTEX.GoodPractices.UnexpectedApiResponseException"></exception>
         [Pure]
         public async Task<TDataEntity> SearchAsync<TDataEntity>(
              string searchedField,
@@ -1290,7 +1306,9 @@ namespace VTEX
 
         #region IDisposable
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             _wrapper.Dispose();

@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="ConnectorResponses.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using Newtonsoft.Json;
 
@@ -45,18 +58,14 @@
         /// <summary>
         /// Gets or sets the number cv.
         /// </summary>
-        /// <value>
-        /// The number cv.
-        /// </value>
+        /// <value>The number cv.</value>
         [JsonProperty("NumCv")]
         public string NumCv { get; set; }
 
         /// <summary>
         /// Gets or sets the number autent.
         /// </summary>
-        /// <value>
-        /// The number autent.
-        /// </value>
+        /// <value>The number autent.</value>
         [JsonProperty("NumAutent")]
         public string NumAutent { get; set; }
 
@@ -84,9 +93,7 @@
         /// <summary>
         /// Gets or sets the nsu settle.
         /// </summary>
-        /// <value>
-        /// The nsu settle.
-        /// </value>
+        /// <value>The nsu settle.</value>
         [JsonProperty("NsuSettle")]
         public string NsuSettle { get; set; }
     }

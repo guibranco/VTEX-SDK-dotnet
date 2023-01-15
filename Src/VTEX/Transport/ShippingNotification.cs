@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="ShippingNotification.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Serialization;
@@ -29,9 +42,7 @@
         /// <summary>
         /// Gets or sets the type.
         /// </summary>
-        /// <value>
-        /// The type.
-        /// </value>
+        /// <value>The type.</value>
         [JsonIgnore]
         public InvoiceType Type { get; set; }
 

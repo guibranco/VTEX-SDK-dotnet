@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="Installments.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
 
@@ -132,20 +145,16 @@
         /// Gets or sets the URL company image.
         /// </summary>
         /// <value>The URL company image.</value>
-        public string URLCompanyImage { get; set; }
+        public string UrlCompanyImage { get; set; }
         /// <summary>
         /// Gets or sets the URL market image.
         /// </summary>
-        /// <value>
-        /// The URL market image.
-        /// </value>
-        public string URLMarketImage { get; set; }
+        /// <value>The URL market image.</value>
+        public string UrlMarketImage { get; set; }
         /// <summary>
         /// Gets or sets the transferor code.
         /// </summary>
-        /// <value>
-        /// The transferor code.
-        /// </value>
+        /// <value>The transferor code.</value>
         public string TransferorCode { get; set; }
     }
 }

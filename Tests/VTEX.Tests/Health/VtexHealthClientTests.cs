@@ -1,16 +1,35 @@
-﻿using Moq;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using VTEX.Health;
-using Xunit;
-
+﻿// ***********************************************************************
+// Assembly         : VTEX.Tests
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="VtexHealthClientTests.cs" company="VTEX.Tests">
+//     Copyright (c) Guilherme Branco Stracini ME. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 namespace VTEX.Tests.Health
 {
+    using Moq;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using VTEX.Health;
+    using Xunit;
+
+    /// <summary>
+    /// Class VtexHealthClientTests.
+    /// </summary>
     public class VtexHealthClientTests
     {
+        /// <summary>
+        /// Defines the test method ValidateHealthClient.
+        /// </summary>
         [Fact]
         public async Task ValidateHealthClient()
         {

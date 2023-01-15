@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="DateRange.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using System;
     using Newtonsoft.Json;
@@ -12,18 +25,14 @@
         /// <summary>
         /// Gets or sets from.
         /// </summary>
-        /// <value>
-        /// From.
-        /// </value>
+        /// <value>From.</value>
         [JsonIgnore]
         public DateTime From { get; set; }
 
         /// <summary>
         /// Gets or sets from internal.
         /// </summary>
-        /// <value>
-        /// From internal.
-        /// </value>
+        /// <value>From internal.</value>
         [JsonProperty("from")]
         public string FromInternal
         {
@@ -40,18 +49,14 @@
         /// <summary>
         /// Gets or sets to.
         /// </summary>
-        /// <value>
-        /// To.
-        /// </value>
+        /// <value>To.</value>
         [JsonIgnore]
         public DateTime To { get; set; }
 
         /// <summary>
         /// Gets or sets to internal.
         /// </summary>
-        /// <value>
-        /// To internal.
-        /// </value>
+        /// <value>To internal.</value>
         [JsonProperty("to")]
         public string ToInternal
         {

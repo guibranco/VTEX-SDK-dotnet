@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="SpecificationFieldValue.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
@@ -12,63 +25,49 @@
         /// <summary>
         /// Gets or sets the field value identifier.
         /// </summary>
-        /// <value>
-        /// The field value identifier.
-        /// </value>
+        /// <value>The field value identifier.</value>
         [JsonProperty("FieldValueId")]
         public int FieldValueId { get; set; }
 
         /// <summary>
         /// Gets or sets the field identifier.
         /// </summary>
-        /// <value>
-        /// The field identifier.
-        /// </value>
+        /// <value>The field identifier.</value>
         [JsonProperty("FieldId")]
         public int FieldId { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
+        /// <value>The name.</value>
         [JsonProperty("Name")]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the text.
         /// </summary>
-        /// <value>
-        /// The text.
-        /// </value>
+        /// <value>The text.</value>
         [JsonProperty("Text")]
         public string Text { get; set; }
 
         /// <summary>
         /// Gets or sets the value.
         /// </summary>
-        /// <value>
-        /// The value.
-        /// </value>
+        /// <value>The value.</value>
         [JsonProperty("Value")]
         public string Value { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is active.
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is active; otherwise, <c>false</c>.
-        /// </value>
+        /// <value><c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
         [JsonProperty("IsActive")]
         public bool IsActive { get; set; }
 
         /// <summary>
         /// Gets or sets the position.
         /// </summary>
-        /// <value>
-        /// The position.
-        /// </value>
+        /// <value>The position.</value>
         [JsonProperty("Position")]
         public int Position { get; set; }
     }

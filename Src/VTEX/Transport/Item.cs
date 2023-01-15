@@ -1,4 +1,17 @@
-﻿namespace VTEX.Transport
+﻿// ***********************************************************************
+// Assembly         : VTEX
+// Author           : Guilherme Branco Stracini
+// Created          : 01-15-2023
+//
+// Last Modified By : Guilherme Branco Stracini
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="Item.cs" company="Guilherme Branco Stracini">
+//     © 2020 Guilherme Branco Stracini. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace VTEX.Transport
 {
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
@@ -13,9 +26,7 @@
         /// <summary>
         /// Gets or sets the unique identifier.
         /// </summary>
-        /// <value>
-        /// The unique identifier.
-        /// </value>
+        /// <value>The unique identifier.</value>
         [JsonProperty("uniqueId")]
         public Guid UniqueId { get; set; }
 
@@ -36,9 +47,7 @@
         /// <summary>
         /// Gets or sets the ean.
         /// </summary>
-        /// <value>
-        /// The ean.
-        /// </value>
+        /// <value>The ean.</value>
         [JsonProperty("ean")]
         public string Ean { get; set; }
 
@@ -227,126 +236,98 @@
         /// <summary>
         /// Gets or sets the item attachment.
         /// </summary>
-        /// <value>
-        /// The item attachment.
-        /// </value>
+        /// <value>The item attachment.</value>
         [JsonProperty("itemAttachment")]
         public ItemAttachment ItemAttachment { get; set; }
 
         /// <summary>
         /// Gets or sets the attachments.
         /// </summary>
-        /// <value>
-        /// The attachments.
-        /// </value>
+        /// <value>The attachments.</value>
         [JsonProperty("attachments")]
         public NotNullObserver[] Attachments { get; set; }
 
         /// <summary>
         /// Gets or sets the manual price.
         /// </summary>
-        /// <value>
-        /// The manual price.
-        /// </value>
+        /// <value>The manual price.</value>
         [JsonProperty("manualPrice")]
         public NotNullObserver ManualPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the detail URL.
         /// </summary>
-        /// <value>
-        /// The detail URL.
-        /// </value>
+        /// <value>The detail URL.</value>
         [JsonProperty("detailUrl")]
         public string DetailUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the offering information.
         /// </summary>
-        /// <value>
-        /// The offering information.
-        /// </value>
+        /// <value>The offering information.</value>
         [JsonProperty("offeringInfo")]
         public NotNullObserver OfferingInfo { get; set; }
 
         /// <summary>
         /// Gets or sets the shipping price.
         /// </summary>
-        /// <value>
-        /// The shipping price.
-        /// </value>
+        /// <value>The shipping price.</value>
         [JsonProperty("shippingPrice")]
         public NotNullObserver ShippingPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the reward value.
         /// </summary>
-        /// <value>
-        /// The reward value.
-        /// </value>
+        /// <value>The reward value.</value>
         [JsonProperty("rewardValue")]
         public int RewardValue { get; set; }
 
         /// <summary>
         /// Gets or sets the freight commission.
         /// </summary>
-        /// <value>
-        /// The freight commission.
-        /// </value>
+        /// <value>The freight commission.</value>
         [JsonProperty("freightCommission")]
         public int FreightCommission { get; set; }
 
         /// <summary>
         /// Gets or sets the price definitions.
         /// </summary>
-        /// <value>
-        /// The price definitions.
-        /// </value>
+        /// <value>The price definitions.</value>
         [JsonProperty("priceDefinitions")]
         public NotNullObserver PriceDefinitions { get; set; }
 
         /// <summary>
         /// Gets or sets the tax code.
         /// </summary>
-        /// <value>
-        /// The tax code.
-        /// </value>
+        /// <value>The tax code.</value>
         [JsonProperty("taxCode")]
         public string TaxCode { get; set; }
 
         /// <summary>
         /// Gets or sets the product categories.
         /// </summary>
-        /// <value>
-        /// The product categories.
-        /// </value>
+        /// <value>The product categories.</value>
         [JsonProperty("productCategories")]
         public Dictionary<int, string> ProductCategories { get; set; }
 
         /// <summary>
         /// Gets or sets the index of the parent item.
         /// </summary>
-        /// <value>
-        /// The index of the parent item.
-        /// </value>
+        /// <value>The index of the parent item.</value>
         [JsonProperty("parentItemIndex")]
         public NotNullObserver ParentItemIndex { get; set; }
 
         /// <summary>
         /// Gets or sets the parent assembly binding.
         /// </summary>
-        /// <value>
-        /// The parent assembly binding.
-        /// </value>
+        /// <value>The parent assembly binding.</value>
         [JsonProperty("parentAssemblyBinding")]
         public NotNullObserver ParentAssemblyBinding { get; set; }
 
         /// <summary>
         /// Gets or sets the call center operator.
         /// </summary>
-        /// <value>
-        /// The call center operator.
-        /// </value>
+        /// <value>The call center operator.</value>
         [JsonProperty("callCenterOperator")]
         public string CallCenterOperator { get; set; }
     }
