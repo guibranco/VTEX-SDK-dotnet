@@ -25,7 +25,7 @@ namespace VTEX.Transport
     /// Class PCI payment. This class cannot be inherited.
     /// </summary>
     [Serializer(SerializerFormat.Json)]
-    public sealed class PciPayment
+    public sealed class PCIPayment
     {
         #region Public methods
 
@@ -34,7 +34,7 @@ namespace VTEX.Transport
         /// </summary>
         /// <param name="fieldName">Name of the field.</param>
         /// <returns>PciPaymentField.</returns>
-        public PciPaymentField GetFieldByName([Localizable(false)] string fieldName)
+        public PCIPaymentField GetFieldByName([Localizable(false)] string fieldName)
         {
             return Fields.SingleOrDefault(f => f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase));
         }
@@ -197,7 +197,7 @@ namespace VTEX.Transport
         /// Gets or sets the fields.
         /// </summary>
         /// <value>The fields.</value>
-        public IReadOnlyCollection<PciPaymentField> Fields { get; set; }
+        public IReadOnlyCollection<PCIPaymentField> Fields { get; set; }
 
         /// <summary>
         /// Gets or sets the sheets.

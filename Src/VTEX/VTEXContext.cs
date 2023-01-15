@@ -1112,7 +1112,7 @@ namespace VTEX
         /// <param name="transactionId">The transaction identifier.</param>
         /// <returns>List&lt;PciPayment&gt;.</returns>
         [Pure]
-        public List<PciPayment> GetOrderPayments(string transactionId)
+        public List<PCIPayment> GetOrderPayments(string transactionId)
         {
             var json = _wrapper.ServiceInvokerAsync(HttpRequestMethod.GET,
                 $"{PlatformConstants.PciTransactions}/{transactionId}/payments",
@@ -1120,10 +1120,10 @@ namespace VTEX
                 restEndpoint: RequestEndpoint.PAYMENTS).Result;
             if (json == null)
             {
-                return new List<PciPayment>();
+                return new List<PCIPayment>();
             }
 
-            var data = SerializerFactory.GetCustomSerializer<List<PciPayment>>(SerializerFormat.Json).Deserialize(json);
+            var data = SerializerFactory.GetCustomSerializer<List<PCIPayment>>(SerializerFormat.Json).Deserialize(json);
             LogConsumer.Debug(data, $"vtex-order-payemnts-{transactionId}.js");
             return data;
         }
