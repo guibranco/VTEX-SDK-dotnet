@@ -16,7 +16,7 @@ The [VTEX platform](https://www.nuget.org/packages/VTEX) SDK for .NET projects (
 ## Code Quality
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/0db3e765696d4ce18f223aacc38aed47)](https://www.codacy.com/gh/guibranco/VTEX-SDK-dotnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/VTEX-SDK-dotnet&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/0db3e765696d4ce18f223aacc38aed47)](https://www.codacy.com/gh/guibranco/VTEX-SDK-dotnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/VTEX-SDK-dotnet&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/0db3e765696d4ce18f223aacc38aed47)](https://www.codacy.com/gh/guibranco/VTEX-SDK-dotnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/VTEX-SDK-dotnet&amp;utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gh/guibranco/VTEX-SDK-dotnet/branch/main/graph/badge.svg)](https://codecov.io/gh/guibranco/VTEX-SDK-dotnet)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guibranco_VTEX-SDK-dotnet&metric=alert_status)](https://sonarcloud.io/dashboard?id=guibranco_VTEX-SDK-dotnet)
