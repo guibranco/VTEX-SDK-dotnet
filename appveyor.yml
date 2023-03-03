@@ -76,9 +76,7 @@ build_script:
  -l CSharp 
  -t %CODACY_PROJECT_TOKEN% 
  -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
-- ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER -And $env:APPVEYOR_REPO_BRANCH -eq "master") { & 
- dotnet sonarscanner end 
- /d:sonar.login="$env:SONAR_TOKEN" }'
+- dotnet sonarscanner end /d:sonar.login="%SONAR_TOKEN%"
 
 after_build:
 - xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.1\*.* %CD%\Build\
