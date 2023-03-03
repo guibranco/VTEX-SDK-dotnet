@@ -93,7 +93,7 @@ namespace VTEX.Transport
         [JsonProperty("listPrice")]
         public decimal? ListPrice
         {
-            get => _listPriceSet ? _listPrice : (decimal?)null;
+            get => _listPriceSet ? _listPrice : null;
             set
             {
                 if (!value.HasValue)
