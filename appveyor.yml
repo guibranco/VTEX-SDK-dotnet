@@ -21,7 +21,11 @@ dotnet_csproj:
   package_version: '{version}' 
   assembly_version: '{version}' 
   file_version: '{version}' 
-  informational_version: '{version}' 
+  informational_version: '{version}'
+
+init:
+- SET JAVA_HOME=C:\Program Files\Java\jdk19
+- SET PATH=%JAVA_HOME%\bin;%PATH%
 
 before_build:
 - ps: $env:SONAR_PROJECT = "$env:APPVEYOR_REPO_NAME" -replace "/","_"
@@ -68,8 +72,6 @@ build_script:
  /p:CollectCoverage=true 
  /p:CoverletOutputFormat="opencover"
 - codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
-- SET JAVA_HOME=C:\Program Files\Java\jdk19
-- SET PATH=%JAVA_HOME%\bin;%PATH%
 - java 
  -jar 
  ./codacy-test-reporter.jar report 
@@ -80,7 +82,6 @@ build_script:
 
 after_build:
 - xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.1\*.* %CD%\Build\
-
 - copy %CD%\Src\%SOLUTION_NAME%\bin\Release\%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg
 - copy %CD%\Src\%SOLUTION_NAME%.Health\bin\Release\%SOLUTION_NAME%.Health.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.Health.%APPVEYOR_BUILD_VERSION%.nupkg
 
@@ -111,18 +112,18 @@ deploy:
 - provider: Environment
   name: NuGet
   on:
-   branch: master
+   branch: main
   artifact: PackageMain
 
 - provider: Environment
   name: NuGet
   on:
-   branch: master
+   branch: main
   artifact: PackageHealth
 
 - provider: GitHub
   on:
-   branch: master
+   branch: main
   tag: $(appveyor_build_version)
   auth_token: $(GITHUB_TOKEN)
   force_update: true
