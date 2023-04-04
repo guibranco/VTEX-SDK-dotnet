@@ -16,7 +16,9 @@ The [VTEX platform](https://www.nuget.org/packages/VTEX) SDK for .NET projects (
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/0db3e765696d4ce18f223aacc38aed47)](https://www.codacy.com/gh/guibranco/VTEX-SDK-dotnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/VTEX-SDK-dotnet&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/0db3e765696d4ce18f223aacc38aed47)](https://www.codacy.com/gh/guibranco/VTEX-SDK-dotnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=guibranco/VTEX-SDK-dotnet&amp;utm_campaign=Badge_Grade)
+
 [![codecov](https://codecov.io/gh/guibranco/VTEX-SDK-dotnet/branch/main/graph/badge.svg)](https://codecov.io/gh/guibranco/VTEX-SDK-dotnet)
+[![CodeFactor](https://www.codefactor.io/repository/github/guibranco/VTEX-SDK-dotnet/badge)](https://www.codefactor.io/repository/github/guibranco/VTEX-SDK-dotnet)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/adc8920697c01bc3e108/maintainability)](https://codeclimate.com/github/guibranco/VTEX-SDK-dotnet/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/adc8920697c01bc3e108/test_coverage)](https://codeclimate.com/github/guibranco/VTEX-SDK-dotnet/test_coverage)
