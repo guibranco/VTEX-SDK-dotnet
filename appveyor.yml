@@ -51,7 +51,7 @@ build_script:
 - ps: if(-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { $Params += "/d:sonar.branch.name=`"$env:APPVEYOR_REPO_BRANCH`"" }
 - ps: if($env:APPVEYOR_PULL_REQUEST_NUMBER) { $Params += "/d:sonar.pullrequest.key=$env:APPVEYOR_PULL_REQUEST_NUMBER" }
 - ps: Start-process "dotnet" "sonarscanner begin $($Params -join ' ')"
-- codeclimante-test-reporter before-build
+- codeclimate-test-reporter before-build
 - dotnet build %SOLUTION_NAME%.sln
 - dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
 - dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="lcov"
@@ -60,7 +60,7 @@ build_script:
 - java -jar ./codacy-test-reporter.jar report -l CSharp -t %CODACY_PROJECT_TOKEN% -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
 - dotnet sonarscanner end /d:sonar.login="%SONAR_TOKEN%"
 - codeclimate-test-reporter format-coverage -t LCOV -o "%CD%\Tests\%SOLUTION_NAME%.Tests\code-climante.json" "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.info"
-- codeclimate-test-reporter upload-coverage
+- codeclimate-test-reporter upload-coverage -r %CODECLIMATE_TOKEN%
 
 after_build:
 - xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.1\*.* %CD%\Build\
