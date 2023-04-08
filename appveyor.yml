@@ -11,6 +11,8 @@ environment:
     secure: AD1z81FqZlvGkCEyDzJ3g6sIJ93ecUE9EuqfUxc4CMiFGW139pWZk+/huuTY5jzG
   CODACY_PROJECT_TOKEN:
     secure: 8fnQaRryh/pMRB9NtqyX0M0FSfPYW8Rtl1zeYcMXLVaK0o1UC3EAynZSB6rze5wM
+  CODECLIMATE_TOKEN:
+    secure: OYnZbQvxEZxr+V1o2dQPmuoHSq3szKIEd+pMsXaZJY/sePzo+aDODoWsJdcRWftkTTzcfT2oZdB45q43WImHnNvE1cx8pXPx1IcZpOEAo4I=
 
 dotnet_csproj: 
   patch: true 
@@ -32,6 +34,7 @@ before_build:
 - cmd: choco install opencover.portable
 - cmd: choco install codecov
 - cmd: curl -L https://github.com/codacy/codacy-coverage-reporter/releases/latest/download/codacy-coverage-reporter-assembly.jar > ./codacy-test-reporter.jar
+- cmd: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-windows-amd64 > codeclimate-test-reporter.exe
 - cmd: dotnet tool install --global dotnet-sonarscanner
 
 build:
@@ -41,45 +44,27 @@ build:
   verbosity: normal
 
 build_script:
-- ps: 'if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { &
-        dotnet sonarscanner begin 
-         /k:"$env:SONAR_PROJECT" 
-         /o:"$env:SONAR_ORGANIZATION" 
-         /d:sonar.branch.name="$env:APPVEYOR_REPO_BRANCH"
-         /d:sonar.host.url="https://sonarcloud.io" 
-         /d:sonar.login="$env:SONAR_TOKEN" 
-         /v:"$env:APPVEYOR_BUILD_NUMBER" 
-         /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
-         /d:sonar.coverage.exclusions="**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs" 
-         /d:sonar.cs.opencover.reportsPaths="$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml"
-    }'
-- ps: 'if ($env:APPVEYOR_PULL_REQUEST_NUMBER) { &
-        dotnet sonarscanner begin 
-         /k:"$env:SONAR_PROJECT" 
-         /o:"$env:SONAR_ORGANIZATION" 
-         /d:sonar.pullrequest.key="$env:APPVEYOR_PULL_REQUEST_NUMBER"
-         /d:sonar.host.url="https://sonarcloud.io" 
-         /d:sonar.login="$env:SONAR_TOKEN" 
-         /v:"$env:APPVEYOR_BUILD_NUMBER" 
-         /d:sonar.exclusions="**/bin/**/*,**/obj/**/*" 
-         /d:sonar.coverage.exclusions="**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs" 
-         /d:sonar.cs.opencover.reportsPaths="$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml"
-    }'
+- ps: $Params =  "/k:`"$env:SONAR_PROJECT`"", "/o:`"$env:SONAR_ORGANIZATION`"", "/v:`"$env:APPVEYOR_BUILD_NUMBER`""
+- ps: $Params += "/d:sonar.host.url=`"https://sonarcloud.io`"", "/d:sonar.login=`"$env:SONAR_TOKEN`""
+- ps: $Params += "/d:sonar.exclusions=`"**/bin/**/*,**/obj/**/*`"", "/d:sonar.coverage.exclusions=`"**/$env:SOLUTION_NAME.Tests/**,**/*Tests.cs`""
+- ps: $Params += "/d:sonar.cs.opencover.reportsPaths=`"$env:CD\Tests\$env:SOLUTION_NAME.Tests\coverage.opencover.xml`""
+- ps: if(-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) { $Params += "/d:sonar.branch.name=`"$env:APPVEYOR_REPO_BRANCH`"" }
+- ps: if($env:APPVEYOR_PULL_REQUEST_NUMBER) { $Params += "/d:sonar.pullrequest.key=$env:APPVEYOR_PULL_REQUEST_NUMBER" }
+- ps: Start-process "dotnet" "sonarscanner begin $($Params -join ' ')"
+- codeclimante-test-reporter before-build
 - dotnet build %SOLUTION_NAME%.sln
-- dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj 
- /p:CollectCoverage=true 
- /p:CoverletOutputFormat="opencover"
+- dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
+- dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="lcov"
+- dotnet test .\Tests\%SOLUTION_NAME%.Tests\%SOLUTION_NAME%.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat="opencover"
 - codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
-- java 
- -jar 
- ./codacy-test-reporter.jar report 
- -l CSharp 
- -t %CODACY_PROJECT_TOKEN% 
- -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
+- java -jar ./codacy-test-reporter.jar report -l CSharp -t %CODACY_PROJECT_TOKEN% -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
 - dotnet sonarscanner end /d:sonar.login="%SONAR_TOKEN%"
+- codeclimate-test-reporter format-coverage -t LCOV -o "%CD%\Tests\%SOLUTION_NAME%.Tests\code-climante.json" "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.info"
+- codeclimate-test-reporter upload-coverage
 
 after_build:
 - xcopy %CD%\Src\%SOLUTION_NAME%\bin\Release\netstandard2.1\*.* %CD%\Build\
+
 - copy %CD%\Src\%SOLUTION_NAME%\bin\Release\%SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.%APPVEYOR_BUILD_VERSION%.nupkg
 - copy %CD%\Src\%SOLUTION_NAME%.Health\bin\Release\%SOLUTION_NAME%.Health.%APPVEYOR_BUILD_VERSION%.nupkg %SOLUTION_NAME%.Health.%APPVEYOR_BUILD_VERSION%.nupkg
 
@@ -87,6 +72,7 @@ after_build:
 
 - xcopy %CD%\Tests\%SOLUTION_NAME%.Tests\*.xml %CD%\Coverage\
 - xcopy %CD%\Tests\%SOLUTION_NAME%.Tests\*.json %CD%\Coverage\
+- xcopy %CD%\Tests\%SOLUTION_NAME%.Tests\*.info %CD%\Coverage\
 
 - cd %CD%
 
