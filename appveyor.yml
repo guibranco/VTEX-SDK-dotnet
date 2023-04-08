@@ -59,7 +59,7 @@ build_script:
 - codecov -f "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
 - java -jar ./codacy-test-reporter.jar report -l CSharp -t %CODACY_PROJECT_TOKEN% -r "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.opencover.xml"
 - dotnet sonarscanner end /d:sonar.login="%SONAR_TOKEN%"
-- codeclimate-test-reporter format-coverage -t LCOV -o "%CD%\Tests\%SOLUTION_NAME%.Tests\code-climante.json" "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.info"
+- codeclimate-test-reporter format-coverage -t lcov -o "%CD%\Tests\%SOLUTION_NAME%.Tests\code-climante.json" "%CD%\Tests\%SOLUTION_NAME%.Tests\coverage.info"
 - codeclimate-test-reporter upload-coverage -r %CODECLIMATE_TOKEN%
 
 after_build:
