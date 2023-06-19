@@ -17,6 +17,5 @@ namespace VTEX.DataEntities
     /// The data entity interface.
     /// All data entity classes must inherits this interface.
     /// </summary>
-    public interface IDataEntity
-    { }
+    public interface IDataEntity { }
 }

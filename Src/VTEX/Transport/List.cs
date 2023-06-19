@@ -242,6 +242,5 @@ namespace VTEX.Transport
         /// <value>The invoice input.</value>
         [JsonProperty("invoiceInput")]
         public string[] InvoiceInput { get; set; }
-
     }
 }

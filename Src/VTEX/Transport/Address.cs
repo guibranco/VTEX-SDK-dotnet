@@ -20,7 +20,6 @@ namespace VTEX.Transport
     /// </summary>
     public sealed class Address
     {
-
         /// <summary>
         /// Gets or sets the type of the address.
         /// </summary>

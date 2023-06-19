@@ -23,6 +23,7 @@ namespace VTEX.Transport
         /// </summary>
         /// <value>The bar code image.</value>
         public string BarCodeImage { get; set; }
+
         /// <summary>
         /// Gets or sets the bar code number.
         /// </summary>

@@ -52,10 +52,13 @@ namespace VTEX.Tests.Health
             };
 
             var clientMock = new Mock<IVtexHealthClient>();
-            clientMock.Setup(c => c.GetPlatformStatuesAsync(It.IsAny<CancellationToken>()))
-                      .ReturnsAsync(fixtures);
+            clientMock
+                .Setup(c => c.GetPlatformStatuesAsync(It.IsAny<CancellationToken>()))
+                .ReturnsAsync(fixtures);
 
-            var result = await clientMock.Object.GetPlatformStatuesAsync(CancellationToken.None).ConfigureAwait(false);
+            var result = await clientMock.Object
+                .GetPlatformStatuesAsync(CancellationToken.None)
+                .ConfigureAwait(false);
 
             Assert.NotNull(result);
 

@@ -130,7 +130,8 @@ namespace VTEX.Transport
         /// <value>The status pedido.</value>
 
         [JsonIgnore]
-        public OrderStatus Status => EnumExtensions.GetEnumByInternalValueAttribute<OrderStatus>(StatusInternal);
+        public OrderStatus Status =>
+            EnumExtensions.GetEnumByInternalValueAttribute<OrderStatus>(StatusInternal);
 
         /// <summary>
         /// Gets or sets information describing the status.

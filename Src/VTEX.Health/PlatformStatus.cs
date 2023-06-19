@@ -69,6 +69,5 @@ namespace VTEX.Health
                 }
             }
         }
-
     }
 }

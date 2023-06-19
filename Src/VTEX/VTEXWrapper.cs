@@ -77,7 +77,9 @@ namespace VTEX
                     return _internalUserAgent;
                 }
 
-                var assembly = System.Reflection.Assembly.GetAssembly(typeof(VTEXWrapper)).GetName();
+                var assembly = System.Reflection.Assembly
+                    .GetAssembly(typeof(VTEXWrapper))
+                    .GetName();
                 _internalUserAgent = $@"{assembly.Name}/{assembly.Version}";
                 return _internalUserAgent;
             }
@@ -140,7 +142,8 @@ namespace VTEX
             UriBuilder uriBuilder,
             Cookie cookie,
             bool requiresAuthentication,
-            bool isRetry = false)
+            bool isRetry = false
+        )
         {
             HttpResponseMessage response = null;
             string result = null;
@@ -149,8 +152,12 @@ namespace VTEX
             {
                 _requestMediator.WaitOne();
 
-                LogConsumer.Trace("ServiceInvokerAsync -&gt; Method: {0} | Endpoint: {1}", method.GetHumanReadableValue(), endpoint);
-                
+                LogConsumer.Trace(
+                    "ServiceInvokerAsync -&gt; Method: {0} | Endpoint: {1}",
+                    method.GetHumanReadableValue(),
+                    endpoint
+                );
+
                 LogConsumer.Debug(uriBuilder.ToString());
 
                 var cookieContainer = new CookieContainer();
@@ -166,7 +173,8 @@ namespace VTEX
                     cookieContainer.Add(uriBuilder.Uri, cookie);
                 }
 
-                response = await RequestInternalAsync(method, token, data, client, uriBuilder).ConfigureAwait(false);
+                response = await RequestInternalAsync(method, token, data, client, uriBuilder)
+                    .ConfigureAwait(false);
 
                 token.ThrowIfCancellationRequested();
 
@@ -197,7 +205,17 @@ namespace VTEX
                 }
             }
 
-            return await ServiceInvokerInternal(method, endpoint, token, data, uriBuilder, cookie, requiresAuthentication, true).ConfigureAwait(false);
+            return await ServiceInvokerInternal(
+                    method,
+                    endpoint,
+                    token,
+                    data,
+                    uriBuilder,
+                    cookie,
+                    requiresAuthentication,
+                    true
+                )
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -217,7 +235,8 @@ namespace VTEX
             Uri uri,
             HttpRequestMethod method,
             string data,
-            string result)
+            string result
+        )
         {
             var statusCode = 0;
             if (response != null)
@@ -225,26 +244,36 @@ namespace VTEX
                 statusCode = (int)response.StatusCode;
             }
 
-            var ex = new UnexpectedApiResponseException(uri, method.ToString(), data, result, statusCode, exception);
-            if (statusCode == 429 ||
-                statusCode == 503)
+            var ex = new UnexpectedApiResponseException(
+                uri,
+                method.ToString(),
+                data,
+                result,
+                statusCode,
+                exception
+            );
+            if (statusCode == 429 || statusCode == 503)
             {
                 _requestMediator.Reset();
-                LogConsumer.Warning("HTTP {2} status code on method {0} - uri {1}", method.ToString(), uri, statusCode);
+                LogConsumer.Warning(
+                    "HTTP {2} status code on method {0} - uri {1}",
+                    method.ToString(),
+                    uri,
+                    statusCode
+                );
                 Thread.Sleep(60 * 1000);
                 _requestMediator.Set();
                 return ex;
             }
-            if (statusCode != 0 &&
-                statusCode != 408 &&
-                statusCode != 500 &&
-                statusCode != 502)
+            if (statusCode != 0 && statusCode != 408 && statusCode != 500 && statusCode != 502)
             {
                 throw ex;
             }
 
             LogConsumer.Warning("Retrying the {0} request", method.ToString());
-            TelemetryAnalytics.TrackHit($"VTEX_handle_exception_retrying_{method.ToString()}_request");
+            TelemetryAnalytics.TrackHit(
+                $"VTEX_handle_exception_retrying_{method.ToString()}_request"
+            );
             return ex;
         }
 
@@ -257,8 +286,13 @@ namespace VTEX
         {
             client.DefaultRequestHeaders.ExpectContinue = false;
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(@"application/json"));
-            client.DefaultRequestHeaders.TryAddWithoutValidation(@"User-Agent", $@"guiBranco-VTEX-SDK-dotnet {InternalUserAgent} +https://github.com/guibranco/VTEX-SDK-dotnet");
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue(@"application/json")
+            );
+            client.DefaultRequestHeaders.TryAddWithoutValidation(
+                @"User-Agent",
+                $@"guiBranco-VTEX-SDK-dotnet {InternalUserAgent} +https://github.com/guibranco/VTEX-SDK-dotnet"
+            );
             if (!requiresAuthentication)
             {
                 return;
@@ -283,7 +317,8 @@ namespace VTEX
             CancellationToken token,
             string data,
             HttpClient client,
-            UriBuilder uriBuilder)
+            UriBuilder uriBuilder
+        )
         {
             HttpResponseMessage response;
             StringContent content = null;
@@ -295,16 +330,22 @@ namespace VTEX
             switch (method)
             {
                 case HttpRequestMethod.DELETE:
-                    response = await client.DeleteAsync(uriBuilder.Uri, token).ConfigureAwait(false);
+                    response = await client
+                        .DeleteAsync(uriBuilder.Uri, token)
+                        .ConfigureAwait(false);
                     break;
                 case HttpRequestMethod.GET:
                     response = await client.GetAsync(uriBuilder.Uri, token).ConfigureAwait(false);
                     break;
                 case HttpRequestMethod.POST:
-                    response = await client.PostAsync(uriBuilder.Uri, content, token).ConfigureAwait(false);
+                    response = await client
+                        .PostAsync(uriBuilder.Uri, content, token)
+                        .ConfigureAwait(false);
                     break;
                 case HttpRequestMethod.PUT:
-                    response = await client.PutAsync(uriBuilder.Uri, content, token).ConfigureAwait(false);
+                    response = await client
+                        .PutAsync(uriBuilder.Uri, content, token)
+                        .ConfigureAwait(false);
                     break;
                 case HttpRequestMethod.PATCH:
                     var request = new HttpRequestMessage(new HttpMethod(@"PATCH"), uriBuilder.Uri)
@@ -362,13 +403,22 @@ namespace VTEX
             CancellationToken token,
             Dictionary<string, string> queryString = null,
             string data = null,
-            RequestEndpoint restEndpoint = RequestEndpoint.DEFAULT)
+            RequestEndpoint restEndpoint = RequestEndpoint.DEFAULT
+        )
         {
             Cookie cookie = null;
             var requiresAuthentication = true;
             var protocol = @"https";
             var port = 443;
-            var host = GetHostData(ref endpoint, ref queryString, restEndpoint, ref cookie, ref protocol, ref port, ref requiresAuthentication);
+            var host = GetHostData(
+                ref endpoint,
+                ref queryString,
+                restEndpoint,
+                ref cookie,
+                ref protocol,
+                ref port,
+                ref requiresAuthentication
+            );
             var query = string.Empty;
             if (queryString is { Count: > 0 })
             {
@@ -379,8 +429,16 @@ namespace VTEX
             {
                 Query = query.Replace(@"?", string.Empty)
             };
-            return await ServiceInvokerInternal(method, endpoint, token, data, builder, cookie, requiresAuthentication)
-                       .ConfigureAwait(false);
+            return await ServiceInvokerInternal(
+                    method,
+                    endpoint,
+                    token,
+                    data,
+                    builder,
+                    cookie,
+                    requiresAuthentication
+                )
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -395,8 +453,15 @@ namespace VTEX
         /// <param name="requiresAuthentication">if set to <c>true</c> [requires authentication].</param>
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentOutOfRangeException">restEndpoint - null</exception>
-        private string GetHostData(ref string endpoint, ref Dictionary<string, string> queryString, RequestEndpoint restEndpoint,
-            ref Cookie cookie, ref string protocol, ref int port, ref bool requiresAuthentication)
+        private string GetHostData(
+            ref string endpoint,
+            ref Dictionary<string, string> queryString,
+            RequestEndpoint restEndpoint,
+            ref Cookie cookie,
+            ref string protocol,
+            ref int port,
+            ref bool requiresAuthentication
+        )
         {
             string host;
             switch (restEndpoint)

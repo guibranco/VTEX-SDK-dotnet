@@ -63,13 +63,17 @@ namespace VTEX.Health
         #region Implementation of IVtexHealthClient
 
         /// <inheritdoc />
-        public async Task<IEnumerable<PlatformStatus>> GetPlatformStatuesAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<PlatformStatus>> GetPlatformStatuesAsync(
+            CancellationToken cancellationToken
+        )
         {
             _logger.LogDebug("Getting platform status");
             var response = await _httpClient.GetAsync("/", cancellationToken).ConfigureAwait(false);
             var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             _logger.LogDebug($"Platform status response: {response.StatusCode}");
-            return response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<PlatformStatus[]>(responseContent) : default;
+            return response.IsSuccessStatusCode
+                ? JsonConvert.DeserializeObject<PlatformStatus[]>(responseContent)
+                : default;
         }
 
         #endregion

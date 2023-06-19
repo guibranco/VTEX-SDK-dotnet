@@ -27,6 +27,7 @@ namespace VTEX.Transport
         /// <value>The type.</value>
         [JsonProperty("type")]
         public string Type { get; set; }
+
         /// <summary>
         /// Gets or sets the invoice number.
         /// </summary>
@@ -131,6 +132,5 @@ namespace VTEX.Transport
         /// <value>The volumes.</value>
         [JsonProperty("volumes")]
         public int Volumes { get; set; }
-
     }
 }

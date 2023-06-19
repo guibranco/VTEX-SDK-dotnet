@@ -42,7 +42,6 @@ namespace VTEX.Transport
         [JsonProperty("incrementValue")]
         public int IncrementedValue { get; set; }
 
-
         /// <summary>
         /// Gets or sets the items added.
         /// </summary>
