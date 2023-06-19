@@ -26,12 +26,14 @@ namespace VTEX.Health
         [InternalValue("unhealthy")]
         [HumanReadable("Unhealthy")]
         UNHEALTHY,
+
         /// <summary>
         /// The warning.
         /// </summary>
         [InternalValue("warning")]
         [HumanReadable("Warning")]
         WARNING,
+
         /// <summary>
         /// The healthy.
         /// </summary>
@@ -45,6 +47,5 @@ namespace VTEX.Health
         [InternalValue("stopped")]
         [HumanReadable("Stopped")]
         STOPPED,
-
     }
 }

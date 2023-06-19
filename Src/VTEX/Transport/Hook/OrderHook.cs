@@ -33,5 +33,3 @@ namespace VTEX.Transport.Hook
         public Hook Hook { get; set; }
     }
 }
-
-

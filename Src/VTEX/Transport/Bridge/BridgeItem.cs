@@ -56,7 +56,8 @@ namespace VTEX.Transport.Bridge
             set
             {
                 var json = JToken.Parse(value).ToString();
-                _actions = SerializerFactory.GetSerializer<List<BridgeAction>>()
+                _actions = SerializerFactory
+                    .GetSerializer<List<BridgeAction>>()
                     .Deserialize(json)
                     .ToArray();
             }

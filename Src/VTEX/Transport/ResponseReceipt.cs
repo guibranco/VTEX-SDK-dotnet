@@ -28,6 +28,7 @@ namespace VTEX.Transport
         /// The date
         /// </summary>
         private DateTime _date;
+
         /// <summary>
         /// The date set
         /// </summary>
@@ -40,9 +41,7 @@ namespace VTEX.Transport
         [JsonProperty("date")]
         public string DateInternal
         {
-            get => _dateSet
-                       ? _date.ToString(@"s", CultureInfo.InvariantCulture)
-                       : null;
+            get => _dateSet ? _date.ToString(@"s", CultureInfo.InvariantCulture) : null;
             set
             {
                 _dateSet = true;
@@ -81,6 +80,5 @@ namespace VTEX.Transport
         /// <value>The receipt.</value>
         [JsonProperty("receipt")]
         public string Receipt { get; set; }
-
     }
 }

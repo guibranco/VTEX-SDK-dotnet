@@ -151,6 +151,5 @@ namespace VTEX.DataEntities
         /// <value>The is free state registration.</value>
         [JsonProperty("isFreeStateRegistration")]
         public bool IsFreeStateRegistration { get; set; }
-
     }
 }

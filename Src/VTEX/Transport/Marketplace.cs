@@ -49,6 +49,5 @@ namespace VTEX.Transport
         /// <value><c>true</c> if this instance is certified; otherwise, <c>false</c>.</value>
         [JsonProperty("isCertified")]
         public bool? IsCertified { get; set; }
-
     }
 }

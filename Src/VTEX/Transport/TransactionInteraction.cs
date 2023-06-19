@@ -71,4 +71,3 @@ namespace VTEX.Transport
         public long Ticks { get; set; }
     }
 }
-

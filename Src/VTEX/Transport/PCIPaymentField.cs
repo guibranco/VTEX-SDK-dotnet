@@ -23,6 +23,7 @@ namespace VTEX.Transport
         /// </summary>
         /// <value>The name.</value>
         public string Name { get; set; }
+
         /// <summary>
         /// Gets or sets the value.
         /// </summary>

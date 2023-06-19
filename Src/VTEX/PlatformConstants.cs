@@ -19,7 +19,6 @@ namespace VTEX
     //TODO replace public to internal after remove the old code from Integração Service.
     public static class PlatformConstants
     {
-
         /// <summary>
         /// The order hook
         /// </summary>

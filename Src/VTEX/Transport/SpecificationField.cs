@@ -122,6 +122,5 @@ namespace VTEX.Transport
         /// </summary>
         /// <value>The name of the field group.</value>
         public string FieldGroupName { get; set; }
-
     }
 }

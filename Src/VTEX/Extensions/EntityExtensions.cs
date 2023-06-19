@@ -34,8 +34,9 @@ namespace VTEX.Extensions
                 throw new ArgumentNullException(nameof(type));
             }
 
-            return type.GetCustomAttributes(typeof(DataEntityNameAttribute), true)
-                is DataEntityNameAttribute[] { Length: 1 } attributes
+            return
+                type.GetCustomAttributes(typeof(DataEntityNameAttribute), true)
+                    is DataEntityNameAttribute[] { Length: 1 } attributes
                 ? attributes[0].EntityName
                 : type.Name.ToUpperInvariant().Substring(0, 2);
         }

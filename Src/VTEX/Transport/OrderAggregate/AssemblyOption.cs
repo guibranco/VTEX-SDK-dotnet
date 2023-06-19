@@ -16,7 +16,5 @@ namespace VTEX.Transport.OrderAggregate
     /// <summary>
     /// Class AssemblyOption.
     /// </summary>
-    public class AssemblyOption
-    {
-    }
+    public class AssemblyOption { }
 }

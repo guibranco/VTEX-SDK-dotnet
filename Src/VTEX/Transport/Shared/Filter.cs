@@ -23,6 +23,5 @@ namespace VTEX.Transport.Shared
         /// </summary>
         /// <value>The status.</value>
         public string[] Status { get; set; }
-
     }
 }

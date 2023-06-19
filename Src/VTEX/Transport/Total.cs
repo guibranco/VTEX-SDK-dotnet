@@ -45,7 +45,6 @@ namespace VTEX.Transport
         [JsonProperty("value")]
         public int Value { get; set; }
 
-
         /// <summary>
         /// Gets or sets the alternative totals.
         /// </summary>

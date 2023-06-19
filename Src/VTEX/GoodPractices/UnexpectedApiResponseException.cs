@@ -49,8 +49,18 @@ namespace VTEX.GoodPractices
         /// <param name="responseBody">The response body.</param>
         /// <param name="statusCode">The HTTP status code of response.</param>
         /// <param name="innerException">The inner exception.</param>
-        public UnexpectedApiResponseException(Uri uri, string method, string requestBody, string responseBody, int statusCode, Exception innerException)
-            : base($"Unable to complete {method} request to VTEX REST API at Endpoint: {uri}", innerException)
+        public UnexpectedApiResponseException(
+            Uri uri,
+            string method,
+            string requestBody,
+            string responseBody,
+            int statusCode,
+            Exception innerException
+        )
+            : base(
+                $"Unable to complete {method} request to VTEX REST API at Endpoint: {uri}",
+                innerException
+            )
         {
             Request = requestBody;
             Response = responseBody;
@@ -62,8 +72,8 @@ namespace VTEX.GoodPractices
         /// </summary>
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-        protected UnexpectedApiResponseException(SerializationInfo info, StreamingContext context) : base(info, context)
-        { }
+        protected UnexpectedApiResponseException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
 
         #endregion
 

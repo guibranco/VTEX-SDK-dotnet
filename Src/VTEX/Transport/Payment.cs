@@ -204,7 +204,6 @@ namespace VTEX.Transport
         [JsonProperty("giftCardProvider")]
         public NotNullObserver GiftCardProvider { get; set; }
 
-
         /// <summary>
         /// Gets or sets the gift card as discount.
         /// </summary>

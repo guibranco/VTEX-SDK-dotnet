@@ -36,6 +36,5 @@ namespace VTEX.Transport.Bridge
         /// <value>The URL callback.</value>
         [JsonProperty("urlcallback")]
         public string UrlCallback { get; set; }
-
     }
 }

@@ -84,6 +84,5 @@ namespace VTEX.Transport
         /// <value>The name of the jurisdiction.</value>
         [JsonProperty("jurisName")]
         public string JurisdictionName { get; set; }
-
     }
 }

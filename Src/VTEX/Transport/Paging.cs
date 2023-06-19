@@ -26,6 +26,7 @@ namespace VTEX.Transport
         /// <value>The page.</value>
         [JsonProperty("page")]
         public int Page { get; set; }
+
         /// <summary>
         /// Gets or sets the number of.
         /// </summary>

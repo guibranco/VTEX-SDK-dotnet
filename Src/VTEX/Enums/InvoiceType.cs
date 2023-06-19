@@ -21,7 +21,6 @@ namespace VTEX.Enums
     /// </summary>
     public enum InvoiceType
     {
-
         /// <summary>
         /// The output.
         /// </summary>

@@ -20,7 +20,6 @@ namespace VTEX.Transport
     /// </summary>
     public sealed class Facet
     {
-
         /// <summary>
         /// Gets or sets the name.
         /// </summary>

@@ -27,6 +27,8 @@ namespace VTEX.Health
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;IEnumerable&lt;PlatformStatus&gt;&gt;.</returns>
-        Task<IEnumerable<PlatformStatus>> GetPlatformStatuesAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<PlatformStatus>> GetPlatformStatuesAsync(
+            CancellationToken cancellationToken
+        );
     }
 }

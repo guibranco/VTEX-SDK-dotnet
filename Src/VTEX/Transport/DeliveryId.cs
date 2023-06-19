@@ -20,7 +20,6 @@ namespace VTEX.Transport
     /// </summary>
     public sealed class DeliveryId
     {
-
         /// <summary>
         /// Gets or sets the courier identifier.
         /// </summary>

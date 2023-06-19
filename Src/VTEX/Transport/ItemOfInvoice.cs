@@ -40,7 +40,5 @@ namespace VTEX.Transport
         /// <value>The price.</value>
         [JsonProperty("price")]
         public int Price { get; set; }
-
     }
-
 }

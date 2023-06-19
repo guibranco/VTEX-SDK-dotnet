@@ -32,6 +32,7 @@ namespace VTEX.Transport
         /// The list price
         /// </summary>
         private decimal _listPrice;
+
         /// <summary>
         /// The list price set
         /// </summary>
@@ -41,6 +42,7 @@ namespace VTEX.Transport
         /// The cost price
         /// </summary>
         private decimal _costPrice;
+
         /// <summary>
         /// The cost price set
         /// </summary>
@@ -50,6 +52,7 @@ namespace VTEX.Transport
         /// The base price
         /// </summary>
         private decimal _basePrice;
+
         /// <summary>
         /// The base price set
         /// </summary>
@@ -59,6 +62,7 @@ namespace VTEX.Transport
         /// The markup
         /// </summary>
         private decimal? _markup;
+
         /// <summary>
         /// The markup set
         /// </summary>
@@ -68,6 +72,7 @@ namespace VTEX.Transport
         /// The fixed prices
         /// </summary>
         private FixedPrice[] _fixedPrices;
+
         /// <summary>
         /// The fixed prices set
         /// </summary>
@@ -77,6 +82,7 @@ namespace VTEX.Transport
         /// The item identifier
         /// </summary>
         private int _itemId;
+
         /// <summary>
         /// The item identifier set
         /// </summary>
@@ -192,7 +198,6 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-
         public bool ShouldSerializeListPrice() => _listPriceSet;
 
         /// <summary>
@@ -201,7 +206,6 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-
         public bool ShouldSerializeCostPrice() => _costPriceSet;
 
         /// <summary>
@@ -210,7 +214,6 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-
         public bool ShouldSerializeBasePrice() => _basePriceSet;
 
         /// <summary>
@@ -219,7 +222,6 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-
         public bool ShouldSerializeMarkup() => _markupSet;
 
         /// <summary>
@@ -228,7 +230,6 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-
         public bool ShouldSerializeFixedPrices() => _fixedPricesSet;
 
         /// <summary>
@@ -237,7 +238,6 @@ namespace VTEX.Transport
         /// <returns>Returns <c>true</c> when the field should be serialized, false otherwise</returns>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-
         public bool ShouldSerializeItemId() => _itemIdSet;
 
         #endregion

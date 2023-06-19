@@ -31,6 +31,5 @@ namespace VTEX.Transport.Feed
         /// </summary>
         /// <value>The queue.</value>
         public FeedQueue Queue { get; set; }
-
     }
 }

@@ -23,7 +23,6 @@ namespace VTEX.Transport
     [Serializer(SerializerFormat.Json)]
     public sealed class StockInfo
     {
-
         /// <summary>
         /// Gets or sets the identifier of the ware house.
         /// </summary>
