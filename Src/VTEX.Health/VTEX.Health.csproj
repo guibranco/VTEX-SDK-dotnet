@@ -7,7 +7,7 @@
     <LangVersion>latest</LangVersion>
     <Company>Guilherme Branco Stracini</Company>
     <Authors>Guilherme Branco Stracini</Authors>
-    <Copyright>© 2020 Guilherme Branco Stracini. All rights reserved.</Copyright>
+    <Copyright>© 2023 Guilherme Branco Stracini. All rights reserved.</Copyright>
     <Description>The VTEX platform (PaaS) (e-commerce) SDK. A .NET client to consume VTEX APIs for both Core and Framework projects</Description>    
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://guibranco.github.io/VTEX-SDK-dotnet/</PackageProjectUrl>
@@ -16,7 +16,7 @@
     <PackageTags>vtex paas client sdk ecommerce e-commerce platform apis</PackageTags>
     <PackageIcon>packageLogo.png</PackageIcon>    
     <PackageReadmeFile>README.md</PackageReadmeFile>
-	  <Version>1.0.0</Version>
+    <Version>1.0.0</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
