@@ -1,4 +1,5 @@
 theme: jekyll-theme-leap-day
 title: VTEX SDK (.NET)
+description: 🛒 ⚙️ VTEX platform .NET SDK
 logo: https://raw.githubusercontent.com/guibranco/VTEX-SDK-dotnet/main/packageLogo.png
 show_downloads: true
