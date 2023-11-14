@@ -13,12 +13,12 @@
 // ***********************************************************************
 namespace VTEX.Transport.Bridge
 {
-    using CrispyWaffle.Serialization;
-    using Newtonsoft.Json.Linq;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using CrispyWaffle.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Class BridgeItem. This class cannot be inherited.

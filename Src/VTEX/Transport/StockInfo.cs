@@ -13,9 +13,9 @@
 // ***********************************************************************
 namespace VTEX.Transport
 {
+    using System;
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
-    using System;
 
     /// <summary>
     /// Class StockInfo. This class cannot be inherited.

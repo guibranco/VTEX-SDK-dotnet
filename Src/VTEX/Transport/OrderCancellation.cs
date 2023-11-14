@@ -13,8 +13,8 @@
 // ***********************************************************************
 namespace VTEX.Transport
 {
-    using CrispyWaffle.Serialization;
     using System;
+    using CrispyWaffle.Serialization;
 
     /// <summary>
     /// An order cancellation.

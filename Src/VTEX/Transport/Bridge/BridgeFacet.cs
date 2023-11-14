@@ -13,9 +13,9 @@
 // ***********************************************************************
 namespace VTEX.Transport.Bridge
 {
+    using System.Collections.Generic;
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Class BridgeFacet. This class cannot be inherited.

@@ -13,10 +13,10 @@
 // ***********************************************************************
 namespace VTEX.Transport
 {
-    using CrispyWaffle.Serialization;
-    using Newtonsoft.Json;
     using System;
     using System.ComponentModel;
+    using CrispyWaffle.Serialization;
+    using Newtonsoft.Json;
     using VTEX.Transport.OrderAggregate;
 
     /// <summary>
