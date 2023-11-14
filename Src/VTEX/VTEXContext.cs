@@ -13,23 +13,23 @@
 // ***********************************************************************
 namespace VTEX
 {
-    using System.Globalization;
-    using VTEX.Health;
-    using CrispyWaffle.Extensions;
-    using CrispyWaffle.Log;
-    using CrispyWaffle.Serialization;
-    using VTEX.DataEntities;
-    using VTEX.Enums;
-    using VTEX.Extensions;
-    using VTEX.GoodPractices;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Diagnostics.Contracts;
+    using System.Globalization;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using CrispyWaffle.Extensions;
+    using CrispyWaffle.Log;
+    using CrispyWaffle.Serialization;
+    using Newtonsoft.Json;
+    using VTEX.DataEntities;
+    using VTEX.Enums;
+    using VTEX.Extensions;
+    using VTEX.GoodPractices;
+    using VTEX.Health;
     using VTEX.Transport;
     using VTEX.Transport.Bridge;
 
@@ -264,10 +264,9 @@ namespace VTEX
                 }
                 else if (
                     transaction.TransactionId != null
-                    && !transaction.TransactionId.Equals(
-                        @"NO-PAYMENT",
-                        StringComparison.InvariantCultureIgnoreCase
-                    )
+                    && !transaction
+                        .TransactionId
+                        .Equals(@"NO-PAYMENT", StringComparison.InvariantCultureIgnoreCase)
                 )
                 {
                     LogConsumer.Info(@"Bank bill {0}", order.Sequence);
@@ -298,10 +297,10 @@ namespace VTEX
                     }
 
                     if (
-                        order.ClientProfileData.Email.IndexOf(
-                            @"ct.vtex",
-                            StringComparison.InvariantCultureIgnoreCase
-                        ) != -1
+                        order
+                            .ClientProfileData
+                            .Email
+                            .IndexOf(@"ct.vtex", StringComparison.InvariantCultureIgnoreCase) != -1
                     )
                     {
                         order.ClientProfileData.Email = @"pedido@editorainovacao.com.br";

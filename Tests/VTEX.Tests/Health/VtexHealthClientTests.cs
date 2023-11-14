@@ -13,12 +13,12 @@
 // ***********************************************************************
 namespace VTEX.Tests.Health
 {
-    using Moq;
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Moq;
     using VTEX.Health;
     using Xunit;
 
@@ -56,7 +56,8 @@ namespace VTEX.Tests.Health
                 .Setup(c => c.GetPlatformStatuesAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(fixtures);
 
-            var result = await clientMock.Object
+            var result = await clientMock
+                .Object
                 .GetPlatformStatuesAsync(CancellationToken.None)
                 .ConfigureAwait(false);
 

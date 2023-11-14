@@ -13,10 +13,10 @@
 // ***********************************************************************
 namespace VTEX.GoodPractices
 {
-    using CrispyWaffle.GoodPractices;
     using System;
     using System.Runtime.Serialization;
     using System.Security.Permissions;
+    using CrispyWaffle.GoodPractices;
 
     /// <summary>
     /// Class UnexpectedApiResponseException. This class cannot be inherited.

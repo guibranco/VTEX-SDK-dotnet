@@ -13,12 +13,6 @@
 // ***********************************************************************
 namespace VTEX
 {
-    using CrispyWaffle.Extensions;
-    using CrispyWaffle.Log;
-    using CrispyWaffle.Telemetry;
-    using CrispyWaffle.Utilities;
-    using Enums;
-    using GoodPractices;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -29,6 +23,12 @@ namespace VTEX
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using CrispyWaffle.Extensions;
+    using CrispyWaffle.Log;
+    using CrispyWaffle.Telemetry;
+    using CrispyWaffle.Utilities;
+    using Enums;
+    using GoodPractices;
 
     /// <summary>
     /// Class Wrapper. This class cannot be inherited.
@@ -77,7 +77,9 @@ namespace VTEX
                     return _internalUserAgent;
                 }
 
-                var assembly = System.Reflection.Assembly
+                var assembly = System
+                    .Reflection
+                    .Assembly
                     .GetAssembly(typeof(VTEXWrapper))
                     .GetName();
                 _internalUserAgent = $@"{assembly.Name}/{assembly.Version}";
@@ -286,13 +288,16 @@ namespace VTEX
         {
             client.DefaultRequestHeaders.ExpectContinue = false;
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue(@"application/json")
-            );
-            client.DefaultRequestHeaders.TryAddWithoutValidation(
-                @"User-Agent",
-                $@"guiBranco-VTEX-SDK-dotnet {InternalUserAgent} +https://github.com/guibranco/VTEX-SDK-dotnet"
-            );
+            client
+                .DefaultRequestHeaders
+                .Accept
+                .Add(new MediaTypeWithQualityHeaderValue(@"application/json"));
+            client
+                .DefaultRequestHeaders
+                .TryAddWithoutValidation(
+                    @"User-Agent",
+                    $@"guiBranco-VTEX-SDK-dotnet {InternalUserAgent} +https://github.com/guibranco/VTEX-SDK-dotnet"
+                );
             if (!requiresAuthentication)
             {
                 return;
