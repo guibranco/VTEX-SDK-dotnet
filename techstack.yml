@@ -1,11 +1,11 @@
 repo_name: guibranco/VTEX-SDK-dotnet
-report_id: 273d90d607f24bf07b84249a700c3920
+report_id: 8527717fe58459449692add6021d106e
 repo_type: Public
-timestamp: '2023-11-09T15:40:35+00:00'
+timestamp: '2023-12-14T09:37:51+00:00'
 requested_by: dependabot[bot]
 provider: github
 branch: main
-detected_tools_count: 17
+detected_tools_count: 12
 tools:
 - name: C#
   description: Simple, general-purpose, object-oriented programming language for the
@@ -27,39 +27,9 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1014/IoPy1dce_400x400.png
-  detection_source: Tests/VTEX.Tests/VTEX.Tests.csproj
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2023-09-04 10:20:29.000000000 Z
-- name: ".NET Core"
-  description: An Open Source, General-Purpose Development Platform Maintained by
-    Microsoft and the .NET Community
-  website_url: https://docs.microsoft.com/en-us/dotnet/core/
-  version: '7.0'
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Languages & Frameworks
-  sub_category: Frameworks (Full Stack)
-  image_url: https://img.stackshare.io/service/6403/default_91fc1f0ee315262794273aa1387eaf8fed8436e6.png
-  detection_source_url: Tests/VTEX.Tests/VTEX.Tests.csproj
-  detection_source: Tests/VTEX.Tests/VTEX.Tests.csproj
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2023-09-04 10:20:29.000000000 Z
-- name: ASP.NET Core
-  description: A cross-platform .NET framework for building modern cloud-based web
-    applications on Windows, Mac, or Linux
-  website_url: docs.microsoft.com/en-us/aspnet/core/
-  version: '7.0'
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Languages & Frameworks
-  sub_category: Frameworks (Full Stack)
-  image_url: https://img.stackshare.io/service/11331/asp.net-core.png
-  detection_source_url: Tests/VTEX.Tests/VTEX.Tests.csproj
-  detection_source: Tests/VTEX.Tests/VTEX.Tests.csproj
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2023-09-04 10:20:29.000000000 Z
+  detection_source: Src/VTEX/VTEX.csproj
+  last_updated_by: Guilherme Branco Stracini
+  last_updated_on: 2020-03-29 02:46:04.000000000 Z
 - name: Git
   description: Fast, scalable, distributed revision control system
   website_url: http://git-scm.com/
@@ -77,20 +47,9 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
-  detection_source: ".github/workflows/size-label.yml"
+  detection_source: ".github/workflows/deep-source.yml"
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-09-12 13:47:59.000000000 Z
-- name: Moq
-  description: The most popular and friendly mocking framework for .NET
-  website_url: https://github.com/Moq/moq4
-  open_source: true
-  hosted_saas: false
-  category: Build, Test, Deploy
-  sub_category: Testing Frameworks
-  image_url: https://img.stackshare.io/service/1628/1434934.png
-  detection_source: Tests/VTEX.Tests/VTEX.Tests.csproj
-  last_updated_by: Guilherme Branco Stracini
-  last_updated_on: 2019-09-22 08:10:15.000000000 Z
+  last_updated_on: 2023-12-11 01:44:59.000000000 Z
 - name: NuGet
   description: The package manager for .NET
   website_url: https://www.nuget.org/
@@ -99,7 +58,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/service/2637/6I3oEOP4_400x400.jpg
-  detection_source: Tests/VTEX.Tests/VTEX.Tests.csproj
+  detection_source: Src/VTEX/VTEX.csproj
   last_updated_by: Guilherme Branco Stracini
   last_updated_on: 2019-09-22 08:10:15.000000000 Z
 - name: Visual Studio
@@ -114,19 +73,6 @@ tools:
   detection_source: VTEX.sln
   last_updated_by: Guilherme Branco Stracini
   last_updated_on: 2020-03-29 04:12:59.000000000 Z
-- name: xUnit
-  description: An open source, community-focused unit testing tool
-  website_url: http://xunit.github.io/
-  version: 2.6.1
-  open_source: true
-  hosted_saas: false
-  category: Build, Test, Deploy
-  sub_category: Testing Frameworks
-  image_url: https://img.stackshare.io/service/3077/ca5a327feb49ddfe1f4b11548907e5a1_400x400.png
-  detection_source_url: Tests/VTEX.Tests/VTEX.Tests.csproj
-  detection_source: Tests/VTEX.Tests/VTEX.Tests.csproj
-  last_updated_by: Guilherme Branco Stracini
-  last_updated_on: 2019-09-22 08:10:15.000000000 Z
 - name: Shell
   description: A shell is a text-based terminal, used for manipulating programs and
     files. Shell scripts typically manage program execution.
@@ -148,24 +94,24 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12870/default_3ee9e3bfd65cbae9db28ab78b712a58bcd81af27.png
-  detection_source_url: Src/VTEX/VTEX.csproj
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX/VTEX.csproj
   detection_source: Src/VTEX/VTEX.csproj
   last_updated_by: dependabot[bot]
   last_updated_on: 2023-10-30 18:17:30.000000000 Z
 - name: Microsoft.Extensions.Logging.Abstractions
   description: Logging abstractions for Microsoft.Extensions.Logging
   package_url: https://www.nuget.org/Microsoft.Extensions.Logging.Abstractions
-  version: 7.0.1
+  version: 8.0.0
   license: Apache-2.0
   open_source: true
   hosted_saas: false
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12853/default_3ee9e3bfd65cbae9db28ab78b712a58bcd81af27.png
-  detection_source_url: Src/VTEX.Health/VTEX.Health.csproj
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX.Health/VTEX.Health.csproj
   detection_source: Src/VTEX.Health/VTEX.Health.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-10-30 18:34:57.000000000 Z
+  last_updated_on: 2023-12-11 03:26:42.000000000 Z
 - name: Newtonsoft.Json
   description: Json.NET is a popular high-performance JSON framework for .NET
   package_url: https://www.nuget.org/Newtonsoft.Json
@@ -176,10 +122,10 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/nuget/image.png
-  detection_source_url: Src/VTEX.Health/VTEX.Health.csproj
-  detection_source: Src/VTEX/VTEX.csproj
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX.Health/VTEX.Health.csproj
+  detection_source: Src/VTEX.Health/VTEX.Health.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-06-19 09:57:23.000000000 Z
+  last_updated_on: 2023-12-11 03:26:42.000000000 Z
 - name: System.Text.RegularExpressions
   description: Provides the System.Text.RegularExpressions.Regex class, an implementation
     of a regular expression engine
@@ -190,10 +136,10 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12916/default_2aeaea161c566d1abfbaf3f2206fda12b1eea9cd.png
-  detection_source_url: Src/VTEX/VTEX.csproj
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX/VTEX.csproj
   detection_source: Src/VTEX/VTEX.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-10-30 18:34:57.000000000 Z
+  last_updated_on: 2023-12-11 03:26:42.000000000 Z
 - name: System.Threading.Tasks.Extensions
   description: Provides additional types that simplify the work of writing concurrent
     and asynchronous code
@@ -204,21 +150,7 @@ tools:
   category: Libraries
   sub_category: NuGet Packages
   image_url: https://img.stackshare.io/package/12998/default_aa8a6e377c22dbeff795489a5ab127b1d597b5ed.png
-  detection_source_url: Src/VTEX.Health/VTEX.Health.csproj
-  detection_source: Src/VTEX/VTEX.csproj
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX.Health/VTEX.Health.csproj
+  detection_source: Src/VTEX.Health/VTEX.Health.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-10-30 18:34:57.000000000 Z
-- name: xunit.runner.visualstudio
-  description: Visual Studio 2012+ Test Explorer runner for the xUnit.net framework
-  package_url: https://www.nuget.org/xunit.runner.visualstudio
-  version: 2.5.3
-  license: Other
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: NuGet Packages
-  image_url: https://img.stackshare.io/package/13260/default_d2db5a200c4fe2d08cbdb2174cc230708973870b.png
-  detection_source_url: Tests/VTEX.Tests/VTEX.Tests.csproj
-  detection_source: Tests/VTEX.Tests/VTEX.Tests.csproj
-  last_updated_by: dependabot[bot]
-  last_updated_on: 2023-11-06 12:37:45.000000000 Z
+  last_updated_on: 2023-12-11 03:26:42.000000000 Z
