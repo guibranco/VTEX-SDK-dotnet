@@ -78,9 +78,7 @@ namespace VTEX
                 }
 
                 var assembly = System
-                    .Reflection
-                    .Assembly
-                    .GetAssembly(typeof(VTEXWrapper))
+                    .Reflection.Assembly.GetAssembly(typeof(VTEXWrapper))
                     .GetName();
                 _internalUserAgent = $@"{assembly.Name}/{assembly.Version}";
                 return _internalUserAgent;
@@ -288,16 +286,13 @@ namespace VTEX
         {
             client.DefaultRequestHeaders.ExpectContinue = false;
             client.DefaultRequestHeaders.Accept.Clear();
-            client
-                .DefaultRequestHeaders
-                .Accept
-                .Add(new MediaTypeWithQualityHeaderValue(@"application/json"));
-            client
-                .DefaultRequestHeaders
-                .TryAddWithoutValidation(
-                    @"User-Agent",
-                    $@"guiBranco-VTEX-SDK-dotnet {InternalUserAgent} +https://github.com/guibranco/VTEX-SDK-dotnet"
-                );
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue(@"application/json")
+            );
+            client.DefaultRequestHeaders.TryAddWithoutValidation(
+                @"User-Agent",
+                $@"guiBranco-VTEX-SDK-dotnet {InternalUserAgent} +https://github.com/guibranco/VTEX-SDK-dotnet"
+            );
             if (!requiresAuthentication)
             {
                 return;
