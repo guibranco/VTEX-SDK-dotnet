@@ -264,9 +264,10 @@ namespace VTEX
                 }
                 else if (
                     transaction.TransactionId != null
-                    && !transaction
-                        .TransactionId
-                        .Equals(@"NO-PAYMENT", StringComparison.InvariantCultureIgnoreCase)
+                    && !transaction.TransactionId.Equals(
+                        @"NO-PAYMENT",
+                        StringComparison.InvariantCultureIgnoreCase
+                    )
                 )
                 {
                     LogConsumer.Info(@"Bank bill {0}", order.Sequence);
@@ -297,10 +298,10 @@ namespace VTEX
                     }
 
                     if (
-                        order
-                            .ClientProfileData
-                            .Email
-                            .IndexOf(@"ct.vtex", StringComparison.InvariantCultureIgnoreCase) != -1
+                        order.ClientProfileData.Email.IndexOf(
+                            @"ct.vtex",
+                            StringComparison.InvariantCultureIgnoreCase
+                        ) != -1
                     )
                     {
                         order.ClientProfileData.Email = @"pedido@editorainovacao.com.br";

@@ -57,8 +57,7 @@ namespace VTEX.Tests.Health
                 .ReturnsAsync(fixtures);
 
             var result = await clientMock
-                .Object
-                .GetPlatformStatuesAsync(CancellationToken.None)
+                .Object.GetPlatformStatuesAsync(CancellationToken.None)
                 .ConfigureAwait(false);
 
             Assert.NotNull(result);
