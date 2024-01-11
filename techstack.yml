@@ -1,7 +1,8 @@
 repo_name: guibranco/VTEX-SDK-dotnet
-report_id: 8527717fe58459449692add6021d106e
+report_id: 273d90d607f24bf07b84249a700c3920
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T09:37:51+00:00'
+timestamp: '2024-01-11T12:23:26+00:00'
 requested_by: dependabot[bot]
 provider: github
 branch: main
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet
   detection_source: Repo Metadata
 - name: ".NET"
   description: A free, cross-platform, open source developer platform for building
@@ -27,6 +29,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1014/IoPy1dce_400x400.png
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX/VTEX.csproj
   detection_source: Src/VTEX/VTEX.csproj
   last_updated_by: Guilherme Branco Stracini
   last_updated_on: 2020-03-29 02:46:04.000000000 Z
@@ -38,6 +41,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -47,6 +51,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/.github/workflows/deep-source.yml
   detection_source: ".github/workflows/deep-source.yml"
   last_updated_by: dependabot[bot]
   last_updated_on: 2023-12-11 01:44:59.000000000 Z
@@ -58,6 +63,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/service/2637/6I3oEOP4_400x400.jpg
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX/VTEX.csproj
   detection_source: Src/VTEX/VTEX.csproj
   last_updated_by: Guilherme Branco Stracini
   last_updated_on: 2019-09-22 08:10:15.000000000 Z
@@ -70,6 +76,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Integrated Development Environment
   image_url: https://img.stackshare.io/service/1451/SR2hUhQN.png
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/VTEX.sln
   detection_source: VTEX.sln
   last_updated_by: Guilherme Branco Stracini
   last_updated_on: 2020-03-29 04:12:59.000000000 Z
@@ -82,6 +89,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet
   detection_source: Repo Metadata
 - name: Microsoft.AspNet.WebApi.Client
   description: This package adds support for formatting and content negotiation to
@@ -111,7 +119,7 @@ tools:
   detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX.Health/VTEX.Health.csproj
   detection_source: Src/VTEX.Health/VTEX.Health.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-12-11 03:26:42.000000000 Z
+  last_updated_on: 2024-01-01 01:54:04.000000000 Z
 - name: Newtonsoft.Json
   description: Json.NET is a popular high-performance JSON framework for .NET
   package_url: https://www.nuget.org/Newtonsoft.Json
@@ -139,7 +147,7 @@ tools:
   detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX/VTEX.csproj
   detection_source: Src/VTEX/VTEX.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-12-11 03:26:42.000000000 Z
+  last_updated_on: 2024-01-01 01:54:04.000000000 Z
 - name: System.Threading.Tasks.Extensions
   description: Provides additional types that simplify the work of writing concurrent
     and asynchronous code
@@ -153,4 +161,4 @@ tools:
   detection_source_url: https://github.com/guibranco/VTEX-SDK-dotnet/blob/main/Src/VTEX.Health/VTEX.Health.csproj
   detection_source: Src/VTEX.Health/VTEX.Health.csproj
   last_updated_by: dependabot[bot]
-  last_updated_on: 2023-12-11 03:26:42.000000000 Z
+  last_updated_on: 2024-01-01 01:54:04.000000000 Z
