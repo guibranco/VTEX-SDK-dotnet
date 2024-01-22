@@ -35,8 +35,8 @@ namespace VTEX.Transport
         /// <param name="fieldName">Name of the field.</param>
         /// <returns>PciPaymentField.</returns>
         public PCIPaymentField GetFieldByName([Localizable(false)] string fieldName) =>
-            Fields.SingleOrDefault(
-                f => f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase)
+            Fields.SingleOrDefault(f =>
+                f.Name.Equals(fieldName, StringComparison.InvariantCultureIgnoreCase)
             );
 
         #endregion
