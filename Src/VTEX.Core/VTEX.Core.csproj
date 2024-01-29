@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="4.3.279" />
+    <PackageReference Include="CrispyWaffle" Version="4.3.430" />
   </ItemGroup>
 
 </Project>
