@@ -1,6 +1,6 @@
 # VTEX SDK
 
-The [VTEX platform](https://www.nuget.org/packages/VTEX) SDK for .NET projects (both Core & Framework).
+🛒 ⚙️ [VTEX](https://vtex.com) platform .NET SDK.
 
 [![GitHub license](https://img.shields.io/github/license/guibranco/VTEX-SDK-dotnet)](https://github.com/guibranco/VTEX-SDK-dotnet)
 [![Time tracker](https://wakatime.com/badge/github/guibranco/VTEX-SDK-dotnet.svg)](https://wakatime.com/badge/github/guibranco/VTEX-SDK-dotnet)
