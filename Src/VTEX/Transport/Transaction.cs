@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -24,7 +24,6 @@ namespace VTEX.Transport
         /// Gets or sets a value indicating whether this object is active.
         /// </summary>
         /// <value>true if this object is active, false if not.</value>
-
         [JsonProperty("isActive")]
         public bool IsActive { get; set; }
 
@@ -32,7 +31,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier of the transaction.
         /// </summary>
         /// <value>The identifier of the transaction.</value>
-
         [JsonProperty("transactionId")]
         public string TransactionId { get; set; }
 
@@ -47,7 +45,6 @@ namespace VTEX.Transport
         /// Gets or sets the payments.
         /// </summary>
         /// <value>The payments.</value>
-
         [JsonProperty("payments")]
         public Payment[] Payments { get; set; }
     }

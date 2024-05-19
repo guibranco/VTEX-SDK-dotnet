@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -24,7 +24,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -32,7 +31,6 @@ namespace VTEX.Transport
         /// Gets or sets the address.
         /// </summary>
         /// <value>The address.</value>
-
         [JsonProperty("address")]
         public Address Address { get; set; }
 
@@ -40,7 +38,6 @@ namespace VTEX.Transport
         /// Gets or sets information describing the logistics.
         /// </summary>
         /// <value>Information describing the logistics.</value>
-
         [JsonProperty("logisticsInfo")]
         public LogisticsInfo[] LogisticsInfo { get; set; }
 

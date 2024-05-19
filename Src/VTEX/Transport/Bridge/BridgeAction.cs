@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -19,7 +19,6 @@ namespace VTEX.Transport.Bridge
     /// <summary>
     /// Class BridgeAction. This class cannot be inherited.
     /// </summary>
-
     [Serializer(SerializerFormat.Json)]
     public sealed class BridgeAction
     {

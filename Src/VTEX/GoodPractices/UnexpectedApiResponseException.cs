@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -23,7 +23,6 @@ namespace VTEX.GoodPractices
     /// </summary>
     /// <seealso cref="IRestException" />
     /// <seealso cref="Exception" />
-
     [Serializable]
     public class UnexpectedApiResponseException : Exception, IRestException
     {

@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -24,7 +24,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -32,7 +31,6 @@ namespace VTEX.Transport
         /// Gets or sets the email.
         /// </summary>
         /// <value>The email.</value>
-
         [JsonProperty("email")]
         public string Email { get; set; }
 
@@ -40,7 +38,6 @@ namespace VTEX.Transport
         /// Gets or sets the name of the user.
         /// </summary>
         /// <value>The name of the user.</value>
-
         [JsonProperty("userName")]
         public string UserName { get; set; }
     }

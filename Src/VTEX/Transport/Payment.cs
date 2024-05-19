@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -28,7 +28,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -36,7 +35,6 @@ namespace VTEX.Transport
         /// Gets or sets the payment system.
         /// </summary>
         /// <value>The payment system.</value>
-
         [JsonProperty("paymentSystem")]
         public int PaymentSystem { get; set; }
 
@@ -44,7 +42,6 @@ namespace VTEX.Transport
         /// Gets or sets the name of the payment system.
         /// </summary>
         /// <value>The name of the payment system.</value>
-
         [JsonProperty("paymentSystemName")]
         public string PaymentSystemName { get; set; }
 
@@ -52,7 +49,6 @@ namespace VTEX.Transport
         /// Gets or sets the value.
         /// </summary>
         /// <value>The value.</value>
-
         [JsonProperty("value")]
         public int Value { get; set; }
 
@@ -60,7 +56,6 @@ namespace VTEX.Transport
         /// Gets or sets the installments.
         /// </summary>
         /// <value>The installments.</value>
-
         [JsonProperty("installments")]
         public int Installments { get; set; }
 
@@ -68,7 +63,6 @@ namespace VTEX.Transport
         /// Gets or sets the reference value.
         /// </summary>
         /// <value>The reference value.</value>
-
         [JsonProperty("referenceValue")]
         public int ReferenceValue { get; set; }
 
@@ -76,7 +70,6 @@ namespace VTEX.Transport
         /// Gets or sets the card holder.
         /// </summary>
         /// <value>The card holder.</value>
-
         [JsonProperty("cardHolder")]
         public string CardHolder { get; set; }
 
@@ -84,7 +77,6 @@ namespace VTEX.Transport
         /// Gets or sets the card number.
         /// </summary>
         /// <value>The card number.</value>
-
         [JsonProperty("cardNumber")]
         public string CardNumber { get; set; }
 
@@ -92,7 +84,6 @@ namespace VTEX.Transport
         /// Gets or sets the first digits.
         /// </summary>
         /// <value>The first digits.</value>
-
         [JsonProperty("firstDigits")]
         public string FirstDigits { get; set; }
 
@@ -100,7 +91,6 @@ namespace VTEX.Transport
         /// Gets or sets the last digits.
         /// </summary>
         /// <value>The last digits.</value>
-
         [JsonProperty("lastDigits")]
         public string LastDigits { get; set; }
 
@@ -108,7 +98,6 @@ namespace VTEX.Transport
         /// Gets or sets the cvv 2.
         /// </summary>
         /// <value>The cvv 2.</value>
-
         [JsonProperty("cvv2")]
         public string Cvv2 { get; set; }
 
@@ -116,7 +105,6 @@ namespace VTEX.Transport
         /// Gets or sets the expire month.
         /// </summary>
         /// <value>The expire month.</value>
-
         [JsonProperty("expireMonth")]
         public string ExpireMonth { get; set; }
 
@@ -124,7 +112,6 @@ namespace VTEX.Transport
         /// Gets or sets the expire year.
         /// </summary>
         /// <value>The expire year.</value>
-
         [JsonProperty("expireYear")]
         public string ExpireYear { get; set; }
 
@@ -132,7 +119,6 @@ namespace VTEX.Transport
         /// Gets or sets URL of the document.
         /// </summary>
         /// <value>The URL.</value>
-
         [JsonProperty("url")]
         public string Url { get; set; }
 
@@ -161,7 +147,6 @@ namespace VTEX.Transport
         /// Gets or sets the redemption code.
         /// </summary>
         /// <value>The redemption code.</value>
-
         [JsonProperty("redemptionCode")]
         public NotNullObserver RedemptionCode { get; set; }
 
@@ -169,7 +154,6 @@ namespace VTEX.Transport
         /// Gets or sets the group.
         /// </summary>
         /// <value>The group.</value>
-
         [JsonProperty("group")]
         [Localizable(false)]
         public string Group { get; set; }
@@ -178,7 +162,6 @@ namespace VTEX.Transport
         /// Gets or sets the tid.
         /// </summary>
         /// <value>The tid.</value>
-
         [JsonProperty("tid")]
         public string Tid { get; set; }
 
@@ -193,7 +176,6 @@ namespace VTEX.Transport
         /// Gets or sets the connector responses.
         /// </summary>
         /// <value>The connector responses.</value>
-
         [JsonProperty("connectorResponses")]
         public ConnectorResponses ConnectorResponses { get; set; }
 

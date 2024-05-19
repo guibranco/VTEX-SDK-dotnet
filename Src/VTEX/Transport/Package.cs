@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -32,7 +32,6 @@ namespace VTEX.Transport
         /// Gets or sets the invoice number.
         /// </summary>
         /// <value>The invoice number.</value>
-
         [JsonProperty("invoiceNumber")]
         public string InvoiceNumber { get; set; }
 
@@ -40,7 +39,6 @@ namespace VTEX.Transport
         /// Gets or sets the invoice value.
         /// </summary>
         /// <value>The invoice value.</value>
-
         [JsonProperty("invoiceValue")]
         public int InvoiceValue { get; set; }
 
@@ -48,7 +46,6 @@ namespace VTEX.Transport
         /// Gets or sets the Key of the invoice.
         /// </summary>
         /// <value>The invoice key.</value>
-
         [JsonProperty("invoiceKey")]
         public string InvoiceKey { get; set; }
 
@@ -56,7 +53,6 @@ namespace VTEX.Transport
         /// Gets or sets URL of the invoice.
         /// </summary>
         /// <value>The invoice URL.</value>
-
         [JsonProperty("invoiceUrl")]
         public string InvoiceUrl { get; set; }
 
@@ -64,7 +60,6 @@ namespace VTEX.Transport
         /// Gets or sets the courier.
         /// </summary>
         /// <value>The courier.</value>
-
         [JsonProperty("courier")]
         public string Courier { get; set; }
 
@@ -72,7 +67,6 @@ namespace VTEX.Transport
         /// Gets or sets the tracking number.
         /// </summary>
         /// <value>The tracking number.</value>
-
         [JsonProperty("trackingNumber")]
         public string TrackingNumber { get; set; }
 
@@ -80,7 +74,6 @@ namespace VTEX.Transport
         /// Gets or sets the tracking url.
         /// </summary>
         /// <value>The tracking url.</value>
-
         [JsonProperty("trackingUrl")]
         public string TrackingUrl { get; set; }
 
@@ -88,7 +81,6 @@ namespace VTEX.Transport
         /// Gets or sets the issuance date.
         /// </summary>
         /// <value>The issuance date.</value>
-
         [JsonProperty("issuanceDate")]
         public string IssuanceDate { get; set; }
 

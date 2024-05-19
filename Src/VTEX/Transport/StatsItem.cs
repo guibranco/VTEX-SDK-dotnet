@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -24,7 +24,6 @@ namespace VTEX.Transport
         /// Gets or sets the total number of items.
         /// </summary>
         /// <value>The total number of items.</value>
-
         [JsonProperty("totalItems")]
         public StatsItemTotal TotalItems { get; set; }
 
@@ -32,7 +31,6 @@ namespace VTEX.Transport
         /// Gets or sets the total number of value.
         /// </summary>
         /// <value>The total number of value.</value>
-
         [JsonProperty("totalValue")]
         public StatsItemTotal TotalValue { get; set; }
     }

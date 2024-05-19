@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -24,7 +24,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -32,7 +31,6 @@ namespace VTEX.Transport
         /// Gets or sets a list of identifiers of the rate and benefits.
         /// </summary>
         /// <value>A list of identifiers of the rate and benefits.</value>
-
         [JsonProperty("rateAndBenefitsIdentifiers")]
         public RateAndBenefitsIdentifiers[] RateAndBenefitsIdentifiers { get; set; }
     }

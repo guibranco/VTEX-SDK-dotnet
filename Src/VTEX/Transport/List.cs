@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -26,7 +26,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier of the order.
         /// </summary>
         /// <value>The identifier of the order.</value>
-
         [JsonProperty("orderId")]
         public string OrderId { get; set; }
 
@@ -34,7 +33,6 @@ namespace VTEX.Transport
         /// Gets or sets the creation date.
         /// </summary>
         /// <value>The creation date.</value>
-
         [JsonProperty("creationDate")]
         public DateTime CreationDate { get; set; }
 
@@ -42,7 +40,6 @@ namespace VTEX.Transport
         /// Gets or sets the name of the client.
         /// </summary>
         /// <value>The name of the client.</value>
-
         [JsonProperty("clientName")]
         public string ClientName { get; set; }
 
@@ -50,7 +47,6 @@ namespace VTEX.Transport
         /// Gets or sets the items.
         /// </summary>
         /// <value>The items.</value>
-
         [JsonProperty("items")]
         public ListItem[] Items { get; set; }
 
@@ -58,7 +54,6 @@ namespace VTEX.Transport
         /// Gets or sets the total number of value.
         /// </summary>
         /// <value>The total number of value.</value>
-
         [JsonProperty("totalValue")]
         public decimal TotalValue { get; set; }
 
@@ -66,7 +61,6 @@ namespace VTEX.Transport
         /// Gets or sets a list of names of the payments.
         /// </summary>
         /// <value>A list of names of the payments.</value>
-
         [JsonProperty("paymentNames")]
         public string PaymentNames { get; set; }
 
@@ -74,7 +68,6 @@ namespace VTEX.Transport
         /// Gets or sets the status.
         /// </summary>
         /// <value>The status.</value>
-
         [JsonProperty("status")]
         public string Status { get; set; }
 
@@ -82,7 +75,6 @@ namespace VTEX.Transport
         /// Gets or sets information describing the status.
         /// </summary>
         /// <value>Information describing the status.</value>
-
         [JsonProperty("statusDescription")]
         public string StatusDescription { get; set; }
 
@@ -90,7 +82,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier of the market place order.
         /// </summary>
         /// <value>The identifier of the market place order.</value>
-
         [JsonProperty("marketPlaceOrderId")]
         public string MarketPlaceOrderId { get; set; }
 
@@ -98,7 +89,6 @@ namespace VTEX.Transport
         /// Gets or sets the sequence.
         /// </summary>
         /// <value>The sequence.</value>
-
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
 
@@ -106,7 +96,6 @@ namespace VTEX.Transport
         /// Gets or sets the sales channel.
         /// </summary>
         /// <value>The sales channel.</value>
-
         [JsonProperty("salesChannel")]
         public int SalesChannel { get; set; }
 
@@ -114,7 +103,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier of the affiliate.
         /// </summary>
         /// <value>The identifier of the affiliate.</value>
-
         [JsonProperty("affiliateId")]
         public string AffiliateId { get; set; }
 
@@ -122,7 +110,6 @@ namespace VTEX.Transport
         /// Gets or sets the origin.
         /// </summary>
         /// <value>The origin.</value>
-
         [JsonProperty("origin")]
         public string Origin { get; set; }
 
@@ -130,7 +117,6 @@ namespace VTEX.Transport
         /// Gets or sets a value indicating whether the workflow in error state.
         /// </summary>
         /// <value>true if workflow in error state, false if not.</value>
-
         [JsonProperty("workflowInErrorState")]
         public bool WorkflowInErrorState { get; set; }
 
@@ -138,7 +124,6 @@ namespace VTEX.Transport
         /// Gets or sets a value indicating whether the workflow in retry.
         /// </summary>
         /// <value>true if workflow in retry, false if not.</value>
-
         [JsonProperty("workflowInRetry")]
         public bool WorkflowInRetry { get; set; }
 
@@ -146,7 +131,6 @@ namespace VTEX.Transport
         /// Gets or sets the last message unread.
         /// </summary>
         /// <value>The last message unread.</value>
-
         [JsonProperty("lastMessageUnread")]
         public string LastMessageUnread { get; set; }
 
@@ -154,7 +138,6 @@ namespace VTEX.Transport
         /// Gets or sets the shipping estimated date.
         /// </summary>
         /// <value>The shipping estimated date.</value>
-
         [JsonProperty("ShippingEstimatedDate")]
         public DateTime? ShippingEstimatedDate { get; set; }
 
@@ -162,7 +145,6 @@ namespace VTEX.Transport
         /// Gets or sets a value indicating whether the order is complete.
         /// </summary>
         /// <value>true if order is complete, false if not.</value>
-
         [JsonProperty("orderIsComplete")]
         public bool OrderIsComplete { get; set; }
 

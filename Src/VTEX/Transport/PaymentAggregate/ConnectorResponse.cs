@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -16,7 +16,6 @@ namespace VTEX.Transport.PaymentAggregate
     /// <summary>
     /// Class ConnectorResponse. This class cannot be inherited.
     /// </summary>
-
     public sealed class ConnectorResponse
     {
         /// <summary>
