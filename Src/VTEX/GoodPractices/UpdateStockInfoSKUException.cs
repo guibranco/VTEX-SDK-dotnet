@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -20,7 +20,6 @@ namespace VTEX.GoodPractices
     /// Class UpdateStockInfoSKUException. This class cannot be inherited.
     /// </summary>
     /// <seealso cref="Exception" />
-
     [Serializable]
     public class UpdateStockInfoSKUException : Exception
     {

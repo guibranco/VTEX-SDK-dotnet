@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -19,14 +19,12 @@ namespace VTEX.Transport
     /// The tracking hints data (used by the Mercado Livre / ME2 (Mercado Envios 2) integration
     /// The tracking url redirects to the PDF tag for printing
     /// </summary>
-
     public sealed class TrackingHints
     {
         /// <summary>
         /// The courier name
         /// </summary>
         /// <value>The name of the courier.</value>
-
         [JsonProperty("courierName")]
         public string CourierName { get; set; }
 
@@ -34,7 +32,6 @@ namespace VTEX.Transport
         /// The tracking id
         /// </summary>
         /// <value>The tracking identifier.</value>
-
         [JsonProperty("trackingId")]
         public long TrackingId { get; set; }
 
@@ -42,7 +39,6 @@ namespace VTEX.Transport
         /// The tracking label
         /// </summary>
         /// <value>The tracking label.</value>
-
         [JsonProperty("trackingLabel")]
         public string TrackingLabel { get; set; }
 
@@ -50,7 +46,6 @@ namespace VTEX.Transport
         /// The tracking url
         /// </summary>
         /// <value>The tracking URL.</value>
-
         [JsonProperty("trackingUrl")]
         public string TrackingUrl { get; set; }
     }

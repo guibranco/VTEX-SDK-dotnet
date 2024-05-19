@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -24,7 +24,6 @@ namespace VTEX.Transport
         /// Gets or sets the stats.
         /// </summary>
         /// <value>The stats.</value>
-
         [JsonProperty("stats")]
         public StatsItem Stats { get; set; }
     }

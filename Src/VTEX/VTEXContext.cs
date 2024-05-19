@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -992,7 +992,6 @@ namespace VTEX
         /// <param name="stockInfo">The stock information.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
         /// <exception cref="VTEX.GoodPractices.UpdateStockInfoSKUException"></exception>
-
         public async Task UpdateSkuStockAsync(StockInfo stockInfo)
         {
             try
@@ -1283,7 +1282,7 @@ namespace VTEX
             var total = facets.Single(f => f.Field.Equals(facetName)).Facets[facetValue].ToInt32();
 
             var result = new List<BridgeItem>(total);
-            var pages = total / perPage + 1;
+            var pages = (total / perPage) + 1;
             for (var x = 0; x < pages; x++)
             {
                 result.AddRange(GetBridgeItems(query, sort, keywords, x * perPage, perPage));

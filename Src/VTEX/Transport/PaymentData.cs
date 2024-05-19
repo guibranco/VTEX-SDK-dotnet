@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -19,14 +19,12 @@ namespace VTEX.Transport
     /// <summary>
     /// A payment data.
     /// </summary>
-
     public sealed class PaymentData
     {
         /// <summary>
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -34,7 +32,6 @@ namespace VTEX.Transport
         /// Gets or sets the gift cards.
         /// </summary>
         /// <value>The gift cards.</value>
-
         [JsonProperty("giftCards")]
         public NotNullObserver[] GiftCards { get; set; }
 
@@ -42,7 +39,6 @@ namespace VTEX.Transport
         /// Gets or sets the transactions.
         /// </summary>
         /// <value>The transactions.</value>
-
         [JsonProperty("transactions")]
         public Transaction[] Transactions { get; set; }
     }

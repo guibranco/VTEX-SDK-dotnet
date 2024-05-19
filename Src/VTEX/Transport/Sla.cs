@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -19,14 +19,12 @@ namespace VTEX.Transport
     /// <summary>
     /// Service Level Agreement.
     /// </summary>
-
     public sealed class Sla
     {
         /// <summary>
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -34,7 +32,6 @@ namespace VTEX.Transport
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
-
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -42,7 +39,6 @@ namespace VTEX.Transport
         /// Gets or sets the shipping estimate.
         /// </summary>
         /// <value>The shipping estimate.</value>
-
         [JsonProperty("shippingEstimate")]
         public string ShippingEstimate { get; set; }
 
@@ -50,7 +46,6 @@ namespace VTEX.Transport
         /// Gets or sets the delivery window.
         /// </summary>
         /// <value>The delivery window.</value>
-
         [JsonProperty("deliveryWindow")]
         public NotNullObserver DeliveryWindow { get; set; }
 
@@ -58,7 +53,6 @@ namespace VTEX.Transport
         /// Gets or sets the price.
         /// </summary>
         /// <value>The price.</value>
-
         [JsonProperty("price")]
         public int Price { get; set; }
 

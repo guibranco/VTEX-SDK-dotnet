@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -51,7 +51,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier of the order.
         /// </summary>
         /// <value>The identifier of the order.</value>
-
         [JsonProperty("orderId")]
         public string OrderId { get; set; }
 
@@ -59,7 +58,6 @@ namespace VTEX.Transport
         /// Gets or sets the sequence.
         /// </summary>
         /// <value>The sequence.</value>
-
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
 
@@ -67,7 +65,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier of the marketplace order.
         /// </summary>
         /// <value>The identifier of the marketplace order.</value>
-
         [JsonProperty("marketplaceOrderId")]
         public string MarketplaceOrderId { get; set; }
 
@@ -82,7 +79,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier of the seller order.
         /// </summary>
         /// <value>The identifier of the seller order.</value>
-
         [JsonProperty("sellerOrderId")]
         public string SellerOrderId { get; set; }
 
@@ -97,7 +93,6 @@ namespace VTEX.Transport
         /// Gets or sets the identifier of the affiliate.
         /// </summary>
         /// <value>The identifier of the affiliate.</value>
-
         [JsonProperty("affiliateId")]
         public string AffiliateId { get; set; }
 
@@ -105,7 +100,6 @@ namespace VTEX.Transport
         /// Gets or sets the sales channel.
         /// </summary>
         /// <value>The sales channel.</value>
-
         [JsonProperty("salesChannel")]
         public int SalesChannel { get; set; }
 
@@ -120,7 +114,6 @@ namespace VTEX.Transport
         /// Gets or sets the status.
         /// </summary>
         /// <value>The status.</value>
-
         [JsonProperty("status")]
         public string StatusInternal { get; set; }
 
@@ -128,7 +121,6 @@ namespace VTEX.Transport
         /// Gets the status pedido.
         /// </summary>
         /// <value>The status pedido.</value>
-
         [JsonIgnore]
         public OrderStatus Status =>
             EnumExtensions.GetEnumByInternalValueAttribute<OrderStatus>(StatusInternal);
@@ -137,7 +129,6 @@ namespace VTEX.Transport
         /// Gets or sets information describing the status.
         /// </summary>
         /// <value>Information describing the status.</value>
-
         [JsonProperty("statusDescription")]
         public string StatusDescription { get; set; }
 
@@ -145,7 +136,6 @@ namespace VTEX.Transport
         /// Gets or sets the value.
         /// </summary>
         /// <value>The value.</value>
-
         [JsonProperty("value")]
         public int Value { get; set; }
 
@@ -158,7 +148,6 @@ namespace VTEX.Transport
         /// Gets or sets the creation date.
         /// </summary>
         /// <value>The creation date.</value>
-
         [JsonProperty("creationDate")]
         public DateTime CreationDate
         {
@@ -175,7 +164,6 @@ namespace VTEX.Transport
         /// Gets or sets the Date/Time of the last change.
         /// </summary>
         /// <value>The last change.</value>
-
         [JsonProperty("lastChange")]
         public DateTime LastChange
         {
@@ -194,7 +182,6 @@ namespace VTEX.Transport
         /// Gets or sets the totals.
         /// </summary>
         /// <value>The total number of s.</value>
-
         [JsonProperty("totals")]
         public Total[] Totals { get; set; }
 
@@ -202,7 +189,6 @@ namespace VTEX.Transport
         /// Gets or sets the items.
         /// </summary>
         /// <value>The items.</value>
-
         [JsonProperty("items")]
         public Item[] Items { get; set; }
 
@@ -217,7 +203,6 @@ namespace VTEX.Transport
         /// Gets or sets information describing the client profile.
         /// </summary>
         /// <value>Information describing the client profile.</value>
-
         [JsonProperty("clientProfileData")]
         public ClientProfileData ClientProfileData { get; set; }
 
@@ -232,7 +217,6 @@ namespace VTEX.Transport
         /// Gets or sets information describing the marketing.
         /// </summary>
         /// <value>Information describing the marketing.</value>
-
         [JsonProperty("marketingData")]
         public MarketingData MarketingData { get; set; }
 
@@ -240,7 +224,6 @@ namespace VTEX.Transport
         /// Gets or sets information describing the rates and benefits.
         /// </summary>
         /// <value>Information describing the rates and benefits.</value>
-
         [JsonProperty("ratesAndBenefitsData")]
         public RatesAndBenefitsData RatesAndBenefitsData { get; set; }
 
@@ -248,7 +231,6 @@ namespace VTEX.Transport
         /// Gets or sets information describing the shipping.
         /// </summary>
         /// <value>Information describing the shipping.</value>
-
         [JsonProperty("shippingData")]
         public ShippingData ShippingData { get; set; }
 
@@ -256,7 +238,6 @@ namespace VTEX.Transport
         /// Gets or sets information describing the payment.
         /// </summary>
         /// <value>Information describing the payment.</value>
-
         [JsonProperty("paymentData")]
         public PaymentData PaymentData { get; set; }
 
@@ -264,7 +245,6 @@ namespace VTEX.Transport
         /// Gets or sets the package attachment.
         /// </summary>
         /// <value>The package attachment.</value>
-
         [JsonProperty("packageAttachment")]
         public PackageAttachment PackageAttachment { get; set; }
 
@@ -272,7 +252,6 @@ namespace VTEX.Transport
         /// Gets or sets the sellers.
         /// </summary>
         /// <value>The sellers.</value>
-
         [JsonProperty("sellers")]
         public Seller[] Sellers { get; set; }
 
@@ -280,7 +259,6 @@ namespace VTEX.Transport
         /// Gets or sets information describing the call center operator.
         /// </summary>
         /// <value>Information describing the call center operator.</value>
-
         [JsonProperty("callCenterOperatorData")]
         public CallCenterOperatorData CallCenterOperatorData { get; set; }
 

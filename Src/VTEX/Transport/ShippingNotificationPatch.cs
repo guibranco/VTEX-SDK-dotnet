@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -27,7 +27,6 @@ namespace VTEX.Transport
         /// Gets or sets the tracking number.
         /// </summary>
         /// <value>The tracking number.</value>
-
         [JsonProperty("trackingNumber")]
         public string TrackingNumber { get; set; }
 
@@ -35,7 +34,6 @@ namespace VTEX.Transport
         /// Gets or sets the tracking url.
         /// </summary>
         /// <value>The tracking url.</value>
-
         [JsonProperty("trackingUrl")]
         public string TrackingUrl { get; set; }
 
@@ -43,7 +41,6 @@ namespace VTEX.Transport
         /// Gets or sets the courier.
         /// </summary>
         /// <value>The courier.</value>
-
         [JsonProperty("courier")]
         public string Courier { get; set; }
 

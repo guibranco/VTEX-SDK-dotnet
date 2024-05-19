@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-16-2023
@@ -23,7 +23,6 @@ namespace VTEX.Transport.Bridge
     /// <summary>
     /// Class BridgeItem. This class cannot be inherited.
     /// </summary>
-
     [Serializer(SerializerFormat.Json)]
     public sealed class BridgeItem
     {

@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -190,7 +190,6 @@ namespace VTEX.Transport
         #endregion
 
         #region Serialization helpers
-
 
         /// <summary>
         /// The should serialize list price serialization helper method

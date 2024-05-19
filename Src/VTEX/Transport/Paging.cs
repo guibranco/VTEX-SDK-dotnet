@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -31,7 +31,6 @@ namespace VTEX.Transport
         /// Gets or sets the number of.
         /// </summary>
         /// <value>The total.</value>
-
         [JsonProperty("total")]
         public int Total { get; set; }
 
@@ -39,7 +38,6 @@ namespace VTEX.Transport
         /// Gets or sets the pages.
         /// </summary>
         /// <value>The pages.</value>
-
         [JsonProperty("pages")]
         public int Pages { get; set; }
 
@@ -47,7 +45,6 @@ namespace VTEX.Transport
         /// Gets or sets the current page.
         /// </summary>
         /// <value>The current page.</value>
-
         [JsonProperty("currentPage")]
         public int CurrentPage { get; set; }
 
@@ -55,7 +52,6 @@ namespace VTEX.Transport
         /// Gets or sets the per page.
         /// </summary>
         /// <value>The per page.</value>
-
         [JsonProperty("perPage")]
         public int PerPage { get; set; }
     }

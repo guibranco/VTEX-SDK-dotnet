@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -26,21 +26,18 @@ namespace VTEX.Transport
         /// Gets or sets the identifier of the order.
         /// </summary>
         /// <value>The identifier of the order.</value>
-
         public string OrderId { get; set; }
 
         /// <summary>
         /// Gets or sets the receipt.
         /// </summary>
         /// <value>The receipt.</value>
-
         public string Receipt { get; set; }
 
         /// <summary>
         /// Gets or sets the Date/Time of the date.
         /// </summary>
         /// <value>The date.</value>
-
         public DateTime Date { get; set; }
     }
 }
