@@ -72,3 +72,25 @@ var order = vtex.GetOrder("V-123456789-01");
 Console.WriteLine("Sequence: {1} | Value: {0} | ", order.Value, order.Sequence);
 
 ```
+
+---
+
+## Support
+
+Please [open an issue](https://github.com/guibranco/VTEX-SDK-dotnet/issues/new) for support.
+
+---
+
+## Contributing
+
+Refer to [CONTRIBUTING.md](CONTRIBUTING.md) to learn how to contribute to this project!
+
+### Contributors
+
+<!-- readme: collaborators,contributors,snyk-bot/- -start -->
+<!-- readme: collaborators,contributors,snyk-bot/- -end -->
+
+### Bots
+
+<!-- readme: bots,snyk-bot -start -->
+<!-- readme: bots,snyk-bot -end -->
