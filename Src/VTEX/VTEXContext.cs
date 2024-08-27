@@ -81,21 +81,23 @@ namespace VTEX
             _wrapper.SetVtexIdClientAuthCookie(cookie);
         }
 
-        #endregion
-
-        #region Private Methods
-
         /// <summary>
-        /// Gets the orders internal.
+        /// Retrieves a list of orders based on specified filtering criteria.
         /// </summary>
-        /// <param name="status">(Optional) The status.</param>
-        /// <param name="startDate">(Optional) The start date.</param>
-        /// <param name="endDate">(Optional) The end date.</param>
-        /// <param name="salesChannel">(Optional) The sales channel.</param>
-        /// <param name="affiliatedId">(Optional) The affiliated id</param>
-        /// <param name="paymentSystemName">(Optional) Name of the payment system.</param>
-        /// <param name="genericQuery">(Optional) The generic query.</param>
-        /// <returns>OrdersList.</returns>
+        /// <param name="status">The status of the orders to filter by (optional).</param>
+        /// <param name="startDate">The start date for filtering orders (optional).</param>
+        /// <param name="endDate">The end date for filtering orders (optional).</param>
+        /// <param name="salesChannel">The sales channel to filter by (optional).</param>
+        /// <param name="affiliatedId">The affiliated ID to filter by (optional).</param>
+        /// <param name="paymentSystemName">The payment system name to filter by (optional).</param>
+        /// <param name="genericQuery">A generic query string for additional filtering (optional).</param>
+        /// <returns>An instance of <see cref="OrdersList"/> containing the filtered orders.</returns>
+        /// <remarks>
+        /// This method constructs a query string based on the provided parameters to filter the orders.
+        /// It supports pagination and retrieves orders in pages of 50 until no more orders are found.
+        /// The filtering criteria include order status, sales channel, affiliated ID, payment system name,
+        /// and a date range defined by start and end dates. The results are logged indicating the number of orders found.
+        /// </remarks>
         private OrdersList GetOrdersListInternal(
             string status = null,
             DateTime? startDate = null,
@@ -1137,17 +1139,21 @@ namespace VTEX
                 .ConfigureAwait(false);
         }
 
-        #endregion
-
-        #region Bridge
-
         /// <summary>
-        /// Gets the bride facets.
+        /// Retrieves a collection of bridge facets based on the specified query and optional keywords.
         /// </summary>
-        /// <param name="query">The query.</param>
-        /// <param name="keywords">The keywords.</param>
-        /// <returns>IEnumerable&lt;BridgeFacet&gt;.</returns>
-        /// <exception cref="VTEX.GoodPractices.BridgeException"></exception>
+        /// <param name="query">The query string used to filter the bridge facets.</param>
+        /// <param name="keywords">Optional keywords to further refine the search for bridge facets.</param>
+        /// <returns>An enumerable collection of <see cref="BridgeFacet"/> objects that match the specified query and keywords.</returns>
+        /// <remarks>
+        /// This method constructs a query to fetch bridge facets from a remote service. It logs the action of retrieving facets
+        /// and sets a timeout of 5 minutes for the operation. The method builds a dictionary of query parameters, including
+        /// facets to retrieve and the specified query. If keywords are provided, they are added to the query parameters as well.
+        /// The method then invokes the service asynchronously and deserializes the resulting JSON response into a list of
+        /// <see cref="BridgeFacet"/> objects. If an exception occurs during this process, a custom <see cref="BridgeException"/>
+        /// is thrown, encapsulating the original exception and the query that caused the failure.
+        /// </remarks>
+        /// <exception cref="BridgeException">Thrown when an error occurs while retrieving bridge facets.</exception>
         [Pure]
         public IEnumerable<BridgeFacet> GetBridgeFacets(
             [Localizable(false)] string query,
@@ -1189,15 +1195,24 @@ namespace VTEX
         }
 
         /// <summary>
-        /// Gets the bridge items.
+        /// Retrieves a collection of bridge items based on the specified query parameters.
         /// </summary>
-        /// <param name="query">The query.</param>
-        /// <param name="sort">The sort.</param>
-        /// <param name="keywords">The keywords.</param>
-        /// <param name="offSet">The off set.</param>
-        /// <param name="limit">The limit.</param>
-        /// <returns>IEnumerable&lt;BridgeItem&gt;.</returns>
-        /// <exception cref="VTEX.GoodPractices.BridgeException"></exception>
+        /// <param name="query">The query string used to filter the bridge items.</param>
+        /// <param name="sort">The sorting criteria for the returned items.</param>
+        /// <param name="keywords">Additional keywords to refine the search results.</param>
+        /// <param name="offSet">The starting point for the items to be retrieved.</param>
+        /// <param name="limit">The maximum number of items to return.</param>
+        /// <returns>An enumerable collection of <see cref="BridgeItem"/> that match the specified criteria.</returns>
+        /// <remarks>
+        /// This method interacts with an external service to fetch bridge items based on the provided query, sort, and keywords.
+        /// It logs the request details and checks for an offset limit to avoid exceeding the maximum allowed items from the service.
+        /// If the offset exceeds 10,000, a warning is logged, and an empty list is returned.
+        /// The method uses a cancellation token to set a timeout for the service call, ensuring that it does not hang indefinitely.
+        /// In case of an error during the service call, it throws a custom exception <see cref="BridgeException"/> with details about the failure.
+        /// </remarks>
+        /// <exception cref="BridgeException">
+        /// Thrown when an error occurs while retrieving bridge items from the external service.
+        /// </exception>
         [Pure]
         public IEnumerable<BridgeItem> GetBridgeItems(
             [Localizable(false)] string query,
@@ -1492,24 +1507,23 @@ namespace VTEX
                 .ConfigureAwait(false);
         }
 
-        #endregion
-
-        #endregion
-
-        #region Master data
-
-        #region Search
-
         /// <summary>
-        /// Searches the asynchronous.
+        /// Asynchronously searches for a data entity based on a specified field and value.
         /// </summary>
-        /// <typeparam name="TDataEntity">The type of the data entity.</typeparam>
-        /// <param name="searchedField">The searched field.</param>
-        /// <param name="searchedValue">The searched value.</param>
-        /// <param name="token">The token.</param>
-        /// <returns>A Task&lt;TDataEntity&gt; representing the asynchronous operation.</returns>
-        /// <exception cref="System.ArgumentNullException">searchedValue</exception>
-        /// <exception cref="VTEX.GoodPractices.UnexpectedApiResponseException"></exception>
+        /// <typeparam name="TDataEntity">The type of the data entity to search for, which must implement <see cref="IDataEntity"/>.</typeparam>
+        /// <param name="searchedField">The field of the data entity to search against.</param>
+        /// <param name="searchedValue">The value to search for in the specified field.</param>
+        /// <param name="token">A cancellation token to monitor for cancellation requests.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the found data entity of type <typeparamref name="TDataEntity"/> or null if no entity is found.</returns>
+        /// <remarks>
+        /// This method performs an asynchronous search for a data entity by sending a GET request to the specified endpoint.
+        /// It constructs a query string using the provided field and value, and invokes a service to retrieve the data.
+        /// If the search value is null or whitespace, an <see cref="ArgumentNullException"/> is thrown.
+        /// In case of an unexpected API response, an <see cref="UnexpectedApiResponseException"/> is thrown, containing the JSON response and the original exception.
+        /// The method logs the retrieved entity for debugging purposes.
+        /// </remarks>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="searchedValue"/> is null or whitespace.</exception>
+        /// <exception cref="UnexpectedApiResponseException">Thrown when the API response is unexpected.</exception>
         [Pure]
         public async Task<TDataEntity> SearchAsync<TDataEntity>(
             string searchedField,
