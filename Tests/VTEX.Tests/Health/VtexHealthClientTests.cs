@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX.Tests
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -27,7 +27,6 @@ namespace VTEX.Tests.Health
     /// </summary>
     public class VtexHealthClientTests
     {
-
         /// <summary>
         /// Asynchronously validates the health status of a platform by retrieving platform statuses from a health client.
         /// </summary>
