@@ -111,7 +111,7 @@ namespace VTEX
             var queryString = new Dictionary<string, string>
             {
                 { @"page", @"0" },
-                { @"per_page", @"50" }
+                { @"per_page", @"50" },
             };
             if (!string.IsNullOrWhiteSpace(status))
             {
@@ -1164,7 +1164,7 @@ namespace VTEX
                 var queryString = new Dictionary<string, string>
                 {
                     { @"_facets", @"Origin,Status" },
-                    { @"_where", query }
+                    { @"_where", query },
                 };
                 if (!string.IsNullOrWhiteSpace(keywords))
                 {
@@ -1228,7 +1228,7 @@ namespace VTEX
                     { @"_where", query },
                     { @"_sort", sort },
                     { @"offSet", offSet.ToString() },
-                    { @"limit", limit.ToString() }
+                    { @"limit", limit.ToString() },
                 };
                 if (!string.IsNullOrWhiteSpace(keywords))
                 {
@@ -1526,7 +1526,7 @@ namespace VTEX
             var queryString = new Dictionary<string, string>
             {
                 { searchedField, searchedValue },
-                { @"_fields", @"_all" }
+                { @"_fields", @"_all" },
             };
             var json = string.Empty;
             try
