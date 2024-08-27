@@ -303,15 +303,22 @@ namespace VTEX
         }
 
         /// <summary>
-        /// Requests the internal asynchronous.
+        /// Sends an HTTP request asynchronously using the specified method and returns the response.
         /// </summary>
-        /// <param name="method">The method.</param>
-        /// <param name="token">The token.</param>
-        /// <param name="data">The data.</param>
-        /// <param name="client">The client.</param>
-        /// <param name="uriBuilder">The URI builder.</param>
-        /// <returns>A Task&lt;HttpResponseMessage&gt; representing the asynchronous operation.</returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">method - null</exception>
+        /// <param name="method">The HTTP method to use for the request (e.g., GET, POST, DELETE, etc.).</param>
+        /// <param name="token">A cancellation token to cancel the operation if needed.</param>
+        /// <param name="data">The data to be sent in the request body, if applicable.</param>
+        /// <param name="client">The HttpClient instance used to send the request.</param>
+        /// <param name="uriBuilder">The UriBuilder that constructs the URI for the request.</param>
+        /// <returns>A task that represents the asynchronous operation, containing the HttpResponseMessage received from the server.</returns>
+        /// <remarks>
+        /// This method handles different HTTP methods such as GET, POST, PUT, DELETE, and PATCH.
+        /// It constructs the appropriate request based on the provided method and sends it using the specified HttpClient.
+        /// If the method requires a body (like POST, PUT, or PATCH), it creates a StringContent object with the provided data.
+        /// The method also supports cancellation through the provided CancellationToken.
+        /// The response from the server is returned as an HttpResponseMessage, which can be used to inspect the result of the request.
+        /// </remarks>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when an unsupported HTTP method is provided.</exception>
         private static async Task<HttpResponseMessage> RequestInternalAsync(
             HttpRequestMethod method,
             CancellationToken token,
@@ -387,16 +394,23 @@ namespace VTEX
         }
 
         /// <summary>
-        /// Services the invoker asynchronous.
+        /// Asynchronously invokes a service endpoint with the specified HTTP method and parameters.
         /// </summary>
-        /// <param name="method">The method.</param>
-        /// <param name="endpoint">The endpoint.</param>
-        /// <param name="token">The token.</param>
-        /// <param name="queryString">The query string.</param>
-        /// <param name="data">The data.</param>
-        /// <param name="restEndpoint">The rest endpoint.</param>
-        /// <returns>A Task&lt;System.String&gt; representing the asynchronous operation.</returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">restEndpoint - null</exception>
+        /// <param name="method">The HTTP request method to be used (e.g., GET, POST).</param>
+        /// <param name="endpoint">The endpoint of the service to be invoked. This should not be localizable.</param>
+        /// <param name="token">A cancellation token to observe while waiting for the task to complete.</param>
+        /// <param name="queryString">An optional dictionary of query string parameters to be included in the request.</param>
+        /// <param name="data">An optional string containing data to be sent with the request.</param>
+        /// <param name="restEndpoint">An optional parameter specifying the REST endpoint type. Defaults to <see cref="RequestEndpoint.DEFAULT"/>.</param>
+        /// <returns>A task that represents the asynchronous operation, containing the response as a string.</returns>
+        /// <remarks>
+        /// This method constructs a URI using the provided endpoint and query string parameters,
+        /// and then invokes the service asynchronously. It handles authentication and cookie management
+        /// as needed based on the service requirements. The method is designed to work with various
+        /// HTTP methods and can send data in the request body if specified.
+        /// The response from the service is returned as a string, allowing for further processing or
+        /// parsing as needed by the caller.
+        /// </remarks>
         public async Task<string> ServiceInvokerAsync(
             HttpRequestMethod method,
             [Localizable(false)] string endpoint,
