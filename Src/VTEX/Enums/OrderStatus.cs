@@ -123,6 +123,6 @@ namespace VTEX.Enums
         /// </summary>
         [HumanReadable("Authorize fulfillment")]
         [InternalValue("authorize-fulfillment")]
-        AUTHORIZE_FULFILLMENT
+        AUTHORIZE_FULFILLMENT,
     }
 }

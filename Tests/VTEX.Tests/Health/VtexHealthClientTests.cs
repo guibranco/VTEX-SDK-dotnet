@@ -40,14 +40,14 @@ namespace VTEX.Tests.Health
                     LastResult = DateTime.Now,
                     Status = ResultStatus.HEALTHY,
                     Name = "Test",
-                    LastResultStatus = "healthy"
+                    LastResultStatus = "healthy",
                 },
                 new PlatformStatus
                 {
                     LastResult = DateTime.Now,
                     Status = ResultStatus.UNHEALTHY,
                     Name = "Test unhealthy",
-                    LastResultStatus = "healthy"
+                    LastResultStatus = "healthy",
                 },
             };
 
