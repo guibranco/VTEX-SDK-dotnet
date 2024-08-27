@@ -27,9 +27,17 @@ namespace VTEX.Tests.Health
     /// </summary>
     public class VtexHealthClientTests
     {
+
         /// <summary>
-        /// Defines the test method ValidateHealthClient.
+        /// Asynchronously validates the health status of a platform by retrieving platform statuses from a health client.
         /// </summary>
+        /// <remarks>
+        /// This test method sets up a mock implementation of the <see cref="IVtexHealthClient"/> interface to simulate the retrieval of platform statuses.
+        /// It creates a collection of <see cref="PlatformStatus"/> objects, representing both healthy and unhealthy statuses.
+        /// The method then calls the mocked client's <see cref="IVtexHealthClient.GetPlatformStatuesAsync"/> method and verifies that the result is not null.
+        /// It also checks that the returned list contains exactly two items, one with a healthy status and one with an unhealthy status.
+        /// This ensures that the health client is functioning as expected and returning the correct platform statuses.
+        /// </remarks>
         [Fact]
         public async Task ValidateHealthClient()
         {
