@@ -51,6 +51,6 @@ namespace VTEX.Enums
         /// <summary>
         /// The health
         /// </summary>
-        HEALTH
+        HEALTH,
     }
 }

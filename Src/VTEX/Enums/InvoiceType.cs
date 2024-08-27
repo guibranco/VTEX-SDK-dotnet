@@ -33,6 +33,6 @@ namespace VTEX.Enums
         /// </summary>
         [InternalValue("Input")]
         [HumanReadable("Input")]
-        INPUT
+        INPUT,
     }
 }

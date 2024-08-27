@@ -350,7 +350,7 @@ namespace VTEX
                 case HttpRequestMethod.PATCH:
                     var request = new HttpRequestMessage(new HttpMethod(@"PATCH"), uriBuilder.Uri)
                     {
-                        Content = content
+                        Content = content,
                     };
                     response = await client.SendAsync(request, token).ConfigureAwait(false);
                     request.Dispose();
@@ -427,7 +427,7 @@ namespace VTEX
 
             var builder = new UriBuilder(protocol, host, port, endpoint)
             {
-                Query = query.Replace(@"?", string.Empty)
+                Query = query.Replace(@"?", string.Empty),
             };
             return await ServiceInvokerInternal(
                     method,
