@@ -6,8 +6,7 @@ environment:
   CODACY_PROJECT_TOKEN:
     secure: 8fnQaRryh/pMRB9NtqyX0M0FSfPYW8Rtl1zeYcMXLVaK0o1UC3EAynZSB6rze5wM
   CODECLIMATE_TOKEN:
-    secure: >-
-      OYnZbQvxEZxr+V1o2dQPmuoHSq3szKIEd+pMsXaZJY/sePzo+aDODoWsJdcRWftkTTzcfT2oZdB45q43WImHnNvE1cx8pXPx1IcZpOEAo4I=
+    secure: OYnZbQvxEZxr+V1o2dQPmuoHSq3szKIEd+pMsXaZJY/sePzo+aDODoWsJdcRWftkTTzcfT2oZdB45q43WImHnNvE1cx8pXPx1IcZpOEAo4I=
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
