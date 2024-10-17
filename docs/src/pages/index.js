@@ -2,6 +2,24 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 
+/**
+ * Renders the main component for the VTEX SDK Documentation.
+ *
+ * This function returns a layout component that includes a title and description
+ * for the documentation, along with a welcome message and introductory text.
+ *
+ * @returns {JSX.Element} A JSX element representing the layout of the documentation page.
+ *
+ * @example
+ * // Usage within a React component
+ * const App = () => {
+ *   return (
+ *     <div>
+ *       <Home />
+ *     </div>
+ *   );
+ * };
+ */
 function Home() {
   return (
     <Layout
