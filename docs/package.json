@@ -1,25 +1,26 @@
-  "name": "vtex-sdk-docs",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "serve": "docusaurus serve"
-  },
-  "dependencies": {
-    "@docusaurus/core": "^2.0.0",
-    "@docusaurus/preset-classic": "^2.0.0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+{
+   "name":"vtex-sdk-docs",
+   "version":"0.0.1",
+   "private":true,
+   "scripts":{
+      "start":"docusaurus start",
+      "build":"docusaurus build",
+      "serve":"docusaurus serve"
+   },
+   "dependencies":{
+      "@docusaurus/core":"^2.0.0",
+      "@docusaurus/preset-classic":"^2.0.0"
+   },
+   "browserslist":{
+      "production":[
+         ">0.2%",
+         "not dead",
+         "not op_mini all"
+      ],
+      "development":[
+         "last 1 chrome version",
+         "last 1 firefox version",
+         "last 1 safari version"
+      ]
+   }
 }
