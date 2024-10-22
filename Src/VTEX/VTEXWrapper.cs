@@ -8,6 +8,26 @@
 // ***********************************************************************
 // <copyright file="VTEXWrapper.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
+
+        public async Task<SKU> GetSKUAsync(int skuId)
+        {
+            var response = await client.GetAsync($"/api/catalog_system/pvt/sku/stockkeepingunitbyid/{skuId}");
+            response.EnsureSuccessStatusCode();
+            var content = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<SKU>(content);
+        }
+
+        public async Task CreateSKUAsync(SKU sku)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(sku), Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("/api/catalog/pvt/stockkeepingunit", content);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task UpdateSKUAsync(int skuId, SKU sku)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(sku), Encoding.UTF8, "application/json");
+            var response = await client.PutAsync($"/api/catalog/pvt/stockkeepingunit/{skuId}", content);
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
