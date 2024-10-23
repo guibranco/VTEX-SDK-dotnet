@@ -1,4 +1,5 @@
 // ***********************************************************************
+using System.Threading.Tasks;
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
