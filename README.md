@@ -1,3 +1,23 @@
+# SKU Complement Feature
+
+This feature allows you to consult, create, and update SKU Complements, which are new SKUs associated with a Parent SKU. This functionality integrates with the VTEX Catalog API.
+
+## Usage
+
+### Consulting an SKU Complement
+
+To retrieve details of an SKU Complement by its ID, use the `get_sku_complement` method in the `SKUComplementService`.
+
+### Creating an SKU Complement
+
+To create a new SKU Complement, use the `create_sku_complement` method in the `SKUComplementService`. Provide the `parent_sku_id`, `complement_sku_id`, and any additional attributes.
+
+### Updating an SKU Complement
+
+To update an existing SKU Complement, use the `update_sku_complement` method in the `SKUComplementService`. Provide the `complement_id`, `parent_sku_id`, `complement_sku_id`, and any additional attributes.
+
+## Testing
+
 # VTEX SDK
 
 🛒 ⚙️ [VTEX](https://vtex.com) platform .NET SDK.
