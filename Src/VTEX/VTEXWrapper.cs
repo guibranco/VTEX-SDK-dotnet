@@ -8,6 +8,26 @@
 // ***********************************************************************
 // <copyright file="VTEXWrapper.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
+        public async Task<SKUComplement> GetSKUComplementAsync(string complementId)
+        {
+            var response = await client.GetAsync($"/api/catalog_system/pvt/sku-complement/{complementId}");
+            response.EnsureSuccessStatusCode();
+            var content = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<SKUComplement>(content);
+        }
+
+        public async Task CreateSKUComplementAsync(SKUComplement skuComplement)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(skuComplement), Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("/api/catalog_system/pvt/sku-complement", content);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task UpdateSKUComplementAsync(string complementId, SKUComplement skuComplement)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(skuComplement), Encoding.UTF8, "application/json");
+            var response = await client.PutAsync($"/api/catalog_system/pvt/sku-complement/{complementId}", content);
+            response.EnsureSuccessStatusCode();
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
