@@ -1,3 +1,9 @@
+# SKU EAN API Integration
+
+This application now supports the SKU EAN API, allowing users to manage SKU barcodes directly within the application.
+
+## Usage
+Refer to the `SkuEanClient` class in the `Src/VTEX/Clients/Catalog` directory for methods to consult, create, or update SKU EANs.
 # VTEX SDK
 
 🛒 ⚙️ [VTEX](https://vtex.com) platform .NET SDK.
