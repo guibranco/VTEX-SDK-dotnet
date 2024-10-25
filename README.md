@@ -1,3 +1,23 @@
+# SKU Seller API Integration
+
+This feature implements the SKU Seller API integration, allowing users to consult and delete an SKU Seller. An SKU Seller is a seller associated with an SKU, which is essential for managing multiple sellers offering the same product in a marketplace.
+
+## Features
+
+- **Consult SKU Seller**: Retrieve information about a specific SKU Seller.
+- **Delete SKU Seller**: Remove the association of a seller with an SKU.
+
+## Usage
+
+### API Client
+
+```python
+from src.api_client import APIClient
+from src.authentication import Authentication
+
+auth = Authentication(token="your_api_token")
+api_client = APIClient(base_url="https://api.vtex.com", headers=auth.get_headers())
+```
 # VTEX SDK
 
 🛒 ⚙️ [VTEX](https://vtex.com) platform .NET SDK.
