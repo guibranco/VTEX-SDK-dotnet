@@ -11,5 +11,4 @@ namespace YourNamespace.Models
             SkuComponents = new List<SkuKitItem>();
         }
     }
-
 }
