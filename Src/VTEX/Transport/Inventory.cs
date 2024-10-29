@@ -4,8 +4,15 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
+
+    // New property for SKU Service Value
+    /// <summary>
+    /// Gets or sets the service value for the sku.
+    /// </summary>
 // Last Modified On : 01-16-2023
+    [JsonProperty("serviceValue")]
 // ***********************************************************************
+    public decimal ServiceValue { get; set; }
 // <copyright file="Inventory.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
