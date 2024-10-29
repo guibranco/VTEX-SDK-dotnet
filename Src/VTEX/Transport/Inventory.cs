@@ -6,6 +6,7 @@
 // Last Modified By : Guilherme Branco Stracini
 
 // New property for SKU Service Value
+using Newtonsoft.Json;
 /// <summary>
     /// Gets or sets the service value for the sku.
     /// </summary>
