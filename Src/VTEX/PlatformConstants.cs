@@ -16,7 +16,6 @@
     /// The SKU Service Value update endpoint.
     /// </summary>
 // Last Modified On : 01-16-2023
-    }
     public const string SkuServiceValueUpdate = "/api/sku-service-value/update";
 
     /// <summary>
