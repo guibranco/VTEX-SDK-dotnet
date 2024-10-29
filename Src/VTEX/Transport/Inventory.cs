@@ -5,8 +5,8 @@
 //
 // Last Modified By : Guilherme Branco Stracini
 
-    // New property for SKU Service Value
-    /// <summary>
+// New property for SKU Service Value
+/// <summary>
     /// Gets or sets the service value for the sku.
     /// </summary>
 // Last Modified On : 01-16-2023
