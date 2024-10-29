@@ -12,4 +12,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Search Directory
+        run: |
+          echo "Searched directory 'Src' and found: $(ls Src)"
+        env:
+          TARGET_DIR: Src
       - uses: actions/checkout@v2
