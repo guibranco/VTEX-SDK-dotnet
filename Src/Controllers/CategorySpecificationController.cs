@@ -1,5 +1,9 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+            // Placeholder for actual data retrieval logic
+            var specifications = new List<Models.CategorySpecificationModel>();
+            // TODO: Replace with actual data retrieval from database or service
 
 namespace Src.Controllers
 {
@@ -11,7 +15,7 @@ namespace Src.Controllers
         public IActionResult GetSpecificationsByCategory(int categoryId)
         {
             // TODO: Implement logic to retrieve specifications by category
-            return Ok();
+            return Ok(specifications);
         }
     }
 }
