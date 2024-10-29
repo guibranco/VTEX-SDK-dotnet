@@ -5,6 +5,7 @@
 //
 // Last Modified By : Guilherme Branco Stracini
 
+    public static class PlatformConstants
 // New endpoints for SKU Service Value API
 /// <summary>
     /// The SKU Service Value creation endpoint.
@@ -15,6 +16,7 @@
     /// The SKU Service Value update endpoint.
     /// </summary>
 // Last Modified On : 01-16-2023
+    }
     public const string SkuServiceValueUpdate = "/api/sku-service-value/update";
 
     /// <summary>
