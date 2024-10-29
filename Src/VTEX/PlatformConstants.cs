@@ -4,7 +4,22 @@
 // Created          : 01-15-2023
 //
 // Last Modified By : Guilherme Branco Stracini
+
+    // New endpoints for SKU Service Value API
+    /// <summary>
+    /// The SKU Service Value creation endpoint.
+    /// </summary>
+    public const string SkuServiceValueCreate = "/api/sku-service-value/create";
+
+    /// <summary>
+    /// The SKU Service Value update endpoint.
+    /// </summary>
 // Last Modified On : 01-16-2023
+    public const string SkuServiceValueUpdate = "/api/sku-service-value/update";
+
+    /// <summary>
+    /// The SKU Service Value deletion endpoint.
+    /// </summary>
 // ***********************************************************************
 // <copyright file="PlatformConstants.cs" company="Guilherme Branco Stracini">
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
