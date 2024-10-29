@@ -5,8 +5,8 @@
 //
 // Last Modified By : Guilherme Branco Stracini
 
-    // New endpoints for SKU Service Value API
-    /// <summary>
+// New endpoints for SKU Service Value API
+/// <summary>
     /// The SKU Service Value creation endpoint.
     /// </summary>
     public const string SkuServiceValueCreate = "/api/sku-service-value/create";
