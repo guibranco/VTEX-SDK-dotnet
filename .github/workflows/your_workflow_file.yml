@@ -11,4 +11,4 @@ jobs:
     steps:
     - name: Search Directory
       run: |
-        echo "Searched directory '.' and found: [\".config\", \".csharpierrc.yaml\", \".deepsource.toml\", \".githooks\", \".github\", \".gitignore\", \".vscode\", \".wakatime-project\", \"CODE_OF_CONDUCT.md\", \"CONTRIBUTING.md\", \"LICENSE\", \"README.md\", \"SECURITY.md\", \"Src\", \"Tests\", \"VTEX.sln\", \"VTEX.sln.DotSettings\", \"_config.yml\", \"appveyor.yml\", \"assets\", \"docs\", \"logo.png\", \"packageLogo.png\"]"
+        echo 'Searched directory "." and found: [".config", ".csharpierrc.yaml", ".deepsource.toml", ".githooks", ".github", ".gitignore", ".vscode", ".wakatime-project", "CODE_OF_CONDUCT.md", "CONTRIBUTING.md", "LICENSE", "README.md", "SECURITY.md", "Src", "Tests", "VTEX.sln", "VTEX.sln.DotSettings", "_config.yml", "appveyor.yml", "assets", "docs", "logo.png", "packageLogo.png"]'
