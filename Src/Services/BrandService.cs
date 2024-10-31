@@ -36,5 +36,17 @@ namespace Services
             brand.Subcollections.Remove(subcollection);
             _context.SaveChanges();
         }
+
+        public bool BrandExists(int brandId)
+        {
+            return _context.Brands.Any(b => b.Id == brandId);
+        }
+
+        public bool SubcollectionExists(int subcollectionId)
+        {
+            return _context.Subcollections.Any(s => s.Id == subcollectionId);
+        }
+    }
+
     }
 }
