@@ -47,5 +47,4 @@ namespace Services
             return _context.Subcollections.Any(s => s.Id == subcollectionId);
         }
     }
-    }
 }
