@@ -11,7 +11,7 @@ namespace Migrations
                 columns: table => new
                 {
                     BrandId = table.Column<int>(nullable: false),
-                    SubcollectionId = table.Column<int>(nullable: false)
+                    SubcollectionId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
