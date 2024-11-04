@@ -333,6 +333,7 @@ namespace VTEX
             client.DefaultRequestHeaders.Add(@"X-VTEX-API-AppToken", _appToken);
         }
 
+
         /// <summary>
         /// Sends an HTTP request asynchronously using the specified method and returns the response.
         /// </summary>
