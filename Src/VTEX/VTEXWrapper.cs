@@ -233,6 +233,7 @@ namespace VTEX
                     data,
                     uriBuilder,
                     cookie,
+
                     requiresAuthentication,
                     true
                 )
