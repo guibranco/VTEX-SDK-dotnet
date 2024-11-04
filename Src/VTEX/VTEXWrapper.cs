@@ -404,6 +404,7 @@ namespace VTEX
                     throw new ArgumentOutOfRangeException(nameof(method), method, null);
             }
 
+
             return response;
         }
 
