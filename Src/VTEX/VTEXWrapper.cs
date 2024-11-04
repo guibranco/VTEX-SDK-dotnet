@@ -569,5 +569,4 @@ namespace VTEX
         }
 
         #endregion
-        #endregion
     }
