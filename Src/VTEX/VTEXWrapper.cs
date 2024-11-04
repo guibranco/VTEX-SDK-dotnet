@@ -393,6 +393,7 @@ namespace VTEX
                     break;
                 case HttpRequestMethod.PATCH:
                     var request = new HttpRequestMessage(new HttpMethod(@"PATCH"), uriBuilder.Uri)
+
                     {
                         Content = content,
                     };
