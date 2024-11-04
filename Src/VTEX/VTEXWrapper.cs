@@ -478,6 +478,7 @@ namespace VTEX
             _authCookie = cookieValue;
         }
 
+
         /// <summary>
         /// Asynchronously invokes a service endpoint with the specified HTTP method and parameters.
         /// </summary>
