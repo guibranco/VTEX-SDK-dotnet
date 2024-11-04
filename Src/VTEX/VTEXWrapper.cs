@@ -173,6 +173,7 @@ namespace VTEX
                     endpoint
                 );
 
+
                 LogConsumer.Debug(uriBuilder.ToString());
 
                 var cookieContainer = new CookieContainer();
