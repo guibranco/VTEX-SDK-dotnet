@@ -63,6 +63,7 @@ namespace VTEX
         /// </summary>
         private readonly string _accountName;
 
+
         /// <summary>
         /// The internal user agent
         /// </summary>
