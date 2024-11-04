@@ -510,6 +510,7 @@ namespace VTEX
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentOutOfRangeException">restEndpoint - null</exception>
             ref string endpoint,
+        ref string endpoint,
             ref Dictionary<string, string> queryString,
             RequestEndpoint restEndpoint,
             ref Cookie cookie,
