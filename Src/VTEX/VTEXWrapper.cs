@@ -353,6 +353,7 @@ namespace VTEX
         /// </remarks>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when an unsupported HTTP method is provided.</exception>
         private static async Task<HttpResponseMessage> RequestInternalAsync(
+
             HttpRequestMethod method,
             CancellationToken token,
             string data,
