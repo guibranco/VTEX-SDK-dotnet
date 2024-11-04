@@ -303,6 +303,7 @@ namespace VTEX
                 $"VTEX_handle_exception_retrying_{method.ToString()}_request"
             );
             return ex;
+
         }
 
         /// <summary>
