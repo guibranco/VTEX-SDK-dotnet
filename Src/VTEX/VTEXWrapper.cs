@@ -613,6 +613,7 @@ using CrispyWaffle.Log;
                     throw new ArgumentOutOfRangeException(nameof(restEndpoint), restEndpoint, null);
             }
 
+
             return host;
         }
 
