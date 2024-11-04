@@ -343,6 +343,7 @@ namespace VTEX
         /// <param name="client">The HttpClient instance used to send the request.</param>
         /// <param name="uriBuilder">The UriBuilder that constructs the URI for the request.</param>
         /// <returns>A task that represents the asynchronous operation, containing the HttpResponseMessage received from the server.</returns>
+
         /// <remarks>
         /// This method handles different HTTP methods such as GET, POST, PUT, DELETE, and PATCH.
         /// It constructs the appropriate request based on the provided method and sends it using the specified HttpClient.
