@@ -443,7 +443,6 @@ namespace VTEX
         /// <returns>A task that represents the asynchronous operation, containing the response as a string.</returns>
         public async Task<string> DeleteCollectionAsync(int id, CancellationToken token)
         {
-        public async Task<string> DeleteCollectionAsync(int id, CancellationToken token)
             return await ServiceInvokerAsync(HttpRequestMethod.DELETE, $"collections/{id}", token);
 
         }
