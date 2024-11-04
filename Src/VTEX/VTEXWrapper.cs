@@ -184,6 +184,7 @@ namespace VTEX
 
                 ConfigureClient(client, requiresAuthentication);
 
+
                 if (cookie != null)
                 {
                     cookieContainer.Add(uriBuilder.Uri, cookie);
