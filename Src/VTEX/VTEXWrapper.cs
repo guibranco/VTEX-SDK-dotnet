@@ -83,6 +83,7 @@ namespace VTEX
                     return _internalUserAgent;
                 }
 
+
                 var assembly = System
                     .Reflection.Assembly.GetAssembly(typeof(VTEXWrapper))
                     .GetName();
