@@ -457,6 +457,7 @@ namespace VTEX
             return await ServiceInvokerAsync(HttpRequestMethod.POST, "collections", token, data: data);
 
         }
+
         /// <summary>
         /// Sets the rest credentials.
         /// </summary>
