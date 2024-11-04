@@ -509,7 +509,6 @@ namespace VTEX
         /// <param name="port">The port.</param>
         /// <param name="requiresAuthentication">if set to <c>true</c> [requires authentication].</param>
         /// <returns>System.String.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">restEndpoint - null</exception>
             ref string endpoint,
         ref string endpoint,
             ref Dictionary<string, string> queryString,
