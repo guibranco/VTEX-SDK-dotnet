@@ -10,14 +10,14 @@
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
 // <summary></summary>
-namespace VTEX
+using System.Net.Http.Headers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
+namespace VTEX
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
