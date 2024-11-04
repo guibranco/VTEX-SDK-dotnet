@@ -53,6 +53,7 @@ namespace VTEX
         private string _appToken;
 
         /// <summary>
+
         /// The authentication cookie
         /// </summary>
         private string _authCookie;
