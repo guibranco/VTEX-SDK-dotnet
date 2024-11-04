@@ -523,6 +523,7 @@ namespace VTEX
                 ref requiresAuthentication
             );
             var query = string.Empty;
+
             if (queryString is { Count: > 0 })
             {
                 query = new QueryStringBuilder().AddRange(queryString).ToString();
