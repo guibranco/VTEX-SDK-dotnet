@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -392,7 +392,6 @@ namespace VTEX
         /// <returns>A task that represents the asynchronous operation, containing the response as a string.</returns>
         public async Task<string> UpdateCollectionAsync(int id, string data, CancellationToken token)
         {
-
         /// <summary>
         /// Deletes a collection.
         /// </summary>
