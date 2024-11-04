@@ -384,6 +384,16 @@ namespace VTEX
         }
 
         /// <summary>
+        /// Creates a new collection.
+        /// </summary>
+        /// <param name="data">The data representing the new collection to be created.</param>
+        /// <param name="token">A cancellation token to observe while waiting for the task to complete.</param>
+        /// <returns>A task that represents the asynchronous operation, containing the response as a string.</returns>
+        public async Task<string> CreateCollectionAsync(string data, CancellationToken token)
+        {
+            return await ServiceInvokerAsync(HttpRequestMethod.POST, "collections", token, data: data);
+
+        /// <summary>
         /// Sets the rest credentials.
         /// </summary>
         /// <param name="appKey">The application key.</param>
