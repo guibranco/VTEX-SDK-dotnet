@@ -313,6 +313,7 @@ namespace VTEX
         /// <param name="requiresAuthentication">if set to <c>true</c> [requires authentication].</param>
         private void ConfigureClient(HttpClient client, bool requiresAuthentication)
         {
+
             client.DefaultRequestHeaders.ExpectContinue = false;
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
