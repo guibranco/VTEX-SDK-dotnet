@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 namespace VTEX
+{
 // ***********************************************************************
 namespace VTEX
     using System;
