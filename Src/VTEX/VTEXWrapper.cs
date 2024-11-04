@@ -323,6 +323,7 @@ namespace VTEX
                 @"User-Agent",
                 $@"guiBranco-VTEX-SDK-dotnet {InternalUserAgent} +https://github.com/guibranco/VTEX-SDK-dotnet"
             );
+
             if (!requiresAuthentication)
             {
                 return;
