@@ -11,25 +11,18 @@
 // </copyright>
 // <summary></summary>
 namespace VTEX
-{
-// ***********************************************************************
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Threading.Tasks;
-    using CrispyWaffle.Extensions;
-    using CrispyWaffle.Log;
-    using CrispyWaffle.Telemetry;
-    using CrispyWaffle.Utilities;
-    using Enums;
-    using GoodPractices;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using CrispyWaffle.Extensions;
+using CrispyWaffle.Log;
 
     /// <summary>
     /// Class Wrapper. This class cannot be inherited.
@@ -86,7 +79,7 @@ namespace VTEX
                 var assembly = System
                     .Reflection.Assembly.GetAssembly(typeof(VTEXWrapper))
                     .GetName();
-                _internalUserAgent = $@"{assembly.Name}/{assembly.Version}";
+                _internalUserAgent = $"{assembly.Name}/{assembly.Version}";
                 return _internalUserAgent;
             }
         }
@@ -557,7 +550,7 @@ namespace VTEX
         /// <param name="port">The port.</param>
         /// <param name="requiresAuthentication">if set to <c>true</c> [requires authentication].</param>
         /// <returns>System.String.</returns>
-            ref string endpoint,
+        private string GetHostData(
         ref string endpoint,
             ref Dictionary<string, string> queryString,
             RequestEndpoint restEndpoint,
