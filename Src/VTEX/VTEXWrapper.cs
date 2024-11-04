@@ -123,6 +123,7 @@ namespace VTEX
         /// </summary>
         public void Dispose()
         {
+
             _appKey = null;
             _appToken = null;
             _requestMediator.Dispose();
