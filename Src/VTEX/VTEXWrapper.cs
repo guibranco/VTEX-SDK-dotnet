@@ -453,6 +453,7 @@ namespace VTEX
         /// parsing as needed by the caller.
         /// </remarks>
         public async Task<string> ServiceInvokerAsync(
+        public async Task<string> ServiceInvokerAsync(
             HttpRequestMethod method,
             [Localizable(false)] string endpoint,
             CancellationToken token,
