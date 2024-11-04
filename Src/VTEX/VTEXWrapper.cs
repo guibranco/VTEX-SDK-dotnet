@@ -293,6 +293,7 @@ namespace VTEX
                 return ex;
             }
             if (statusCode != 0 && statusCode != 408 && statusCode != 500 && statusCode != 502)
+
             {
                 throw ex;
             }
