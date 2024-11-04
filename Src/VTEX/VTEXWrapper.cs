@@ -163,6 +163,7 @@ namespace VTEX
             string result = null;
             Exception exr;
             try
+
             {
                 _requestMediator.WaitOne();
 
