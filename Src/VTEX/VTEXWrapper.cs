@@ -429,7 +429,6 @@ namespace VTEX
         /// Sets the vtex identifier client authentication cookie.
         /// </summary>
         /// <param name="cookieValue">The cookie value.</param>
-        public void SetVtexIdClientAuthCookie(string cookieValue)
         {
             _authCookie = cookieValue;
         }
