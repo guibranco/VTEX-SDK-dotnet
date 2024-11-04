@@ -423,6 +423,7 @@ namespace VTEX
             return await ServiceInvokerAsync(HttpRequestMethod.GET, "collections", token);
         }
 
+
         /// <summary>
         /// Updates an existing collection.
         /// </summary>
