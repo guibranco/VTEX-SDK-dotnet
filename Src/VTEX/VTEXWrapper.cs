@@ -553,6 +553,7 @@ using CrispyWaffle.Log;
         /// <returns>System.String.</returns>
         private string GetHostData(
         ref string endpoint,
+
             ref Dictionary<string, string> queryString,
             RequestEndpoint restEndpoint,
             ref Cookie cookie,
