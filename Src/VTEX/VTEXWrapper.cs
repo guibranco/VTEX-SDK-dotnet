@@ -243,6 +243,7 @@ namespace VTEX
         /// <summary>
         /// Handles the exception.
         /// </summary>
+
         /// <param name="exception">The exception.</param>
         /// <param name="response">The response.</param>
         /// <param name="uri">The URI.</param>
