@@ -513,6 +513,7 @@ namespace VTEX
             var protocol = @"https";
             var port = 443;
             var host = GetHostData(
+
                 ref endpoint,
                 ref queryString,
                 restEndpoint,
