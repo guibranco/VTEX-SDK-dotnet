@@ -394,6 +394,16 @@ namespace VTEX
         {
 
         /// <summary>
+        /// Deletes a collection.
+        /// </summary>
+        /// <param name="id">The identifier of the collection to be deleted.</param>
+        /// <param name="token">A cancellation token to observe while waiting for the task to complete.</param>
+        /// <returns>A task that represents the asynchronous operation, containing the response as a string.</returns>
+        public async Task<string> DeleteCollectionAsync(int id, CancellationToken token)
+        {
+            return await ServiceInvokerAsync(HttpRequestMethod.DELETE, $"collections/{id}", token);
+
+        /// <summary>
         /// Creates a new collection.
         /// </summary>
         /// <param name="data">The data representing the new collection to be created.</param>
