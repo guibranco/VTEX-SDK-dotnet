@@ -413,6 +413,7 @@ namespace VTEX
         #region Public methods
 
         /// <summary>
+
         /// Retrieves a list of all collections.
         /// </summary>
         /// <param name="token">A cancellation token to observe while waiting for the task to complete.</param>
