@@ -203,6 +203,7 @@ namespace VTEX
                 return result;
             }
             catch (AggregateException e)
+
             {
                 var ex = e.InnerExceptions.FirstOrDefault() ?? e.InnerException ?? e;
 
