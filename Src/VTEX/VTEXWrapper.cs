@@ -103,6 +103,7 @@ namespace VTEX
         #region ~Ctor
 
         /// <summary>
+
         /// Initializes a new instance of the <see cref="VTEXWrapper" /> class.
         /// </summary>
         /// <param name="accountName">The account name.</param>
