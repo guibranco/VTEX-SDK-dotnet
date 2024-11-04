@@ -570,4 +570,3 @@ namespace VTEX
         }
 
         #endregion
-    }
