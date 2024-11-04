@@ -374,6 +374,16 @@ namespace VTEX
         #region Public methods
 
         /// <summary>
+        /// Retrieves a list of all collections.
+        /// </summary>
+        /// <param name="token">A cancellation token to observe while waiting for the task to complete.</param>
+        /// <returns>A task that represents the asynchronous operation, containing the list of collections as a string.</returns>
+        public async Task<string> GetCollectionsAsync(CancellationToken token)
+        {
+            return await ServiceInvokerAsync(HttpRequestMethod.GET, "collections", token);
+        }
+
+        /// <summary>
         /// Sets the rest credentials.
         /// </summary>
         /// <param name="appKey">The application key.</param>
