@@ -253,6 +253,7 @@ namespace VTEX
         /// <returns>Exception.</returns>
         /// <exception cref="UnexpectedApiResponseException"></exception>
         private Exception HandleException(
+
             Exception exception,
             HttpResponseMessage response,
             Uri uri,
