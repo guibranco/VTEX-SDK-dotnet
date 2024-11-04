@@ -153,6 +153,7 @@ namespace VTEX
             CancellationToken token,
             string data,
             UriBuilder uriBuilder,
+
             Cookie cookie,
             bool requiresAuthentication,
             bool isRetry = false
