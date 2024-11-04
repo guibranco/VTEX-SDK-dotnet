@@ -593,6 +593,7 @@ using CrispyWaffle.Log;
                     break;
                 case RequestEndpoint.BRIDGE:
                     host = $@"{_accountName}.{VTEXConstants.MyVtexDomain}";
+
                     endpoint = $@"api/{endpoint}";
                     if (!string.IsNullOrWhiteSpace(_authCookie))
                     {
