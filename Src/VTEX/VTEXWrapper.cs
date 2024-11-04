@@ -468,6 +468,7 @@ namespace VTEX
             _appToken = appToken;
         }
 
+
         /// <summary>
         /// Sets the vtex identifier client authentication cookie.
         /// </summary>
