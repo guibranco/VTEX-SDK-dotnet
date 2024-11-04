@@ -263,6 +263,7 @@ namespace VTEX
         )
         {
             var statusCode = 0;
+
             if (response != null)
             {
                 statusCode = (int)response.StatusCode;
