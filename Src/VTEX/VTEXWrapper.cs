@@ -93,6 +93,7 @@ namespace VTEX
         }
 
         /// <summary>
+
         /// The request mediator
         /// </summary>
         private readonly ManualResetEvent _requestMediator = new ManualResetEvent(false);
