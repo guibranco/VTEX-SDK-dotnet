@@ -539,6 +539,7 @@ using CrispyWaffle.Log;
                 .ConfigureAwait(false);
         }
 
+
         /// <summary>
         /// Gets the host data.
         /// </summary>
