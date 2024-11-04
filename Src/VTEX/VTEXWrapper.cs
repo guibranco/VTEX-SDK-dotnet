@@ -373,6 +373,7 @@ namespace VTEX
             {
                 case HttpRequestMethod.DELETE:
                     response = await client
+
                         .DeleteAsync(uriBuilder.Uri, token)
                         .ConfigureAwait(false);
                     break;
