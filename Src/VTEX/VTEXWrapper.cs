@@ -193,6 +193,7 @@ namespace VTEX
                 response = await RequestInternalAsync(method, token, data, client, uriBuilder)
                     .ConfigureAwait(false);
 
+
                 token.ThrowIfCancellationRequested();
 
                 result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
