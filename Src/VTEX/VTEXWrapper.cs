@@ -384,6 +384,16 @@ namespace VTEX
         }
 
         /// <summary>
+        /// Updates an existing collection.
+        /// </summary>
+        /// <param name="id">The identifier of the collection to be updated.</param>
+        /// <param name="data">The data representing the updated collection.</param>
+        /// <param name="token">A cancellation token to observe while waiting for the task to complete.</param>
+        /// <returns>A task that represents the asynchronous operation, containing the response as a string.</returns>
+        public async Task<string> UpdateCollectionAsync(int id, string data, CancellationToken token)
+        {
+
+        /// <summary>
         /// Creates a new collection.
         /// </summary>
         /// <param name="data">The data representing the new collection to be created.</param>
