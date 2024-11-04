@@ -533,6 +533,7 @@ namespace VTEX
             {
                 Query = query.Replace(@"?", string.Empty),
             };
+
             return await ServiceInvokerInternal(
                     method,
                     endpoint,
