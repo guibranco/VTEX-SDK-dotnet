@@ -563,6 +563,7 @@ using CrispyWaffle.Log;
         )
         {
             string host;
+
             switch (restEndpoint)
             {
                 case RequestEndpoint.DEFAULT:
