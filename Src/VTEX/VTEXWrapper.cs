@@ -433,6 +433,7 @@ namespace VTEX
         /// <returns>A task that represents the asynchronous operation, containing the response as a string.</returns>
         public async Task<string> UpdateCollectionAsync(int id, string data, CancellationToken token)
         {
+
     return await ServiceInvokerAsync(HttpRequestMethod.PUT, $"collections/{id}", token, data: data);
 }
         /// <summary>
