@@ -213,6 +213,7 @@ namespace VTEX
                 {
                     throw exr;
                 }
+
             }
             catch (Exception e)
             {
