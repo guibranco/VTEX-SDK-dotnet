@@ -273,6 +273,7 @@ namespace VTEX
                 uri,
                 method.ToString(),
                 data,
+
                 result,
                 statusCode,
                 exception
