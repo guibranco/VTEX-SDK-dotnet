@@ -566,7 +566,5 @@ namespace VTEX
             return host;
         }
 
-        }
         #endregion
     }
-}
