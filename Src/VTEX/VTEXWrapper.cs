@@ -38,6 +38,7 @@ namespace VTEX
     /// <seealso cref="IDisposable" />
     // TODO change public to internal after remove from Integração Service
     public sealed class VTEXWrapper : IDisposable
+
     {
         #region Private fields
 
