@@ -143,6 +143,7 @@ namespace VTEX
         /// <param name="data">The data.</param>
         /// <param name="uriBuilder">The URI builder.</param>
         /// <param name="cookie">The cookie.</param>
+
         /// <param name="requiresAuthentication">if set to <c>true</c> [requires authentication].</param>
         /// <param name="isRetry">if set to <c>true</c> [is retry].</param>
         /// <returns>System.String.</returns>
