@@ -508,7 +508,6 @@ namespace VTEX
         /// <param name="requiresAuthentication">if set to <c>true</c> [requires authentication].</param>
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentOutOfRangeException">restEndpoint - null</exception>
-        private string GetHostData(
             ref string endpoint,
             ref Dictionary<string, string> queryString,
             RequestEndpoint restEndpoint,
