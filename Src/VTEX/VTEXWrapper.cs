@@ -603,6 +603,7 @@ using CrispyWaffle.Log;
                     break;
                 case RequestEndpoint.HEALTH:
                     protocol = @"http";
+
                     port = 80;
                     host = VTEXConstants.MonitoringDomain;
                     endpoint = @"api/healthcheck/modules";
