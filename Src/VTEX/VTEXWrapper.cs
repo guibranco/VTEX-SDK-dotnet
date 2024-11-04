@@ -10,6 +10,7 @@
 //     © 2020 Guilherme Branco Stracini. All rights reserved.
 // </copyright>
 // <summary></summary>
+namespace VTEX
 // ***********************************************************************
 namespace VTEX
     using System;
