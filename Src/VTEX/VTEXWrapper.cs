@@ -434,7 +434,7 @@ namespace VTEX
         public async Task<string> UpdateCollectionAsync(int id, string data, CancellationToken token)
         {
 
-    return await ServiceInvokerAsync(HttpRequestMethod.PUT, $"collections/{id}", token, data: data);
+            return await ServiceInvokerAsync(HttpRequestMethod.PUT, $"collections/{id}", token, data: data);
 }
         /// <summary>
         /// Deletes a collection.
