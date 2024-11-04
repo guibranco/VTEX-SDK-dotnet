@@ -73,6 +73,7 @@ namespace VTEX
         /// Gets the internal user agent.
         /// </summary>
         /// <value>The internal user agent.</value>
+
         private static string InternalUserAgent
         {
             get
