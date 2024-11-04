@@ -22,7 +22,7 @@ namespace VTEX
     using System.Net.Http.Headers;
     using System.Text;
     using System.Threading;
-    public class VTEXWrapper
+    using System.Threading.Tasks;
     using System.Threading.Tasks;
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
