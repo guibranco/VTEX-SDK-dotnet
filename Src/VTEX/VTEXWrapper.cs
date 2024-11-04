@@ -404,6 +404,7 @@ namespace VTEX
         {
             return await ServiceInvokerAsync(HttpRequestMethod.DELETE, $"collections/{id}", token);
 
+        }
         /// <summary>
         /// Creates a new collection.
         /// </summary>
