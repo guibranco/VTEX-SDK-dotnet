@@ -1604,4 +1604,5 @@ namespace VTEX
 
         #endregion
     }
+    }
 }
