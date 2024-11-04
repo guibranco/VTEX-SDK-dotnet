@@ -113,6 +113,7 @@ namespace VTEX
             _requestMediator.Set();
         }
 
+
         #endregion
 
         #region Implementation of IDisposable
