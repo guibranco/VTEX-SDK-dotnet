@@ -283,6 +283,7 @@ namespace VTEX
                 _requestMediator.Reset();
                 LogConsumer.Warning(
                     "HTTP {2} status code on method {0} - uri {1}",
+
                     method.ToString(),
                     uri,
                     statusCode
