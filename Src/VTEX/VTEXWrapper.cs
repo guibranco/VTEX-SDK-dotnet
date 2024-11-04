@@ -493,6 +493,7 @@ namespace VTEX
         /// This method constructs a URI using the provided endpoint and query string parameters,
         /// and then invokes the service asynchronously. It handles authentication and cookie management
         /// as needed based on the service requirements. The method is designed to work with various
+
         /// HTTP methods and can send data in the request body if specified.
         /// The response from the service is returned as a string, allowing for further processing or
         /// parsing as needed by the caller.
