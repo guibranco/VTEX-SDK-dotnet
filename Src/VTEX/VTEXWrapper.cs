@@ -421,6 +421,7 @@ namespace VTEX
         /// </summary>
         /// <param name="appKey">The application key.</param>
         /// <param name="appToken">The application token.</param>
+        public void SetRestCredentials(string appKey, string appToken)
         {
             _appKey = appKey;
             _appToken = appToken;
