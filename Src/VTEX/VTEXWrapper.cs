@@ -503,6 +503,7 @@ namespace VTEX
             [Localizable(false)] string endpoint,
             CancellationToken token,
             Dictionary<string, string> queryString = null,
+
             string data = null,
             RequestEndpoint restEndpoint = RequestEndpoint.DEFAULT
         )
