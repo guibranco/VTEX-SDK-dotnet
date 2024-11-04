@@ -573,6 +573,7 @@ using CrispyWaffle.Log;
                 case RequestEndpoint.PAYMENTS:
                     host = $@"{_accountName}.{VTEXConstants.PaymentsDomain}";
                     endpoint = $@"api/{endpoint}";
+
                     break;
                 case RequestEndpoint.LOGISTICS:
                     host = VTEXConstants.LogisticsDomain;
