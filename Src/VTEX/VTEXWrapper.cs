@@ -383,6 +383,7 @@ namespace VTEX
                 case HttpRequestMethod.POST:
                     response = await client
                         .PostAsync(uriBuilder.Uri, content, token)
+
                         .ConfigureAwait(false);
                     break;
                 case HttpRequestMethod.PUT:
