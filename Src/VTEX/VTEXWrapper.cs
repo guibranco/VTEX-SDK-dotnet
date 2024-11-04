@@ -223,6 +223,7 @@ namespace VTEX
                 {
                     throw exr;
                 }
+
             }
 
             return await ServiceInvokerInternal(
