@@ -363,6 +363,7 @@ namespace VTEX
         {
             HttpResponseMessage response;
             StringContent content = null;
+
             if (!string.IsNullOrWhiteSpace(data))
             {
                 content = new StringContent(data, Encoding.UTF8, @"application/json");
