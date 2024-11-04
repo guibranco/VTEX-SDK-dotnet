@@ -435,7 +435,6 @@ namespace VTEX
 
             return await ServiceInvokerAsync(HttpRequestMethod.PUT, $"collections/{id}", token, data: data);
 }
-        /// <summary>
         /// Deletes a collection.
         /// </summary>
         /// <param name="id">The identifier of the collection to be deleted.</param>
