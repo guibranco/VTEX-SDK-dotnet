@@ -1,0 +1,16 @@
+{
+  "name": "vtex-sdk-dotnet",
+  "version": "1.0.0",
+  "description": "VTEX SDK for .NET with added Non Structured Specification API",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^27.0.0",
+    "supertest": "^6.1.3"
+  }
+}
