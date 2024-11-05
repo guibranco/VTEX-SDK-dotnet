@@ -1,6 +1,6 @@
 const request = require('supertest');
 const express = require('express');
-const nonStructuredSpecificationsController = require('../src/controllers/nonStructuredSpecificationsController');
+const nonStructuredSpecificationsService = require('../src/services/nonStructuredSpecificationsService');
 
 const app = express();
 app.use('/non-structured-specifications', nonStructuredSpecificationsController);
