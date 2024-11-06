@@ -7,6 +7,7 @@ namespace VTEX
     [ApiController]
     public class SalesChannelApiController : ControllerBase
         [Authorize]
+
     {
         // GET: api/SalesChannels
         [HttpGet]
