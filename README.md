@@ -64,6 +64,20 @@ Implements all features of VTEX API available at [VTEX Developer Docs](https://d
 ## Usage
 
 Use your VTEX platform API keys.
+### Sales Channel API
+
+The Sales Channel API allows you to manage and interact with various sales channels effectively. It provides endpoints for creating, reading, updating, and deleting sales channel data.
+
+#### Example Usage
+
+```cs
+var vtex = new VTEXContext("store name", "app-key-xyz", "app-token-secret-hash");
+var salesChannels = vtex.GetSalesChannels();
+foreach (var channel in salesChannels)
+{
+    Console.WriteLine($"Channel ID: {channel.Id}, Name: {channel.Name}");
+}
+```
 Follow this tutorial on how to: [Creating appKeys and appTokens to authenticate integrations](https://help.vtex.com/tutorial/creating-appkeys-and-apptokens-to-authenticate-integrations--43tQeyQJgAKGEuCqQKAOI2)
 
 ```cs
