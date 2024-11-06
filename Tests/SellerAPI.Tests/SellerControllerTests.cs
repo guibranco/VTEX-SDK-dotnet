@@ -27,7 +27,11 @@ namespace Tests.SellerAPI.Tests
         [Fact]
         public void CreateSeller_ReturnsCreatedAtActionResult()
         {
-            var seller = new Seller { Id = 1, Name = "Test Seller", ContactInfo = "test@example.com" };
+            var seller = new Seller
+            {
+                Id = 1,
+                Name = "Test Seller",
+                ContactInfo = "test@example.com"
             var result = _controller.CreateSeller(seller);
             Assert.IsType<CreatedAtActionResult>(result);
         }
