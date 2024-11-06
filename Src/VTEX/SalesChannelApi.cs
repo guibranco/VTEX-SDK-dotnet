@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace VTEX
 {
     [Route("api/[controller]")]
     [ApiController]
     public class SalesChannelApiController : ControllerBase
+        [Authorize]
     {
         // GET: api/SalesChannels
         [HttpGet]
