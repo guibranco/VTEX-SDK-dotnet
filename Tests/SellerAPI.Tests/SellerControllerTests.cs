@@ -32,6 +32,7 @@ namespace Tests.SellerAPI.Tests
                 Id = 1,
                 Name = "Test Seller",
                 ContactInfo = "test@example.com"
+            };
             var result = _controller.CreateSeller(seller);
             Assert.IsType<CreatedAtActionResult>(result);
         }
