@@ -12,6 +12,9 @@ jobs:
     name: Deep Source Coverage report
     runs-on: ubuntu-latest
     steps:
+      - name: Restore dependencies
+        run: dotnet restore
+
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
