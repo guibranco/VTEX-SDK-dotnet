@@ -1,5 +1,5 @@
-using Xunit;
 using VTEX.Services;
+using Xunit;
 
 namespace VTEX.Tests
 {
