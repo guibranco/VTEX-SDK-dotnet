@@ -1,0 +1,4 @@
+name: Build
+@@ -10,1 +11,1 @@
+-    path: ''
+    path: 'Src'
