@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <ProjectGuid>{D1E5B509-0934-4E15-B78D-D3A88AC8CB16}</ProjectGuid>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <LangVersion>latest</LangVersion>
     <Company>Guilherme Branco Stracini</Company>
@@ -28,6 +28,7 @@
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+      <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
