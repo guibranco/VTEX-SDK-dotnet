@@ -1,6 +1,8 @@
 version: 2.3.{build}
 skip_tags: true
 image: Visual Studio 2022
+environment:
+  SALES_CHANNEL_API_ENABLED: true
 configuration: Release
 
 environment:
