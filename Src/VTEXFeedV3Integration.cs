@@ -22,6 +22,7 @@ namespace VTEXIntegration
             var request = new HttpRequestMessage(
                 HttpMethod.Get,
                 "https://api.vtex.com/your-account/feed/orders/status"
+                );
             request.Headers.Add("X-VTEX-API-AppKey", _apiKey);
             request.Headers.Add("X-VTEX-API-AppToken", _apiToken);
 
