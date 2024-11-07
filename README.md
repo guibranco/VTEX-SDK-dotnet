@@ -73,6 +73,24 @@ Console.WriteLine("Sequence: {1} | Value: {0} | ", order.Value, order.Sequence);
 
 ```
 
+### VTEX Feed V3 API Integration
+
+To integrate with the VTEX Feed V3 API and retrieve order status information, use the `VTEXFeedV3Integration` class.
+
+```cs
+using VTEXIntegration;
+
+var integration = new VTEXFeedV3Integration(VTEXFeedV3Config.ApiKey, VTEXFeedV3Config.ApiToken);
+
+try
+{
+    var orderStatus = await integration.GetFeedOrderStatus1Async();
+    Console.WriteLine("Order Status: " + orderStatus);
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Error: " + ex.Message);
+
 ---
 
 ## Support
