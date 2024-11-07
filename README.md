@@ -61,6 +61,15 @@ Implements all features of VTEX API available at [VTEX Developer Docs](https://d
 
 ---
 
+## Product Indexed API
+
+The Product Indexed API provides a standardized and efficient way to access up-to-date product indexing data. This API is designed to improve data consistency and facilitate seamless integrations with other services.
+
+### Usage
+
+To use the Product Indexed API, send a request to the `/api/ProductIndexed` endpoint. Ensure you have the necessary authentication credentials.
+
+
 ## Usage
 
 Use your VTEX platform API keys.
