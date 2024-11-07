@@ -23,10 +23,22 @@ namespace VTEXIntegration
             request.Headers.Add("X-VTEX-API-AppKey", _apiKey);
             request.Headers.Add("X-VTEX-API-AppToken", _apiToken);
 
-            var response = await _httpClient.SendAsync(request);
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                var response = await _httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(content))
+                {
+                    throw new Exception("Received empty response from VTEX API.");
+                }
+                return content;
+            }
+            catch (HttpRequestException e)
+            {
+                throw new Exception("Error fetching order status from VTEX API.", e);
+            }
         }
     }
 }
