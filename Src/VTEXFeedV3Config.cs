@@ -10,5 +10,4 @@ namespace VTEXIntegration
 
         // VTEX account name
         public const string AccountName = "your-account";
-    }
 }
