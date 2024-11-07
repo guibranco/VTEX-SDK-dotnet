@@ -3,10 +3,10 @@ namespace VTEXIntegration
     public static class VTEXFeedV3Config
     {
         // Replace with your actual VTEX API key
-        public const string ApiKey = "YOUR_API_KEY";
+        public static string ApiKey => Environment.GetEnvironmentVariable("VTEX_API_KEY") ?? throw new ArgumentNullException("VTEX_API_KEY");
 
         // Replace with your actual VTEX API token
-        public const string ApiToken = "YOUR_API_TOKEN";
+        public static string ApiToken => Environment.GetEnvironmentVariable("VTEX_API_TOKEN") ?? throw new ArgumentNullException("VTEX_API_TOKEN");
 
         // VTEX account name
         public const string AccountName = "your-account";
