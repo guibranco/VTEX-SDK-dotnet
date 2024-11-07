@@ -38,7 +38,9 @@ namespace VTEXIntegration.Tests
             var integration = new VTEXFeedV3Integration("validApiKey", "validApiToken");
 
             // Act & Assert
-            await Assert.ThrowsAsync<Exception>(async () => await integration.GetFeedOrderStatus1Async());
+            await Assert.ThrowsAsync<Exception>(
+                async () => await integration.GetFeedOrderStatus1Async()
+            );
         }
     }
 }
