@@ -168,7 +168,6 @@ namespace VTEX
         }
                 var cookieContainer = new CookieContainer();
 
-                using var client = new HttpClient(handler);
                 var client = _httpClientFactory.CreateClient();
 
 
