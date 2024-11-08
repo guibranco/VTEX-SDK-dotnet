@@ -2,9 +2,7 @@
 // Assembly         : VTEX.Health
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
-        private readonly IHttpClientFactory _httpClientFactory;
 
-        public VtexHealthClient(ILoggerFactory loggerFactory, IHttpClientFactory httpClientFactory)
         {
 //
             if (loggerFactory == null)
@@ -79,12 +77,13 @@ namespace VTEX.Health
         )
         {
             _logger.LogDebug("Getting platform status");
-            var response = await _httpClient.GetAsync("/", cancellationToken).ConfigureAwait(false);
             var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             _logger.LogDebug($"Platform status response: {response.StatusCode}");
             return response.IsSuccessStatusCode
+            var httpClient = _httpClientFactory.CreateClient();
                 ? JsonConvert.DeserializeObject<PlatformStatus[]>(responseContent)
                 : default;
+            var response = await httpClient.GetAsync("/", cancellationToken).ConfigureAwait(false);
         }
 
         #endregion
