@@ -4,9 +4,16 @@
 // Created          : 01-15-2023
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public VtexHealthClient(IHttpClientFactory httpClientFactory)
+        public VtexHealthClient(ILoggerFactory loggerFactory, IHttpClientFactory httpClientFactory)
         {
 //
+            if (loggerFactory == null)
+            {
+                throw new ArgumentNullException(nameof(loggerFactory));
+            }
+
+            _logger = loggerFactory.CreateLogger<VtexHealthClient>();
+            _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
 // Last Modified By : Guilherme Branco Stracini
 // Last Modified On : 01-15-2023
 // ***********************************************************************
