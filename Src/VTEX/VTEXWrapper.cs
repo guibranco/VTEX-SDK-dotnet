@@ -98,12 +98,6 @@ namespace VTEX
         /// Initializes a new instance of the <see cref="VTEXWrapper" /> class.
         /// </summary>
         /// <param name="accountName">The account name.</param>
-        public VTEXWrapper(string accountName)
-        {
-            _accountName = accountName;
-            _requestMediator.Set();
-        }
-
         #endregion
 
         #region Implementation of IDisposable
