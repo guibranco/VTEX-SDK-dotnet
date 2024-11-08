@@ -160,8 +160,15 @@ namespace VTEX
 
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public VTEXWrapper(IHttpClientFactory httpClientFactory)
+        public VTEXWrapper(ILoggerFactory loggerFactory, IHttpClientFactory httpClientFactory)
         {
+            if (loggerFactory == null)
+            {
+                throw new ArgumentNullException(nameof(loggerFactory));
+            }
+
+            _logger = loggerFactory.CreateLogger<VTEXWrapper>();
+            _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
                 LogConsumer.Debug(uriBuilder.ToString());
 
             _httpClientFactory = httpClientFactory;
