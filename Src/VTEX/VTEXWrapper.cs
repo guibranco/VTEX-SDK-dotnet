@@ -158,13 +158,19 @@ namespace VTEX
                     endpoint
                 );
 
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public VTEXWrapper(IHttpClientFactory httpClientFactory)
+        {
                 LogConsumer.Debug(uriBuilder.ToString());
 
+            _httpClientFactory = httpClientFactory;
+        }
                 var cookieContainer = new CookieContainer();
 
-                using var handler = new HttpClientHandler { CookieContainer = cookieContainer };
-
                 using var client = new HttpClient(handler);
+                var client = _httpClientFactory.CreateClient();
+
 
                 ConfigureClient(client, requiresAuthentication);
 
