@@ -28,6 +28,6 @@ jobs:
         env:
           DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
         run: |
-          dotnet build -c Debug --verbosity minimal
-          dotnet test  -c Debug --verbosity minimal --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
+          dotnet build VTEX.sln -c Debug --verbosity minimal
+          dotnet test VTEX.sln -c Debug --verbosity minimal --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat="cobertura"
           ./bin/deepsource report --analyzer test-coverage --key csharp --value-file ./Tests/VTEX.Tests/coverage.cobertura.xml
