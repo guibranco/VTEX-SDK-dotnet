@@ -48,7 +48,6 @@ namespace VTEX.Health
 
         #region ~ctors
 
-        }
 
         private HttpClient CreateClient()
         {
@@ -88,3 +87,4 @@ namespace VTEX.Health
         #endregion
     }
 }
+        }
