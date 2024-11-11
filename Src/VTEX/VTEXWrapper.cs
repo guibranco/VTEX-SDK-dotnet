@@ -1,4 +1,4 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : VTEX
 // Author           : Guilherme Branco Stracini
 // Created          : 01-15-2023
@@ -161,7 +161,6 @@ namespace VTEX
             }
 
             _logger = loggerFactory.CreateLogger<VTEXWrapper>();
-
         }
                 var cookieContainer = new CookieContainer();
 
