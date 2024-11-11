@@ -152,7 +152,6 @@ namespace VTEX
                     endpoint
                 );
 
-        private readonly IHttpClientFactory _httpClientFactory;
 
         public VTEXWrapper(ILoggerFactory loggerFactory, IHttpClientFactory httpClientFactory)
         {
@@ -162,10 +161,7 @@ namespace VTEX
             }
 
             _logger = loggerFactory.CreateLogger<VTEXWrapper>();
-            _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
-                LogConsumer.Debug(uriBuilder.ToString());
 
-            _httpClientFactory = httpClientFactory;
         }
                 var cookieContainer = new CookieContainer();
 
