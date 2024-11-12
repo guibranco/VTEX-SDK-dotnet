@@ -23,9 +23,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Docker compose up
-        run: docker compose up -d && sleep 10
-
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
         with:
