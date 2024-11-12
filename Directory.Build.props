@@ -8,9 +8,9 @@
     <Authors>Guilherme Branco Stracini</Authors>
     <Company>Guilherme Branco Stracini ME</Company>
     <Copyright>© $([System.DateTime]::Now.Year) Guilherme Branco Stracini. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://guibranco.github.io/Sankhya-SDK-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://guibranco.github.io/VTEX-SDK-dotnet</PackageProjectUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <RepositoryUrl>https://github.com/guibranco//Sankhya-SDK-dotnet</RepositoryUrl>
+    <RepositoryUrl>https://github.com/guibranco//VTEX-SDK-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
