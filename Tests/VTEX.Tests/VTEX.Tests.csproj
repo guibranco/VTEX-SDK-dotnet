@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <ProjectGuid>2FD2F4CE-DCAB-4F78-8A20-A22CD7F74CFB</ProjectGuid>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>$(DotNetVersionTests)</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
