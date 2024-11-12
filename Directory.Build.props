@@ -1,17 +1,44 @@
 <Project>
-  <PropertyGroup>
-    <UpdateVersionProperties>true</UpdateVersionProperties>
+  <PropertyGroup Label="SDK Versions">
+    <DotNetVersions>netstandard2.0;netstandard2.1;net6.0;net8.0</DotNetVersions>
+    <DotNetVersionTests>net8.0</DotNetVersionTests>
+  </PropertyGroup>
+  
+  <PropertyGroup Label="NuGet package">
+    <Authors>Guilherme Branco Stracini</Authors>
+    <Company>Guilherme Branco Stracini ME</Company>
+    <Copyright>© $([System.DateTime]::Now.Year) Guilherme Branco Stracini. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://guibranco.github.io/Sankhya-SDK-dotnet</PackageProjectUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryUrl>https://github.com/guibranco//Sankhya-SDK-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <PropertyGroup Label="NuGet">
+    <NuGetAudit>true</NuGetAudit>
+    <NuGetAuditLevel>low</NuGetAuditLevel>
+    <NuGetAuditMode>all</NuGetAuditMode>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Build">
+    <UpdateVersionProperties>true</UpdateVersionProperties>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <LangVersion>latest</LangVersion>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disabled</ImplicitUsings>
     <Nullable>disable</Nullable>
     <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
     <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
-    <NoWarn>$(NoWarn);1591;NU5105</NoWarn>
+    <NoWarn>$(NoWarn);1591;NU5105;SA1633;CA1711</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -19,6 +46,8 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <GenerateDependencyFile>true</GenerateDependencyFile>
+    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Label="Analysis settings">
@@ -28,5 +57,20 @@
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" Condition="$(MSBuildProjectExtension) == '.csproj' And $(IsTestProject) != 'true'" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="9.32.0.97167" PrivateAssets="all" Condition="$(MSBuildProjectExtension) == '.csproj' And $(IsTestProject) != 'true'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 </Project>
