@@ -2,44 +2,18 @@
 
   <PropertyGroup>
     <ProjectGuid>{931C39A1-583E-4264-AC7C-508C7B1FC15E}</ProjectGuid>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <LangVersion>latest</LangVersion>
-    <Company>Guilherme Branco Stracini</Company>
-    <Authors>Guilherme Branco Stracini</Authors>
-    <Copyright>© 2023 Guilherme Branco Stracini. All rights reserved.</Copyright>
-    <Description>The VTEX platform (PaaS) (e-commerce) SDK. A .NET client to consume VTEX APIs for both Core and Framework projects</Description>    
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://guibranco.github.io/VTEX-SDK-dotnet/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/guibranco/VTEX-SDK-dotnet</RepositoryUrl>
-    <RepositoryType>GIT</RepositoryType>
+    <TargetFrameworks>$(DotNetVersions)</TargetFrameworks>    
+    <Description>The VTEX platform (PaaS) (e-commerce) SDK. A .NET client to consume VTEX APIs for both Core and Framework projects</Description>
     <PackageTags>vtex paas client sdk ecommerce e-commerce platform apis</PackageTags>
-    <PackageIcon>packageLogo.png</PackageIcon>    
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <PackageReleaseNotes>Chore</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="8.2.270" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+    <PackageReference Include="CrispyWaffle" Version="9.0.25" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\packageLogo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.0" />
   </ItemGroup>
 
 </Project>
+

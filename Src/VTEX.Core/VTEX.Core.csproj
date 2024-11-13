@@ -1,12 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
+    <ProjectGuid>{931C39A1-583E-4264-AB8D-508C7B1FC15E}</ProjectGuid>
+    <TargetFrameworks>$(DotNetVersions)</TargetFrameworks>    
+    <Description>The VTEX platform (PaaS) (e-commerce) SDK. A .NET client to consume VTEX APIs for both Core and Framework projects</Description>
+    <PackageTags>vtex paas client sdk ecommerce e-commerce platform apis</PackageTags>
+    <PackageReleaseNotes>Chore</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="8.2.270" />
+    <PackageReference Include="CrispyWaffle" Version="9.0.25" />
   </ItemGroup>
 
 </Project>
