@@ -18,7 +18,7 @@ namespace VTEX.Tests.Health
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Moq;
+    using NSubstitute;
     using VTEX.Health;
     using Xunit;
 
@@ -31,9 +31,9 @@ namespace VTEX.Tests.Health
         /// Asynchronously validates the health status of a platform by retrieving platform statuses from a health client.
         /// </summary>
         /// <remarks>
-        /// This test method sets up a mock implementation of the <see cref="IVtexHealthClient"/> interface to simulate the retrieval of platform statuses.
+        /// This test method sets up a substitute implementation of the <see cref="IVtexHealthClient"/> interface to simulate the retrieval of platform statuses.
         /// It creates a collection of <see cref="PlatformStatus"/> objects, representing both healthy and unhealthy statuses.
-        /// The method then calls the mocked client's <see cref="IVtexHealthClient.GetPlatformStatuesAsync"/> method and verifies that the result is not null.
+        /// The method then calls the substitute's <see cref="IVtexHealthClient.GetPlatformStatuesAsync"/> method and verifies that the result is not null.
         /// It also checks that the returned list contains exactly two items, one with a healthy status and one with an unhealthy status.
         /// This ensures that the health client is functioning as expected and returning the correct platform statuses.
         /// </remarks>
@@ -58,13 +58,13 @@ namespace VTEX.Tests.Health
                 },
             };
 
-            var clientMock = new Mock<IVtexHealthClient>();
-            clientMock
-                .Setup(c => c.GetPlatformStatuesAsync(It.IsAny<CancellationToken>()))
-                .ReturnsAsync(fixtures);
+            var clientSubstitute = Substitute.For<IVtexHealthClient>();
+            clientSubstitute
+                .GetPlatformStatuesAsync(Arg.Any<CancellationToken>())
+                .Returns(fixtures);
 
-            var result = await clientMock
-                .Object.GetPlatformStatuesAsync(CancellationToken.None)
+            var result = await clientSubstitute
+                .GetPlatformStatuesAsync(CancellationToken.None)
                 .ConfigureAwait(false);
 
             Assert.NotNull(result);
