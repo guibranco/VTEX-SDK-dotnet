@@ -16,6 +16,10 @@ updates:
     - "packages"
     - ".NET"
     - "dependencies"
+  groups:
+    CrispyWaffle:
+      patterns:
+        - "CrispyWaffle*"
 
 - package-ecosystem: "github-actions"
   directory: "/"
