@@ -1,7 +1,7 @@
-using Xunit;
 using FluentAssertions;
 using NSubstitute;
 using Bogus;
+using Xunit;
 
 namespace VTEX.Tests
 {
