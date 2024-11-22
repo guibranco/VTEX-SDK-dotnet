@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace VTEX.API.Controllers
 {
@@ -13,7 +15,11 @@ namespace VTEX.API.Controllers
             return Ok();
         }
 
+        [Required]
+        [StringLength(100, MinimumLength = 3)]
         // Outros métodos para atualizar e gerenciar produtos
+        [Required]
+        [Range(0.01, 10000.00)]
     }
 }
 
