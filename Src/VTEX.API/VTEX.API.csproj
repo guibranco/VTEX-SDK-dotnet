@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="9.0.48" />
+    <PackageReference Include="CrispyWaffle" Version="9.0.68" />
   </ItemGroup>
 
 </Project>
