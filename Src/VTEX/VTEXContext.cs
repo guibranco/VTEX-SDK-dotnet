@@ -1465,7 +1465,6 @@ namespace VTEX
             CancellationToken token
         )
         {
-
             // Placeholder logic for retrieving product specifications
             LogConsumer.Info(
                 "Retrieving specifications for product {0}",
