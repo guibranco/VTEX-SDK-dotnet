@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 namespace VTEX
+{
 public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
     using System;
     using System.Collections.Generic;
@@ -1508,7 +1509,6 @@ public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
         /// <param name="fieldValue">The field value.</param>
         /// <param name="token">The token.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
-        )
         {
             LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
             var data = fieldValue.GetSerializer();
@@ -1518,7 +1518,6 @@ public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
                     $@"{PlatformConstants.Catalog}/specification/fieldValue",
                     token,
                     data: data);
-                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -1539,7 +1538,6 @@ public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="searchedValue"/> is null or whitespace.</exception>
         /// <exception cref="UnexpectedApiResponseException">Thrown when the API response is unexpected.</exception>
         [Pure]
-        {
             if (string.IsNullOrWhiteSpace(searchedValue))
             {
                 throw new ArgumentNullException(nameof(searchedValue));
