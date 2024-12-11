@@ -22,8 +22,6 @@ using System.Threading.Tasks;
 using CrispyWaffle.Extensions;
 using CrispyWaffle.Log;
 using CrispyWaffle.Serialization;
-{
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Diagnostics.Contracts;
