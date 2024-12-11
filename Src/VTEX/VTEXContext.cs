@@ -1475,6 +1475,7 @@ namespace VTEX
             var specifications = new List<Specification>();
             // TODO: Implement actual data retrieval logic
             return await Task.FromResult(specifications);
+        }
         /// <summary>
         /// Updates the product specifications asynchronous.
         /// </summary>
