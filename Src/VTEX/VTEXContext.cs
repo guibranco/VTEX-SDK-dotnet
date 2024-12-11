@@ -1509,7 +1509,6 @@ using Newtonsoft.Json;
                 data,
                 token
             ).ConfigureAwait(false);
-        
 }
 
         /// <summary>
