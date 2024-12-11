@@ -1526,8 +1526,6 @@ using Newtonsoft.Json;
         {
 
         /// <summary>
-        {
-        {
         /// Asynchronously searches for a data entity based on a specified field and value.
         /// </summary>
         /// <typeparam name="TDataEntity">The type of the data entity to search for, which must implement <see cref="IDataEntity"/>.</typeparam>
