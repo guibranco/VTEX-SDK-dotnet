@@ -23,7 +23,6 @@ namespace VTEX.Tests.Controllers
         {
             // Arrange
             int productId = 1;
-            _context.GetProductSpecificationsAsync(productId, Arg.Any<CancellationToken>()).Returns(new List<Specification>());
 
             // Act
             var result = await _controller.GetSpecifications(productId, CancellationToken.None);
