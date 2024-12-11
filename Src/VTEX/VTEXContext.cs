@@ -1494,7 +1494,7 @@ namespace VTEX
                 string.Join(@",", specifications.Select(s => s.Id))
             );
 
-            var data = (string)specifications.GetSerializer();
+            var data = specifications.GetSerializer();
             await _wrapper.UpdateSpecificationsAsync(productId, data, token);
                     $@"{PlatformConstants.Catalog}/products/{productId}/specification",
                     token,
