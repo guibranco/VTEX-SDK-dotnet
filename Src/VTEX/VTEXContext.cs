@@ -1545,6 +1545,7 @@ using Newtonsoft.Json;
         [Pure]
         public async Task<DataEntity> SearchDataEntityAsync(string searchedField, string searchedValue)
         {
+        {
             if (string.IsNullOrWhiteSpace(searchedValue))
             {
                 throw new ArgumentNullException(nameof(searchedValue));
