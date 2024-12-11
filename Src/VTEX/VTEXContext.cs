@@ -1599,4 +1599,3 @@ public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
         }
         #endregion
     }
-}
