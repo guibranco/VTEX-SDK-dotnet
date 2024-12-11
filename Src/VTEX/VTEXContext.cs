@@ -1483,6 +1483,7 @@ namespace VTEX
         /// <param name="productId">The product identifier.</param>
         /// <param name="token">The token.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
+        {
         public async Task UpdateSpecificationsAsync(
             List<Specification> specifications,
             int productId,
