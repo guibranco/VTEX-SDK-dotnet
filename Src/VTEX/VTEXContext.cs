@@ -1492,7 +1492,6 @@ namespace VTEX
                 productId,
                 string.Join(",", specifications.Select(s => s.Id))
             );
-            )
 
             var data = specifications.GetSerializer();
             await _wrapper.UpdateSpecificationsAsync(productId, data, token);
