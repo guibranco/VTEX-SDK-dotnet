@@ -1482,11 +1482,13 @@ namespace VTEX
         /// <param name="productId">The product identifier.</param>
         /// <param name="token">The token.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
+        public async Task UpdateSpecificationsAsync(
             List<Specification> specifications,
             int productId,
-            CancellationToken token
         )
         {
+            CancellationToken token
+        )
             LogConsumer.Info(
                 "Updating the specifications {1} of product {0}",
                 productId,
@@ -1494,7 +1496,7 @@ namespace VTEX
             );
 
             var data = (string)specifications.GetSerializer();
-            await _wrapper
+            await _wrapper.UpdateSpecificationsAsync(productId, data, token);
                 .ServiceInvokerAsync(
                     HttpRequestMethod.POST,
                     $@"{PlatformConstants.Catalog}/products/{productId}/specification",
