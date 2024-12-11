@@ -1495,11 +1495,11 @@ namespace VTEX
 
             var data = specifications.GetSerializer();
             await _wrapper.UpdateSpecificationsAsync(productId, data, token);
-                    $@"{PlatformConstants.Catalog}/products/{productId}/specification",
-                    token,
-                    data: data
-                )
-                .ConfigureAwait(false);
+            await _wrapper.UpdateSpecificationsAsync(
+                productId,
+                data,
+                token
+            ).ConfigureAwait(false);
         }
 
         /// <summary>
