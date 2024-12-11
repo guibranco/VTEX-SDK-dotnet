@@ -1546,7 +1546,6 @@ namespace VTEX
         [Pure]
             string searchedField,
             string searchedValue,
-        )
             where TDataEntity : class, IDataEntity, new()
         {
             if (string.IsNullOrWhiteSpace(searchedValue))
