@@ -1544,7 +1544,6 @@ namespace VTEX
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="searchedValue"/> is null or whitespace.</exception>
         /// <exception cref="UnexpectedApiResponseException">Thrown when the API response is unexpected.</exception>
         [Pure]
-        public async Task<TDataEntity> SearchAsync<TDataEntity>(
             string searchedField,
             string searchedValue,
             CancellationToken token
