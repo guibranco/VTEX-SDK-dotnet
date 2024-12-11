@@ -1,6 +1,6 @@
-using VTEX;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using VTEX;
 using System.Threading;
 
 namespace Controllers
