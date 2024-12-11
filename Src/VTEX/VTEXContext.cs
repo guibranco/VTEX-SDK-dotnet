@@ -1539,9 +1539,6 @@ namespace VTEX
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="searchedValue"/> is null or whitespace.</exception>
         /// <exception cref="UnexpectedApiResponseException">Thrown when the API response is unexpected.</exception>
         [Pure]
-            string searchedField,
-            string searchedValue,
-            where TDataEntity : class, IDataEntity, new()
         {
             if (string.IsNullOrWhiteSpace(searchedValue))
             {
