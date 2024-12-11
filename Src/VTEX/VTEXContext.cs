@@ -1544,7 +1544,7 @@ using Newtonsoft.Json;
         /// <exception cref="UnexpectedApiResponseException">Thrown when the API response is unexpected.</exception>
         [Pure]
         public async Task<DataEntity> SearchDataEntityAsync(string searchedField, string searchedValue)
-        {
+        async Task<DataEntity> SearchDataEntityAsync(string searchedField, string searchedValue) {
             if (string.IsNullOrWhiteSpace(searchedValue))
             {
                 throw new ArgumentNullException(nameof(searchedValue));
