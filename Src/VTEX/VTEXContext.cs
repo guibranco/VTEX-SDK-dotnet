@@ -1488,7 +1488,7 @@ namespace VTEX
             CancellationToken token)
         {
             CancellationToken token
-        )
+        , CancellationToken token)
             LogConsumer.Info(
                 "Updating the specifications {1} of product {0}",
                 productId,
@@ -1515,7 +1515,6 @@ namespace VTEX
             SpecificationFieldValue fieldValue,
             CancellationToken token
         )
-        {
             LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
             var data = (string)fieldValue.GetSerializer();
             await _wrapper
@@ -1548,7 +1547,6 @@ namespace VTEX
         [Pure]
             string searchedField,
             string searchedValue,
-            CancellationToken token
         )
             where TDataEntity : class, IDataEntity, new()
         {
@@ -1611,7 +1609,6 @@ namespace VTEX
         {
             _wrapper.Dispose();
         }
-
         #endregion
     }
 }
