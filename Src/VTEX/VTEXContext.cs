@@ -11,7 +11,17 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace VTEX
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics.Contracts;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using CrispyWaffle.Extensions;
+using CrispyWaffle.Log;
+using CrispyWaffle.Serialization;
 {
     using System;
     using System.Collections.Generic;
@@ -24,7 +34,7 @@ namespace VTEX
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
     using CrispyWaffle.Serialization;
-    using Newtonsoft.Json;
+using Newtonsoft.Json;
     using VTEX.DataEntities;
     using VTEX.Enums;
     using VTEX.Extensions;
