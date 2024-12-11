@@ -61,6 +61,26 @@ Implements all features of VTEX API available at [VTEX Developer Docs](https://d
 
 ---
 
+## Products Specification API
+
+The Products Specification API allows you to manage additional information related to products. It provides endpoints to consult, create, and update product specifications.
+
+### Endpoints
+
+- `GET /api/products/{productId}/specifications`: Retrieve specifications for a specific product.
+- `POST /api/products/{productId}/specifications`: Create a new specification for a product.
+- `PUT /api/products/{productId}/specifications/{specificationId}`: Update an existing specification for a product.
+
+### Usage Example
+
+```cs
+var vtex = new VTEXContext("store name", "app-key-xyz", "app-token-secret-hash");
+
+// Retrieve product specifications
+var specifications = await vtex.GetProductSpecificationsAsync(productId, CancellationToken.None);
+
+// Create a new specification
+
 ## Usage
 
 Use your VTEX platform API keys.

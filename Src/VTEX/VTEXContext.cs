@@ -11,11 +11,17 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace VTEX
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics.Contracts;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using CrispyWaffle.Extensions;
+using CrispyWaffle.Log;
+using CrispyWaffle.Serialization;
     using System.Diagnostics.Contracts;
     using System.Globalization;
     using System.Linq;
@@ -24,7 +30,7 @@ namespace VTEX
     using CrispyWaffle.Extensions;
     using CrispyWaffle.Log;
     using CrispyWaffle.Serialization;
-    using Newtonsoft.Json;
+using Newtonsoft.Json;
     using VTEX.DataEntities;
     using VTEX.Enums;
     using VTEX.Extensions;
@@ -1455,57 +1461,68 @@ namespace VTEX
         }
 
         /// <summary>
+        /// Retrieves the product specifications asynchronous.
+        /// </summary>
+        /// <param name="productId">The product identifier.</param>
+        /// <param name="token">The token.</param>
+        /// <returns>A Task representing the asynchronous operation with a list of specifications.</returns>
+        public async Task<List<Specification>> GetProductSpecificationsAsync(
+            int productId,
+            CancellationToken token
+        )
+        {
+            // Placeholder logic for retrieving product specifications
+            LogConsumer.Info(
+                "Retrieving specifications for product {0}",
+                productId
+            );
+
+            // Simulate retrieval of specifications
+            var specifications = new List<Specification>();
+            // TODO: Implement actual data retrieval logic
+            return await Task.FromResult(specifications);
+        }
+        /// <summary>
         /// Updates the product specifications asynchronous.
         /// </summary>
         /// <param name="specifications">The specifications list.</param>
         /// <param name="productId">The product identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns>A Task representing the asynchronous operation.</returns>
-        public async Task UpdateProductSpecificationsAsync(
+        private async Task UpdateProductSpecificationsAsync(
             List<Specification> specifications,
             int productId,
-            CancellationToken token
-        )
+            CancellationToken token)
         {
-            LogConsumer.Info(
+            await LogConsumer.InfoAsync(
                 "Updating the specifications {1} of product {0}",
                 productId,
-                string.Join(@",", specifications.Select(s => s.Id))
+                string.Join(",", specifications.Select(s => s.Id))
             );
 
-            var data = (string)specifications.GetSerializer();
-            await _wrapper
-                .ServiceInvokerAsync(
-                    HttpRequestMethod.POST,
-                    $@"{PlatformConstants.Catalog}/products/{productId}/specification",
-                    token,
-                    data: data
-                )
-                .ConfigureAwait(false);
-        }
+            var data = specifications.GetSerializer();
+            await _wrapper.UpdateSpecificationsAsync(
+                productId,
+                data,
+                token).ConfigureAwait(false);
 
         /// <summary>
-        /// Inserts the specification field value asynchronous.
+        /// Inserts the specification field value asynchronously.
         /// </summary>
         /// <param name="fieldValue">The field value.</param>
         /// <param name="token">The token.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
-        public async Task InsertSpecificationFieldValueAsync(
-            SpecificationFieldValue fieldValue,
-            CancellationToken token
-        )
+        private async Task InsertSpecificationFieldValueAsync(SpecificationFieldValue fieldValue, CancellationToken token)
         {
-            LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
-            var data = (string)fieldValue.GetSerializer();
+            var data = fieldValue.GetSerializer();
             await _wrapper
                 .ServiceInvokerAsync(
                     HttpRequestMethod.POST,
                     $@"{PlatformConstants.Catalog}/specification/fieldValue",
                     token,
-                    data: data
-                )
-                .ConfigureAwait(false);
+                    data: data);
         }
+        public async Task<TDataEntity> SearchAsync<TDataEntity>(string searchedField, string searchedValue, CancellationToken token) where TDataEntity : IDataEntity
+        {
 
         /// <summary>
         /// Asynchronously searches for a data entity based on a specified field and value.
@@ -1525,12 +1542,7 @@ namespace VTEX
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="searchedValue"/> is null or whitespace.</exception>
         /// <exception cref="UnexpectedApiResponseException">Thrown when the API response is unexpected.</exception>
         [Pure]
-        public async Task<TDataEntity> SearchAsync<TDataEntity>(
-            string searchedField,
-            string searchedValue,
-            CancellationToken token
-        )
-            where TDataEntity : class, IDataEntity, new()
+        private async Task<DataEntity> SearchDataEntityAsync(string searchedField, string searchedValue)
         {
             if (string.IsNullOrWhiteSpace(searchedValue))
             {
@@ -1575,6 +1587,7 @@ namespace VTEX
                 throw new UnexpectedApiResponseException(json, e);
             }
         }
+#endregion
 
         #endregion
 
@@ -1583,15 +1596,13 @@ namespace VTEX
         #endregion
 
         #region IDisposable
-
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public void Dispose()
         {
-            _wrapper.Dispose();
         }
-
+        }
         #endregion
-    }
-}
+
+#endregion
