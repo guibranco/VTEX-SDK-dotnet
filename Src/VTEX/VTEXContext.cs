@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 namespace VTEX
-{
+public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
