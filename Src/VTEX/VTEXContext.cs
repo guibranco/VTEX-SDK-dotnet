@@ -1490,7 +1490,7 @@ namespace VTEX
             await LogConsumer.InfoAsync(
                 "Updating the specifications {1} of product {0}",
                 productId,
-                string.Join(@",", specifications.Select(s => s.Id))
+                string.Join(",", specifications.Select(s => s.Id))
             );
 
             var data = specifications.GetSerializer();
