@@ -1518,7 +1518,7 @@ namespace VTEX
                     HttpRequestMethod.POST,
                     $@"{PlatformConstants.Catalog}/specification/fieldValue",
                     token,
-                    data: data
+                    data: data);
                 )
                 .ConfigureAwait(false);
         }
