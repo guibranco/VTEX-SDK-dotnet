@@ -43,7 +43,4 @@ namespace Controllers
             await _context.UpdateProductSpecificationAsync(specification, productId, token);
             return NoContent();
         }
-            return NoContent();
-    }
-    }
 }
