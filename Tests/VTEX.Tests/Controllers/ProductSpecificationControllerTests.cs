@@ -62,5 +62,6 @@ namespace VTEX.Tests.Controllers
             // Assert
             Assert.IsType<NoContentResult>(result);
     }
+    }
 }
 }
