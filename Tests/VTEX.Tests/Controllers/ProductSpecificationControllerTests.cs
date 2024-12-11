@@ -41,6 +41,7 @@ namespace VTEX.Tests.Controllers
 
             // Act
             var result = await _controller.CreateSpecification(productId, specification, CancellationToken.None);
+              var result = await _controller.CreateSpecification(productId, specification, CancellationToken.None);
 
             // Assert
             Assert.IsType<CreatedAtActionResult>(result);
