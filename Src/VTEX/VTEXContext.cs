@@ -1514,6 +1514,7 @@ namespace VTEX
             SpecificationFieldValue fieldValue,
             CancellationToken token
         )
+        {
             LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
             var data = (string)fieldValue.GetSerializer();
             await _wrapper
