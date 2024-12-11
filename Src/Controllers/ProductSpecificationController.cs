@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
 using VTEX;
 using System.Threading.Tasks;
 
