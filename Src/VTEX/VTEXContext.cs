@@ -1455,6 +1455,18 @@ namespace VTEX
         }
 
         /// <summary>
+        /// Retrieves the product specifications asynchronous.
+        /// </summary>
+        /// <param name="productId">The product identifier.</param>
+        /// <param name="token">The token.</param>
+        /// <returns>A Task representing the asynchronous operation with a list of specifications.</returns>
+        public async Task<List<Specification>> GetProductSpecificationsAsync(
+            int productId,
+            CancellationToken token
+        )
+        {
+
+        /// <summary>
         /// Updates the product specifications asynchronous.
         /// </summary>
         /// <param name="specifications">The specifications list.</param>
