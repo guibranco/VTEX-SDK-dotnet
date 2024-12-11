@@ -1508,7 +1508,6 @@ namespace VTEX
         /// <param name="fieldValue">The field value.</param>
         /// <param name="token">The token.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
-            CancellationToken token
         )
         {
             LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
