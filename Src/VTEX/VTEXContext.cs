@@ -1506,7 +1506,6 @@ using Newtonsoft.Json;
                 productId,
                 data,
                 token).ConfigureAwait(false);
-            ).ConfigureAwait(false);
 }
 
         /// <summary>
