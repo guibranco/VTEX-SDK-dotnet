@@ -1518,7 +1518,6 @@ namespace VTEX
                     $@"{PlatformConstants.Catalog}/specification/fieldValue",
                     token,
                     data: data);
-                )
                 .ConfigureAwait(false);
         }
 
