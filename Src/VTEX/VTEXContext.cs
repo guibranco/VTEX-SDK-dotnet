@@ -1519,6 +1519,7 @@ public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
                     token,
                     data: data);
         }
+        }
 
         /// <summary>
         /// Asynchronously searches for a data entity based on a specified field and value.
