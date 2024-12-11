@@ -1485,7 +1485,7 @@ namespace VTEX
         public async Task UpdateSpecificationsAsync(
             List<Specification> specifications,
             int productId,
-        )
+            CancellationToken token)
         {
             CancellationToken token
         )
