@@ -1505,8 +1505,7 @@ using Newtonsoft.Json;
             await _wrapper.UpdateSpecificationsAsync(
                 productId,
                 data,
-                token);
-                token
+                token).ConfigureAwait(false);
             ).ConfigureAwait(false);
 }
 
