@@ -1509,7 +1509,7 @@ using Newtonsoft.Json;
                 data,
                 token
             ).ConfigureAwait(false);
-        }
+        
 }
 
         /// <summary>
@@ -1528,9 +1528,11 @@ using Newtonsoft.Json;
                     token,
                     data: data);
         }
+        public async Task<TDataEntity> SearchAsync<TDataEntity>(string searchedField, string searchedValue, CancellationToken token) where TDataEntity : IDataEntity
         }
 
         /// <summary>
+        {
         /// Asynchronously searches for a data entity based on a specified field and value.
         /// </summary>
         /// <typeparam name="TDataEntity">The type of the data entity to search for, which must implement <see cref="IDataEntity"/>.</typeparam>
