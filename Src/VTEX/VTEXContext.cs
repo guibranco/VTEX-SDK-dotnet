@@ -1509,7 +1509,6 @@ namespace VTEX
         /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task InsertSpecificationFieldValueAsync(SpecificationFieldValue fieldValue, CancellationToken token)
         {
-        {
             var data = fieldValue.GetSerializer();
             await _wrapper
                 .ServiceInvokerAsync(
