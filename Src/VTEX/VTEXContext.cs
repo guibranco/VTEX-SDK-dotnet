@@ -1605,4 +1605,3 @@ using Newtonsoft.Json;
             _wrapper.Dispose();
         }
 #endregion
-        }
