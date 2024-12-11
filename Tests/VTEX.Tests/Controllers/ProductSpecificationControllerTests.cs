@@ -47,5 +47,19 @@ namespace VTEX.Tests.Controllers
         }
 
         // Additional tests for UpdateSpecification will be added here
+
+        [Fact]
+        public async Task UpdateSpecification_ReturnsNoContentResult()
+        {
+            // Arrange
+            int productId = 1;
+            int specificationId = 1;
+            var specification = new Specification { Id = specificationId };
+
+            // Act
+            var result = await _controller.UpdateSpecification(productId, specificationId, specification, CancellationToken.None);
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
     }
 }
