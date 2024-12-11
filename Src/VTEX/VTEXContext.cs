@@ -1512,7 +1512,7 @@ using Newtonsoft.Json;
         /// <param name="fieldValue">The field value.</param>
         /// <param name="token">The token.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
-        public async Task InsertSpecificationFieldValueAsync(SpecificationFieldValue fieldValue, CancellationToken token)
+        private async Task InsertSpecificationFieldValueAsync(SpecificationFieldValue fieldValue, CancellationToken token)
         {
             var data = fieldValue.GetSerializer();
             await _wrapper
