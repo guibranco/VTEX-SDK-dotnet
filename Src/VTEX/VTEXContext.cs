@@ -1495,7 +1495,6 @@ public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
             );
 
             var data = specifications.GetSerializer();
-            await _wrapper.UpdateSpecificationsAsync(productId, data, token);
             await _wrapper.UpdateSpecificationsAsync(
                 productId,
                 data,
