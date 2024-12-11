@@ -1543,7 +1543,7 @@ using Newtonsoft.Json;
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="searchedValue"/> is null or whitespace.</exception>
         /// <exception cref="UnexpectedApiResponseException">Thrown when the API response is unexpected.</exception>
         [Pure]
-        async Task<DataEntity> SearchDataEntityAsync(string searchedField, string searchedValue) {
+        private async Task<DataEntity> SearchDataEntityAsync(string searchedField, string searchedValue) {
             if (string.IsNullOrWhiteSpace(searchedValue))
             {
                 throw new ArgumentNullException(nameof(searchedValue));
