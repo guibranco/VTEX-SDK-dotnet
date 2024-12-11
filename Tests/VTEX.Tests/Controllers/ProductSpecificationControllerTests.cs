@@ -61,3 +61,4 @@ namespace VTEX.Tests.Controllers
             var result = await _controller.UpdateSpecification(productId, specificationId, specification, CancellationToken.None);
 
             // Assert
+        }
