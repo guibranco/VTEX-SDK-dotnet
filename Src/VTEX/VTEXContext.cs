@@ -1487,7 +1487,6 @@ namespace VTEX
             int productId,
             CancellationToken token)
         {
-        , CancellationToken token)
             LogConsumer.Info(
                 "Updating the specifications {1} of product {0}",
                 productId,
