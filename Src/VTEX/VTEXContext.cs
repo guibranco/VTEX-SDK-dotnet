@@ -1506,6 +1506,7 @@ using Newtonsoft.Json;
                 token).ConfigureAwait(false);
 
         /// <summary>
+        }
         /// Inserts the specification field value asynchronous.
         /// </summary>
         /// <param name="fieldValue">The field value.</param>
