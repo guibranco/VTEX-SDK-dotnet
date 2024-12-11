@@ -1496,7 +1496,6 @@ namespace VTEX
 
             var data = (string)specifications.GetSerializer();
             await _wrapper.UpdateSpecificationsAsync(productId, data, token);
-                .ServiceInvokerAsync(
                     HttpRequestMethod.POST,
                     $@"{PlatformConstants.Catalog}/products/{productId}/specification",
                     token,
