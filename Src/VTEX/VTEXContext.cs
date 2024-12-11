@@ -1523,6 +1523,7 @@ using Newtonsoft.Json;
                     data: data);
         }
         public async Task<TDataEntity> SearchAsync<TDataEntity>(string searchedField, string searchedValue, CancellationToken token) where TDataEntity : IDataEntity
+        {
 
         /// <summary>
         {
