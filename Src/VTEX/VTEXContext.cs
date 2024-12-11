@@ -1487,7 +1487,7 @@ namespace VTEX
             int productId,
             CancellationToken token)
         {
-            LogConsumer.Info(
+            await LogConsumer.InfoAsync(
                 "Updating the specifications {1} of product {0}",
                 productId,
                 string.Join(@",", specifications.Select(s => s.Id))
