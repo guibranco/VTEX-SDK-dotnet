@@ -1501,7 +1501,6 @@ public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
                 token
             ).ConfigureAwait(false);
         }
-        }
 
         /// <summary>
         /// Inserts the specification field value asynchronous.
