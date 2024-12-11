@@ -41,6 +41,7 @@ namespace Controllers
             }
             await _context.UpdateProductSpecificationAsync(specification, productId, token);
         // Additional endpoints for POST and PUT will be added here
+            return NoContent();
     }
     }
 }
