@@ -1597,7 +1597,7 @@ using Newtonsoft.Json;
         #endregion
 
         #region IDisposable
-
+}
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
