@@ -1601,7 +1601,7 @@ using Newtonsoft.Json;
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         void Dispose()
-        {
+        public void Dispose()
         }
         #endregion
 
