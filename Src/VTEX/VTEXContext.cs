@@ -1601,6 +1601,5 @@ using Newtonsoft.Json;
         /// </summary>
         void Dispose()
         {
-            _wrapper.Dispose();
         }
 #endregion
