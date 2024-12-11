@@ -1509,7 +1509,6 @@ public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
         /// <param name="token">The token.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
         public async Task InsertSpecificationFieldValueAsync(SpecificationFieldValue fieldValue, CancellationToken token)
-        async Task InsertSpecificationFieldValueAsync(SpecificationFieldValue fieldValue, CancellationToken token)
             LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
             var data = fieldValue.GetSerializer();
             await _wrapper
