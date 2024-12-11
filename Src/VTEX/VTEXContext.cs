@@ -1500,7 +1500,6 @@ public async Task<TDataEntity> SearchDataEntityAsync<TDataEntity>(
                 data,
                 token
             ).ConfigureAwait(false);
-;
         }
 
         /// <summary>
