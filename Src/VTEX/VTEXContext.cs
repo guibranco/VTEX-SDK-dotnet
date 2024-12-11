@@ -1611,3 +1611,4 @@ namespace VTEX
         #endregion
     }
 }
+}
