@@ -1513,7 +1513,7 @@ namespace VTEX
         )
         {
             LogConsumer.Info("Creating field value of field id {0}", fieldValue.FieldId);
-            var data = (string)fieldValue.GetSerializer();
+            var data = fieldValue.GetSerializer();
             await _wrapper
                 .ServiceInvokerAsync(
                     HttpRequestMethod.POST,
