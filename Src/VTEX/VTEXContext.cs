@@ -1482,7 +1482,7 @@ namespace VTEX
         /// <param name="specifications">The specifications list.</param>
         /// <param name="productId">The product identifier.</param>
         /// <param name="token">The token.</param>
-        public async Task UpdateProductSpecificationsAsync(
+        private async Task UpdateProductSpecificationsAsync(
             List<Specification> specifications,
             int productId,
             CancellationToken token)
