@@ -16,6 +16,7 @@ namespace VTEX.GoodPractices
     using System;
     using System.Runtime.Serialization;
 
+    using VTEX.GoodPractices.SkuServiceValueExceptions;
     /// <summary>
     /// Class BridgeException. This class cannot be inherited.
     /// </summary>
