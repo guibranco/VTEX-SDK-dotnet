@@ -17,6 +17,7 @@ namespace VTEX.DataEntities
     using CrispyWaffle.Serialization;
     using Newtonsoft.Json;
     using ValueObjects;
+using VTEX.DataEntities.SkuServiceValue;
 
     /// <summary>
     /// The client data entity class.
