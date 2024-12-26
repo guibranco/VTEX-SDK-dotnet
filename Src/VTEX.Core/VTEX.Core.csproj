@@ -11,5 +11,6 @@
   <ItemGroup>
     <PackageReference Include="CrispyWaffle" Version="9.1.101" />
   </ItemGroup>
+    <Compile Include="Services\SkuServiceValueService.cs" />
 
 </Project>
