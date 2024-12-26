@@ -58,6 +58,7 @@ Download the latest zip file from the [Release](https://github.com/GuiBranco/VTE
 ## Features
 
 Implements all features of VTEX API available at [VTEX Developer Docs](https://developers.vtex.com/)
+- SKU Service Value API: Create, update, and delete SKU Service Values to manage service charges associated with SKUs.
 
 ---
 
