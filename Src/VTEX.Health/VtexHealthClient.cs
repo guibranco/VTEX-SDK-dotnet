@@ -44,10 +44,10 @@ namespace VTEX.Health
         /// Initializes a new instance of the <see cref="VtexHealthClient" /> class.
         /// </summary>
         /// <param name="loggerFactory">The logger factory.</param>
-        /// <param name="httpClient">The HTTP client.</param>
+        /// <param name="httpClientFactory">The HTTP client factory.</param>
         /// <exception cref="System.ArgumentNullException">loggerFactory</exception>
         /// <exception cref="System.ArgumentNullException">httpClient</exception>
-        public VtexHealthClient(ILoggerFactory loggerFactory, HttpClient httpClient)
+        public VtexHealthClient(ILoggerFactory loggerFactory, IHttpClientFactory httpClientFactory)
         {
             if (loggerFactory == null)
             {
@@ -55,7 +55,7 @@ namespace VTEX.Health
             }
 
             _logger = loggerFactory.CreateLogger<VtexHealthClient>();
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _httpClient = httpClientFactory.CreateClient();
         }
 
         #endregion
