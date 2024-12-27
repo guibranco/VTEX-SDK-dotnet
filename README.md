@@ -70,7 +70,7 @@ Register the VTEX Service using the `CrispyWaffle` toolkit's [Service Locator](h
 
 ```csharp
 var connectionVtex = new Connection(); // Fill in your details
-ServiceLocator.Register(() => new VTEXContext(conectionVtex), LifeStyle.Singleton);
+ServiceLocator.Register(() => new VTEXContext(connectionVtex), LifeStyle.Singleton);
 ```
 
 #### Constructor Injection
