@@ -44,7 +44,7 @@
 
 [![GitHub last release](https://img.shields.io/github/release-date/guibranco/VTEX-SDK-dotnet.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet) [![Github All Releases](https://img.shields.io/github/downloads/guibranco/VTEX-SDK-dotnet/total.svg?style=flat)](https://github.com/guibranco/VTEX-SDK-dotnet)
 
-Download the latest zip file from the [Release](https://github.com/GuiBranco/VTEX-SDK-dotnet/releases) page.
+Download the latest `.zip` file from the [Releases](https://github.com/GuiBranco/VTEX-SDK-dotnet/releases) page.
 
 ### Nuget package manager
 
@@ -57,35 +57,70 @@ Download the latest zip file from the [Release](https://github.com/GuiBranco/VTE
 
 ## Features
 
-Implements all features of VTEX API available at [VTEX Developer Docs](https://developers.vtex.com/)
+- Full implementation of VTEX API.
+- Refer to [VTEX Developer Docs](https://developers.vtex.com/) for more information.
 
 ---
 
 ## Usage
 
-Use your VTEX platform API keys.
-Follow this tutorial on how to: [Creating appKeys and appTokens to authenticate integrations](https://help.vtex.com/tutorial/creating-appkeys-and-apptokens-to-authenticate-integrations--43tQeyQJgAKGEuCqQKAOI2)
+### Dependency Injection (IoC)
 
-```cs
+Register the VTEX Service using the `CrispyWaffle` toolkit's [Service Locator](https://guibranco.github.io/CrispyWaffle/user-guide/serviceLocator/):
+
+```csharp
+var connectionVtex = new Connection(); // Fill in your details
+ServiceLocator.Register(() => new VTEXContext(conectionVtex), LifeStyle.Singleton);
+```
+
+#### Constructor Injection
+
+```csharp
+public class MyClass
+{
+    private readonly VTEXContext _vtexContext;
+
+    public MyClass(VTEXContext vtexContext)
+    {
+        _vtexContext = vtexContext ?? throw new ArgumentNullException(nameof(vtexContext));
+    }
+}
+```
+
+#### Manual Resolution
+
+```csharp
+var vtexContext = ServiceLocator.Resolve<VTEXContext>();
+```
+---
+
+### Authentication
+
+Authenticate with VTEX platform API keys. Refer to this [tutorial](https://help.vtex.com/tutorial/creating-appkeys-and-apptokens-to-authenticate-integrations--43tQeyQJgAKGEuCqQKAOI2).
+
+```csharp
 var vtex = new VTEXContext("store name", "app-key-xyz", "app-token-secret-hash");
 var order = vtex.GetOrder("V-123456789-01");
-Console.WriteLine("Sequence: {1} | Value: {0} | ", order.Value, order.Sequence);
-
+Console.WriteLine($"Sequence: {order.Sequence} | Value: {order.Value}");
 ```
 
 ---
 
 ## Support
 
-Please [open an issue](https://github.com/guibranco/VTEX-SDK-dotnet/issues/new) for support.
+If you need help, feel free to [open an issue](https://github.com/guibranco/VTEX-SDK-dotnet/issues/new).
 
 ---
 
 ## Contributing
 
-Refer to [CONTRIBUTING.md](CONTRIBUTING.md) to learn how to contribute to this project!
+Contributions are welcome! Check out the [CONTRIBUTING.md](CONTRIBUTING.md) guide for details.
 
-### Contributors
+---
+
+## Contributors
+
+Thanks to all contributors! 💙
 
 <!-- readme: collaborators,contributors,snyk-bot/- -start -->
 <table>
