@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup Label="SDK Versions">
-    <DotNetVersions>netstandard2.0;netstandard2.1;net6.0;net8.0</DotNetVersions>
+    <DotNetVersions>netstandard2.0;netstandard2.1;net8.0;net9.0</DotNetVersions>
     <DotNetVersionTests>net8.0</DotNetVersionTests>
   </PropertyGroup>
   
@@ -56,7 +56,7 @@
 
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" Condition="$(MSBuildProjectExtension) == '.csproj' And $(IsTestProject) != 'true'" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.4.0.108396" PrivateAssets="all" Condition="$(MSBuildProjectExtension) == '.csproj' And $(IsTestProject) != 'true'" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.5.0.109200" PrivateAssets="all" Condition="$(MSBuildProjectExtension) == '.csproj' And $(IsTestProject) != 'true'" />
   </ItemGroup>
 
   <ItemGroup>
