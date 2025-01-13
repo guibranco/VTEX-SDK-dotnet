@@ -50,6 +50,11 @@ jobs:
           echo "KEY=${KEY}" >> "${GITHUB_ENV}"  # Keep the variable KEY as it
           echo "ORG=${ORG@L}" >> "${GITHUB_ENV}" # Lowercase the ORG variable
       
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+          
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
