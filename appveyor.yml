@@ -114,8 +114,8 @@ after_build:
   - ps: |
       foreach($version in $VERSIONS)
       {
-        7z a -tzip -mx9 "$env:SOLUTION_NAME.Core.$version.$env:APPVEYOR_BUILD_VERSION:.zip" Build\Core\$version\
-        Push-AppveyorArtifact "$env:SOLUTION_NAME.Core.$version.$env:APPVEYOR_BUILD_VERSION:.zip"
+        7z a -tzip -mx9 "$env:SOLUTION_NAME.Core.$version.$env:APPVEYOR_BUILD_VERSION.zip" Build\Core\$version\
+        Push-AppveyorArtifact "$env:SOLUTION_NAME.Core.$version.$env:APPVEYOR_BUILD_VERSION.zip"
         foreach($project in $PROJECTS)
         {
           7z a -tzip -mx9 "$env:SOLUTION_NAME.$project.$version.$env:APPVEYOR_BUILD_VERSION.zip" Build\$project\$version\
