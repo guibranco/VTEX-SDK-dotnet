@@ -1,19 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <ProjectGuid>{931C39A1-583E-4264-AC7C-508C7B1FC15E}</ProjectGuid>
-    <TargetFrameworks>$(DotNetVersions)</TargetFrameworks>    
+    <TargetFrameworks>$(DotNetVersions)</TargetFrameworks>
     <Description>The VTEX platform (PaaS) (e-commerce) SDK. A .NET client to consume VTEX APIs for both Core and Framework projects</Description>
     <PackageTags>vtex paas client sdk ecommerce e-commerce platform apis</PackageTags>
     <PackageReleaseNotes>Chore</PackageReleaseNotes>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="CrispyWaffle" Version="10.0.203" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
   </ItemGroup>
-
 </Project>
-
