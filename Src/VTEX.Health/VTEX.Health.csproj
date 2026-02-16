@@ -7,7 +7,7 @@
     <PackageReleaseNotes>Chore</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="10.0.1152" />
+    <PackageReference Include="CrispyWaffle" Version="10.0.1169" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
