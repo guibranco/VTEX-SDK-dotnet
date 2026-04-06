@@ -90,6 +90,26 @@ namespace VTEX
         /// </summary>
         private readonly ManualResetEvent _requestMediator = new ManualResetEvent(false);
 
+        /// <summary>
+        /// Create one cookie container for all clients to share, so we can maintain the cookies between requests, which is necessary for some authentication flows (like the one using the VtexIdClientAuth cookie).
+        /// </summary>
+        internal static readonly CookieContainer CookieContainer = new();
+
+        /// <summary>
+        /// Create on http client handler for all clients to share, so we can maintain the cookies between requests, which is necessary for some authentication flows (like the one using the VtexIdClientAuth cookie).
+        /// </summary>
+        private static readonly HttpClientHandler HttpClientHandler = new() { CookieContainer = CookieContainer };
+
+        /// <summary>
+        /// Create two http clients, one with authentication headers and another without, to be used in the requests based on the requirements of each endpoint. Both clients share the same HttpClientHandler to maintain cookies across requests.
+        /// </summary>
+        private static readonly Dictionary<bool, HttpClient> AuthToHttpClient =
+            new()
+            {
+                { false, new HttpClient(HttpClientHandler) },
+                { true, new HttpClient(HttpClientHandler) }
+            };
+
         #endregion
 
         #region ~Ctor
@@ -102,6 +122,10 @@ namespace VTEX
         {
             _accountName = accountName;
             _requestMediator.Set();
+
+            // Initialize the HttpClient instances with the appropriate headers for authenticated and non-authenticated requests.
+            ConfigureClient(AuthToHttpClient[false], false);
+            ConfigureClient(AuthToHttpClient[true], true);
         }
 
         #endregion
@@ -160,20 +184,12 @@ namespace VTEX
 
                 LogConsumer.Debug(uriBuilder.ToString());
 
-                var cookieContainer = new CookieContainer();
-
-                using var handler = new HttpClientHandler { CookieContainer = cookieContainer };
-
-                using var client = new HttpClient(handler);
-
-                ConfigureClient(client, requiresAuthentication);
-
                 if (cookie != null)
                 {
-                    cookieContainer.Add(uriBuilder.Uri, cookie);
+                    CookieContainer.Add(uriBuilder.Uri, cookie);
                 }
 
-                response = await RequestInternalAsync(method, token, data, client, uriBuilder)
+                response = await RequestInternalAsync(method, token, data, AuthToHttpClient[requiresAuthentication], uriBuilder)
                     .ConfigureAwait(false);
 
                 token.ThrowIfCancellationRequested();
@@ -284,6 +300,8 @@ namespace VTEX
         /// <param name="requiresAuthentication">if set to <c>true</c> [requires authentication].</param>
         private void ConfigureClient(HttpClient client, bool requiresAuthentication)
         {
+            // Clear default headers to avoid sending unnecessary headers in each request, which can cause issues with some endpoints and also ensures that the authentication headers are only sent when required.
+            client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.ExpectContinue = false;
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
@@ -382,6 +400,9 @@ namespace VTEX
         {
             _appKey = appKey;
             _appToken = appToken;
+
+            // With new token update the http client that requires authentication, so the new credentials will be used in the next requests.
+            ConfigureClient(AuthToHttpClient[true], true);
         }
 
         /// <summary>
