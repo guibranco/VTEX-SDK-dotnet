@@ -147,6 +147,13 @@ Thanks to all contributors! 💙
                     <sub><b>Viktorius Suwandi</b></sub>
                 </a>
             </td>
+            <td align="center">
+                <a href="https://github.com/cubabuco">
+                    <img src="https://avatars.githubusercontent.com/u/25011786?v=4" width="100;" alt="cubabuco"/>
+                    <br />
+                    <sub><b>cubabuco</b></sub>
+                </a>
+            </td>
 		</tr>
 	<tbody>
 </table>
