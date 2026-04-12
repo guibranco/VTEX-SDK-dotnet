@@ -98,17 +98,19 @@ namespace VTEX
         /// <summary>
         /// Create on http client handler for all clients to share, so we can maintain the cookies between requests, which is necessary for some authentication flows (like the one using the VtexIdClientAuth cookie).
         /// </summary>
-        private static readonly HttpClientHandler HttpClientHandler = new() { CookieContainer = CookieContainer };
+        private static readonly HttpClientHandler HttpClientHandler = new()
+        {
+            CookieContainer = CookieContainer,
+        };
 
         /// <summary>
         /// Create two http clients, one with authentication headers and another without, to be used in the requests based on the requirements of each endpoint. Both clients share the same HttpClientHandler to maintain cookies across requests.
         /// </summary>
-        private static readonly Dictionary<bool, HttpClient> AuthToHttpClient =
-            new()
-            {
-                { false, new HttpClient(HttpClientHandler) },
-                { true, new HttpClient(HttpClientHandler) }
-            };
+        private static readonly Dictionary<bool, HttpClient> AuthToHttpClient = new()
+        {
+            { false, new HttpClient(HttpClientHandler) },
+            { true, new HttpClient(HttpClientHandler) },
+        };
 
         #endregion
 
@@ -189,7 +191,13 @@ namespace VTEX
                     CookieContainer.Add(uriBuilder.Uri, cookie);
                 }
 
-                response = await RequestInternalAsync(method, token, data, AuthToHttpClient[requiresAuthentication], uriBuilder)
+                response = await RequestInternalAsync(
+                        method,
+                        token,
+                        data,
+                        AuthToHttpClient[requiresAuthentication],
+                        uriBuilder
+                    )
                     .ConfigureAwait(false);
 
                 token.ThrowIfCancellationRequested();
