@@ -19,7 +19,7 @@ jobs:
           distribution: 'temurin'
           java-version: 21
       
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
