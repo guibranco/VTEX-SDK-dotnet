@@ -7,6 +7,6 @@
     <PackageReleaseNotes>Chore</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CrispyWaffle" Version="10.2.25" />
+    <PackageReference Include="CrispyWaffle" Version="10.2.26" />
   </ItemGroup>
 </Project>
