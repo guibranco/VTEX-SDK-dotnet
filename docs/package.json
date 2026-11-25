@@ -23,7 +23,7 @@
     "uuid": "^11.1.1"
   },
   "engines": {
-    "node": ">=20.0"
+    "node": ">=20.19.0"
   },
   "browserslist": {
     "production": [
