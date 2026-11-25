@@ -17,6 +17,11 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
+  "overrides": {
+    "serialize-javascript": "^7.1.4",
+    "tinypool": "^2.2.0",
+    "uuid": "^11.1.1"
+  },
   "engines": {
     "node": ">=20.0"
   },
