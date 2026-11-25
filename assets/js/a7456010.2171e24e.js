@@ -1,0 +1,1 @@
+"use strict";(Array.isArray(globalThis.webpackChunkvtex_sdk_docs)?globalThis.webpackChunkvtex_sdk_docs:globalThis.webpackChunkvtex_sdk_docs=[]).push([[235],{8552(s){s.exports=JSON.parse('{"name":"docusaurus-plugin-content-pages","id":"default"}')}}]);
